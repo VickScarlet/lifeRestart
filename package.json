@@ -1,0 +1,8 @@
+{
+    "name": "xlsx_transform",
+    "module": "true",
+    "bin": "convert.js",
+    "dependencies": {
+        "xlsx": "^0.17.0"
+    }
+}
