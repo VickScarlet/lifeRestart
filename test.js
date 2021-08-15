@@ -152,39 +152,55 @@
 // }
 
 
+import {readFile} from 'fs/promises';
 import Prop from './src/prop.js';
 import Condition from './src/condition.js';
+import Event from './src/event.js';
 
-const prop = new Prop({
-    CHR: 5,    // 颜值 charm CHR
-    INT: 5,    // 智力 intelligence INT
-    STR: 5,    // 体质 strength STR
-    MNY: 5,    // 家境 money MNY
-    SPR: 5,    // 快乐 spirit SPR
-    LIF: 5,    // 生命 life LIF
-    TLT: [5],    // 天赋 talent TLT
-    EVT: [5],    // 事件 event EVT
-});
 
-const condition = new Condition(prop);
+// function debug(...conditions) {
+//     for(const cond of conditions)
+//         console.debug(condition.check(cond), '\t', cond);
+// }
 
-function debug(...conditions) {
-    for(const cond of conditions)
-        console.debug(condition.check(cond), '\t', cond);
+// debug(
+//     '(STR<2&MNY>3)|(MNY<2&CHR<2)',
+//     '(STR<2&MNY>3)',
+//     '(STR>2&MNY>3)',
+//     '((((STR>2&MNY>2))))',
+//     '((((STR>2&MNY>2)|(MNY<2&CHR<2))))',
+//     '((((STR>2&MNY>2)|(MNY<2&CHR<2)&(STR>2&MNY>3))))',
+//     '((((STR>2&MNY>2)|(MNY<2&CHR<2))&(STR>2&MNY>3)))',
+//     'EVT![1,2,3]',
+//     'EVT![1,2]',
+//     'EVT?[1,2,3]',
+//     'EVT?[1,2]',
+// );
+
+// const events = await axios('excel/events.json');
+// const pools = await axios('excel/pools.json');
+async function debug() {
+
+    const events = JSON.parse(await readFile('excel/events.json'));
+    const pools = JSON.parse(await readFile('excel/pools.json'));
+
+    const prop = new Prop();
+    const condition = new Condition();
+    const event = new Event();
+
+    prop.initial({
+        CHR: 5,    // 颜值 charm CHR
+        INT: 5,    // 智力 intelligence INT
+        STR: 5,    // 体质 strength STR
+        MNY: 5,    // 家境 money MNY
+        SPR: 5,    // 快乐 spirit SPR
+        LIF: 5,    // 生命 life LIF
+        TLT: [5],    // 天赋 talent TLT
+        EVT: [5],    // 事件 event EVT
+    });
+    condition.initial({prop});
+    event.initial({events, pools, prop, condition});
+    console.debug(event.random());
 }
 
-debug(
-    '(STR<2&MNY>3)|(MNY<2&CHR<2)',
-    '(STR<2&MNY>3)',
-    '(STR>2&MNY>3)',
-    '((((STR>2&MNY>2))))',
-    '((((STR>2&MNY>2)|(MNY<2&CHR<2))))',
-    '((((STR>2&MNY>2)|(MNY<2&CHR<2)&(STR>2&MNY>3))))',
-    '((((STR>2&MNY>2)|(MNY<2&CHR<2))&(STR>2&MNY>3)))',
-    'EVT![1,2,3]',
-    'EVT![1,2]',
-    'EVT?[1,2,3]',
-    'EVT?[1,2]',
-);
-
-
+debug();

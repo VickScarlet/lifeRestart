@@ -1,6 +1,10 @@
 class Condition {
-    constructor(prop) {
-        this._prop = prop;
+    constructor(initialData={}) {
+        this.initial(initialData);
+    }
+
+    initial({prop}) {
+        if(prop) this.prop = prop;
     }
 
     parse(condition) {

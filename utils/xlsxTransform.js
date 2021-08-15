@@ -1,10 +1,10 @@
-import { readFile, writeFile, stat, readdir } from 'fs/promises';
-import * as XLSX from 'xlsx';
-import { join, extname, dirname } from 'path';
+// import { readFile, writeFile, stat, readdir } from 'fs/promises';
+// import * as XLSX from 'xlsx';
+// import { join, extname, dirname } from 'path';
 
-// const { readFile, writeFile, stat, readdir } = require('fs/promises');
-// const XLSX = require('xlsx');
-// const { join, extname, dirname } = require('path');
+const { readFile, writeFile, stat, readdir } = require('fs/promises');
+const XLSX = require('xlsx');
+const { join, extname, dirname } = require('path');
 
 async function transform(filePath) {
     const xlsxFileBuffer = await readFile(filePath);
@@ -16,14 +16,18 @@ async function transform(filePath) {
         const sheetRawData = sheets[sheetName];
         if(!sheetRawData['!ref']) break;
         const rawData = XLSX.utils.sheet_to_json(sheetRawData);
-        const newData = [];
+        const newData = {};
         data[sheetName] = newData;
         rawData.shift();
         for(const row of rawData) {
             const rowData = {};
-            newData.push(rowData)
-            for(const key in row) {
+            let mainKey;
+            for(let key in row) {
                 const cell = row[key];
+                if(key[0] == "$") {
+                    key = key.substr(1);
+                    mainKey = cell;
+                }
                 if(key.includes(':')) {
                     const keys = key.split(':');
                     const lastKey = keys.pop();
@@ -39,6 +43,8 @@ async function transform(filePath) {
                     rowData[key] = cell;
                 }
             }
+            if(mainKey===undefined) return console.error('No Main Key', rowData);
+            newData[mainKey] = rowData;
         }
     }
     return data;

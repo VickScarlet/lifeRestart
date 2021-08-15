@@ -1,20 +1,29 @@
+import {clone} from './util.js';
+
 class Prop {
-    constructor(initialData) {
-        this._data = {};
-        for(const key in initialData)
-            this.set(key, initialData[key]);
+    constructor(initialData={}) {
+        this.initial(initialData);
+    }
+
+    initial(data) {
+        this._data = {
+            AGE: 0
+        };
+        for(const key in data)
+            this.set(key, data[key]);
     }
 
     get(prop) {
         switch(prop) {
-            case 'CHR':
-            case 'INT':
-            case 'STR':
-            case 'MNY':
-            case 'SPR':
-            case 'LIF':
-            case 'TLT':
-            case 'EVT':
+            case this.TYPES.AGE:
+            case this.TYPES.CHR:
+            case this.TYPES.INT:
+            case this.TYPES.STR:
+            case this.TYPES.MNY:
+            case this.TYPES.SPR:
+            case this.TYPES.LIF:
+            case this.TYPES.TLT:
+            case this.TYPES.EVT:
                 return this._data[prop];
             default: return 0;
         }
@@ -22,15 +31,16 @@ class Prop {
 
     set(prop, value) {
         switch(prop) {
-            case 'CHR':
-            case 'INT':
-            case 'STR':
-            case 'MNY':
-            case 'SPR':
-            case 'LIF':
-            case 'TLT':
-            case 'EVT':
-                this._data[prop] = this.clone(value);
+            case this.TYPES.AGE:
+            case this.TYPES.CHR:
+            case this.TYPES.INT:
+            case this.TYPES.STR:
+            case this.TYPES.MNY:
+            case this.TYPES.SPR:
+            case this.TYPES.LIF:
+            case this.TYPES.TLT:
+            case this.TYPES.EVT:
+                this._data[prop] = clone(value);
                 break;
             default: return 0;
         }
@@ -38,16 +48,17 @@ class Prop {
 
     change(prop, value) {
         switch(prop) {
-            case 'CHR':
-            case 'INT':
-            case 'STR':
-            case 'MNY':
-            case 'SPR':
-            case 'LIF':
+            case this.TYPES.AGE:
+            case this.TYPES.CHR:
+            case this.TYPES.INT:
+            case this.TYPES.STR:
+            case this.TYPES.MNY:
+            case this.TYPES.SPR:
+            case this.TYPES.LIF:
                 this._data[prop] += value;
                 break;
-            case 'TLT':
-            case 'EVT':
+            case this.TYPES.TLT:
+            case this.TYPES.EVT:
                 const v = this._data[prop];
                 if(value<0) {
                     const index = v.indexOf(value);
@@ -59,15 +70,18 @@ class Prop {
         }
     }
 
-    clone(value) {
-        switch(typeof value) {
-            case 'object':
-                if(Array.isArray(value)) return value.map(v=>this.clone(v));
-                const newObj = {};
-                for(const key in value) newObj[key] = this.clone(value[key]);
-                return newObj;
-            default: return value;
-        }
+    get TYPES() {
+        return {
+            AGE: "AGE",
+            CHR: "CHR",
+            INT: "INT",
+            STR: "STR",
+            MNY: "MNY",
+            SPR: "SPR",
+            LIF: "LIF",
+            TLT: "TLT",
+            EVT: "EVT",
+        };
     }
 }
 
