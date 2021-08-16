@@ -1,10 +1,10 @@
-// import { readFile, writeFile, stat, readdir } from 'fs/promises';
-// import * as XLSX from 'xlsx';
-// import { join, extname, dirname } from 'path';
+import { readFile, writeFile, stat, readdir } from 'fs/promises';
+import * as XLSX from 'xlsx';
+import { join, extname, dirname } from 'path';
 
-const { readFile, writeFile, stat, readdir } = require('fs/promises');
-const XLSX = require('xlsx');
-const { join, extname, dirname } = require('path');
+// const { readFile, writeFile, stat, readdir } = require('fs/promises');
+// const XLSX = require('xlsx');
+// const { join, extname, dirname } = require('path');
 
 async function transform(filePath) {
     const xlsxFileBuffer = await readFile(filePath);

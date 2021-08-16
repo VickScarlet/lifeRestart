@@ -2,6 +2,9 @@
     "name": "xlsx_transform",
     "type": "module",
     "bin": "convert.js",
+    "scripts": {
+        "xlsxTransform": "node utils/xlsxTransform.js data"
+    },
     "dependencies": {
         "xlsx": "^0.17.0"
     }

@@ -103,6 +103,5 @@ dist
 # TernJS port file
 .tern-port
 
-excel/
-data/
 view/
+utils/xlsxTransform-*
