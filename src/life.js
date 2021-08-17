@@ -28,6 +28,7 @@ class Life {
         this.#triggerTalents = new Set();
         this.#property.restart(allocation);
         this.doTalent();
+        this.#property.record();
     }
 
     getTalentAllocationAddition(talents) {
@@ -39,6 +40,7 @@ class Life {
 
         const talentContent = this.doTalent(talent);
         const eventContent = this.doEvent(this.random(event));
+        this.#property.record();
 
         const isEnd = this.#property.isEnd();
 
@@ -98,7 +100,10 @@ class Life {
 
     talentRandom() {
         return this.#talent.talentRandom();
+    }
 
+    getRecord() {
+        return this.#property.getRecord();
     }
 }
 

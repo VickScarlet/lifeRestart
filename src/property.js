@@ -17,6 +17,7 @@ class Property {
 
     #ageData;
     #data;
+    #record;
 
     initial({age}) {
 
@@ -45,6 +46,7 @@ class Property {
         };
         for(const key in data)
             this.change(key, data[key]);
+        this.#record = [];
     }
 
     get(prop) {
@@ -78,6 +80,21 @@ class Property {
                 break;
             default: return 0;
         }
+    }
+
+    record() {
+        this.#record.push({
+            [this.TYPES.AGE]: this.get(this.TYPES.AGE),
+            [this.TYPES.CHR]: this.get(this.TYPES.CHR),
+            [this.TYPES.INT]: this.get(this.TYPES.INT),
+            [this.TYPES.STR]: this.get(this.TYPES.STR),
+            [this.TYPES.MNY]: this.get(this.TYPES.MNY),
+            [this.TYPES.SPR]: this.get(this.TYPES.SPR),
+        });
+    }
+
+    getRecord() {
+        return clone(this.#record);
     }
 
     change(prop, value) {
