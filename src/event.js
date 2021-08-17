@@ -20,7 +20,8 @@ class Event {
     }
 
     check(eventId, property) {
-        const { include, exclude } = this.get(eventId);
+        const { include, exclude, NoRandom } = this.get(eventId);
+        if(NoRandom) return false;
         if(exclude && checkCondition(property, exclude)) return false;
         if(include) return checkCondition(property, include);
         return true;
