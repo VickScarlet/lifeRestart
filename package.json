@@ -1,8 +1,9 @@
 {
     "name": "xlsx_transform",
     "type": "module",
-    "bin": "convert.js",
+    "bin": "test/index.js",
     "scripts": {
+        "test": "node test",
         "xlsxTransform": "node utils/xlsxTransform.js data"
     },
     "dependencies": {
