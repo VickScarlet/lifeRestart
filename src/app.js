@@ -237,6 +237,7 @@ class App{
                     ).join('<br>')
                 }</li>`);
                 li.appendTo('#lifeTrajectory');
+                $("#lifeTrajectory").scrollTop($("#lifeTrajectory")[0].scrollHeight);
                 if(isEnd) {
                     this.#isEnd = true;
                     trajectoryPage.find('#summary').show();
