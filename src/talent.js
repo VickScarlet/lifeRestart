@@ -63,7 +63,7 @@ class Talent {
                 addition += this.allocationAddition(talent);
             return addition;
         }
-        return this.get(talents).status || 0;
+        return Number(this.get(talents).status) || 0;
     }
 
     do(talentId) {
