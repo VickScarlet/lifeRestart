@@ -203,6 +203,7 @@ class App{
                     INT: groups.INT.get(),
                     STR: groups.STR.get(),
                     MNY: groups.MNY.get(),
+                    SPR: 5,
                     TLT: Array.from(this.#talentSelected),
                 });
                 this.switch('trajectory');
@@ -241,6 +242,11 @@ class App{
                     trajectoryPage.find('#summary').show();
                 }
             });
+
+        trajectoryPage.find('#summary')
+            .click(()=>{
+
+            })
 
         this.#pages = {
             loading: {
@@ -309,50 +315,6 @@ class App{
     hint(str) {
         alert(str);
     }
-
-    test() {
-        this.#life.restart({
-            CHR: 5,                     // 颜值 charm CHR
-            INT: 5,                     // 智力 intelligence INT
-            STR: 5,                     // 体质 strength STR
-            MNY: 5,                     // 家境 money MNY
-            SPR: 5,                     // 快乐 spirit SPR
-            TLT: [1004, 1005, 1009],    // 天赋 talent TLT
-        });
-        const lifeTrajectory = [];
-        let trajectory;
-        do{
-            try{
-                trajectory = this.#life.next();
-            } catch(e) {
-                console.error(e);
-                // debugger
-                throw e;
-            }
-            lifeTrajectory.push(lifeTrajectory);
-            const { age, content } = trajectory;
-            console.debug(
-                `---------------------------------`,
-                `\n-- ${age} 岁\n   `,
-                content.map(
-                    ({type, description, grade, name, postEvent}) => {
-                        switch(type) {
-                            case 'TLT':
-                                return `天赋【${name}】发动：${description}`;
-                            case 'EVT':
-                                return description + (postEvent?`\n    ${postEvent}`:'');
-                        }
-                    }
-                ).join('\n    ')
-            );
-        } while(!trajectory.isEnd)
-        return lifeTrajectory;
-    }
-
-    main() {
-
-    }
-
 
     get times() {return localStorage.times || 0;}
     set times(v) {localStorage.times = parseInt(v) || 0};
