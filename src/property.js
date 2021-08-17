@@ -27,6 +27,7 @@ class Property {
                 if(value.length==1) value.push(1);
                 return value;
             });
+            age[a].talent = age[a].talent?.split(',').map(v=>Number(v));
         }
     }
 
@@ -114,7 +115,7 @@ class Property {
     }
 
     isEnd() {
-        return !this.get(this.TYPES.LIF);
+        return this.get(this.TYPES.LIF) < 1;
     }
 
     ageNext() {

@@ -15,9 +15,9 @@ class Life {
     #triggerTalents;
 
     async initial() {
-        const age = JSON.parse(await json('data/age.json'));
-        const talents = JSON.parse(await json('data/talents.json'));
-        const events = JSON.parse(await json('data/events.json'));
+        const age = await json('age');
+        const talents = await json('talents');
+        const events = await json('events');
 
         this.#property.initial({age});
         this.#talent.initial({talents});
@@ -28,6 +28,10 @@ class Life {
         this.#triggerTalents = new Set();
         this.#property.restart(allocation);
         this.doTalent();
+    }
+
+    getTalentAllocationAddition(talents) {
+        return this.#talent.allocationAddition(talents);
     }
 
     next() {
@@ -56,7 +60,7 @@ class Life {
             contents.push({
                 type: this.#property.TYPES.TLT,
                 name,
-                rate,
+                grade,
                 desctiption,
             })
             if(!result.effect) continue;
@@ -91,6 +95,12 @@ class Life {
                 return eventId;
         return events[events.length-1];
     }
+
+    talentRandom() {
+        return this.#talent.talentRandom();
+
+    }
 }
 
 export default Life;
+

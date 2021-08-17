@@ -1,7 +1,7 @@
 import { readFile } from 'fs/promises';
 import Life from '../src/life.js'
 
-global.json = filePath => readFile(filePath);
+global.json = async fileName => JSON.parse(await readFile(`data/${fileName}.json`));
 
 async function debug() {
 
@@ -28,9 +28,9 @@ async function debug() {
         }
         lifeTrajectory.push(lifeTrajectory);
         const { age, content } = trajectory;
-        console.debug(`---------------------------------`);
-        console.debug(`-- ${age} 岁`);
-        console.debug('   ',
+        console.debug(
+            `---------------------------------`,
+            `\n-- ${age} 岁\n   `,
             content.map(
                 ({type, description, rate, name, postEvent}) => {
                     switch(type) {

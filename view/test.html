@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>window.json = async fileName=>(await axios(`../data/${fileName}.json`)).data;</script>
+    <title>Document</title>
+</head>
+<body style="margin: 0; height: 100%">
+    <div id="main">
+        <ul id="lifeTrajectory" class="lifeTrajectory">
+            <li><span>0岁：</span>你出生了，你是女孩</li>
+            <li><span>0岁：</span>你出生了你出生了你出生了你出生了你出生了你出生了你出生了你出生了你出生了你出生了你出生了你出生了你出生了</li>
+            <li><span>0岁：</span>你出生了，你是女孩</li>
+            <li><span>0岁：</span>你出生了，你是女孩</li>
+            <li><span>0岁：</span>你出生了，你是女孩</li>
+            <li><span>0岁：</span>你出生了，你是女孩</li>
+            <li><span>0岁：</span>你出生了，你是女孩</li>
+            <li><span>0岁：</span>你出生了，你是女孩</li>
+            <li><span>0岁：</span>你出生了，你是女孩</li>
+            <li><span>0岁：</span>你出生了，你是女孩</li>
+            <li><span>0岁：</span>你出生了，你是女孩</li>
+        </ul>
+        <button id="summary" class="mainbtn" style="top:auto; bottom:0.1rem">人生总结</button>
+    </div>
+</body>
+</html>

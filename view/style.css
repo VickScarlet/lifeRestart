@@ -1,0 +1,238 @@
+@media (min-width:640px){html{font-size:24px;}}
+@media (min-width:631px) and (max-width:639px){html{font-size:23.66px;}}
+@media (min-width:622px) and (max-width:630px){html{font-size:23.33px;}}
+@media (min-width:613px) and (max-width:621px){html{font-size:23px;}}
+@media (min-width:604px) and (max-width:612px){html{font-size:22.66px;}}
+@media (min-width:595px) and (max-width:603px){html{font-size:22.33px;}}
+@media (min-width:586px) and (max-width:594px){html{font-size:22px;}}
+@media (min-width:577px) and (max-width:585px){html{font-size:21.66px;}}
+@media (min-width:568px) and (max-width:576px){html{font-size:21.33px;}}
+@media (min-width:559px) and (max-width:567px){html{font-size:21px;}}
+@media (min-width:550px) and (max-width:558px){html{font-size:20.66px;}}
+@media (min-width:541px) and (max-width:549px){html{font-size:20.33px;}}
+@media (min-width:533px) and (max-width:540px){html{font-size:20px;}}
+@media (min-width:524px) and (max-width:532px){html{font-size:19.66px;}}
+@media (min-width:515px) and (max-width:523px){html{font-size:19.33px;}}
+@media (min-width:506px) and (max-width:514px){html{font-size:19px;}}
+@media (min-width:497px) and (max-width:505px){html{font-size:18.66px;}}
+@media (min-width:488px) and (max-width:496px){html{font-size:18.33px;}}
+@media (min-width:480px) and (max-width:487px){html{font-size:18px;}}
+@media (min-width:471px) and (max-width:479px){html{font-size:17.66px;}}
+@media (min-width:462px) and (max-width:470px){html{font-size:17.33px;}}
+@media (min-width:453px) and (max-width:461px){html{font-size:17px;}}
+@media (min-width:444px) and (max-width:452px){html{font-size:17.12px;}}
+@media (min-width:435px) and (max-width:443px){html{font-size:16.33px;}}
+@media (min-width:426px) and (max-width:434px){html{font-size:16px;}}
+@media (min-width:417px) and (max-width:425px){html{font-size:15.66px;}}
+@media (min-width:408px) and (max-width:416px){html{font-size:15.33px;}}
+@media (min-width:400px) and (max-width:407px){html{font-size:15px;}}
+@media (min-width:391px) and (max-width:399px){html{font-size:14.66px;}}
+@media (min-width:382px) and (max-width:390px){html{font-size:14.33px;}}
+@media (min-width:374px) and (max-width:381px){html{font-size:14px;}}
+@media (min-width:365px) and (max-width:373px){html{font-size:13.66px;}}
+@media (min-width:356px) and (max-width:364px){html{font-size:13.33px;}}
+@media (min-width:347px) and (max-width:355px){html{font-size:13px;}}
+@media (min-width:338px) and (max-width:346px){html{font-size:12.66px;}}
+@media (min-width:329px) and (max-width:337px){html{font-size:12.44px;}}
+@media (max-width:328px){html{font-size:12px;}}
+
+@font-face {
+    font-family: 'iconfont';
+    src: url('iconfont.woff2?t=1628944689555') format('woff2'),
+            url('iconfont.woff?t=1628944689555') format('woff'),
+            url('iconfont.ttf?t=1628944689555') format('truetype');
+}
+
+html {
+    font-family: PingFangSC, 'Noto Sans CJK SC', 'MS Yahei';
+}
+
+#main {
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#title {
+    position: fixed;
+    font-size: 3rem;
+    font-weight: 700;
+    top: 35%;
+    left: 50%;
+    white-space: nowrap;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.mainbtn {
+    position: fixed;
+    top: 65%;
+    left: 50%;
+    padding: 0.8rem 1rem;
+    border: 1px #ccc solid;
+    border-radius: 0.2rem;
+    background-color:white;
+    font-size: 1.6rem;
+    white-space: nowrap;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+    z-index:2;
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#rank {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.1rem 1rem;
+    border: none;
+    border-radius: 0.2rem;
+    background-color:lightsteelblue;
+    font-size: 1.4rem;
+    color: white;
+    cursor: pointer;
+    z-index:2;
+}
+
+.hint {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    padding: 0.3rem 2rem;
+    border: none;
+    border-radius: 0.2rem;
+    background-color:gray;
+    font-size: 1.4rem;
+    color: white;
+    white-space: nowrap;
+    transform: translateX(-50%);
+}
+
+.head {
+    position: fixed;
+    font-size: 1.4rem;
+    top: 1.1rem;
+    left: 50%;
+    white-space: nowrap;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.lifeTrajectory,
+.propinitial,
+.selectlist {
+    position: fixed;
+    list-style-type: none;
+    left: 50%;
+    top: 5rem;
+    bottom: 8.5rem;
+    width: 30rem;
+    max-width: calc(100% - 2rem);
+    margin: auto;
+    padding: 0;
+    overflow: auto;
+    transform: translateX(-50%);
+}
+
+.selectlist > li {
+    position: relative;
+    border: 1px #ccc solid;
+    display: inline-block;
+    width: 95%;
+    margin: 0.1rem auto;
+    font-size: 1.4rem;
+    text-align: center;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+
+.selectlist > li::before {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    top: 0;
+    border-radius: 0.2rem 0 0 0.2rem;
+    margin: -1px;
+    padding: 1px;
+    height: 100%;
+    width: 1.5rem;
+    content: "　";
+}
+
+.sprcial_blue::before {
+    background-color: rgb(116, 191, 255);
+}
+
+.sprcial_purple::before {
+    background-color: rgb(226, 167, 255);
+}
+
+.sprcial_orange::before {
+    background-color: lightsalmon;
+}
+
+.selected {
+    background-color: gray;
+    color: white;
+}
+
+.propinitial {
+    top: 6rem;
+    bottom: 14rem;
+}
+
+.propinitial > li {
+    position: relative;
+    display: inline-block;
+    width: 95%;
+    margin: 0.1rem auto;
+    font-size: 1.4rem;
+    text-align: center;
+    border-radius: 0.2rem;
+    padding: 0.2rem;
+}
+
+.propinitial > li > input {
+    height: 2.2rem;
+    width: 2.2rem;
+    margin: 0 0.5rem;
+    padding: 0;
+    text-align: center;
+    font-size: 2rem;
+    border: 0.1rem #ccc solid;
+}
+
+.propbtn {
+    position: relative;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.lifeTrajectory {
+    border: 1px lightblue solid;
+    background-color: aliceblue;
+}
+
+.lifeTrajectory > li {
+    position: relative;
+    width: calc(100% - 7rem);
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem 0.5rem 6rem;
+    font-size: 1.4rem;
+    background-color: white;
+    box-shadow: lightblue 0 0 0.4rem;
+}
+
+.lifeTrajectory > li > span {
+    position: absolute;
+    left: 0;
+    width: 6rem;
+    text-align: right;
+}

@@ -3,37 +3,37 @@
         "id": "1001",
         "name": "随身玉佩",
         "description": "2岁时不会死",
-        "rare": "0"
+        "grade": "0"
     },
     "1002": {
         "id": "1002",
         "name": "红肚兜",
         "description": "3岁时不会死",
-        "rare": "0"
+        "grade": "0"
     },
     "1003": {
         "id": "1003",
         "name": "生而为男",
         "description": "性别一定为男",
-        "rare": "1"
+        "grade": "1"
     },
     "1004": {
         "id": "1004",
         "name": "生而为女",
         "description": "性别一定为女",
-        "rare": "1"
+        "grade": "1"
     },
     "1005": {
         "id": "1005",
         "name": "动漫高手",
         "description": "入宅的可能性翻6倍",
-        "rare": "2"
+        "grade": "2"
     },
     "1006": {
         "id": "1006",
         "name": "乐天派",
         "description": "快乐+1",
-        "rare": "0",
+        "grade": "0",
         "effect": {
             "SPR": "1"
         }
@@ -42,14 +42,14 @@
         "id": "1007",
         "name": "天赋异禀",
         "description": "初始可用属性点+2",
-        "rare": "1",
+        "grade": "1",
         "status": "2"
     },
     "1008": {
         "id": "1008",
         "name": "天生抑郁",
         "description": "快乐-3",
-        "rare": "0",
+        "grade": "0",
         "effect": {
             "SPR": "-3"
         }
@@ -58,7 +58,7 @@
         "id": "1009",
         "name": "网络巨魔",
         "description": "快乐+2",
-        "rare": "1",
+        "grade": "1",
         "effect": {
             "SPR": "2"
         }
@@ -67,31 +67,31 @@
         "id": "1010",
         "name": "天龙人",
         "description": "你拥有北京户口",
-        "rare": "2"
+        "grade": "2"
     },
     "1011": {
         "id": "1011",
         "name": "独生子女",
         "description": "你没有兄弟姐妹",
-        "rare": "0"
+        "grade": "0"
     },
     "1012": {
         "id": "1012",
         "name": "乡间微风",
         "description": "你出生在农村",
-        "rare": "0"
+        "grade": "0"
     },
     "1013": {
         "id": "1013",
         "name": "城中高楼",
         "description": "你出生在城市",
-        "rare": "0"
+        "grade": "0"
     },
     "1014": {
         "id": "1014",
         "name": "美籍华人",
         "description": "你有美国国籍",
-        "rare": "2",
+        "grade": "2",
         "effect": {
             "MNY": "3"
         }
@@ -100,25 +100,25 @@
         "id": "1015",
         "name": "家中老大",
         "description": "你最受父母宠爱",
-        "rare": "1"
+        "grade": "1"
     },
     "1016": {
         "id": "1016",
         "name": "水性良好",
         "description": "不会被淹死",
-        "rare": "0"
+        "grade": "0"
     },
     "1017": {
         "id": "1017",
         "name": "先天免疫",
         "description": "你不会得艾滋病",
-        "rare": "0"
+        "grade": "0"
     },
     "1018": {
         "id": "1018",
-        "name": "天选之人",
+        "name": "人类进化",
         "description": "所有属性+1",
-        "rare": "2",
+        "grade": "2",
         "effect": {
             "SPR": "1"
         },
@@ -130,32 +130,32 @@
     "1019": {
         "id": "1019",
         "name": "超凡",
-        "description": "初始可用属性点+3",
-        "rare": "2"
+        "description": "初始可用属性点+4",
+        "grade": "2"
     },
     "1020": {
         "id": "1020",
         "name": "父母美貌",
         "description": "颜值+2",
-        "rare": "1"
+        "grade": "1"
     },
     "1021": {
         "id": "1021",
         "name": "红颜薄命",
         "description": "颜值+2，体质-2",
-        "rare": "0"
+        "grade": "0"
     },
     "1022": {
         "id": "1022",
         "name": "属蛇",
         "description": "不会被蛇咬死",
-        "rare": "0"
+        "grade": "0"
     },
     "1023": {
         "id": "1023",
         "name": "半神",
         "description": "所有属性+2",
-        "rare": "3",
+        "grade": "3",
         "effect": {
             "SPR": "2"
         },
@@ -168,49 +168,49 @@
         "id": "1024",
         "name": "人中龙凤",
         "description": "天生双重性别",
-        "rare": "2"
+        "grade": "2"
     },
     "1025": {
         "id": "1025",
         "name": "阴阳之外",
         "description": "天生无性别",
-        "rare": "2"
+        "grade": "2"
     },
     "1026": {
         "id": "1026",
         "name": "彩虹之下",
         "description": "可能和同性交往",
-        "rare": "0"
+        "grade": "0"
     },
     "1027": {
         "id": "1027",
         "name": "斩情证道",
         "description": "终生不恋爱结婚",
-        "rare": "1"
+        "grade": "1"
     },
     "1028": {
         "id": "1028",
         "name": "桃花连连",
         "description": "恋爱机会提升",
-        "rare": "0"
+        "grade": "0"
     },
     "1029": {
         "id": "1029",
         "name": "平安童年",
         "description": "12岁前父母都健在",
-        "rare": "1"
+        "grade": "1"
     },
     "1030": {
         "id": "1030",
         "name": "宠物大师",
         "description": "宠物不会意外死亡",
-        "rare": "0"
+        "grade": "0"
     },
     "1031": {
         "id": "1031",
         "name": "天生残疾",
         "description": "体质-2",
-        "rare": "0",
+        "grade": "0",
         "effect": {
             "STR": "-2"
         }
@@ -219,7 +219,7 @@
         "id": "1032",
         "name": "早产儿",
         "description": "所有属性-1",
-        "rare": "0",
+        "grade": "0",
         "effect": {
             "SPR": "-1"
         },
@@ -232,163 +232,308 @@
         "id": "1033",
         "name": "十死无生",
         "description": "体质-10",
-        "rare": "0"
+        "grade": "0"
     },
     "1034": {
         "id": "1034",
         "name": "家运不顺",
         "description": "家境-2",
-        "rare": "0"
+        "grade": "0"
     },
     "1035": {
         "id": "1035",
         "name": "头着地",
         "description": "智力-2",
-        "rare": "0"
+        "grade": "0"
     },
     "1036": {
         "id": "1036",
         "name": "胎教",
         "description": "智力+1",
-        "rare": "0"
+        "grade": "0"
     },
     "1037": {
         "id": "1037",
         "name": "班中红人",
         "description": "和同学容易处好关系",
-        "rare": "0"
+        "grade": "0"
     },
     "1038": {
         "id": "1038",
         "name": "骑士",
         "description": "能轻松学会骑车",
-        "rare": "0"
+        "grade": "0"
     },
     "1039": {
         "id": "1039",
         "name": "永远的神",
         "description": "电竞天才",
-        "rare": "1"
+        "grade": "1"
     },
     "1040": {
         "id": "1040",
         "name": "黄帝",
         "description": "赌毒不沾",
-        "rare": "0"
+        "grade": "0"
     },
     "1041": {
         "id": "1041",
         "name": "丁克",
         "description": "不生孩子",
-        "rare": "1"
+        "grade": "1"
     },
     "1042": {
         "id": "1042",
         "name": "少数民族",
         "description": "高考+5分",
-        "rare": "0"
+        "grade": "0"
     },
     "1043": {
         "id": "1043",
         "name": "老司机",
         "description": "你的家人不会发生车祸",
-        "rare": "0"
+        "grade": "0"
     },
     "1044": {
         "id": "1044",
         "name": "低压",
         "description": "你的家人不会心脏病",
-        "rare": "0"
+        "grade": "0"
     },
     "1045": {
         "id": "1045",
         "name": "战功",
         "description": "你退伍后会当官",
-        "rare": "0"
+        "grade": "0"
     },
     "1046": {
         "id": "1046",
         "name": "不孕不育",
         "description": "你生不出孩子",
-        "rare": "1"
+        "grade": "1"
     },
     "1047": {
         "id": "1047",
         "name": "白头偕老",
         "description": "爱人至少能活到70岁",
-        "rare": "1"
+        "grade": "1"
     },
     "1048": {
         "id": "1048",
-        "name": "一个小盒子",
+        "name": "神秘的小盒子",
         "description": "100岁时才能开启",
-        "rare": "3"
+        "grade": "3"
     },
     "1049": {
-        "id": "1049"
+        "id": "1049",
+        "name": "三十而立",
+        "description": "30岁时家境+2",
+        "condition": "age?[30]",
+        "grade": "0",
+        "effect": {
+            "MNY": "2"
+        }
     },
     "1050": {
-        "id": "1050"
+        "id": "1050",
+        "name": "四十不惑",
+        "description": "40岁时智力+2",
+        "condition": "age?[40]",
+        "grade": "0",
+        "effect": {
+            "INT": "2"
+        }
     },
     "1051": {
-        "id": "1051"
+        "id": "1051",
+        "name": "知天命",
+        "description": "50岁时智力、快乐+1",
+        "condition": "age?[50]",
+        "grade": "0",
+        "effect": {
+            "SPR": "1"
+        },
+        "INT": "1"
     },
     "1052": {
-        "id": "1052"
+        "id": "1052",
+        "name": "耳顺",
+        "description": "60岁时快乐+2",
+        "condition": "age?[60]",
+        "grade": "0",
+        "effect": {
+            "SPR": "2"
+        }
     },
     "1053": {
-        "id": "1053"
+        "id": "1053",
+        "name": "从心所欲",
+        "description": "70岁时快乐+3",
+        "condition": "age?[70]",
+        "grade": "0",
+        "effect": {
+            "SPR": "3"
+        }
     },
     "1054": {
-        "id": "1054"
+        "id": "1054",
+        "name": "老当益壮",
+        "description": "60岁时体质+2",
+        "condition": "age?[60]",
+        "grade": "1",
+        "effect": {
+            "STR": "2"
+        }
     },
     "1055": {
-        "id": "1055"
+        "id": "1055",
+        "name": "鹤发童颜",
+        "description": "70岁时颜值+3",
+        "condition": "age?[70]",
+        "grade": "0",
+        "effect": {
+            "CHR": "3"
+        }
     },
     "1056": {
-        "id": "1056"
+        "id": "1056",
+        "name": "学前启蒙",
+        "description": "5岁时智力+2",
+        "condition": "age?[5]",
+        "grade": "1",
+        "effect": {
+            "INT": "2"
+        }
     },
     "1057": {
-        "id": "1057"
+        "id": "1057",
+        "name": "十八变",
+        "description": "18岁时颜值+2",
+        "condition": "age?[18]",
+        "grade": "1",
+        "effect": {
+            "CHR": "2"
+        }
     },
     "1058": {
-        "id": "1058"
+        "id": "1058",
+        "name": "迟来之财",
+        "description": "90岁时家境+4",
+        "condition": "age?[90]",
+        "grade": "0",
+        "effect": {
+            "MNY": "4"
+        }
     },
     "1059": {
-        "id": "1059"
+        "id": "1059",
+        "name": "理财达人",
+        "description": "30、40、50岁时家境+1",
+        "condition": "age?[30,40,50]",
+        "grade": "0",
+        "effect": {
+            "MNY": "1"
+        }
     },
     "1060": {
-        "id": "1060"
+        "id": "1060",
+        "name": "成熟",
+        "description": "12、18岁时智力+1",
+        "condition": "age?[12,18]",
+        "grade": "1",
+        "effect": {
+            "INT": "1"
+        }
     },
     "1061": {
-        "id": "1061"
+        "id": "1061",
+        "name": "形象管理",
+        "description": "16、24岁时颜值+1",
+        "condition": "age?[16,24]",
+        "grade": "1",
+        "effect": {
+            "CHR": "1"
+        }
     },
     "1062": {
-        "id": "1062"
+        "id": "1062",
+        "name": "成年礼",
+        "description": "18岁时快乐+1",
+        "condition": "age?[18]",
+        "grade": "0",
+        "effect": {
+            "SPR": "1"
+        }
     },
     "1063": {
-        "id": "1063"
+        "id": "1063",
+        "name": "开光之胎",
+        "description": "初始可用属性点+1",
+        "grade": "0",
+        "status": "1"
     },
     "1064": {
-        "id": "1064"
+        "id": "1064",
+        "name": "天命",
+        "description": "初始可用属性点+8",
+        "grade": "3",
+        "status": "8"
     },
     "1065": {
-        "id": "1065"
+        "id": "1065",
+        "name": "祖传药丸",
+        "description": "功能不明",
+        "grade": "1"
     },
     "1066": {
-        "id": "1066"
+        "id": "1066",
+        "name": "贵人相助",
+        "description": "家境为0时家境+1",
+        "condition": "MNY<1",
+        "grade": "0",
+        "effect": {
+            "MNY": "1"
+        }
     },
     "1067": {
-        "id": "1067"
+        "id": "1067",
+        "name": "乐天派",
+        "description": "快乐为0时快乐+1",
+        "condition": "SPR<1",
+        "grade": "1",
+        "effect": {
+            "SPR": "1"
+        }
     },
     "1068": {
-        "id": "1068"
+        "id": "1068",
+        "name": "命悬一线",
+        "description": "体质为0时体质+1",
+        "condition": "STR<1",
+        "grade": "0",
+        "effect": {
+            "STR": "1"
+        }
     },
     "1069": {
-        "id": "1069"
+        "id": "1069",
+        "name": "智可生财",
+        "description": "若20岁时智力>8，家境+2",
+        "condition": "(age?[20])&(INT>8)",
+        "grade": "0",
+        "effect": {
+            "MNY": "2"
+        }
     },
     "1070": {
-        "id": "1070"
+        "id": "1070",
+        "name": "舔狗甚多",
+        "description": "若20岁时颜值>8，快乐+2",
+        "condition": "(age?[20])&(CHR>8)",
+        "grade": "0",
+        "effect": {
+            "SPR": "2"
+        }
     },
     "1071": {
         "id": "1071"
