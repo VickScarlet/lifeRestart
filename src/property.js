@@ -1,9 +1,7 @@
 import { clone } from './functions/util.js';
 
 class Property {
-    constructor(initialData={}) {
-        this.initial(initialData);
-    }
+    constructor() {}
 
     TYPES = {
         AGE: "AGE",
@@ -17,15 +15,19 @@ class Property {
         EVT: "EVT",
     };
 
+    #ageData;
+    #data;
+
     initial({age}) {
 
         this.#ageData = age;
-        for(const age in a)
-            a[age].event = a[age].event?.map(v=>{
+        for(const a in age) {
+            age[a].event = age[a].event?.split(',').map(v=>{
                 const value = v.split('*').map(n=>Number(n));
                 if(value.length==1) value.push(1);
                 return value;
             });
+        }
     }
 
     restart(data) {
@@ -41,7 +43,7 @@ class Property {
             [this.TYPES.EVT]: [],
         };
         for(const key in data)
-            this.change(key, value);
+            this.change(key, data[key]);
     }
 
     get(prop) {
@@ -80,7 +82,7 @@ class Property {
     change(prop, value) {
         if(Array.isArray(value)) {
             for(const v of value)
-                this.change(prop, v);
+                this.change(prop, Number(v));
             return;
         }
         switch(prop) {
@@ -118,7 +120,7 @@ class Property {
     ageNext() {
         this.change(this.TYPES.AGE, 1);
         const age = this.get(this.TYPES.AGE);
-        const {event, talent} = this.getAge(age);
+        const {event, talent} = this.getAgeData(age);
         return {age, event, talent};
     }
 

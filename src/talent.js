@@ -1,10 +1,11 @@
+import { clone } from './functions/util.js';
 class Talent {
-    constructor(initialData={}) {
-        this.initial(initialData);
-    }
+    constructor() {}
 
-    initial({talent}) {
-        this.#talent = talent;
+    #talents;
+
+    initial({talents}) {
+        this.#talents = talents;
     }
 
     check(talentId) {
@@ -13,20 +14,22 @@ class Talent {
     }
 
     get(talentId) {
-        const talent = this.#talent[talentId];
+        const talent = this.#talents[talentId];
         if(!talent) throw new Error(`[ERROR] No Talent[${talentId}]`);
         return clone(talent);
     }
 
-    description(talentId) {
-        return this.get(talentId).description;
+    information(talentId) {
+        const { rate, name, description } = this.get(talentId)
+        return { rate, name, description };
     }
 
     do(talentId) {
-        const { effect, condition } = this.get(talentId);
+        const { effect, condition, initiative, rate, name, description } = this.get(talentId);
+        if(!initiative) return null;
         if(condition && !checkCondition(condition))
             return null;
-        return { effect };
+        return { effect, rate, name, description };
     }
 }
 

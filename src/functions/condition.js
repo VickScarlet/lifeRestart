@@ -53,7 +53,7 @@ function checkParsedConditions(property, conditions) {
     if(conditions.length == 0) return true;
     if(conditions.length == 1) return checkParsedConditions(property, conditions[0]);
 
-    let ret = checkParsedConditions(conditions[0]);
+    let ret = checkParsedConditions(property, conditions[0]);
     for(let i=1; i<conditions.length; i+=2) {
         switch(conditions[i]) {
             case '&':

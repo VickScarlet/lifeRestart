@@ -2,9 +2,9 @@ import { clone } from './functions/util.js';
 import { checkCondition } from './functions/condition.js';
 
 class Event {
-    constructor(initialData={}) {
-        this.initial(initialData);
-    }
+    constructor() {}
+
+    #events;
 
     initial({events}) {
         this.#events = events;
@@ -19,10 +19,10 @@ class Event {
         }
     }
 
-    check(eventId) {
+    check(eventId, property) {
         const { include, exclude } = this.get(eventId);
-        if(exclude && checkCondition(exclude)) return false;
-        if(include) return checkCondition(include);
+        if(exclude && checkCondition(property, exclude)) return false;
+        if(include) return checkCondition(property, include);
         return true;
     }
 
@@ -32,17 +32,18 @@ class Event {
         return clone(event);
     }
 
-    description(eventId) {
-        return this.get(eventId).description;
+    information(eventId) {
+        const { event: description } = this.get(eventId)
+        return { description };
     }
 
-    do(eventId) {
-        const { effect, branch } = this.get(eventId);
+    do(eventId, property) {
+        const { effect, branch, event: description, postEvent } = this.get(eventId);
         if(branch)
             for(const [cond, next] of branch)
-                if(checkCondition(cond))
-                    return { effect, next };
-        return { effect };
+                if(checkCondition(property, cond))
+                    return { effect, next, description };
+        return { effect, postEvent, description };
     }
 
 }
