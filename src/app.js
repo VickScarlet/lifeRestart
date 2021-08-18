@@ -1,3 +1,5 @@
+import { max } from './functions/util.js';
+import { summary } from './functions/summary.js'
 import Life from './life.js'
 class App{
     constructor(){
@@ -9,12 +11,16 @@ class App{
     #talentSelected = new Set();
     #totalMax=20;
     #isEnd = false;
+    #selectedExtendTalent = null;
 
     async initial() {
         this.initPages();
         this.switch('loading');
         await this.#life.initial();
         this.switch('index');
+        window.onerror = (event, source, lineno, colno, error) => {
+            this.hint(`[ERROR] at (${source}:${lineno}:${colno})\n\n${error?.stack||error||'unknow Error'}`);
+        }
     }
 
     initPages() {
@@ -58,20 +64,7 @@ class App{
 
         // Talent
         const createTalent = ({ grade, name, description }) => {
-            const element = $(`<li>${name}（${description}）</li>`)
-            switch(grade) {
-                case 1:
-                    element.addClass('sprcial_blue');
-                    break;
-                case 2:
-                    element.addClass('sprcial_purple');
-                    break;
-                case 3:
-                    element.addClass('sprcial_orange');
-                    break;
-                default: break;
-            }
-            return element;
+            return $(`<li class="grade${grade}b">${name}（${description}）</li>`)
         };
 
         talentPage
@@ -86,14 +79,14 @@ class App{
                         li.click(()=>{
                             if(li.hasClass('selected')) {
                                 li.removeClass('selected')
-                                this.#talentSelected.delete(talent.id);
+                                this.#talentSelected.delete(talent);
                             } else {
                                 if(this.#talentSelected.size==3) {
                                     this.hint('只能选3个天赋');
                                     return;
                                 }
                                 li.addClass('selected');
-                                this.#talentSelected.add(talent.id);
+                                this.#talentSelected.add(talent);
                             }
                         });
                     });
@@ -106,7 +99,7 @@ class App{
                     this.hint('请选择3个天赋');
                     return;
                 }
-                this.#totalMax = 20 + this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected));
+                this.#totalMax = 20 + this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected).map(({id})=>id));
                 this.switch('property');
             })
 
@@ -162,6 +155,18 @@ class App{
                 set(get()+1);
             });
             btnSub.click(()=>set(get()-1));
+            inputBox.on('input', ()=>{
+                const t = total();
+                let val = get();
+                if(t > this.#totalMax) {
+                    val -= t - this.#totalMax;
+                }
+                val = limit(val);
+                if(val != inputBox.val()) {
+                    set(val);
+                }
+                freshTotal();
+            });
             return {group, get, set};
         }
 
@@ -186,9 +191,9 @@ class App{
                         const select = Math.floor(Math.random() * 4) % 4;
                         if(arr[select] - sub <0) continue;
                         arr[select] -= sub;
+                        t -= sub;
                         break;
                     }
-                    t -= sub;
                 }
                 groups.CHR.set(arr[0]);
                 groups.INT.set(arr[1]);
@@ -198,13 +203,17 @@ class App{
 
         propertyPage.find('#start')
             .click(()=>{
+                if(total()!=this.#totalMax) {
+                    this.hint(`你还有${this.#totalMax-total()}属性点没有分配完`);
+                    return;
+                }
                 this.#life.restart({
                     CHR: groups.CHR.get(),
                     INT: groups.INT.get(),
                     STR: groups.STR.get(),
                     MNY: groups.MNY.get(),
                     SPR: 5,
-                    TLT: Array.from(this.#talentSelected),
+                    TLT: Array.from(this.#talentSelected).map(({id})=>id),
                 });
                 this.switch('trajectory');
                 this.#pages.trajectory.born();
@@ -246,8 +255,34 @@ class App{
 
         trajectoryPage.find('#summary')
             .click(()=>{
-
+                this.switch('summary');
             })
+
+        const summaryPage = $(`
+        <div id="main">
+            <div class="head">人生总结</div>
+            <ul id="judge" class="judge" style="bottom: calc(35% + 2.5rem)">
+                <li class="grade2"><span>颜值：</span>9级 美若天仙</li>
+                <li><span>智力：</span>4级 智力一般</li>
+                <li><span>体质：</span>1级 极度虚弱</li>
+                <li><span>家境：</span>6级 小康之家</li>
+                <li><span>享年：</span>3岁 早夭</li>
+                <li><span>快乐：</span>3级 不太幸福的人生</li>
+            </ul>
+            <div class="head" style="top:auto; bottom:35%">天赋，你可以选一个，下辈子还能抽到</div>
+            <ul id="talents" class="selectlist" style="top:calc(65% + 0.5rem); bottom:8rem">
+                <li class="grade2b">黑幕（面试一定成功）</li>
+            </ul>
+            <button id="again" class="mainbtn" style="top:auto; bottom:0.1em"><span class="iconfont">&#xe6a7;</span>再次重开</button>
+        </div>
+        `);
+
+        summaryPage.find('#again')
+            .click(()=>{
+                this.times ++;
+                this.#life.talentExtend(this.#selectedExtendTalent);
+                this.switch('index');
+            });
 
         this.#pages = {
             loading: {
@@ -259,28 +294,28 @@ class App{
                 btnRank: indexPage.find('#rank'),
                 btnRestart: indexPage.find('#restart'),
                 hint: indexPage.find('.hint'),
-                cnt: indexPage.find('.cnt'),
+                cnt: indexPage.find('#cnt'),
                 clear: ()=>{
                     indexPage.find('.hint').hide();
 
                     const times = this.times;
                     const btnRank = indexPage.find('#rank');
-                    const cnt = indexPage.find('.cnt');
-                    if(times < 0) {
-                        btnRank.hide();
-                        cnt.hide();
+                    const cnt = indexPage.find('#cnt');
+                    if(times > 0) {
+                        btnRank.show();
+                        cnt.show();
+                        cnt.text(`已重开${times}次`);
                         return;
                     }
 
-                    btnRank.show();
-                    cnt.show();
-                    cnt.text(`已重开${times}次`);
+                    btnRank.hide();
+                    cnt.hide();
                 },
             },
             talent: {
                 page: talentPage,
                 clear: ()=>{
-                    talentPage.find('ul.selectlist').children().remove();
+                    talentPage.find('ul.selectlist').empty();
                     talentPage.find('#random').show();
                     this.#totalMax = 20;
                 },
@@ -294,7 +329,7 @@ class App{
             trajectory: {
                 page: trajectoryPage,
                 clear: ()=>{
-                    trajectoryPage.find('#lifeTrajectory').children().remove();
+                    trajectoryPage.find('#lifeTrajectory').empty();
                     trajectoryPage.find('#summary').hide();
                     this.#isEnd = false;
                 },
@@ -302,16 +337,79 @@ class App{
                     trajectoryPage.find('#lifeTrajectory').trigger("click");
                 }
             },
+            summary: {
+                page: summaryPage,
+                clear: ()=>{
+                    const judge = summaryPage.find('#judge');
+                    const talents = summaryPage.find('#talents');
+                    judge.empty();
+                    talents.empty();
+                    this.#talentSelected.forEach(talent=>{
+                        const li = createTalent(talent);
+                        talents.append(li);
+                        li.click(()=>{
+                            if(li.hasClass('selected')) {
+                                this.#selectedExtendTalent = null;
+                                li.removeClass('selected');
+                            } else if(this.#selectedExtendTalent != null) {
+                                this.hint('只能继承一个天赋');
+                                return;
+                            } else {
+                                this.#selectedExtendTalent = talent.id;
+                                li.addClass('selected');
+                            }
+                        });
+                    });
+
+                    const records = this.#life.getRecord();
+                    const s = (type, func)=>{
+                        const value = func(records.map(({[type]:v})=>v));
+                        const { judge, grade } = summary(type, value);
+                        return { judge, grade, value };
+                    };
+                    console.table(records);
+                    console.debug(records);
+
+                    judge.append([
+                        (()=>{
+                            const { judge, grade, value } = s('CHR', max);
+                            return `<li class="grade${grade}"><span>颜值：</span>${value} ${judge}</li>`
+                        })(),
+                        (()=>{
+                            const { judge, grade, value } = s('INT', max);
+                            return `<li class="grade${grade}"><span>智力：</span>${value} ${judge}</li>`
+                        })(),
+                        (()=>{
+                            const { judge, grade, value } = s('STR', max);
+                            return `<li class="grade${grade}"><span>体质：</span>${value} ${judge}</li>`
+                        })(),
+                        (()=>{
+                            const { judge, grade, value } = s('MNY', max);
+                            return `<li class="grade${grade}"><span>家境：</span>${value} ${judge}</li>`
+                        })(),
+                        (()=>{
+                            const { judge, grade, value } = s('AGE', max);
+                            return `<li class="grade${grade}"><span>享年：</span>${value} ${judge}</li>`
+                        })(),
+                        (()=>{
+                            const { judge, grade, value } = s('SPR', max);
+                            return `<li class="grade${grade}"><span>快乐：</span>${value} ${judge}</li>`
+                        })(),
+                    ].join(''));
+                }
+            }
         }
     }
 
     switch(page) {
         const p = this.#pages[page];
         if(!p) return;
-        $('#main').remove();
+        $('#main').detach();
         p.clear();
         p.page.appendTo('body');
     }
+
+
 
     hint(str) {
         alert(str);
@@ -323,3 +421,4 @@ class App{
 }
 
 export default App;
+

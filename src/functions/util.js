@@ -9,4 +9,23 @@ function clone(value) {
     }
 }
 
-export { clone };
+function max(...arr) {
+    return Math.max(...arr.flat());
+}
+
+function min(...arr) {
+    return Math.min(...arr.flat());
+}
+
+function sum(...arr) {
+    let s = 0;
+    arr.flat().forEach(v=>s+=v);
+    return s;
+}
+
+function average(...arr) {
+    const s = sum(...arr);
+    return s / arr.flat().length;
+}
+
+export { clone, max, min, sum, average };

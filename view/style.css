@@ -125,6 +125,7 @@ html {
     text-align: center;
 }
 
+.judge,
 .lifeTrajectory,
 .propinitial,
 .selectlist {
@@ -166,16 +167,19 @@ html {
     content: "　";
 }
 
-.sprcial_blue::before {
-    background-color: rgb(116, 191, 255);
+.grade1,
+.grade1b::before {
+    background-color: rgb(116, 191, 255) !important;
 }
 
-.sprcial_purple::before {
-    background-color: rgb(226, 167, 255);
+.grade2,
+.grade2b::before {
+    background-color: rgb(226, 167, 255) !important;
 }
 
-.sprcial_orange::before {
-    background-color: lightsalmon;
+.grade3,
+.grade3b::before {
+    background-color: lightsalmon !important;
 }
 
 .selected {
@@ -220,6 +224,7 @@ html {
     background-color: aliceblue;
 }
 
+.judge > li,
 .lifeTrajectory > li {
     position: relative;
     width: calc(100% - 7rem);
@@ -230,9 +235,24 @@ html {
     box-shadow: lightblue 0 0 0.4rem;
 }
 
+.judge > li > span,
 .lifeTrajectory > li > span {
     position: absolute;
     left: 0;
     width: 6rem;
     text-align: right;
+}
+
+.judge > li {
+    box-shadow: lightgray 0 0 0.4rem;
+    width: calc(100% - 9rem);
+    margin: 0.5rem;
+    padding: 0.5rem 1rem 0.5rem 7rem;
+}
+
+.judge > li > span {
+    background-color: white;
+    height: calc(100% - 1rem);
+    padding: 0.5rem 0;
+    top: 0;
 }

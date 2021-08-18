@@ -74,3 +74,5 @@ function summary(type, value) {
         if(min==void 0 || value >= min) return {judge, grade};
     }
 }
+
+export { summary };
