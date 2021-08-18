@@ -32,8 +32,10 @@ async function transform(filePath) {
                     const keys = key.split(':');
                     const lastKey = keys.pop();
                     let temp = rowData;
-                    for(const subKey of keys)
-                        if(!temp[subKey]) temp = temp[subKey] = {};
+                    for(const subKey of keys) {
+                        if(!temp[subKey]) temp[subKey] = {};
+                        temp = temp[subKey];
+                    }
                     temp[lastKey] = cell;
                 } else if(key.includes('[]')) {
                     const aKey = key.split('[]')[0];
