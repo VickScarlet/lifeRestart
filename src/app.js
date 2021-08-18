@@ -291,6 +291,7 @@ class App{
             .click(()=>{
                 this.times ++;
                 this.#life.talentExtend(this.#selectedExtendTalent);
+                this.#selectedExtendTalent = null;
                 this.#talentSelected.clear();
                 this.#totalMax = 20;
                 this.#isEnd = false;
