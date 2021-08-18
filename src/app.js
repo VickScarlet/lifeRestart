@@ -411,7 +411,7 @@ class App{
                         (()=>{
                             const m = type=>max(records.map(({[type]: value})=>value));
                             const value = Math.floor(sum(m('CHR'), m('INT'), m('STR'), m('MNY'), m('SPR'))*2 + m('AGE')/2);
-                            const { judge, grade } = s('SUM', value);
+                            const { judge, grade } = summary('SUM', value);
                             return `<li class="grade${grade}"><span>总评：</span>${value} ${judge}</li>`
                         })(),
                     ].join(''));
@@ -450,4 +450,3 @@ class App{
 }
 
 export default App;
-
