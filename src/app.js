@@ -200,10 +200,10 @@ class App{
                         break;
                     }
                 }
-                groups.CHR.set(arr[0]);
-                groups.INT.set(arr[1]);
-                groups.STR.set(arr[2]);
-                groups.MNY.set(arr[3]);
+                groups.CHR.set(10 - arr[0]);
+                groups.INT.set(10 - arr[1]);
+                groups.STR.set(10 - arr[2]);
+                groups.MNY.set(10 - arr[3]);
             });
 
         propertyPage
