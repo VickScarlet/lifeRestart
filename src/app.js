@@ -12,6 +12,7 @@ class App{
     #totalMax=20;
     #isEnd = false;
     #selectedExtendTalent = null;
+    #hintTimeout;
 
     async initial() {
         this.initPages();
@@ -19,7 +20,7 @@ class App{
         await this.#life.initial();
         this.switch('index');
         window.onerror = (event, source, lineno, colno, error) => {
-            this.hint(`[ERROR] at (${source}:${lineno}:${colno})\n\n${error?.stack||error||'unknow Error'}`);
+            this.hint(`<pre>[ERROR] at (${source}:${lineno}:${colno})\n\n${error?.stack||error||'unknow Error'}</pre>`, error);
         }
     }
 
@@ -45,7 +46,6 @@ class App{
                 <div style="font-size:1.5rem; font-weight:normal;">这垃圾人生一秒也不想呆了</div>
             </div>
             <button id="restart" class="mainbtn"><span class="iconfont">&#xe6a7;</span>立即重开</button>
-            <div class="hint">别卷了！没有排行榜</div>
         </div>
         `);
 
@@ -53,6 +53,11 @@ class App{
             .find('#restart')
             .click(()=>this.switch('talent'));
 
+        indexPage
+            .find('#rank')
+            .click(()=>this.hint('别卷了！没有排行榜'));
+
+        // Talent
         const talentPage = $(`
         <div id="main">
             <div class="head" style="font-size: 1.6rem">天赋抽卡</div>
@@ -62,7 +67,6 @@ class App{
         </div>
         `);
 
-        // Talent
         const createTalent = ({ grade, name, description }) => {
             return $(`<li class="grade${grade}b">${name}（${description}）</li>`)
         };
@@ -181,7 +185,8 @@ class App{
             ul.append(groups[type].group);
         }
 
-        propertyPage.find('#random')
+        propertyPage
+            .find('#random')
             .click(()=>{
                 let t = this.#totalMax;
                 const arr = [10, 10, 10, 10];
@@ -201,7 +206,8 @@ class App{
                 groups.MNY.set(arr[3]);
             });
 
-        propertyPage.find('#start')
+        propertyPage
+            .find('#start')
             .click(()=>{
                 if(total()!=this.#totalMax) {
                     this.hint(`你还有${this.#totalMax-total()}属性点没有分配完`);
@@ -227,7 +233,8 @@ class App{
         </div>
         `);
 
-        trajectoryPage.find('#lifeTrajectory')
+        trajectoryPage
+            .find('#lifeTrajectory')
             .click(()=>{
                 if(this.#isEnd) return;
                 const trajectory = this.#life.next();
@@ -253,11 +260,13 @@ class App{
                 }
             });
 
-        trajectoryPage.find('#summary')
+        trajectoryPage
+            .find('#summary')
             .click(()=>{
                 this.switch('summary');
             })
 
+        // Summary
         const summaryPage = $(`
         <div id="main">
             <div class="head">人生总结</div>
@@ -277,10 +286,14 @@ class App{
         </div>
         `);
 
-        summaryPage.find('#again')
+        summaryPage
+            .find('#again')
             .click(()=>{
                 this.times ++;
                 this.#life.talentExtend(this.#selectedExtendTalent);
+                this.#talentSelected.clear();
+                this.#totalMax = 20;
+                this.#isEnd = false;
                 this.switch('index');
             });
 
@@ -388,12 +401,18 @@ class App{
                             return `<li class="grade${grade}"><span>家境：</span>${value} ${judge}</li>`
                         })(),
                         (()=>{
+                            const { judge, grade, value } = s('SPR', max);
+                            return `<li class="grade${grade}"><span>快乐：</span>${value} ${judge}</li>`
+                        })(),
+                        (()=>{
                             const { judge, grade, value } = s('AGE', max);
                             return `<li class="grade${grade}"><span>享年：</span>${value} ${judge}</li>`
                         })(),
                         (()=>{
-                            const { judge, grade, value } = s('SPR', max);
-                            return `<li class="grade${grade}"><span>快乐：</span>${value} ${judge}</li>`
+                            const m = type=>max(records.map(({[type]: value})=>value));
+                            const value = Math.floor(sum(m('CHR'), m('INT'), m('STR'), m('MNY'), m('SPR'))*2 + m('AGE')/2);
+                            const { judge, grade } = s('SUM', value);
+                            return `<li class="grade${grade}"><span>总评：</span>${value} ${judge}</li>`
                         })(),
                     ].join(''));
                 }
@@ -409,10 +428,20 @@ class App{
         p.page.appendTo('body');
     }
 
-
-
-    hint(str) {
-        alert(str);
+    hint(message, type='info') {
+        if(this.#hintTimeout) {
+            clearTimeout(this.#hintTimeout);
+            this.#hintTimeout = null;
+        }
+        hideBanners();
+        requestAnimationFrame(() => {
+            const banner = $(`.banner.${type}`);
+            banner.addClass('visible');
+            banner.find('.banner-message').text(message);
+            if(type != 'error') {
+                this.#hintTimeout = setTimeout(hideBanners, 3000);
+            }
+        });
     }
 
     get times() {return localStorage.times || 0;}

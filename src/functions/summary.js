@@ -6,7 +6,7 @@ const data = {
         {"min":4, "judge": "普通", "grade": 0},
         {"min":7, "judge": "优秀", "grade": 1},
         {"min":9, "judge": "罕见", "grade": 2},
-        {"min":11, "judge": "逆天", "grade": 3}
+        {"min":11, "judge": "逆天", "grade": 3},
     ],
     "MNY": [
         {"judge": "地狱", "grade": 0},
@@ -64,6 +64,16 @@ const data = {
         {"min":95, "judge": "不老", "grade": 3},
         {"min":100, "judge": "修仙", "grade": 3},
         {"min":500, "judge": "仙寿", "grade": 3},
+    ],
+    "SUM": [
+        {"judge": "地狱", "grade": 0},
+        {"min":41, "judge": "折磨", "grade": 0},
+        {"min":50, "judge": "不佳", "grade": 0},
+        {"min":60, "judge": "普通", "grade": 0},
+        {"min":80, "judge": "优秀", "grade": 1},
+        {"min":100, "judge": "罕见", "grade": 2},
+        {"min":110, "judge": "逆天", "grade": 3},
+        {"min":120, "judge": "传说", "grade": 3},
     ]
 }
 
