@@ -43,7 +43,7 @@ class Talent {
         }
 
         return new Array(10)
-            .fill(1).map((i)=>{
+            .fill(1).map((v, i)=>{
                 if(!i && include) return include;
                 const gradeRandom = Math.random();
                 let grade;
