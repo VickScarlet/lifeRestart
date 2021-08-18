@@ -16,8 +16,9 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "convert",
-            "program": "${workspaceFolder}/util/xlsxTransform.js",
+            "name": "xlsxTransform",
+            "program": "${workspaceFolder}/utils/xlsxTransform.js",
+            "args": ["data"],
             "skipFiles": [
                 "<node_internals>/**"
             ]
