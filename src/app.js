@@ -20,7 +20,7 @@ class App{
         await this.#life.initial();
         this.switch('index');
         window.onerror = (event, source, lineno, colno, error) => {
-            this.hint(`<pre>[ERROR] at (${source}:${lineno}:${colno})\n\n${error?.stack||error||'unknow Error'}</pre>`, error);
+            this.hint(`[ERROR] at (${source}:${lineno}:${colno})\n\n${error?.stack||error||'unknow Error'}`, 'error');
         }
     }
 
