@@ -37,6 +37,8 @@ class Property {
                 talent = talent?.split(',') || [];
 
             talent = talent.map(v=>Number(v));
+
+            age[a] = { event, talent };
         }
     }
 

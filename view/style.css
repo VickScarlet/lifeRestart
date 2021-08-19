@@ -284,6 +284,7 @@ i {
 .banner .banner-message {
   flex: 1;
   padding: 0 2rem;
+  word-break: break-word;
 }
 .banner .banner-close {
   display: flex;
