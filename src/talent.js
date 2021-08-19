@@ -1,4 +1,6 @@
 import { clone } from './functions/util.js';
+import { checkCondition } from './functions/condition.js';
+
 class Talent {
     constructor() {}
 
@@ -13,9 +15,9 @@ class Talent {
         }
     }
 
-    check(talentId) {
+    check(talentId, property) {
         const { condition } = this.get(talentId);
-        return checkCondition(condition);
+        return checkCondition(property, condition);
     }
 
     get(talentId) {
@@ -71,10 +73,9 @@ class Talent {
         return Number(this.get(talents).status) || 0;
     }
 
-    do(talentId) {
-        const { effect, condition, initiative, grade, name, description } = this.get(talentId);
-        if(!initiative) return null;
-        if(condition && !checkCondition(condition))
+    do(talentId, property) {
+        const { effect, condition, grade, name, description } = this.get(talentId);
+        if(condition && !checkCondition(property, condition))
             return null;
         return { effect, grade, name, description };
     }
