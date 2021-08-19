@@ -99,11 +99,11 @@ class Life {
     }
 
     talentRandom() {
-        return this.#talent.talentRandom(localStorage.extendTalent);
+        return this.#talent.talentRandom(JSON.parse(localStorage.extendTalent||''));
     }
 
     talentExtend(talentId) {
-        localStorage.extendTalent = talentId;
+        localStorage.extendTalent = JSON.stringify(talentId);
     }
 
     getRecord() {
