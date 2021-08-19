@@ -348,7 +348,7 @@
         "id": "1049",
         "name": "三十而立",
         "description": "30岁时家境+2",
-        "condition": "age?[30]",
+        "condition": "AGE?[30]",
         "grade": 0,
         "effect": {
             "MNY": 2
@@ -358,7 +358,7 @@
         "id": "1050",
         "name": "四十不惑",
         "description": "40岁时智力+2",
-        "condition": "age?[40]",
+        "condition": "AGE?[40]",
         "grade": 0,
         "effect": {
             "INT": 2
@@ -368,7 +368,7 @@
         "id": "1051",
         "name": "知天命",
         "description": "50岁时智力、快乐+1",
-        "condition": "age?[50]",
+        "condition": "AGE?[50]",
         "grade": 0,
         "effect": {
             "SPR": 1,
@@ -379,7 +379,7 @@
         "id": "1052",
         "name": "耳顺",
         "description": "60岁时快乐+2",
-        "condition": "age?[60]",
+        "condition": "AGE?[60]",
         "grade": 0,
         "effect": {
             "SPR": 2
@@ -389,7 +389,7 @@
         "id": "1053",
         "name": "从心所欲",
         "description": "70岁时快乐+3",
-        "condition": "age?[70]",
+        "condition": "AGE?[70]",
         "grade": 0,
         "effect": {
             "SPR": 3
@@ -399,7 +399,7 @@
         "id": "1054",
         "name": "老当益壮",
         "description": "60岁时体质+2",
-        "condition": "age?[60]",
+        "condition": "AGE?[60]",
         "grade": 1,
         "effect": {
             "STR": 2
@@ -409,7 +409,7 @@
         "id": "1055",
         "name": "鹤发童颜",
         "description": "70岁时颜值+3",
-        "condition": "age?[70]",
+        "condition": "AGE?[70]",
         "grade": 0,
         "effect": {
             "CHR": 3
@@ -419,7 +419,7 @@
         "id": "1056",
         "name": "学前启蒙",
         "description": "5岁时智力+2",
-        "condition": "age?[5]",
+        "condition": "AGE?[5]",
         "grade": 1,
         "effect": {
             "INT": 2
@@ -429,7 +429,7 @@
         "id": "1057",
         "name": "十八变",
         "description": "18岁时颜值+2",
-        "condition": "age?[18]",
+        "condition": "AGE?[18]",
         "grade": 1,
         "effect": {
             "CHR": 2
@@ -439,7 +439,7 @@
         "id": "1058",
         "name": "迟来之财",
         "description": "90岁时家境+4",
-        "condition": "age?[90]",
+        "condition": "AGE?[90]",
         "grade": 0,
         "effect": {
             "MNY": 4
@@ -449,7 +449,7 @@
         "id": "1059",
         "name": "理财达人",
         "description": "30、40、50岁时家境+1",
-        "condition": "age?[30,40,50]",
+        "condition": "AGE?[30,40,50]",
         "grade": 0,
         "effect": {
             "MNY": 1
@@ -459,7 +459,7 @@
         "id": "1060",
         "name": "成熟",
         "description": "12、18岁时智力+1",
-        "condition": "age?[12,18]",
+        "condition": "AGE?[12,18]",
         "grade": 1,
         "effect": {
             "INT": 1
@@ -469,7 +469,7 @@
         "id": "1061",
         "name": "形象管理",
         "description": "16、24岁时颜值+1",
-        "condition": "age?[16,24]",
+        "condition": "AGE?[16,24]",
         "grade": 1,
         "effect": {
             "CHR": 1
@@ -479,7 +479,7 @@
         "id": "1062",
         "name": "成年礼",
         "description": "18岁时快乐+1",
-        "condition": "age?[18]",
+        "condition": "AGE?[18]",
         "grade": 0,
         "effect": {
             "SPR": 1
@@ -539,7 +539,7 @@
         "id": "1069",
         "name": "智可生财",
         "description": "若20岁时智力>8，家境+2",
-        "condition": "(age?[20])&(INT>8)",
+        "condition": "(AGE?[20])&(INT>8)",
         "grade": 0,
         "effect": {
             "MNY": 2
@@ -549,14 +549,17 @@
         "id": "1070",
         "name": "舔狗甚多",
         "description": "若20岁时颜值>8，快乐+2",
-        "condition": "(age?[20])&(CHR>8)",
+        "condition": "(AGE?[20])&(CHR>8)",
         "grade": 0,
         "effect": {
             "SPR": 2
         }
     },
     "1071": {
-        "id": "1071"
+        "id": "1071",
+        "name": "保胎丸",
+        "description": "你不会胎死腹中",
+        "grade": 0
     },
     "1072": {
         "id": "1072"

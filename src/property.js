@@ -23,12 +23,20 @@ class Property {
 
         this.#ageData = age;
         for(const a in age) {
-            age[a].event = age[a].event?.split(',').map(v=>{
+            let { event, talent } = age[a];
+            if(!Array.isArray(event))
+                event = event?.split(',') || [];
+
+            event = event.map(v=>{
                 const value = v.split('*').map(n=>Number(n));
                 if(value.length==1) value.push(1);
                 return value;
             });
-            age[a].talent = age[a].talent?.split(',').map(v=>Number(v));
+
+            if(!Array.isArray(talent))
+                talent = talent?.split(',') || [];
+
+            talent = talent.map(v=>Number(v));
         }
     }
 

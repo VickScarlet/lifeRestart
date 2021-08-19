@@ -58,12 +58,12 @@ class Life {
             const result = this.#talent.do(talentId, this.#property);
             if(!result) continue;
             this.#triggerTalents.add(talentId);
-            const { effect, name, desctiption, grade } = result;
+            const { effect, name, description, grade } = result;
             contents.push({
                 type: this.#property.TYPES.TLT,
                 name,
                 grade,
-                desctiption,
+                description,
             })
             if(!effect) continue;
             this.#property.effect(effect);

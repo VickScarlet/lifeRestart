@@ -36,7 +36,13 @@ async function transform(filePath) {
                         if(!temp[subKey]) temp[subKey] = {};
                         temp = temp[subKey];
                     }
-                    temp[lastKey] = cell;
+                    if(lastKey.includes('[]')) {
+                        const aKey = lastKey.split('[]')[0];
+                        if(!temp[aKey]) temp[aKey] = [cell];
+                        else temp[aKey].push(cell);
+                    } else {
+                        temp[lastKey] = cell;
+                    }
                 } else if(key.includes('[]')) {
                     const aKey = key.split('[]')[0];
                     if(!rowData[aKey]) rowData[aKey] = [cell];

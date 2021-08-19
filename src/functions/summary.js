@@ -53,7 +53,8 @@ const data = {
         {"min":2001, "judge": "仙体", "grade": 3},
     ],
     "AGE": [
-        {"judge": "早夭", "grade": 0},
+        {"judge": "胎死腹中", "grade": 0},
+        {"min":1, "judge": "早夭", "grade": 0},
         {"min":10, "judge": "少年", "grade": 0},
         {"min":18, "judge": "盛年", "grade": 0},
         {"min":40, "judge": "中年", "grade": 0},

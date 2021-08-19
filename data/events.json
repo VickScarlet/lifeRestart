@@ -71,12 +71,14 @@
     "10009": {
         "id": 10009,
         "event": "你从小生活在农村",
-        "exclude": "(MNY>7)|(TLT?[1010,1013,1014])"
+        "include": "(MNY<8)|(TLT?[1012])",
+        "exclude": "TLT?[1010,1013,1014]"
     },
     "10010": {
         "id": 10010,
         "event": "你从小生活在城市",
-        "exclude": "(MNY<2)|(TLT?[1012,1014])"
+        "include": "(MNY>1)|(TLT?[1013])",
+        "exclude": "TLT?[1012,1014]"
     },
     "10011": {
         "id": 10011,
@@ -2586,7 +2588,7 @@
             "SPR": 1
         },
         "include": "(INT>2)&(EVT?[10009])",
-        "exclude": "(INT>7)&(EVT?[10314])"
+        "exclude": "(INT>7)|(EVT?[10314])"
     },
     "10315": {
         "id": 10315,
@@ -3996,23 +3998,41 @@
     },
     "10494": {
         "id": 10494,
-        "include": "EVT?[10009]",
-        "exclude": "EVT?[10494]"
+        "event": "体质过低，胎死腹中。",
+        "include": "STR<0",
+        "exclude": "TLT?[1071]",
+        "branch": [
+            "STR<0:10000"
+        ]
     },
     "10495": {
         "id": 10495,
-        "include": "EVT?[10009]",
+        "event": "意外发现古代宗派遗宝。",
+        "effect": {
+            "INT": 1,
+            "STR": 10,
+            "SPR": 1
+        },
+        "include": "TLT?[1048]",
         "exclude": "EVT?[10495]"
     },
     "10496": {
         "id": 10496,
-        "include": "EVT?[10009]",
-        "exclude": "EVT?[10496]"
+        "event": "偶遇筑基期散修。",
+        "postEvent": "他无视了你。",
+        "include": "TLT?[1048]",
+        "exclude": "EVT?[10496]",
+        "branch": [
+            "CHR<5:10497"
+        ]
     },
     "10497": {
         "id": 10497,
-        "include": "EVT?[10009]",
-        "exclude": "EVT?[10497]"
+        "event": "他嫌你长得丑，把你杀了。",
+        "NoRandom": 1,
+        "branch": [
+            "CHR<5:10000"
+        ]
     },
     "10498": {
         "id": 10498,
