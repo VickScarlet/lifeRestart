@@ -285,6 +285,7 @@ i {
   flex: 1;
   padding: 0 2rem;
   word-break: break-word;
+  overflow: auto;
 }
 .banner .banner-close {
   display: flex;
