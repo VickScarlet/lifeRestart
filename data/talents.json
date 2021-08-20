@@ -509,7 +509,7 @@
         "id": "1066",
         "name": "贵人相助",
         "description": "家境为0时家境+1",
-        "condition": "MNY<1",
+        "condition": "(MNY<1)&(MNY>-1)",
         "grade": 0,
         "effect": {
             "MNY": 1
@@ -519,7 +519,7 @@
         "id": "1067",
         "name": "乐天派",
         "description": "快乐为0时快乐+1",
-        "condition": "SPR<1",
+        "condition": "(SPR<1)&(SPR>-1)",
         "grade": 1,
         "effect": {
             "SPR": 1
@@ -529,7 +529,7 @@
         "id": "1068",
         "name": "命悬一线",
         "description": "体质为0时体质+1",
-        "condition": "STR<1",
+        "condition": "(STR<1)&(STR>-1)",
         "grade": 0,
         "effect": {
             "STR": 1
@@ -562,97 +562,340 @@
         "grade": 0
     },
     "1072": {
-        "id": "1072"
+        "id": "1072",
+        "name": "白化病",
+        "description": "你不会遭遇枪击",
+        "grade": 0
     },
     "1073": {
-        "id": "1073"
+        "id": "1073",
+        "name": "佛宗",
+        "description": "考上哈佛大学的几率提高",
+        "grade": 0
     },
     "1074": {
-        "id": "1074"
+        "id": "1074",
+        "name": "悟道",
+        "description": "智力>10时快乐+3",
+        "condition": "INT>10",
+        "grade": 0,
+        "effect": {
+            "SPR": 3
+        }
     },
     "1075": {
-        "id": "1075"
+        "id": "1075",
+        "name": "驻颜",
+        "description": "体质>10时颜值+3",
+        "condition": "STR>10",
+        "grade": 0,
+        "effect": {
+            "CHR": 3
+        }
     },
     "1076": {
-        "id": "1076"
+        "id": "1076",
+        "name": "界限突破",
+        "description": "体质>10时快乐+3",
+        "condition": "STR>10",
+        "grade": 0,
+        "effect": {
+            "SPR": 3
+        }
     },
     "1077": {
-        "id": "1077"
+        "id": "1077",
+        "name": "倾城",
+        "description": "颜值>10时快乐+3",
+        "condition": "CHR>10",
+        "grade": 0,
+        "effect": {
+            "SPR": 3
+        }
     },
     "1078": {
-        "id": "1078"
+        "id": "1078",
+        "name": "训练有方",
+        "description": "智力>10时体质+3",
+        "condition": "INT>10",
+        "grade": 0,
+        "effect": {
+            "STR": 3
+        }
     },
     "1079": {
-        "id": "1079"
+        "id": "1079",
+        "name": "相由心生",
+        "description": "智力>10时颜值+3",
+        "condition": "INT>10",
+        "grade": 0,
+        "effect": {
+            "CHR": 3
+        }
     },
     "1080": {
-        "id": "1080"
+        "id": "1080",
+        "name": "智多鑫",
+        "description": "智力>10时家境+3",
+        "condition": "INT>10",
+        "grade": 0,
+        "effect": {
+            "MNY": 3
+        }
     },
     "1081": {
-        "id": "1081"
+        "id": "1081",
+        "name": "灵光",
+        "description": "快乐>10时其他属性+1",
+        "condition": "SPR>10",
+        "grade": 0,
+        "effect": {
+            "MNY": 1,
+            "CHR": 1,
+            "STR": 1,
+            "INT": 1
+        }
     },
     "1082": {
-        "id": "1082"
+        "id": "1082",
+        "name": "天启",
+        "description": "快乐>10时其他属性+2",
+        "condition": "SPR>10",
+        "grade": 1,
+        "effect": {
+            "MNY": 2,
+            "CHR": 2,
+            "STR": 2,
+            "INT": 2
+        }
     },
     "1083": {
-        "id": "1083"
+        "id": "1083",
+        "name": "神谕",
+        "description": "快乐>10时其他属性+3",
+        "condition": "SPR>10",
+        "grade": 2,
+        "effect": {
+            "MNY": 3,
+            "CHR": 3,
+            "STR": 3,
+            "INT": 3
+        }
     },
     "1084": {
-        "id": "1084"
+        "id": "1084",
+        "name": "献祭",
+        "description": "初始可用属性点-2，快乐+2",
+        "grade": 0,
+        "status": -2,
+        "effect": {
+            "SPR": 2
+        }
     },
     "1085": {
-        "id": "1085"
+        "id": "1085",
+        "name": "幸运儿",
+        "description": "初始可用属性点-3，快乐+5",
+        "grade": 1,
+        "status": -3,
+        "effect": {
+            "SPR": 5
+        }
     },
     "1086": {
-        "id": "1086"
+        "id": "1086",
+        "name": "挑战者",
+        "description": "初始可用点-10",
+        "grade": 0,
+        "status": -10
     },
     "1087": {
-        "id": "1087"
+        "id": "1087",
+        "name": "你不懂",
+        "description": "家境>10时快乐+3",
+        "condition": "MNY>10",
+        "grade": 0,
+        "effect": {
+            "SPR": 3
+        }
     },
     "1088": {
-        "id": "1088"
+        "id": "1088",
+        "name": "整容",
+        "description": "家境>10时颜值+3",
+        "condition": "MNY>10",
+        "grade": 0,
+        "effect": {
+            "CHR": 3
+        }
     },
     "1089": {
-        "id": "1089"
+        "id": "1089",
+        "name": "钻石健身卡",
+        "description": "家境>10时体质+3",
+        "condition": "MNY>10",
+        "grade": 0,
+        "effect": {
+            "STR": 3
+        }
     },
     "1090": {
-        "id": "1090"
+        "id": "1090",
+        "name": "身残志坚",
+        "description": "体质<0时其他属性+1",
+        "condition": "STR<0",
+        "grade": 0,
+        "effect": {
+            "SPR": 1,
+            "MNY": 1,
+            "CHR": 1,
+            "INT": 1
+        }
     },
     "1091": {
-        "id": "1091"
+        "id": "1091",
+        "name": "活死人",
+        "description": "体质<-1时其他属性+2",
+        "condition": "STR<0",
+        "grade": 1,
+        "effect": {
+            "SPR": 2,
+            "MNY": 2,
+            "CHR": 2,
+            "INT": 2
+        }
     },
     "1092": {
-        "id": "1092"
+        "id": "1092",
+        "name": "开一扇窗",
+        "description": "颜值<0时其他属性+1",
+        "condition": "CHR<0",
+        "grade": 0,
+        "effect": {
+            "SPR": 1,
+            "MNY": 1,
+            "STR": 1,
+            "INT": 1
+        }
     },
     "1093": {
-        "id": "1093"
+        "id": "1093",
+        "name": "大额头",
+        "description": "颜值-2，智力+2",
+        "grade": 0,
+        "effect": {
+            "CHR": -2,
+            "INT": 2
+        }
     },
     "1094": {
-        "id": "1094"
+        "id": "1094",
+        "name": "痘痘脸",
+        "description": "颜值-1",
+        "grade": 0,
+        "effect": {
+            "CHR": -1
+        }
     },
     "1095": {
-        "id": "1095"
+        "id": "1095",
+        "name": "潜能",
+        "description": "家境<0时其他属性+1",
+        "condition": "MNY<0",
+        "grade": 0,
+        "effect": {
+            "SPR": 1,
+            "CHR": 1,
+            "STR": 1,
+            "INT": 1
+        }
     },
     "1096": {
-        "id": "1096"
+        "id": "1096",
+        "name": "哀兵",
+        "description": "快乐<0时其他属性+1",
+        "condition": "SPR<0",
+        "grade": 0,
+        "effect": {
+            "MNY": 1,
+            "CHR": 1,
+            "STR": 1,
+            "INT": 1
+        }
     },
     "1097": {
-        "id": "1097"
+        "id": "1097",
+        "name": "苦痛侍僧",
+        "description": "快乐<-1时其他属性+2",
+        "condition": "SPR<-1",
+        "grade": 1,
+        "effect": {
+            "MNY": 2,
+            "CHR": 2,
+            "STR": 2,
+            "INT": 2
+        }
     },
     "1098": {
-        "id": "1098"
+        "id": "1098",
+        "name": "觉醒",
+        "description": "家境<-1时其他属性+2",
+        "condition": "MNY<-1",
+        "grade": 1,
+        "effect": {
+            "SPR": 2,
+            "CHR": 2,
+            "STR": 2,
+            "INT": 2
+        }
     },
     "1099": {
-        "id": "1099"
+        "id": "1099",
+        "name": "抖M",
+        "description": "家境-2，快乐+2",
+        "grade": 0,
+        "effect": {
+            "SPR": 2,
+            "MNY": -2
+        }
     },
     "1100": {
-        "id": "1100"
+        "id": "1100",
+        "name": "海的女儿",
+        "description": "颜值-2，初始可用属性点+1",
+        "grade": 0,
+        "status": 1,
+        "effect": {
+            "CHR": -2
+        }
     },
     "1101": {
-        "id": "1101"
+        "id": "1101",
+        "name": "进阶",
+        "description": "所有属性>5时，所有属性+1",
+        "condition": "(SPR>5)&(MNY>5)&(CHR>5)&(STR>5)&(INT>5)",
+        "grade": 0,
+        "effect": {
+            "SPR": 1,
+            "MNY": 1,
+            "CHR": 1,
+            "STR": 1,
+            "INT": 1
+        }
     },
     "1102": {
-        "id": "1102"
+        "id": "1102",
+        "name": "超进化",
+        "description": "所有属性>5时，所有属性+2",
+        "condition": "(SPR>5)&(MNY>5)&(CHR>5)&(STR>5)&(INT>5)",
+        "grade": 1,
+        "effect": {
+            "SPR": 2,
+            "MNY": 2,
+            "CHR": 2,
+            "STR": 2,
+            "INT": 2
+        }
     },
     "1103": {
         "id": "1103"
