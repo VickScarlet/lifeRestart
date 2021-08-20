@@ -28,13 +28,13 @@ class Property {
                 event = event?.split(',') || [];
 
             event = event.map(v=>{
-                const value = v.split('*').map(n=>Number(n));
+                const value = `${v}`.split('*').map(n=>Number(n));
                 if(value.length==1) value.push(1);
                 return value;
             });
 
             if(!Array.isArray(talent))
-                talent = talent?.split(',') || [];
+                talent = `${talent}`?.split(',') || [];
 
             talent = talent.map(v=>Number(v));
 
