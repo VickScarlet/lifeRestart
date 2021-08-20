@@ -445,7 +445,7 @@ class App{
         });
     }
 
-    get times() {return JSON.parse(localStorage.times||'') || 0;}
+    get times() {return JSON.parse(localStorage.times||'0') || 0;}
     set times(v) {localStorage.times = JSON.stringify(parseInt(v) || 0)};
 
 }
