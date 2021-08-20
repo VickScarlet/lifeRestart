@@ -34,7 +34,7 @@ class Property {
             });
 
             if(!Array.isArray(talent))
-                talent = `${talent}`?.split(',') || [];
+                talent = talent?.split(',') || [];
 
             talent = talent.map(v=>Number(v));
 
