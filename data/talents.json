@@ -15,12 +15,22 @@
         "id": "1003",
         "name": "生而为男",
         "description": "性别一定为男",
+        "exclusive": [
+            1004,
+            1024,
+            1025
+        ],
         "grade": 1
     },
     "1004": {
         "id": "1004",
         "name": "生而为女",
         "description": "性别一定为女",
+        "exclusive": [
+            1003,
+            1024,
+            1025
+        ],
         "grade": 1
     },
     "1005": {
@@ -79,18 +89,33 @@
         "id": "1012",
         "name": "乡间微风",
         "description": "你出生在农村",
+        "exclusive": [
+            1013,
+            1014,
+            1010
+        ],
         "grade": 0
     },
     "1013": {
         "id": "1013",
         "name": "城中高楼",
         "description": "你出生在城市",
+        "exclusive": [
+            1010,
+            1012,
+            "1014"
+        ],
         "grade": 0
     },
     "1014": {
         "id": "1014",
         "name": "美籍华人",
         "description": "你有美国国籍",
+        "exclusive": [
+            1010,
+            1012,
+            1013
+        ],
         "grade": 2,
         "effect": {
             "MNY": 3
@@ -176,12 +201,22 @@
         "id": "1024",
         "name": "人中龙凤",
         "description": "天生双重性别",
+        "exclusive": [
+            1003,
+            1004,
+            1025
+        ],
         "grade": 2
     },
     "1025": {
         "id": "1025",
         "name": "阴阳之外",
         "description": "天生无性别",
+        "exclusive": [
+            1003,
+            1024,
+            1004
+        ],
         "grade": 2
     },
     "1026": {
@@ -311,7 +346,7 @@
     "1043": {
         "id": "1043",
         "name": "老司机",
-        "description": "你的家人不会发生车祸",
+        "description": "你和家人不会发生车祸",
         "grade": 0
     },
     "1044": {
@@ -578,7 +613,7 @@
         "name": "悟道",
         "description": "智力>10时快乐+3",
         "condition": "INT>10",
-        "grade": 0,
+        "grade": 1,
         "effect": {
             "SPR": 3
         }
@@ -598,7 +633,7 @@
         "name": "界限突破",
         "description": "体质>10时快乐+3",
         "condition": "STR>10",
-        "grade": 0,
+        "grade": 1,
         "effect": {
             "SPR": 3
         }
@@ -608,7 +643,7 @@
         "name": "倾城",
         "description": "颜值>10时快乐+3",
         "condition": "CHR>10",
-        "grade": 0,
+        "grade": 1,
         "effect": {
             "SPR": 3
         }
@@ -714,7 +749,7 @@
         "name": "你不懂",
         "description": "家境>10时快乐+3",
         "condition": "MNY>10",
-        "grade": 0,
+        "grade": 1,
         "effect": {
             "SPR": 3
         }
@@ -925,22 +960,40 @@
         "grade": 0
     },
     "1107": {
-        "id": "1107"
+        "id": "1107",
+        "name": "不想罢了",
+        "description": "你不会上清华大学",
+        "grade": 0
     },
     "1108": {
-        "id": "1108"
+        "id": "1108",
+        "name": "挑衅",
+        "description": "你喜欢没事找事",
+        "grade": 0
     },
     "1109": {
-        "id": "1109"
+        "id": "1109",
+        "name": "旅行者",
+        "description": "你喜欢旅游",
+        "grade": 0
     },
     "1110": {
-        "id": "1110"
+        "id": "1110",
+        "name": "水仙",
+        "description": "你比较自恋",
+        "grade": 0
     },
     "1111": {
-        "id": "1111"
+        "id": "1111",
+        "name": "缺一门",
+        "description": "无效果",
+        "grade": 0
     },
     "1112": {
-        "id": "1112"
+        "id": "1112",
+        "name": "异界来客",
+        "description": "你可能听到一些绝密消息",
+        "grade": 1
     },
     "1113": {
         "id": "1113"

@@ -89,6 +89,20 @@ class App{
                                     this.hint('只能选3个天赋');
                                     return;
                                 }
+
+                                const exclusive = this.#life.exclusive(
+                                    Array.from(this.#talentSelected).map(({id})=>id),
+                                    talent.id
+                                );
+                                if(exclusive != null) {
+                                    for(const { name, id } of this.#talentSelected) {
+                                        if(id == exclusive) {
+                                            this.hint(`与已选择的天赋【${name}】冲突`);
+                                            return;
+                                        }
+                                    }
+                                    return;
+                                }
                                 li.addClass('selected');
                                 this.#talentSelected.add(talent);
                             }

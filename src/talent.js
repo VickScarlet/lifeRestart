@@ -31,6 +31,17 @@ class Talent {
         return { grade, name, description };
     }
 
+    exclusive(talends, exclusiveId) {
+        const { exclusive } = this.get(exclusiveId);
+        if(!exclusive) return null;
+        for(const talent of talends) {
+            for(const e of exclusive) {
+                if(talent == e) return talent;
+            }
+        }
+        return null;
+    }
+
     talentRandom(include) {
         // 1000, 100, 10, 1
         const talentList = {};
