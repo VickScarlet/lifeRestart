@@ -2,13 +2,13 @@
     "1001": {
         "id": "1001",
         "name": "随身玉佩",
-        "description": "2岁时不会死",
+        "description": "或许有护佑作用",
         "grade": 0
     },
     "1002": {
         "id": "1002",
         "name": "红肚兜",
-        "description": "3岁时不会死",
+        "description": "小时候死亡率降低",
         "grade": 0
     },
     "1003": {
