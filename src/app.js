@@ -166,7 +166,7 @@ class App{
                 freshTotal();
             }
             btnAdd.click(()=>{
-                if(total() == this.#totalMax) {
+                if(total() >= this.#totalMax) {
                     this.hint('没有可分配的点数了');
                     return;
                 }
