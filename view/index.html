@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>window.json = async fileName=>(await axios(`../data/${fileName}.json`)).data;</script>
+    <script>
+        window.json = function(fileName,cb){
+            axios('../data/'+fileName+'.json').then(function (data) {
+                cb(data)
+            })
+        };
+    </script>
     <title>Document</title>
 </head>
 <body style="margin: 0; height: 100%">
@@ -40,8 +46,16 @@
             .forEach((b) => b.classList.remove("visible"));
     };
 </script>
+<script src="../src/functions/condition.js"></script>
+<script src="../src/functions/summary.js"></script>
+<script src="../src/functions/util.js"></script>
+
+<script src="../src/app.js"></script>
+<script src="../src/life.js"></script>
+<script src="../src/event.js"></script>
+<script src="../src/property.js"></script>
+<script src="../src/talent.js"></script>
 <script type="module">
-    import App from '../src/app.js';
     const app = new App();
     app.initial();
 </script>
