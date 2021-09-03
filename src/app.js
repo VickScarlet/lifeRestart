@@ -165,11 +165,6 @@ class App{
                 inputBox.val(limit(v));
                 freshTotal();
             }
-            btnAdd.click(()=>{
-                if(total() == this.#totalMax) {
-                    this.hint('没用可分配的点数了');
-                    return;
-                }
                 set(get()+1);
             });
             btnSub.click(()=>set(get()-1));
