@@ -203,6 +203,7 @@ html {
     position: relative;
     cursor: pointer;
     font-size: 2rem;
+    user-select: none;
 }
 
 .lifeTrajectory {
