@@ -41,6 +41,7 @@ class App{
         <div id="main">
             <div id="cnt" class="head">已重开1次</div>
             <button id="rank">排行榜</button>
+            <button id="themeToggleBtn">黑</button>
             <div id="title">
                 人生重开模拟器<br>
                 <div style="font-size:1.5rem; font-weight:normal;">这垃圾人生一秒也不想呆了</div>
@@ -49,6 +50,9 @@ class App{
         </div>
         `);
 
+        // Init theme
+        this.setTheme(localStorage.getItem('theme'))
+
         indexPage
             .find('#restart')
             .click(()=>this.switch('talent'));
@@ -56,6 +60,18 @@ class App{
         indexPage
             .find('#rank')
             .click(()=>this.hint('别卷了！没有排行榜'));
+
+        indexPage
+            .find("#themeToggleBtn")
+            .click(() => {
+                if(localStorage.getItem('theme') == 'light') {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+
+                this.setTheme(localStorage.getItem('theme'))
+            });
 
         // Talent
         const talentPage = $(`
@@ -460,6 +476,16 @@ class App{
                 this.#hintTimeout = setTimeout(hideBanners, 3000);
             }
         });
+    }
+
+    setTheme(theme) {
+        const themeLink = $(document).find('#themeLink');
+
+        if(theme == 'light') {
+            themeLink.attr('href', 'style.css');
+        } else {
+            themeLink.attr('href', 'dark.css');
+        }
     }
 
     get times() {return JSON.parse(localStorage.times||'0') || 0;}
