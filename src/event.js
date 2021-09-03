@@ -8,7 +8,7 @@
             for(const id in events) {
                 const event = events[id];
                 if(!event.branch) continue;
-                event.branch = event.branch.map(b=>{
+                event.branch = event.branch.map(function(b){
                     b = b.split(':');
                     b[1] = Number(b[1]);
                     return b;
