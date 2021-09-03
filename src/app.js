@@ -166,7 +166,7 @@ class App{
                 freshTotal();
             }
             btnAdd.click(()=>{
-                if(total() == this.#totalMax) {
+                if(total() >= this.#totalMax) {
                     this.hint('没用可分配的点数了');
                     return;
                 }
@@ -223,8 +223,11 @@ class App{
         propertyPage
             .find('#start')
             .click(()=>{
-                if(total()!=this.#totalMax) {
+                if(total() < this.#totalMax) {
                     this.hint(`你还有${this.#totalMax-total()}属性点没有分配完`);
+                    return;
+                } else if (total() > this.#totalMax) {
+                    this.hint(`你多使用了${total() - this.#totalMax}属性点`);
                     return;
                 }
                 this.#life.restart({
