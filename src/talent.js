@@ -60,7 +60,7 @@ class Talent {
                 if(!i && include) return include;
                 const gradeRandom = Math.random();
                 let grade;
-                if(gradeRandom>=0.111) grade = 0;
+                if(gradeRandom>=0.111) grade = 3;
                 else if(gradeRandom>=0.011) grade = 1;
                 else if(gradeRandom>=0.001) grade = 2;
                 else grade = 3;
