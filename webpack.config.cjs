@@ -21,14 +21,7 @@ module.exports = {
             [
               '@babel/preset-env',
               {
-                "targets": {
-                  "ie": 7,
-                  "edge": "17",
-                  "firefox": "60",
-                  "chrome": "67",
-                  "safari": "11.1",
-                },
-                // 按需加载
+                "targets": "> 0.25%, not dead",
                 "useBuiltIns": "usage",
                 "corejs": "3.8.3",
               }
