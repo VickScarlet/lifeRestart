@@ -46,6 +46,16 @@ class App{
                 <div style="font-size:1.5rem; font-weight:normal;">这垃圾人生一秒也不想呆了</div>
             </div>
             <button id="restart" class="mainbtn"><span class="iconfont">&#xe6a7;</span>立即重开</button>
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9857163863537600" crossorigin="anonymous"></script>
+            <!-- liferestart -->
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9857163863537600" data-ad-slot="3560523484" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            <style>
+                ins.adsbygoogle {
+                    position: fixed;
+                    bottom: 0;
+                }
+            </style>
         </div>
         `);
 
