@@ -50,12 +50,6 @@ class App{
             <!-- liferestart -->
             <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9857163863537600" data-ad-slot="3560523484" data-ad-format="auto" data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            <style>
-                ins.adsbygoogle {
-                    position: fixed;
-                    bottom: 0;
-                }
-            </style>
         </div>
         `);
 
