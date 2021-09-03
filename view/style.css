@@ -103,7 +103,7 @@ html {
 
 #themeToggleBtn {
     position: fixed;
-    left: 1rem;
+    right: 1rem;
     bottom: 1rem;
     padding: 0.1rem 1rem;
     border: none;
