@@ -203,6 +203,41 @@
                 ul.append(groups[type].group);
             }
 
+            btnAdd.click(()=>{
+                if(total() >= this.#totalMax) {
+                    this.hint('没有可分配的点数了');
+                    return;
+                }
+                set(get()+1);
+            });
+            btnSub.click(()=>set(get()-1));
+            inputBox.on('input', ()=>{
+                const t = total();
+                let val = get();
+                if(t > this.#totalMax) {
+                    val -= t - this.#totalMax;
+                }
+                val = limit(val);
+                if(val != inputBox.val()) {
+                    set(val);
+                }
+                freshTotal();
+            });
+            return {group, get, set};
+        }
+
+        groups.CHR = getBtnGroups("颜值", 0, 10); // 颜值 charm CHR
+        groups.INT = getBtnGroups("智力", 0, 10); // 智力 intelligence INT
+        groups.STR = getBtnGroups("体质", 0, 10); // 体质 strength STR
+        groups.MNY = getBtnGroups("家境", 0, 10); // 家境 money MNY
+
+        const ul = propertyPage.find('#propertyAllocation');
+
+        for(const type in groups) {
+            ul.append(groups[type].group);
+        }
+
+
             propertyPage.find('#random').click(function (){
                 var t = this.totalMax;
                 var arr = [10, 10, 10, 10];
@@ -225,6 +260,10 @@
             propertyPage.find('#start').click(function (){
                 if(total()!=this.totalMax) {
                     this.hint(`你还有${this.totalMax-total()}属性点没有分配完`);
+
+                    return;
+                } else if (total() > this.#totalMax) {
+                    this.hint(`你多使用了${total() - this.#totalMax}属性点`);
                     return;
                 }
                 this.life.restart({
@@ -491,3 +530,4 @@
     };
     window.App = App;
 })(window);
+

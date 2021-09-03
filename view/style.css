@@ -203,6 +203,7 @@ html {
     position: relative;
     cursor: pointer;
     font-size: 2rem;
+    user-select: none;
 }
 
 .lifeTrajectory {
@@ -219,6 +220,7 @@ html {
     font-size: 1.4rem;
     background-color: white;
     box-shadow: lightblue 0 0 0.4rem;
+    user-select: none;
 }
 
 .judge > li > span,
