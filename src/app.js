@@ -1,34 +1,39 @@
-import { max, sum } from './functions/util.js';
-import { summary } from './functions/summary.js'
-import Life from './life.js'
+import { max, sum } from "./functions/util.js";
+import { summary } from "./functions/summary.js";
+import Life from "./life.js";
 
-class App{
-    constructor(){
-        this.#life = new Life();
-    }
+class App {
+  constructor() {
+    this.#life = new Life();
+  }
 
-    #life;
-    #pages;
-    #talentSelected = new Set();
-    #totalMax=20;
-    #isEnd = false;
-    #selectedExtendTalent = null;
-    #hintTimeout;
+  #life;
+  #pages;
+  #talentSelected = new Set();
+  #totalMax = 40;
+  #isEnd = false;
+  #selectedExtendTalent = null;
+  #hintTimeout;
+  #talentMax = 6;
 
-    async initial() {
-        this.initPages();
-        this.switch('loading');
-        await this.#life.initial();
-        this.switch('index');
-        window.onerror = (event, source, lineno, colno, error) => {
-            this.hint(`[ERROR] at (${source}:${lineno}:${colno})\n\n${error?.stack||error||'unknow Error'}`, 'error');
-        }
-    }
+  async initial() {
+    this.initPages();
+    this.switch("loading");
+    await this.#life.initial();
+    this.switch("index");
+    window.onerror = (event, source, lineno, colno, error) => {
+      this.hint(
+        `[ERROR] at (${source}:${lineno}:${colno})\n\n${
+          error?.stack || error || "unknow Error"
+        }`,
+        "error"
+      );
+    };
+  }
 
-    initPages() {
-
-        // Loading
-        const loadingPage = $(`
+  initPages() {
+    // Loading
+    const loadingPage = $(`
         <div id="main">
             <div id="title">
                 人生重开模拟器<br>
@@ -37,8 +42,8 @@ class App{
         </div>
         `);
 
-        // Index
-        const indexPage = $(`
+    // Index
+    const indexPage = $(`
         <div id="main">
             <div id="cnt" class="head">已重开1次</div>
             <button id="rank">排行榜</button>
@@ -51,257 +56,246 @@ class App{
         </div>
         `);
 
-        // Init theme
-        this.setTheme(localStorage.getItem('theme'))
+    // Init theme
+    this.setTheme(localStorage.getItem("theme"));
 
-        indexPage
-            .find('#restart')
-            .click(()=>this.switch('talent'));
+    indexPage.find("#restart").click(() => this.switch("talent"));
 
-        indexPage
-            .find('#rank')
-            .click(()=>this.hint('别卷了！没有排行榜'));
+    indexPage.find("#rank").click(() => this.hint("别卷了！没有排行榜"));
 
-        indexPage
-            .find("#themeToggleBtn")
-            .click(() => {
-                if(localStorage.getItem('theme') == 'light') {
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    localStorage.setItem('theme', 'light');
-                }
+    indexPage.find("#themeToggleBtn").click(() => {
+      if (localStorage.getItem("theme") == "light") {
+        localStorage.setItem("theme", "dark");
+      } else {
+        localStorage.setItem("theme", "light");
+      }
 
-                this.setTheme(localStorage.getItem('theme'))
-            });
+      this.setTheme(localStorage.getItem("theme"));
+    });
 
-        // Talent
-        const talentPage = $(`
+    // Talent
+    const talentPage = $(`
         <div id="main">
             <div class="head" style="font-size: 1.6rem">天赋抽卡</div>
             <button id="random" class="mainbtn" style="top: 50%;">10连抽！</button>
             <ul id="talents" class="selectlist"></ul>
-            <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">请选择3个</button>
+            <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">确认选择</button>
         </div>
         `);
 
-        const createTalent = ({ grade, name, description }) => {
-            return $(`<li class="grade${grade}b">${name}（${description}）</li>`)
-        };
+    const createTalent = ({ grade, name, description }) => {
+      return $(`<li class="grade${grade}b">${name}（${description}）</li>`);
+    };
 
-        talentPage
-            .find('#random')
-            .click(()=>{
-                talentPage.find('#random').hide();
-                const ul = talentPage.find('#talents');
-                this.#life.talentRandom()
-                    .forEach(talent=>{
-                        const li = createTalent(talent);
-                        ul.append(li);
-                        li.click(()=>{
-                            if(li.hasClass('selected')) {
-                                li.removeClass('selected')
-                                this.#talentSelected.delete(talent);
-                            } else {
-                                if(this.#talentSelected.size==3) {
-                                    this.hint('只能选3个天赋');
-                                    return;
-                                }
+    talentPage.find("#random").click(() => {
+      talentPage.find("#random").hide();
+      const ul = talentPage.find("#talents");
+      this.#life.talentRandom().forEach((talent) => {
+        const li = createTalent(talent);
+        ul.append(li);
+        li.click(() => {
+          if (li.hasClass("selected")) {
+            li.removeClass("selected");
+            this.#talentSelected.delete(talent);
+          } else {
+            if (this.#talentSelected.size >= this.#talentMax) {
+              this.hint(`只能选${this.#talentMax}个天赋`);
+              return;
+            }
 
-                                const exclusive = this.#life.exclusive(
-                                    Array.from(this.#talentSelected).map(({id})=>id),
-                                    talent.id
-                                );
-                                if(exclusive != null) {
-                                    for(const { name, id } of this.#talentSelected) {
-                                        if(id == exclusive) {
-                                            this.hint(`与已选择的天赋【${name}】冲突`);
-                                            return;
-                                        }
-                                    }
-                                    return;
-                                }
-                                li.addClass('selected');
-                                this.#talentSelected.add(talent);
-                            }
-                        });
-                    });
-            });
-
-        talentPage
-            .find('#next')
-            .click(()=>{
-                if(this.#talentSelected.size!=3) {
-                    this.hint('请选择3个天赋');
-                    return;
+            const exclusive = this.#life.exclusive(
+              Array.from(this.#talentSelected).map(({ id }) => id),
+              talent.id
+            );
+            if (exclusive != null) {
+              for (const { name, id } of this.#talentSelected) {
+                if (id == exclusive) {
+                  this.hint(`与已选择的天赋【${name}】冲突`);
+                  return;
                 }
-                this.#totalMax = 20 + this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected).map(({id})=>id));
-                this.switch('property');
-            })
+              }
+              return;
+            }
+            li.addClass("selected");
+            this.#talentSelected.add(talent);
+          }
+        });
+      });
+    });
 
-        // Property
-        const propertyPage = $(`
+    talentPage.find("#next").click(() => {
+      if (this.#talentSelected.size < 1) {
+        this.hint("请选择至少1个天赋");
+        return;
+      }
+      this.#totalMax =
+        32 +
+        this.#life.getTalentAllocationAddition(
+          Array.from(this.#talentSelected).map(({ id }) => id)
+        );
+      this.switch("property");
+    });
+
+    // Property
+    const propertyPage = $(`
         <div id="main">
             <div class="head" style="font-size: 1.6rem">
                 调整初始属性<br>
                 <div id="total" style="font-size:1rem; font-weight:normal;">可用属性点：0</div>
             </div>
             <ul id="propertyAllocation" class="propinitial"></ul>
-            <button id="random" class="mainbtn" style="top:auto; bottom:7rem">随机分配</button>
+            <button id="random" class="mainbtn" style="top:auto; bottom:7rem">自动分配</button>
             <button id="start" class="mainbtn" style="top:auto; bottom:0.1rem">开始新人生</button>
         </div>
         `);
 
-        const groups = {};
-        const total = ()=>{
-            let t = 0;
-            for(const type in groups)
-                t += groups[type].get();
-            return t;
+    const groups = {};
+    const total = () => {
+      let t = 0;
+      for (const type in groups) t += groups[type].get();
+      return t;
+    };
+    const freshTotal = () => {
+      propertyPage
+        .find("#total")
+        .text(`可用属性点：${this.#totalMax - total()}`);
+    };
+    const getBtnGroups = (name, min, max) => {
+      const group = $(`<li>${name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>`);
+      const btnSub = $(`<span class="iconfont propbtn">&#xe6a5;</span>`);
+      const inputBox = $(`<input value="0">`);
+      const btnAdd = $(`<span class="iconfont propbtn">&#xe6a6;</span>`);
+      group.append(btnSub);
+      group.append(inputBox);
+      group.append(btnAdd);
+
+      const limit = (v) => {
+        v = Number(v) || 0;
+        v = Math.round(v);
+        return v < min ? min : v > max ? max : v;
+      };
+      const get = () => Number(inputBox.val());
+      const set = (v) => {
+        inputBox.val(limit(v));
+        freshTotal();
+      };
+      btnAdd.click(() => {
+        if (total() >= this.#totalMax) {
+          this.hint("没有可分配的点数了");
+          return;
         }
-        const freshTotal = ()=>{
-            propertyPage.find('#total').text(`可用属性点：${this.#totalMax - total()}`);
+        set(get() + 1);
+      });
+      btnSub.click(() => set(get() - 1));
+      inputBox.on("input", () => {
+        const t = total();
+        let val = get();
+        if (t > this.#totalMax) {
+          val -= t - this.#totalMax;
         }
-        const getBtnGroups = (name, min, max)=>{
-            const group = $(`<li>${name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>`);
-            const btnSub = $(`<span class="iconfont propbtn">&#xe6a5;</span>`);
-            const inputBox = $(`<input value="0">`);
-            const btnAdd = $(`<span class="iconfont propbtn">&#xe6a6;</span>`);
-            group.append(btnSub);
-            group.append(inputBox);
-            group.append(btnAdd);
-
-            const limit = v=>{
-                v = Number(v)||0;
-                v = Math.round(v);
-                return v < min ? min : (
-                    v > max ? max : v
-                )
-            }
-            const get = ()=>Number(inputBox.val());
-            const set = v=>{
-                inputBox.val(limit(v));
-                freshTotal();
-            }
-            btnAdd.click(()=>{
-                if(total() >= this.#totalMax) {
-                    this.hint('没有可分配的点数了');
-                    return;
-                }
-                set(get()+1);
-            });
-            btnSub.click(()=>set(get()-1));
-            inputBox.on('input', ()=>{
-                const t = total();
-                let val = get();
-                if(t > this.#totalMax) {
-                    val -= t - this.#totalMax;
-                }
-                val = limit(val);
-                if(val != inputBox.val()) {
-                    set(val);
-                }
-                freshTotal();
-            });
-            return {group, get, set};
+        val = limit(val);
+        if (val != inputBox.val()) {
+          set(val);
         }
+        freshTotal();
+      });
+      return { group, get, set };
+    };
 
-        groups.CHR = getBtnGroups("颜值", 0, 10); // 颜值 charm CHR
-        groups.INT = getBtnGroups("智力", 0, 10); // 智力 intelligence INT
-        groups.STR = getBtnGroups("体质", 0, 10); // 体质 strength STR
-        groups.MNY = getBtnGroups("家境", 0, 10); // 家境 money MNY
+    groups.CHR = getBtnGroups("颜值", 0, 10); // 颜值 charm CHR
+    groups.INT = getBtnGroups("智力", 0, 10); // 智力 intelligence INT
+    groups.STR = getBtnGroups("体质", 0, 10); // 体质 strength STR
+    groups.MNY = getBtnGroups("家境", 0, 10); // 家境 money MNY
 
-        const ul = propertyPage.find('#propertyAllocation');
+    const ul = propertyPage.find("#propertyAllocation");
 
-        for(const type in groups) {
-            ul.append(groups[type].group);
-        }
+    for (const type in groups) {
+      ul.append(groups[type].group);
+    }
 
-        propertyPage
-            .find('#random')
-            .click(()=>{
-                let t = this.#totalMax;
-                const arr = [10, 10, 10, 10];
-                while(t>0) {
-                    const sub = Math.round(Math.random() * (Math.min(t, 10) - 1)) + 1;
-                    while(true) {
-                        const select = Math.floor(Math.random() * 4) % 4;
-                        if(arr[select] - sub <0) continue;
-                        arr[select] -= sub;
-                        t -= sub;
-                        break;
-                    }
-                }
-                groups.CHR.set(10 - arr[0]);
-                groups.INT.set(10 - arr[1]);
-                groups.STR.set(10 - arr[2]);
-                groups.MNY.set(10 - arr[3]);
-            });
+    const autoGenerator = function (n, sum) {
+      const rest = sum % n;
+      const value = Math.ceil(sum / n);
+      if (rest === 0) {
+        return [value, value, value, value];
+      }
+      return [value, value, value, sum - value * 3];
+    };
+    propertyPage.find("#random").click(() => {
+      let t = this.#totalMax;
 
-        propertyPage
-            .find('#start')
-            .click(()=>{
-                if(total() < this.#totalMax) {
-                    this.hint(`你还有${this.#totalMax-total()}属性点没有分配完`);
-                    return;
-                } else if (total() > this.#totalMax) {
-                    this.hint(`你多使用了${total() - this.#totalMax}属性点`);
-                    return;
-                }
-                this.#life.restart({
-                    CHR: groups.CHR.get(),
-                    INT: groups.INT.get(),
-                    STR: groups.STR.get(),
-                    MNY: groups.MNY.get(),
-                    SPR: 5,
-                    TLT: Array.from(this.#talentSelected).map(({id})=>id),
-                });
-                this.switch('trajectory');
-                this.#pages.trajectory.born();
-            });
+      const diff = 40 - t || 0;
+      if (diff > 0) {
+        const arr = autoGenerator(4, diff);
+        // console.log("arr", arr);
+        groups.CHR.set(10 - arr[0]);
+        groups.INT.set(10 - arr[1]);
+        groups.STR.set(10 - arr[2]);
+        groups.MNY.set(10 - arr[3]);
+      } else {
+        groups.CHR.set(10);
+        groups.INT.set(10);
+        groups.STR.set(10);
+        groups.MNY.set(10);
+      }
+    });
 
-        // Trajectory
-        const trajectoryPage = $(`
+    propertyPage.find("#start").click(() => {
+      if (total() > this.#totalMax) {
+        this.hint(`你多用了${total() - this.#totalMax}属性点`);
+        return;
+      }
+      this.#life.restart({
+        CHR: groups.CHR.get(),
+        INT: groups.INT.get(),
+        STR: groups.STR.get(),
+        MNY: groups.MNY.get(),
+        SPR: 5,
+        TLT: Array.from(this.#talentSelected).map(({ id }) => id),
+      });
+      this.switch("trajectory");
+      this.#pages.trajectory.born();
+    });
+
+    // Trajectory
+    const trajectoryPage = $(`
         <div id="main">
             <ul id="lifeTrajectory" class="lifeTrajectory"></ul>
             <button id="summary" class="mainbtn" style="top:auto; bottom:0.1rem">人生总结</button>
         </div>
         `);
 
-        trajectoryPage
-            .find('#lifeTrajectory')
-            .click(()=>{
-                if(this.#isEnd) return;
-                const trajectory = this.#life.next();
-                const { age, content, isEnd } = trajectory;
+    trajectoryPage.find("#lifeTrajectory").click(() => {
+      if (this.#isEnd) return;
+      const trajectory = this.#life.next();
+      const { age, content, isEnd } = trajectory;
 
-                const li = $(`<li><span>${age}岁：</span>${
-                    content.map(
-                        ({type, description, grade, name, postEvent}) => {
-                            switch(type) {
-                                case 'TLT':
-                                    return `天赋【${name}】发动：${description}`;
-                                case 'EVT':
-                                    return description + (postEvent?`<br>${postEvent}`:'');
-                            }
-                        }
-                    ).join('<br>')
-                }</li>`);
-                li.appendTo('#lifeTrajectory');
-                $("#lifeTrajectory").scrollTop($("#lifeTrajectory")[0].scrollHeight);
-                if(isEnd) {
-                    this.#isEnd = true;
-                    trajectoryPage.find('#summary').show();
-                }
-            });
+      const li = $(
+        `<li><span>${age}岁：</span>${content
+          .map(({ type, description, grade, name, postEvent }) => {
+            switch (type) {
+              case "TLT":
+                return `天赋【${name}】发动：${description}`;
+              case "EVT":
+                return description + (postEvent ? `<br>${postEvent}` : "");
+            }
+          })
+          .join("<br>")}</li>`
+      );
+      li.appendTo("#lifeTrajectory");
+      $("#lifeTrajectory").scrollTop($("#lifeTrajectory")[0].scrollHeight);
+      if (isEnd) {
+        this.#isEnd = true;
+        trajectoryPage.find("#summary").show();
+      }
+    });
 
-        trajectoryPage
-            .find('#summary')
-            .click(()=>{
-                this.switch('summary');
-            })
+    trajectoryPage.find("#summary").click(() => {
+      this.switch("summary");
+    });
 
-        // Summary
-        const summaryPage = $(`
+    // Summary
+    const summaryPage = $(`
         <div id="main">
             <div class="head">人生总结</div>
             <ul id="judge" class="judge" style="bottom: calc(35% + 2.5rem)">
@@ -320,178 +314,185 @@ class App{
         </div>
         `);
 
-        summaryPage
-            .find('#again')
-            .click(()=>{
-                this.times ++;
-                this.#life.talentExtend(this.#selectedExtendTalent);
+    summaryPage.find("#again").click(() => {
+      this.times++;
+      this.#life.talentExtend(this.#selectedExtendTalent);
+      this.#selectedExtendTalent = null;
+      this.#talentSelected.clear();
+      this.#totalMax = 40;
+      this.#isEnd = false;
+      this.switch("index");
+    });
+
+    this.#pages = {
+      loading: {
+        page: loadingPage,
+        clear: () => {},
+      },
+      index: {
+        page: indexPage,
+        btnRank: indexPage.find("#rank"),
+        btnRestart: indexPage.find("#restart"),
+        hint: indexPage.find(".hint"),
+        cnt: indexPage.find("#cnt"),
+        clear: () => {
+          indexPage.find(".hint").hide();
+
+          const times = this.times;
+          const btnRank = indexPage.find("#rank");
+          const cnt = indexPage.find("#cnt");
+          if (times > 0) {
+            btnRank.show();
+            cnt.show();
+            cnt.text(`已重开${times}次`);
+            return;
+          }
+
+          btnRank.hide();
+          cnt.hide();
+        },
+      },
+      talent: {
+        page: talentPage,
+        clear: () => {
+          talentPage.find("ul.selectlist").empty();
+          talentPage.find("#random").show();
+          this.#totalMax = 40;
+        },
+      },
+      property: {
+        page: propertyPage,
+        clear: () => {
+          freshTotal();
+        },
+      },
+      trajectory: {
+        page: trajectoryPage,
+        clear: () => {
+          trajectoryPage.find("#lifeTrajectory").empty();
+          trajectoryPage.find("#summary").hide();
+          this.#isEnd = false;
+        },
+        born: () => {
+          trajectoryPage.find("#lifeTrajectory").trigger("click");
+        },
+      },
+      summary: {
+        page: summaryPage,
+        clear: () => {
+          const judge = summaryPage.find("#judge");
+          const talents = summaryPage.find("#talents");
+          judge.empty();
+          talents.empty();
+          this.#talentSelected.forEach((talent) => {
+            const li = createTalent(talent);
+            talents.append(li);
+            li.click(() => {
+              if (li.hasClass("selected")) {
                 this.#selectedExtendTalent = null;
-                this.#talentSelected.clear();
-                this.#totalMax = 20;
-                this.#isEnd = false;
-                this.switch('index');
+                li.removeClass("selected");
+              } else if (this.#selectedExtendTalent != null) {
+                this.hint("只能继承一个天赋");
+                return;
+              } else {
+                this.#selectedExtendTalent = talent.id;
+                li.addClass("selected");
+              }
             });
+          });
 
-        this.#pages = {
-            loading: {
-                page: loadingPage,
-                clear: ()=>{},
-            },
-            index: {
-                page: indexPage,
-                btnRank: indexPage.find('#rank'),
-                btnRestart: indexPage.find('#restart'),
-                hint: indexPage.find('.hint'),
-                cnt: indexPage.find('#cnt'),
-                clear: ()=>{
-                    indexPage.find('.hint').hide();
+          const records = this.#life.getRecord();
+          const s = (type, func) => {
+            const value = func(records.map(({ [type]: v }) => v));
+            const { judge, grade } = summary(type, value);
+            return { judge, grade, value };
+          };
+          console.table(records);
+          console.debug(records);
 
-                    const times = this.times;
-                    const btnRank = indexPage.find('#rank');
-                    const cnt = indexPage.find('#cnt');
-                    if(times > 0) {
-                        btnRank.show();
-                        cnt.show();
-                        cnt.text(`已重开${times}次`);
-                        return;
-                    }
+          judge.append(
+            [
+              (() => {
+                const { judge, grade, value } = s("CHR", max);
+                return `<li class="grade${grade}"><span>颜值：</span>${value} ${judge}</li>`;
+              })(),
+              (() => {
+                const { judge, grade, value } = s("INT", max);
+                return `<li class="grade${grade}"><span>智力：</span>${value} ${judge}</li>`;
+              })(),
+              (() => {
+                const { judge, grade, value } = s("STR", max);
+                return `<li class="grade${grade}"><span>体质：</span>${value} ${judge}</li>`;
+              })(),
+              (() => {
+                const { judge, grade, value } = s("MNY", max);
+                return `<li class="grade${grade}"><span>家境：</span>${value} ${judge}</li>`;
+              })(),
+              (() => {
+                const { judge, grade, value } = s("SPR", max);
+                return `<li class="grade${grade}"><span>快乐：</span>${value} ${judge}</li>`;
+              })(),
+              (() => {
+                const { judge, grade, value } = s("AGE", max);
+                return `<li class="grade${grade}"><span>享年：</span>${value} ${judge}</li>`;
+              })(),
+              (() => {
+                const m = (type) =>
+                  max(records.map(({ [type]: value }) => value));
+                const value = Math.floor(
+                  sum(m("CHR"), m("INT"), m("STR"), m("MNY"), m("SPR")) * 2 +
+                    m("AGE") / 2
+                );
+                const { judge, grade } = summary("SUM", value);
+                return `<li class="grade${grade}"><span>总评：</span>${value} ${judge}</li>`;
+              })(),
+            ].join("")
+          );
+        },
+      },
+    };
+  }
 
-                    btnRank.hide();
-                    cnt.hide();
-                },
-            },
-            talent: {
-                page: talentPage,
-                clear: ()=>{
-                    talentPage.find('ul.selectlist').empty();
-                    talentPage.find('#random').show();
-                    this.#totalMax = 20;
-                },
-            },
-            property: {
-                page: propertyPage,
-                clear: ()=>{
-                    freshTotal();
-                },
-            },
-            trajectory: {
-                page: trajectoryPage,
-                clear: ()=>{
-                    trajectoryPage.find('#lifeTrajectory').empty();
-                    trajectoryPage.find('#summary').hide();
-                    this.#isEnd = false;
-                },
-                born: ()=>{
-                    trajectoryPage.find('#lifeTrajectory').trigger("click");
-                }
-            },
-            summary: {
-                page: summaryPage,
-                clear: ()=>{
-                    const judge = summaryPage.find('#judge');
-                    const talents = summaryPage.find('#talents');
-                    judge.empty();
-                    talents.empty();
-                    this.#talentSelected.forEach(talent=>{
-                        const li = createTalent(talent);
-                        talents.append(li);
-                        li.click(()=>{
-                            if(li.hasClass('selected')) {
-                                this.#selectedExtendTalent = null;
-                                li.removeClass('selected');
-                            } else if(this.#selectedExtendTalent != null) {
-                                this.hint('只能继承一个天赋');
-                                return;
-                            } else {
-                                this.#selectedExtendTalent = talent.id;
-                                li.addClass('selected');
-                            }
-                        });
-                    });
+  switch(page) {
+    const p = this.#pages[page];
+    if (!p) return;
+    $("#main").detach();
+    p.clear();
+    p.page.appendTo("body");
+  }
 
-                    const records = this.#life.getRecord();
-                    const s = (type, func)=>{
-                        const value = func(records.map(({[type]:v})=>v));
-                        const { judge, grade } = summary(type, value);
-                        return { judge, grade, value };
-                    };
-                    console.table(records);
-                    console.debug(records);
-
-                    judge.append([
-                        (()=>{
-                            const { judge, grade, value } = s('CHR', max);
-                            return `<li class="grade${grade}"><span>颜值：</span>${value} ${judge}</li>`
-                        })(),
-                        (()=>{
-                            const { judge, grade, value } = s('INT', max);
-                            return `<li class="grade${grade}"><span>智力：</span>${value} ${judge}</li>`
-                        })(),
-                        (()=>{
-                            const { judge, grade, value } = s('STR', max);
-                            return `<li class="grade${grade}"><span>体质：</span>${value} ${judge}</li>`
-                        })(),
-                        (()=>{
-                            const { judge, grade, value } = s('MNY', max);
-                            return `<li class="grade${grade}"><span>家境：</span>${value} ${judge}</li>`
-                        })(),
-                        (()=>{
-                            const { judge, grade, value } = s('SPR', max);
-                            return `<li class="grade${grade}"><span>快乐：</span>${value} ${judge}</li>`
-                        })(),
-                        (()=>{
-                            const { judge, grade, value } = s('AGE', max);
-                            return `<li class="grade${grade}"><span>享年：</span>${value} ${judge}</li>`
-                        })(),
-                        (()=>{
-                            const m = type=>max(records.map(({[type]: value})=>value));
-                            const value = Math.floor(sum(m('CHR'), m('INT'), m('STR'), m('MNY'), m('SPR'))*2 + m('AGE')/2);
-                            const { judge, grade } = summary('SUM', value);
-                            return `<li class="grade${grade}"><span>总评：</span>${value} ${judge}</li>`
-                        })(),
-                    ].join(''));
-                }
-            }
-        }
+  hint(message, type = "info") {
+    if (this.#hintTimeout) {
+      clearTimeout(this.#hintTimeout);
+      this.#hintTimeout = null;
     }
+    hideBanners();
+    requestAnimationFrame(() => {
+      const banner = $(`.banner.${type}`);
+      banner.addClass("visible");
+      banner.find(".banner-message").text(message);
+      if (type != "error") {
+        this.#hintTimeout = setTimeout(hideBanners, 3000);
+      }
+    });
+  }
 
-    switch(page) {
-        const p = this.#pages[page];
-        if(!p) return;
-        $('#main').detach();
-        p.clear();
-        p.page.appendTo('body');
+  setTheme(theme) {
+    const themeLink = $(document).find("#themeLink");
+
+    if (theme == "light") {
+      themeLink.attr("href", "style.css");
+    } else {
+      themeLink.attr("href", "dark.css");
     }
+  }
 
-    hint(message, type='info') {
-        if(this.#hintTimeout) {
-            clearTimeout(this.#hintTimeout);
-            this.#hintTimeout = null;
-        }
-        hideBanners();
-        requestAnimationFrame(() => {
-            const banner = $(`.banner.${type}`);
-            banner.addClass('visible');
-            banner.find('.banner-message').text(message);
-            if(type != 'error') {
-                this.#hintTimeout = setTimeout(hideBanners, 3000);
-            }
-        });
-    }
-
-    setTheme(theme) {
-        const themeLink = $(document).find('#themeLink');
-
-        if(theme == 'light') {
-            themeLink.attr('href', 'style.css');
-        } else {
-            themeLink.attr('href', 'dark.css');
-        }
-    }
-
-    get times() {return JSON.parse(localStorage.times||'0') || 0;}
-    set times(v) {localStorage.times = JSON.stringify(parseInt(v) || 0)};
-
+  get times() {
+    return JSON.parse(localStorage.times || "0") || 0;
+  }
+  set times(v) {
+    localStorage.times = JSON.stringify(parseInt(v) || 0);
+  }
 }
 
 export default App;
