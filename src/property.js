@@ -148,8 +148,8 @@ class Property {
     ageNext() {
         this.change(this.TYPES.AGE, 1);
         const age = this.get(this.TYPES.AGE);
-        const {event, talent} = this.getAgeData(age);
-        return {age, event, talent};
+        const {event} = this.getAgeData(age);
+        return {age, event};
     }
 
     getAgeData(age) {

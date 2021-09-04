@@ -36,9 +36,9 @@ class Life {
     }
 
     next() {
-        const {age, event, talent} = this.#property.ageNext();
+        const {age, event} = this.#property.ageNext();
 
-        const talentContent = this.doTalent(talent);
+        const talentContent = this.doTalent();
         const eventContent = this.doEvent(this.random(event));
         this.#property.record();
 
@@ -48,9 +48,8 @@ class Life {
         return { age, content, isEnd };
     }
 
-    doTalent(talents) {
-        if(talents) this.#property.change(this.#property.TYPES.TLT, talents);
-        talents = this.#property.get(this.#property.TYPES.TLT)
+    doTalent() {
+        const talents = this.#property.get(this.#property.TYPES.TLT)
             .filter(talentId=>!this.#triggerTalents.has(talentId));
 
         const contents = [];
