@@ -162,6 +162,7 @@ body {
     text-align: center;
     border-radius: 0.2rem;
     cursor: pointer;
+    user-select: none;
 }
 
 .grade1b,

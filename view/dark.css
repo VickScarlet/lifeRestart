@@ -167,6 +167,7 @@ body {
     border-radius: 0.2rem;
     cursor: pointer;
     color: #EEEEEE;
+    user-select: none;
 }
 
 .grade1b,
