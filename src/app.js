@@ -14,7 +14,7 @@ class App {
   #isEnd = false;
   #selectedExtendTalent = null;
   #hintTimeout;
-  #talentMax = 6;
+  #talentMax = 8;
 
   async initial() {
     this.initPages();
