@@ -1,6 +1,7 @@
 import { max, sum } from './functions/util.js';
 import { summary } from './functions/summary.js'
 import Life from './life.js'
+
 class App{
     constructor(){
         this.#life = new Life();
