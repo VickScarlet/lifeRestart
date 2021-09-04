@@ -152,6 +152,7 @@ html {
     text-align: center;
     border-radius: 0.2rem;
     cursor: pointer;
+    user-select: none;
 }
 
 .selectlist > li::before {

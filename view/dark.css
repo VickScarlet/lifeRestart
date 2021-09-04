@@ -157,6 +157,7 @@ html {
     border-radius: 0.2rem;
     cursor: pointer;
     color: #EEEEEE;
+    user-select: none;
 }
 
 .selectlist > li::before {
