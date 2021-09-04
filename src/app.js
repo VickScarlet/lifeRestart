@@ -1,7 +1,6 @@
 import { max, sum } from './functions/util.js';
 import { summary } from './functions/summary.js'
 import Life from './life.js'
-import { hideBanners } from './';
 
 class App{
     constructor(){
