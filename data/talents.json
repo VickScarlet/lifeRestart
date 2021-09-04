@@ -46,7 +46,7 @@
         "description": "快乐+1",
         "grade": 0,
         "effect": {
-            "SPR": 1
+            "SPR": 10
         }
     },
     "1007": {
@@ -54,7 +54,7 @@
         "name": "天赋异禀",
         "description": "初始可用属性点+2",
         "grade": 1,
-        "status": 2
+        "status": 20
     },
     "1008": {
         "id": "1008",
@@ -62,7 +62,7 @@
         "description": "快乐-3",
         "grade": 0,
         "effect": {
-            "SPR": -3
+            "SPR": 30
         }
     },
     "1009": {
@@ -71,7 +71,7 @@
         "description": "快乐+2",
         "grade": 1,
         "effect": {
-            "SPR": 2
+            "SPR": 20
         }
     },
     "1010": {
@@ -151,11 +151,11 @@
         "description": "所有属性+1",
         "grade": 2,
         "effect": {
-            "SPR": 1,
-            "MNY": 1,
-            "CHR": 1,
-            "STR": 1,
-            "INT": 1
+            "SPR": 10,
+            "MNY": 10,
+            "CHR": 10,
+            "STR": 10,
+            "INT": 10
         }
     },
     "1019": {
@@ -163,7 +163,7 @@
         "name": "超凡",
         "description": "初始可用属性点+4",
         "grade": 2,
-        "status": 4
+        "status": 40
     },
     "1020": {
         "id": "1020",
@@ -171,7 +171,7 @@
         "description": "颜值+2",
         "grade": 1,
         "effect": {
-            "CHR": 2
+            "CHR": 20
         }
     },
     "1021": {
@@ -180,8 +180,8 @@
         "description": "颜值+2，体质-2",
         "grade": 0,
         "effect": {
-            "CHR": 2,
-            "STR": -2
+            "CHR": 20,
+            "STR": 20
         }
     },
     "1022": {
@@ -196,11 +196,11 @@
         "description": "所有属性+2",
         "grade": 3,
         "effect": {
-            "SPR": 2,
-            "MNY": 2,
-            "CHR": 2,
-            "STR": 2,
-            "INT": 2
+            "SPR": 20,
+            "MNY": 20,
+            "CHR": 20,
+            "STR": 20,
+            "INT": 20
         }
     },
     "1024": {
@@ -268,7 +268,7 @@
         "description": "体质-2",
         "grade": 0,
         "effect": {
-            "STR": -2
+            "STR": 20
         }
     },
     "1032": {
@@ -299,7 +299,7 @@
         "description": "家境-2",
         "grade": 0,
         "effect": {
-            "MNY": -2
+            "MNY": 20
         }
     },
     "1035": {
@@ -308,7 +308,7 @@
         "description": "智力-2",
         "grade": 0,
         "effect": {
-            "INT": -2
+            "INT": 20
         }
     },
     "1036": {
@@ -317,7 +317,7 @@
         "description": "智力+1",
         "grade": 0,
         "effect": {
-            "INT": 1
+            "INT": 20
         }
     },
     "1037": {
@@ -402,71 +402,71 @@
         "id": "1049",
         "name": "三十而立",
         "description": "30岁时家境+2",
-        "condition": "AGE?[30]",
+        "condition": "AGE?[10]",
         "grade": 0,
         "effect": {
-            "MNY": 2
+            "MNY": 20
         }
     },
     "1050": {
         "id": "1050",
         "name": "四十不惑",
         "description": "40岁时智力+2",
-        "condition": "AGE?[40]",
+        "condition": "AGE?[10]",
         "grade": 0,
         "effect": {
-            "INT": 2
+            "INT": 20
         }
     },
     "1051": {
         "id": "1051",
         "name": "知天命",
         "description": "50岁时智力、快乐+1",
-        "condition": "AGE?[50]",
+        "condition": "AGE?[10]",
         "grade": 0,
         "effect": {
-            "SPR": 1,
-            "INT": 1
+            "SPR": 10,
+            "INT": 10
         }
     },
     "1052": {
         "id": "1052",
         "name": "耳顺",
         "description": "60岁时快乐+2",
-        "condition": "AGE?[60]",
+        "condition": "AGE?[10]",
         "grade": 0,
         "effect": {
-            "SPR": 2
+            "SPR": 20
         }
     },
     "1053": {
         "id": "1053",
         "name": "从心所欲",
         "description": "70岁时快乐+3",
-        "condition": "AGE?[70]",
+        "condition": "AGE?[10]",
         "grade": 0,
         "effect": {
-            "SPR": 3
+            "SPR": 30
         }
     },
     "1054": {
         "id": "1054",
         "name": "老当益壮",
         "description": "60岁时体质+2",
-        "condition": "AGE?[60]",
+        "condition": "AGE?[10]",
         "grade": 1,
         "effect": {
-            "STR": 2
+            "STR": 20
         }
     },
     "1055": {
         "id": "1055",
         "name": "鹤发童颜",
         "description": "70岁时颜值+3",
-        "condition": "AGE?[70]",
+        "condition": "AGE?[10]",
         "grade": 0,
         "effect": {
-            "CHR": 3
+            "CHR": 30
         }
     },
     "1056": {
@@ -476,27 +476,27 @@
         "condition": "AGE?[5]",
         "grade": 1,
         "effect": {
-            "INT": 2
+            "INT": 20
         }
     },
     "1057": {
         "id": "1057",
         "name": "十八变",
         "description": "18岁时颜值+2",
-        "condition": "AGE?[18]",
+        "condition": "AGE?[10]",
         "grade": 1,
         "effect": {
-            "CHR": 2
+            "CHR": 20
         }
     },
     "1058": {
         "id": "1058",
         "name": "迟来之财",
         "description": "90岁时家境+4",
-        "condition": "AGE?[90]",
+        "condition": "AGE?[10]",
         "grade": 0,
         "effect": {
-            "MNY": 4
+            "MNY": 40
         }
     },
     "1059": {
@@ -506,7 +506,7 @@
         "condition": "AGE?[30,40,50]",
         "grade": 0,
         "effect": {
-            "MNY": 1
+            "MNY": 10
         }
     },
     "1060": {
@@ -516,7 +516,7 @@
         "condition": "AGE?[12,18]",
         "grade": 1,
         "effect": {
-            "INT": 1
+            "INT": 10
         }
     },
     "1061": {
@@ -526,17 +526,17 @@
         "condition": "AGE?[16,24]",
         "grade": 1,
         "effect": {
-            "CHR": 1
+            "CHR": 10
         }
     },
     "1062": {
         "id": "1062",
         "name": "成年礼",
         "description": "18岁时快乐+1",
-        "condition": "AGE?[18]",
+        "condition": "AGE?[10]",
         "grade": 0,
         "effect": {
-            "SPR": 1
+            "SPR": 10
         }
     },
     "1063": {
@@ -544,7 +544,7 @@
         "name": "开光之胎",
         "description": "初始可用属性点+1",
         "grade": 0,
-        "status": 1
+        "status": 10
     },
     "1064": {
         "id": "1064",
@@ -586,7 +586,7 @@
         "condition": "(STR<1)&(STR>-1)",
         "grade": 0,
         "effect": {
-            "STR": 1
+            "STR": 10
         }
     },
     "1069": {
@@ -596,7 +596,7 @@
         "condition": "(AGE?[20])&(INT>8)",
         "grade": 0,
         "effect": {
-            "MNY": 2
+            "MNY": 20
         }
     },
     "1070": {
@@ -606,7 +606,7 @@
         "condition": "(AGE?[20])&(CHR>8)",
         "grade": 0,
         "effect": {
-            "SPR": 2
+            "SPR": 20
         }
     },
     "1071": {
@@ -634,7 +634,7 @@
         "condition": "INT>10",
         "grade": 1,
         "effect": {
-            "SPR": 3
+            "SPR": 30
         }
     },
     "1075": {
@@ -644,7 +644,7 @@
         "condition": "STR>10",
         "grade": 0,
         "effect": {
-            "CHR": 3
+            "CHR": 30
         }
     },
     "1076": {
@@ -654,7 +654,7 @@
         "condition": "STR>10",
         "grade": 1,
         "effect": {
-            "SPR": 3
+            "SPR": 30
         }
     },
     "1077": {
@@ -664,7 +664,7 @@
         "condition": "CHR>10",
         "grade": 1,
         "effect": {
-            "SPR": 3
+            "SPR": 30
         }
     },
     "1078": {
@@ -674,7 +674,7 @@
         "condition": "INT>10",
         "grade": 0,
         "effect": {
-            "STR": 3
+            "STR": 30
         }
     },
     "1079": {
@@ -684,7 +684,7 @@
         "condition": "INT>10",
         "grade": 0,
         "effect": {
-            "CHR": 3
+            "CHR": 30
         }
     },
     "1080": {
@@ -694,7 +694,7 @@
         "condition": "INT>10",
         "grade": 0,
         "effect": {
-            "MNY": 3
+            "MNY": 30
         }
     },
     "1081": {
@@ -704,10 +704,10 @@
         "condition": "SPR>10",
         "grade": 0,
         "effect": {
-            "MNY": 1,
-            "CHR": 1,
-            "STR": 1,
-            "INT": 1
+            "MNY": 10,
+            "CHR": 10,
+            "STR": 10,
+            "INT": 10
         }
     },
     "1082": {
@@ -717,10 +717,10 @@
         "condition": "SPR>10",
         "grade": 1,
         "effect": {
-            "MNY": 2,
-            "CHR": 2,
-            "STR": 2,
-            "INT": 2
+            "MNY": 20,
+            "CHR": 20,
+            "STR": 20,
+            "INT": 20
         }
     },
     "1083": {
@@ -730,10 +730,10 @@
         "condition": "SPR>10",
         "grade": 2,
         "effect": {
-            "MNY": 3,
-            "CHR": 3,
-            "STR": 3,
-            "INT": 3
+            "MNY": 30,
+            "CHR": 30,
+            "STR": 30,
+            "INT": 30
         }
     },
     "1084": {
@@ -743,7 +743,7 @@
         "grade": 0,
         "status": -2,
         "effect": {
-            "SPR": 2
+            "SPR": 20
         },
         "exclusive": [
             "1122"
@@ -754,9 +754,9 @@
         "name": "幸运儿",
         "description": "初始可用属性点-3，快乐+5",
         "grade": 1,
-        "status": -3,
+        "status": -1,
         "effect": {
-            "SPR": 5
+            "SPR": 50
         },
         "exclusive": [
             "1122"
@@ -779,7 +779,7 @@
         "condition": "MNY>10",
         "grade": 1,
         "effect": {
-            "SPR": 3
+            "SPR": 30
         }
     },
     "1088": {
@@ -789,7 +789,7 @@
         "condition": "MNY>10",
         "grade": 0,
         "effect": {
-            "CHR": 3
+            "CHR": 30
         }
     },
     "1089": {
@@ -799,46 +799,46 @@
         "condition": "MNY>10",
         "grade": 0,
         "effect": {
-            "STR": 3
+            "STR": 30
         }
     },
     "1090": {
         "id": "1090",
         "name": "身残志坚",
         "description": "体质<0时其他属性+1",
-        "condition": "STR<0",
+        "condition": "STR>0",
         "grade": 0,
         "effect": {
-            "SPR": 1,
-            "MNY": 1,
-            "CHR": 1,
-            "INT": 1
+            "SPR": 10,
+            "MNY": 10,
+            "CHR": 10,
+            "INT": 10
         }
     },
     "1091": {
         "id": "1091",
         "name": "活死人",
         "description": "体质<-1时其他属性+2",
-        "condition": "STR<0",
+        "condition": "STR>0",
         "grade": 1,
         "effect": {
-            "SPR": 2,
-            "MNY": 2,
-            "CHR": 2,
-            "INT": 2
+            "SPR": 20,
+            "MNY": 20,
+            "CHR": 20,
+            "INT": 20
         }
     },
     "1092": {
         "id": "1092",
         "name": "开一扇窗",
-        "description": "颜值<0时其他属性+1",
+        "description": "颜值>0时其他属性+1",
         "condition": "CHR<0",
         "grade": 0,
         "effect": {
-            "SPR": 1,
-            "MNY": 1,
-            "STR": 1,
-            "INT": 1
+            "SPR": 10,
+            "MNY": 10,
+            "STR": 10,
+            "INT": 10
         }
     },
     "1093": {
@@ -847,8 +847,8 @@
         "description": "颜值-2，智力+2",
         "grade": 0,
         "effect": {
-            "CHR": -2,
-            "INT": 2
+            "CHR": 20,
+            "INT": 20
         }
     },
     "1094": {
@@ -857,59 +857,59 @@
         "description": "颜值-1",
         "grade": 0,
         "effect": {
-            "CHR": -1
+            "CHR": 20
         }
     },
     "1095": {
         "id": "1095",
         "name": "潜能",
         "description": "家境<0时其他属性+1",
-        "condition": "MNY<0",
+        "condition": "MNY>0",
         "grade": 0,
         "effect": {
-            "SPR": 1,
-            "CHR": 1,
-            "STR": 1,
-            "INT": 1
+            "SPR": 10,
+            "CHR": 10,
+            "STR": 10,
+            "INT": 10
         }
     },
     "1096": {
         "id": "1096",
         "name": "哀兵",
         "description": "快乐<0时其他属性+1",
-        "condition": "SPR<0",
+        "condition": "SPR>0",
         "grade": 0,
         "effect": {
-            "MNY": 1,
-            "CHR": 1,
-            "STR": 1,
-            "INT": 1
+            "MNY": 10,
+            "CHR": 10,
+            "STR": 10,
+            "INT": 10
         }
     },
     "1097": {
         "id": "1097",
         "name": "苦痛侍僧",
         "description": "快乐<-1时其他属性+2",
-        "condition": "SPR<-1",
+        "condition": "SPR>-1",
         "grade": 1,
         "effect": {
-            "MNY": 2,
-            "CHR": 2,
-            "STR": 2,
-            "INT": 2
+            "MNY": 20,
+            "CHR": 20,
+            "STR": 20,
+            "INT": 20
         }
     },
     "1098": {
         "id": "1098",
         "name": "觉醒",
         "description": "家境<-1时其他属性+2",
-        "condition": "MNY<-1",
+        "condition": "MNY>-1",
         "grade": 1,
         "effect": {
-            "SPR": 2,
-            "CHR": 2,
-            "STR": 2,
-            "INT": 2
+            "SPR": 20,
+            "CHR": 20,
+            "STR": 20,
+            "INT": 20
         }
     },
     "1099": {
@@ -918,8 +918,8 @@
         "description": "家境-2，快乐+2",
         "grade": 0,
         "effect": {
-            "SPR": 2,
-            "MNY": -2
+            "SPR": 20,
+            "MNY": 20
         }
     },
     "1100": {
@@ -927,9 +927,9 @@
         "name": "海的女儿",
         "description": "颜值-2，初始可用属性点+1",
         "grade": 0,
-        "status": 1,
+        "status": 10,
         "effect": {
-            "CHR": -2
+            "CHR": 20
         }
     },
     "1101": {
@@ -939,11 +939,11 @@
         "condition": "(SPR>5)&(MNY>5)&(CHR>5)&(STR>5)&(INT>5)",
         "grade": 0,
         "effect": {
-            "SPR": 1,
-            "MNY": 1,
-            "CHR": 1,
-            "STR": 1,
-            "INT": 1
+            "SPR": 10,
+            "MNY": 10,
+            "CHR": 10,
+            "STR": 10,
+            "INT": 10
         }
     },
     "1102": {
@@ -953,11 +953,11 @@
         "condition": "(SPR>5)&(MNY>5)&(CHR>5)&(STR>5)&(INT>5)",
         "grade": 1,
         "effect": {
-            "SPR": 2,
-            "MNY": 2,
-            "CHR": 2,
-            "STR": 2,
-            "INT": 2
+            "SPR": 20,
+            "MNY": 20,
+            "CHR": 20,
+            "STR": 20,
+            "INT": 20
         }
     },
     "1103": {
