@@ -162,7 +162,6 @@ body {
     text-align: center;
     border-radius: 0.2rem;
     cursor: pointer;
-    user-select: none;
 }
 
 .grade1b,
@@ -176,13 +175,28 @@ body {
 	background-color: rgb(237, 237, 237);
 	border: #c5c5c5 2px solid !important;
 }
+
+.grade1,
+.grade1b::before {
+    background-color: rgb(116, 191, 255) !important;
+}
 .grade1b {
 	background-color: rgb(116, 191, 255);
 	border: #c5c5c5 2px solid !important;
 }
+
+.grade2,
+.grade2b::before {
+    background-color: rgb(226, 167, 255) !important;
+}
 .grade2b {
 	background-color: rgb(226, 167, 255);
 	border: #c5c5c5 2px solid !important;
+}
+
+.grade3,
+.grade3b::before {
+    background-color: #ffa07a !important;
 }
 .grade3b {
 	background-color: #ffa07a;
@@ -436,7 +450,7 @@ i {
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
- .eva-animation {
+  .eva-animation {
     animation-duration: 1s;
     animation-fill-mode: both; }
 
