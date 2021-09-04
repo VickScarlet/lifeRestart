@@ -1,4 +1,3 @@
-//缓存空间名称
 var CACHE_VERSION = 'sw_v1';
 
 var CACHE_FILES = [
