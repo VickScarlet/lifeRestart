@@ -187,6 +187,13 @@ html {
     background-color: lightsalmon !important;
 }
 
+.grade1b,
+.grade2b,
+.grade3b {
+  padding-left: 1.5rem;
+  box-sizing: border-box;
+}
+
 .selected {
     background-color: gray;
     color: #EEEEEE;
