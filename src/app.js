@@ -294,7 +294,7 @@ class App{
                 li.appendTo('#lifeTrajectory');
                 $("#lifeTrajectory").scrollTop($("#lifeTrajectory")[0].scrollHeight);
                 if(isEnd) {
-                    $(document).keydown(function(event){})
+                    $(document).unbind("keydown");
                     this.#isEnd = true;
                     trajectoryPage.find('#summary').show();
                 }
