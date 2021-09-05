@@ -41,6 +41,7 @@ class Life {
 
         const talentContent = this.doTalent(talent);
         const eventContent = this.doEvent(this.random(event));
+        console.log("DEBUG1 event: ", event, "eventContent",  eventContent)
         this.#property.record();
 
         const isEnd = this.#property.isEnd();
