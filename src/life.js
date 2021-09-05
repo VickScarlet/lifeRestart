@@ -15,10 +15,11 @@ class Life {
     #triggerTalents;
 
     async initial() {
-        const age = await json('age');
-        const talents = await json('talents');
-        const events = await json('events');
-
+        const [age, talents, events] = await Promise.all([
+          json('age'),
+          json('talents'),
+          json('events'),
+        ])
         this.#property.initial({age});
         this.#talent.initial({talents});
         this.#event.initial({events});
