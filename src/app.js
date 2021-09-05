@@ -2,6 +2,8 @@ import { max, sum } from './functions/util.js';
 import { summary } from './functions/summary.js'
 import Life from './life.js'
 
+const TOT_MAX = 1e6;
+
 class App{
     constructor(){
         this.#life = new Life();
@@ -10,7 +12,7 @@ class App{
     #life;
     #pages;
     #talentSelected = new Set();
-    #totalMax=20;
+    #totalMax=TOT_MAX;
     #isEnd = false;
     #selectedExtendTalent = null;
     #hintTimeout;
@@ -131,7 +133,7 @@ class App{
         talentPage
             .find('#next')
             .click(()=>{
-                this.#totalMax = 20 + this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected).map(({id})=>id));
+                this.#totalMax = TOT_MAX + this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected).map(({id})=>id));
                 this.switch('property');
             })
 
@@ -212,10 +214,10 @@ class App{
             return {group, get, set};
         }
 
-        groups.CHR = getBtnGroups("颜值", 0, 10); // 颜值 charm CHR
-        groups.INT = getBtnGroups("智力", 0, 10); // 智力 intelligence INT
-        groups.STR = getBtnGroups("体质", 0, 10); // 体质 strength STR
-        groups.MNY = getBtnGroups("家境", 0, 10); // 家境 money MNY
+        groups.CHR = getBtnGroups("颜值", 0, TOT_MAX); // 颜值 charm CHR
+        groups.INT = getBtnGroups("智力", 0, TOT_MAX); // 智力 intelligence INT
+        groups.STR = getBtnGroups("体质", 0, TOT_MAX); // 体质 strength STR
+        groups.MNY = getBtnGroups("家境", 0, TOT_MAX); // 家境 money MNY
 
         const ul = propertyPage.find('#propertyAllocation');
 
@@ -227,9 +229,9 @@ class App{
             .find('#random')
             .click(()=>{
                 let t = this.#totalMax;
-                const arr = [10, 10, 10, 10];
+                const arr = [TOT_MAX, TOT_MAX, TOT_MAX, TOT_MAX];
                 while(t>0) {
-                    const sub = Math.round(Math.random() * (Math.min(t, 10) - 1)) + 1;
+                    const sub = Math.round(Math.random() * (Math.min(t, TOT_MAX) - 1)) + 1;
                     while(true) {
                         const select = Math.floor(Math.random() * 4) % 4;
                         if(arr[select] - sub <0) continue;
@@ -238,10 +240,10 @@ class App{
                         break;
                     }
                 }
-                groups.CHR.set(10 - arr[0]);
-                groups.INT.set(10 - arr[1]);
-                groups.STR.set(10 - arr[2]);
-                groups.MNY.set(10 - arr[3]);
+                groups.CHR.set(TOT_MAX - arr[0]);
+                groups.INT.set(TOT_MAX - arr[1]);
+                groups.STR.set(TOT_MAX - arr[2]);
+                groups.MNY.set(TOT_MAX - arr[3]);
             });
 
         propertyPage
@@ -351,7 +353,7 @@ class App{
                 this.#life.talentExtend(this.#selectedExtendTalent);
                 this.#selectedExtendTalent = null;
                 this.#talentSelected.clear();
-                this.#totalMax = 20;
+                this.#totalMax = TOT_MAX;
                 this.#isEnd = false;
                 this.switch('index');
             });
@@ -389,7 +391,7 @@ class App{
                 clear: ()=>{
                     talentPage.find('ul.selectlist').empty();
                     talentPage.find('#random').show();
-                    this.#totalMax = 20;
+                    this.#totalMax = TOT_MAX;
                 },
             },
             property: {
