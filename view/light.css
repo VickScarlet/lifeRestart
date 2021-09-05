@@ -47,6 +47,10 @@ html {
     font-family: PingFangSC, 'Noto Sans CJK SC', 'MS Yahei';
 }
 
+body {
+	user-select: none;
+}
+
 #main {
     align-content: center;
     width: 100%;
@@ -69,7 +73,7 @@ html {
     position: fixed;
     top: 65%;
     left: 50%;
-    padding: 0.8rem 1rem;
+	padding: 0.5rem 1.5rem;
     border: 1px #ccc solid;
     border-radius: 0.2rem;
     background-color:white;
@@ -78,6 +82,12 @@ html {
     transform: translate(-50%,-50%);
     cursor: pointer;
     z-index:2;
+}
+
+.mainbtn:hover {
+	background: rgb(255, 120, 120);
+	color: #fff;
+	transition: all .4s ease 0s;
 }
 
 .iconfont {
@@ -154,34 +164,6 @@ html {
     cursor: pointer;
 }
 
-.selectlist > li::before {
-    position: absolute;
-    display: inline-block;
-    left: 0;
-    top: 0;
-    border-radius: 0.2rem 0 0 0.2rem;
-    margin: -1px;
-    padding: 1px;
-    height: 100%;
-    width: 1.5rem;
-    content: "　";
-}
-
-.grade1,
-.grade1b::before {
-    background-color: rgb(116, 191, 255) !important;
-}
-
-.grade2,
-.grade2b::before {
-    background-color: rgb(226, 167, 255) !important;
-}
-
-.grade3,
-.grade3b::before {
-    background-color: lightsalmon !important;
-}
-
 .grade1b,
 .grade2b,
 .grade3b {
@@ -189,13 +171,77 @@ html {
   box-sizing: border-box;
 }
 
-.selected {
-    background-color: gray;
-    color: white;
+.grade0b {
+	background-color: rgb(237, 237, 237);
+	border: #c5c5c5 2px solid !important;
+}
+
+.grade1,
+.grade1b::before {
+    background-color: rgb(116, 191, 255) !important;
+}
+.grade1b {
+	background-color: rgb(116, 191, 255);
+	border: #c5c5c5 2px solid !important;
+}
+
+.grade2,
+.grade2b::before {
+    background-color: rgb(226, 167, 255) !important;
+}
+.grade2b {
+	background-color: rgb(226, 167, 255);
+	border: #c5c5c5 2px solid !important;
+}
+
+.grade3,
+.grade3b::before {
+    background-color: #ffa07a !important;
+}
+.grade3b {
+	background-color: #ffa07a;
+	border: #c5c5c5 2px solid !important;
+}
+
+.grade0b:hover {
+	background-color: rgb(160, 160, 160);
+	transition: all .4s ease 0s;
+}
+.grade1b:hover {
+	background-color: rgb(159, 207, 248);
+	transition: all .4s ease 0s;
+}
+.grade2b:hover {
+	background-color: rgb(240, 212, 255);
+	transition: all .4s ease 0s;
+}
+.grade3b:hover {
+	background-color: #f7a989;
+	transition: all .4s ease 0s;
+}
+
+.grade0b.selected {
+    background-color: rgb(160, 160, 160);
+    color: #3b3b3b;
+}
+
+.grade1b.selected {
+    background-color: rgb(159, 207, 248);
+    color: #3b3b3b;
+}
+
+.grade2b.selected {
+	background-color: rgb(240, 212, 255);
+    color: #3b3b3b;
+}
+
+.grade3b.selected {
+    background-color: #f7a989;
+    color: #3b3b3b;
 }
 
 .propinitial {
-    top: 6rem;
+    top: 5rem;
     bottom: 14rem;
 }
 
@@ -227,8 +273,14 @@ html {
     user-select: none;
 }
 
+.propbtn:hover{
+	color: #5c5c5c;
+	transition: all .2s ease 0s;
+}
+
 .lifeTrajectory {
     border: 1px lightblue solid;
+    border-radius: 10px;
     background-color: aliceblue;
 }
 
@@ -393,17 +445,12 @@ i {
   margin: 0.25rem;
 }
 
-ins.adsbygoogle {
-  position: fixed;
-  bottom: 0;
-}
-
 /**
  * @license
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
- .eva-animation {
+  .eva-animation {
     animation-duration: 1s;
     animation-fill-mode: both; }
 
@@ -483,3 +530,7 @@ ins.adsbygoogle {
       transform: scale3d(0.5, 0.5, 0.5); }
     50% {
       opacity: 1; } }
+
+::-webkit-scrollbar {
+	width: 0 !important
+}
