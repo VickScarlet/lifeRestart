@@ -88,7 +88,7 @@ body {
 }
 
 .mainbtn:hover {
-	background: rgb(255, 120, 120);
+	background: #ff7878;
 	color: #fff;
 	transition: all .4s ease 0s;
 }
@@ -154,6 +154,7 @@ body {
     padding: 0;
     overflow: auto;
     transform: translateX(-50%);
+    text-align: center;
 }
 
 .selectlist > li {
@@ -170,23 +171,16 @@ body {
     user-select: none;
 }
 
-.grade1b,
-.grade2b,
-.grade3b {
-  padding-left: 1.5rem;
-  box-sizing: border-box;
-}
-
 .grade0b {
-	background-color: rgb(70, 70, 70);
+	background-color: #464646;
 	border: #f8f8f8 2px solid !important;
 }
 .grade1b {
-	background-color: rgb(116, 191, 255);
+	background-color: #6495ed;
 	border: #f8f8f8 2px solid !important;
 }
 .grade2b {
-	background-color: rgb(226, 167, 255);
+	background-color: #e2a7ff;
 	border: #f8f8f8 2px solid !important;
 }
 .grade3b {
@@ -194,45 +188,63 @@ body {
 	border: #f8f8f8 2px solid !important;
 }
 
-.grade0b:hover {
-	background-color: rgb(202, 202, 202);
-    color: #3b3b3b;
-	transition: all .4s ease 0s;
+@media (min-width:1080px) {
+    .grade0b:hover {
+    	background-color: #c0c0c0;
+        color: #3b3b3b;
+    	transition: all .3s ease 0s;
+    }
+    .grade1b:hover {
+    	background-color: #87cefa;
+        color: #3b3b3b;
+    	transition: all .3s ease 0s;
+    }
+    .grade2b:hover {
+    	background-color: #e7beff;
+        color: #3b3b3b;
+    	transition: all .3s ease 0s;
+    }
+    .grade3b:hover {
+    	background-color: #f7a989;
+        color: #3b3b3b;
+    	transition: all .3s ease 0s;
+    }
 }
-.grade1b:hover {
-	background-color: rgb(159, 207, 248);
-    color: #3b3b3b;
-	transition: all .4s ease 0s;
-}
-.grade2b:hover {
-	background-color: rgb(240, 212, 255);
-    color: #3b3b3b;
-	transition: all .4s ease 0s;
-}
-.grade3b:hover {
-	background-color: #f7a989;
-    color: #3b3b3b;
-	transition: all .4s ease 0s;
-}
-
 .grade0b.selected {
-    background-color: rgb(202, 202, 202) !important;
+    background-color: #c0c0c0 !important;
+    box-shadow: #ccc 0px 0px 10px;
     color: #3b3b3b;
 }
 
 .grade1b.selected {
-    background-color: rgb(198, 229, 255) !important;
+    background-color: #87cefa !important;
+    box-shadow: #ccc 0px 0px 10px;
     color: #3b3b3b;
 }
 
 .grade2b.selected {
-	background-color: rgb(240, 212, 255) !important;
+	background-color: #e7beff !important;
+    box-shadow: #ccc 0px 0px 10px;
     color: #3b3b3b;
 }
 
 .grade3b.selected {
     background-color: #f1bfac !important;
+    box-shadow: #ccc 0px 0px 10px;
     color: #3b3b3b;
+}
+
+.judge > li.grade1 span,
+.judge > li.grade1{
+    background-color: #87cefa;
+}
+.judge > li.grade2 span,
+.judge > li.grade2{
+    background-color: #e7beff;
+}
+.judge > li.grade3 span,
+.judge > li.grade3{
+    background-color: #f7a989;
 }
 
 .propinitial {
@@ -307,13 +319,14 @@ body {
     width: calc(100% - 9rem);
     margin: 0.5rem;
     padding: 0.5rem 1rem 0.5rem 7rem;
+    border-radius: 10px;
 }
 
 .judge > li > span {
-    background-color: #393E46;
     height: calc(100% - 1rem);
     padding: 0.5rem 0;
     top: 0;
+    border-radius: 10px;
 }
 
 
