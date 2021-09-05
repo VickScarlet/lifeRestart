@@ -125,36 +125,155 @@ class App {
     }
 
     help(key) {
+
+        switch(key) {
+            case 'x':
+            case 'exit':
+            case '/exit': return `退出
+    x, exit, /exit      命令同等效果`;
+
+            case 'r':
+            case 'remake':
+            case '/remake': return `重开
+    r, remake, /remake  命令同等效果`;
+
+            case 's':
+            case 'select':
+            case '/select': return `选择
+    s, select, /select  命令同等效果
+
+    Example:    /select 1 2 3 意味着选择 1 2 3 三个天赋
+
+                /select <id1> [id2] [id3]
+
+    参数解释     <id1>   通常来说要指定至少一个id
+                        虽然不指定也可以
+                [id2]
+                [id3]   可以不指定`;
+
+            case 'u':
+            case 'unselect':
+            case '/unselect': return `取消选择
+    u, unselect,
+    /unselect           命令同等效果
+
+    Example:    /unselect 1 2 3
+                意味着取消选择 1 2 3 三个天赋
+
+    参数解释     /unselect <id1> [id2] [id3]
+
+                <id1>   通常来说要指定至少一个id
+                        虽然不指定也可以
+                [id2]
+                [id3]   可以不指定`;
+
+
+            case 'a':
+            case 'alloc':
+            case 'allocation':
+            case '/alloc':
+            case '/allocation': return `分配属性点
+    a, alloc, allocation
+    /alloc, /allocation 命令同等效果
+
+    Example:    /allocation STR 1
+                /allocation INT -3
+                /allocation CHR +5
+
+    参数解释    /allocation <TAG> <[+/-]value>
+
+                <TAG>   表示要分配的属性标签
+                        可选有
+                            CHR, chr, c, C 表示颜值
+                            INT, int, i, I 表示智力
+                            STR, str, s, S 表示体质
+                            MNY, mny, m, M 表示家境
+                        必填
+
+                <[+/-]value>
+                        表示属性的调整
+                        其中
+                            + 表示在当前基础上增加
+                            - 表示在当前基础上减少
+                            无符号表示直接设置为此值
+                        必填`;
+
+            case 'n':
+            case 'next':
+            case '/next': return `继续
+    n, next, /next      命令同等效果
+
+    效果                通常用于各步骤结束后
+                        例如：  选择天赋后
+                                分配属性后
+                                每个年龄事件后
+                                总评后
+                                继承天赋后`;
+
+            case 'at':
+            case 'auto':
+            case '/auto': return `自动播放
+    at, auto, /auto    命令同等效果
+
+    效果                用于人生的过程中
+                        每个年龄会自动下一年
+                        播放速度 1 秒 1 年`;
+
+            case '?':
+            case 'h':
+            case 'help':
+            case '/?':
+            case '/h':
+            case '/help': return `显示帮助
+    ？, h, help
+    /?, /h, /help           命令同等效果
+
+    Example:            /help
+                        /help /select
+
+    参数解释             /help [command]
+
+            [command]   要详细显示帮助的命令
+                        可以不填`;
+        }
         return `Help ---
-        x
-        exit
-        /exit       exit
+    命令            说明            示例
+    x
+    exit
+    /exit           退出            /exit
 
-        r
-        remake
-        /remake     remake
+    r
+    remake
+    /remake         重开            /remake
 
-        s
-        select
-        /select     select
+    s
+    select
+    /select         选择天赋        /select <id1> [id2] [id3]
 
-        u
-        unselect
-        /unselect   unselect
+    u
+    unselect
+    /unselect       取消选择        /unselect <id1> [id2] [id3]
 
-        n
-        next
-        /next       next
+    a
+    alloc
+    allocation
+    /alloc
+    /allocation     分配属性点      /allocation <TAG> <[+/-]value>
 
-        auto
-        /auto       auto play
+    n
+    next
+    /next           继续            /next
 
-        ?
-        h
-        help
-        /?
-        /h
-        /help       show this message`;
+    at
+    auto
+    /auto           自动播放        /auto
+
+    ?
+    h
+    help
+    /?
+    /h
+    /help           显示帮助        /help [command]`;
     }
 
     auto(arg) {
