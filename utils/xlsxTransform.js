@@ -1,21 +1,27 @@
 import { readFile, writeFile, stat, readdir } from 'fs/promises';
-import * as XLSX from 'xlsx';
+import XLSX from 'xlsx';
 import { join, extname, dirname } from 'path';
 
 // const { readFile, writeFile, stat, readdir } = require('fs/promises');
 // const XLSX = require('xlsx');
 // const { join, extname, dirname } = require('path');
 
+
 async function transform(filePath) {
     const xlsxFileBuffer = await readFile(filePath);
     const xlsx = XLSX.read(xlsxFileBuffer, {type: 'buffer'});
     const sheets = xlsx.Sheets;
-
     const data = {};
     for(const sheetName in sheets) {
         const sheetRawData = sheets[sheetName];
         if(!sheetRawData['!ref']) break;
         const rawData = XLSX.utils.sheet_to_json(sheetRawData);
+        /**
+         * CSV Data as string format
+         * @type {string}
+         */
+        let CSVData = XLSX.utils.sheet_to_csv(sheetRawData);
+        await writeFile(`data/${sheetName}.csv`,CSVData);
         const newData = {};
         data[sheetName] = newData;
         rawData.shift();
