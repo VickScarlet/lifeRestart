@@ -6,7 +6,13 @@ import { join, extname, dirname } from 'path';
 // const XLSX = require('xlsx');
 // const { join, extname, dirname } = require('path');
 
-
+/**
+ * [async description]
+ *
+ * @param   {string}  filePath  [filePath description]
+ *
+ * @return  {object}            [return description]
+ */
 async function transform(filePath) {
     const xlsxFileBuffer = await readFile(filePath);
     const xlsx = XLSX.read(xlsxFileBuffer, {type: 'buffer'});
@@ -16,12 +22,14 @@ async function transform(filePath) {
         const sheetRawData = sheets[sheetName];
         if(!sheetRawData['!ref']) break;
         const rawData = XLSX.utils.sheet_to_json(sheetRawData);
+        var fileName = filePath.split("\\")[1];
+        fileName = fileName.split(".")[0];
         /**
          * CSV Data as string format
          * @type {string}
          */
         let CSVData = XLSX.utils.sheet_to_csv(sheetRawData);
-        await writeFile(`data/${sheetName}.csv`,CSVData);
+        await writeFile(`data/${fileName}.csv`,CSVData);
         const newData = {};
         data[sheetName] = newData;
         rawData.shift();
@@ -91,9 +99,11 @@ async function main() {
     for(const p of xlsxs) {
         const data = await transform(p);
         const d = dirname(p);
+        let fileName = p.split("\\")[1];
+        fileName = fileName.split(".")[0];
         for(const sheetName in data) {
-            const savePath = join(d, `${sheetName}.json`);
-            console.info(`[Transform] XLSX(${p}:${sheetName}) -> JSON(${savePath})`);
+            const savePath = join(d, `${fileName}.json`);
+            console.info(`[Transform] XLSX(${p}:${fileName}) -> JSON(${savePath})`);
             await writeFile(
                 savePath,
                 JSON.stringify(data[sheetName], null, 4),
