@@ -257,6 +257,11 @@ class App{
                 });
                 this.switch('trajectory');
                 this.#pages.trajectory.born();
+                $(document).keypress(function(event){
+                    if(event.which == 32 || event.which == 13){
+                        $('#lifeTrajectory').click();
+                    }
+                })
             });
 
         // Trajectory
@@ -289,6 +294,7 @@ class App{
                 li.appendTo('#lifeTrajectory');
                 $("#lifeTrajectory").scrollTop($("#lifeTrajectory")[0].scrollHeight);
                 if(isEnd) {
+                    $(document).keypress(function(event){})
                     this.#isEnd = true;
                     trajectoryPage.find('#summary').show();
                 }
