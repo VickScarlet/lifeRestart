@@ -262,6 +262,7 @@ class App{
         // Trajectory
         const trajectoryPage = $(`
         <div id="main">
+            <ul id="lifeProperty" class="lifeProperty"></ul>
             <ul id="lifeTrajectory" class="lifeTrajectory"></ul>
             <button id="summary" class="mainbtn" style="top:auto; bottom:0.1rem">人生总结</button>
         </div>
@@ -291,6 +292,16 @@ class App{
                 if(isEnd) {
                     this.#isEnd = true;
                     trajectoryPage.find('#summary').show();
+                } else {
+                    // 如未死亡，更新数值
+                    // Update properties if not die yet
+                    const property = this.#life.getLastRecord();
+                    $("#lifeProperty").html(`
+                    <li>颜值：${property.CHR} </li> 
+                    <li>智力：${property.INT} </li> 
+                    <li>体质：${property.STR} </li> 
+                    <li>家境：${property.MNY} </li>
+                    <li>快乐：${property.STR} </li>`);
                 }
             });
 
