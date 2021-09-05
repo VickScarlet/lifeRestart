@@ -157,6 +157,31 @@ body {
     text-align: center;
 }
 
+.lifeProperty{
+  position: fixed;
+  list-style-type: none;
+  left: 50%;
+  top: 2rem;
+  width: 30rem;
+  max-width: calc(100% - 2rem);
+  padding: 0;
+  overflow: auto;
+  transform: translateX(-50%);
+  display: flex;
+  color: white;
+}
+
+.lifeProperty > li {
+  width: 100%;
+  position: relative;
+  border: 1px #ccc solid;
+  display: inline-block;
+  margin: 0.1rem 2px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 0.2rem;
+}
+
 .selectlist > li {
     position: relative;
     border: 1px #EEEEEE solid;
