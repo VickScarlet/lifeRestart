@@ -78,9 +78,9 @@ class App{
         const talentPage = $(`
         <div id="main">
             <div class="head" style="font-size: 1.6rem">天赋抽卡</div>
-            <button id="random" class="mainbtn" style="top: 50%;">10连抽！</button>
+            <button id="random" class="mainbtn" style="top: 50%;">n连抽！</button>
             <ul id="talents" class="selectlist"></ul>
-            <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">请选择3个</button>
+            <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">请你选择任意个</button>
         </div>
         `);
 
@@ -105,11 +105,6 @@ class App{
                                     talentPage.find('#next').text('请选择3个')
                                 }
                             } else {
-                                if(this.#talentSelected.size==3) {
-                                    this.hint('只能选3个天赋');
-                                    return;
-                                }
-
                                 const exclusive = this.#life.exclusive(
                                     Array.from(this.#talentSelected).map(({id})=>id),
                                     talent.id
@@ -136,10 +131,6 @@ class App{
         talentPage
             .find('#next')
             .click(()=>{
-                if(this.#talentSelected.size!=3) {
-                    this.hint('请选择3个天赋');
-                    return;
-                }
                 this.#totalMax = 20 + this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected).map(({id})=>id));
                 this.switch('property');
             })

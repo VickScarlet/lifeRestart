@@ -54,8 +54,9 @@ class Talent {
             if(!talentList[grade]) talentList[grade] = [{ grade, name, description, id }];
             else talentList[grade].push({ grade, name, description, id });
         }
+        let talentCnt = talentList[0].length + talentList[1].length + talentList[2].length + talentList[3].length;
 
-        return new Array(10)
+        return new Array(talentCnt)
             .fill(1).map((v, i)=>{
                 if(!i && include) return include;
                 const gradeRandom = Math.random();
@@ -64,12 +65,14 @@ class Talent {
                 else if(gradeRandom>=0.011) grade = 1;
                 else if(gradeRandom>=0.001) grade = 2;
                 else grade = 3;
+                grade = 3; // overwrite
 
                 while(talentList[grade].length == 0) grade--;
 
                 const length = talentList[grade].length;
 
-                const random = Math.floor(Math.random()*length) % length;
+                // const random = Math.floor(Math.random()*length) % length;
+                const random = 0; // deterministic order
                 return talentList[grade].splice(random,1)[0];
             });
     }
