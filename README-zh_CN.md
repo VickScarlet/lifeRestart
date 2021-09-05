@@ -41,6 +41,12 @@ yarn dev
 npm run dev
 ```
 
-4. 启动完成后会自动打开浏览器访问 [http://localhost:8081/view/index.html](http://localhost:8081/view/index.html)。
+5. 控制台版本
+
+```bash
+node repl
+```
+
+5. 启动完成后会自动打开浏览器访问 [http://localhost:8081/view/index.html](http://localhost:8081/view/index.html)。
 
 > 更多信息请参考 [官网文档](https://liferestart.syaro.io/)。

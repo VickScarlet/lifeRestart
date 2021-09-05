@@ -41,6 +41,12 @@ Or
 npm run dev
 ```
 
-4. After the startup is complete, will automatically open a browser and visit [http://localhost:8081/view/index.html](http://localhost:8081/view/index.html).
+4. Command Line version
+
+```bash
+node repl
+```
+
+5. After the startup is complete, will automatically open a browser and visit [http://localhost:8081/view/index.html](http://localhost:8081/view/index.html).
 
 > More instructions at [documentation](https://liferestart.syaro.io/)。
