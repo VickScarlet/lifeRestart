@@ -164,9 +164,10 @@ class App{
         propertyPage.mounted = ()=>{
             propertyPage
             .find('#talentSelectedView').append(
-                $(Array.from(this.#talentSelected)
+                `<li>已选天赋</li>` +
+                Array.from(this.#talentSelected)
                 .map(({name,description})=>`<li class="grade0b">${name}(${description})</li>`)
-                .join(''))
+                .join('')
             )
         }
         const groups = {};
@@ -321,9 +322,9 @@ class App{
                     // Update properties if not die yet
                     const property = this.#life.getLastRecord();
                     $("#lifeProperty").html(`
-                    <li>颜值：${property.CHR} </li> 
-                    <li>智力：${property.INT} </li> 
-                    <li>体质：${property.STR} </li> 
+                    <li>颜值：${property.CHR} </li>
+                    <li>智力：${property.INT} </li>
+                    <li>体质：${property.STR} </li>
                     <li>家境：${property.MNY} </li>
                     <li>快乐：${property.SPR} </li>`);
                 }
@@ -407,6 +408,9 @@ class App{
                 page: propertyPage,
                 clear: ()=>{
                     freshTotal();
+                    propertyPage
+                        .find('#talentSelectedView')
+                        .empty();
                 },
             },
             trajectory: {
