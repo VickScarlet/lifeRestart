@@ -12,12 +12,15 @@ async function main() {
     global.dumpLocalStorage = async ()=>await writeFile('__localStorage.json', JSON.stringify( global.localStorage))
 
     const app = new App();
+    
+    await app.initial();
+    
     app.io(
         repl => process.stdin.on('data', data=>repl(data.toString().trim())),
         (data, isRepl) => process.stdout.write(`${data}${isRepl?'\n>':''}`),
         code=>process.exit(code)
     )
-    await app.initial();
+
 }
 
 main();
