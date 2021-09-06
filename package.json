@@ -18,6 +18,7 @@
         "xlsx": "^0.17.0"
     },
     "devDependencies": {
+        "copy-webpack-plugin": "^9.0.1",
         "webpack-cli": "^4.8.0"
     }
 }
