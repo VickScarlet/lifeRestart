@@ -115,6 +115,14 @@ class Life {
         return this.#property.getLastRecord();
     }
 
+    getRecordLog() {
+        return this.#property.getRecordLog();
+    }
+
+    getLastRecordLog() {
+        return this.#property.getLastRecordLog();
+    }
+
     exclusive(talents, exclusive) {
         return this.#talent.exclusive(talents, exclusive);
     }

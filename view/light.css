@@ -563,3 +563,33 @@ i {
 ::-webkit-scrollbar {
 	width: 0 !important
 }
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 0;
+    top:0;
+  }
+
+  30% {
+    opacity: 1;
+    top:0;
+  }
+
+  to{
+    opacity: 0;
+    top:-10px;
+  }
+}
+
+.lifePropertyRecordLog{
+  opacity: 0;
+  position: absolute;
+  font-size: 18px;
+  right: 5px;
+  color: orange;
+  animation-name: fadeOutUp;
+  animation-timing-function: ease-out;
+  animation-delay: 0.2s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}

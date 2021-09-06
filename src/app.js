@@ -295,7 +295,6 @@ class App{
                 if(this.#isEnd) return;
                 const trajectory = this.#life.next();
                 const { age, content, isEnd } = trajectory;
-
                 const li = $(`<li><span>${age}岁：</span>${
                     content.map(
                         ({type, description, grade, name, postEvent}) => {
@@ -318,12 +317,24 @@ class App{
                     // 如未死亡，更新数值
                     // Update properties if not die yet
                     const property = this.#life.getLastRecord();
+                    
+                    //process record log
+                    var lastLog=this.#life.getLastRecordLog();
+                    for(let i in lastLog){
+                        if(lastLog[i]=="0" || lastLog[i]==0){
+                            lastLog[i]='';
+                        }
+                        if(lastLog[i]>0){
+                            lastLog[i]="+"+lastLog[i];
+                        }
+                    }
+
                     $("#lifeProperty").html(`
-                    <li>颜值：${property.CHR} </li>
-                    <li>智力：${property.INT} </li>
-                    <li>体质：${property.STR} </li>
-                    <li>家境：${property.MNY} </li>
-                    <li>快乐：${property.SPR} </li>`);
+                    <li>颜值：${property.CHR} <span class="lifePropertyRecordLog"> ${lastLog.CHR} </span></li>
+                    <li>智力：${property.INT} <span class="lifePropertyRecordLog"> ${lastLog.INT} </span></li>
+                    <li>体质：${property.STR} <span class="lifePropertyRecordLog"> ${lastLog.STR} </span></li>
+                    <li>家境：${property.MNY} <span class="lifePropertyRecordLog"> ${lastLog.MNY} </span></li>
+                    <li>快乐：${property.SPR} <span class="lifePropertyRecordLog"> ${lastLog.SPR} </span></li>`);
                 }
             });
 
