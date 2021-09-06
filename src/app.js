@@ -307,7 +307,7 @@ class App{
                     <li>智力：${property.INT} </li> 
                     <li>体质：${property.STR} </li> 
                     <li>家境：${property.MNY} </li>
-                    <li>快乐：${property.STR} </li>`);
+                    <li>快乐：${property.SPR} </li>`);
                 }
             });
 
