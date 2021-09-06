@@ -164,7 +164,7 @@ body {
   overflow: auto;
   transform: translateX(-50%);
   display: flex;
-  color: white;
+  color: black;
 }
 
 .lifeProperty > li {
