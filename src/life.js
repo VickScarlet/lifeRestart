@@ -1,7 +1,7 @@
 import Property from './property.js';
 import Event from './event.js';
 import Talent from './talent.js';
-
+import { parseCondition } from './functions/condition.js';
 class Life {
     constructor() {
         this.#property = new Property();
@@ -52,13 +52,15 @@ class Life {
     doTalent(talents) {
         if(talents) this.#property.change(this.#property.TYPES.TLT, talents);
         talents = this.#property.get(this.#property.TYPES.TLT)
-            .filter(talentId=>!this.#triggerTalents.has(talentId));
+        .filter(talentId=>!this.#triggerTalents.has(talentId));
 
         const contents = [];
         for(const talentId of talents) {
-            const result = this.#talent.do(talentId, this.#property);
+            const result = this.#talent.do(talentId, this.#property);//如果符合情况，会返回一个result，否则就是不用触发
             if(!result) continue;
-            this.#triggerTalents.add(talentId);
+            const talent = this.#talent.get(talentId);
+            let {condition} = talent;
+            if(!condition)this.#triggerTalents.add(talentId);
             const { effect, name, description, grade } = result;
             contents.push({
                 type: this.#property.TYPES.TLT,
