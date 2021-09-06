@@ -3,6 +3,7 @@ import { summary } from './functions/summary.js'
 import Life from './life.js'
 
 const TOT_MAX = 1e6;
+const SLEEP_MS = 150;
 
 class App{
     constructor(){
@@ -277,8 +278,12 @@ class App{
 
         trajectoryPage
             .find('#lifeTrajectory')
-            .click(()=>{
-                if(this.#isEnd) return;
+            .click(async ()=>{
+                function sleep(ms) {
+                  return new Promise(resolve => setTimeout(resolve, ms));
+                }
+                // if(this.#isEnd) return;
+                while (!this.#isEnd) {
                 const trajectory = this.#life.next();
                 const { age, content, isEnd } = trajectory;
 
@@ -310,6 +315,8 @@ class App{
                     <li>体质：${property.STR} </li>
                     <li>家境：${property.MNY} </li>
                     <li>快乐：${property.SPR} </li>`);
+                }
+                await sleep(SLEEP_MS);
                 }
             });
 
