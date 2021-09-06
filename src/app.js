@@ -101,6 +101,9 @@ class App{
                             if(li.hasClass('selected')) {
                                 li.removeClass('selected')
                                 this.#talentSelected.delete(talent);
+                                if(this.#talentSelected.size<3) {
+                                    talentPage.find('#next').text('请选择3个')
+                                }
                             } else {
                                 if(this.#talentSelected.size==3) {
                                     this.hint('只能选3个天赋');
@@ -122,6 +125,9 @@ class App{
                                 }
                                 li.addClass('selected');
                                 this.#talentSelected.add(talent);
+                                if(this.#talentSelected.size==3) {
+                                    talentPage.find('#next').text('开始新人生')
+                                }
                             }
                         });
                     });
@@ -139,18 +145,30 @@ class App{
             })
 
         // Property
-        const propertyPage = $(`
+        // hint of extension tobermory.es6-string-html
+        const propertyPage = $(/*html*/`
         <div id="main">
             <div class="head" style="font-size: 1.6rem">
                 调整初始属性<br>
                 <div id="total" style="font-size:1rem; font-weight:normal;">可用属性点：0</div>
             </div>
             <ul id="propertyAllocation" class="propinitial"></ul>
+            <ul class="propinitial" style="top:auto; bottom:23rem">
+                <li>已选天赋</li>
+            </ul>
+            <ul class="selectlist" id="talentSelectedView" style="top:auto; bottom:16rem"></ul>
             <button id="random" class="mainbtn" style="top:auto; bottom:7rem">随机分配</button>
             <button id="start" class="mainbtn" style="top:auto; bottom:0.1rem">开始新人生</button>
         </div>
         `);
-
+        propertyPage.mounted = ()=>{
+            propertyPage
+            .find('#talentSelectedView').append(
+                $(Array.from(this.#talentSelected)
+                .map(({name,description})=>`<li class="grade0b">${name}(${description})</li>`)
+                .join(''))
+            )
+        }
         const groups = {};
         const total = ()=>{
             let t = 0;
@@ -257,11 +275,17 @@ class App{
                 });
                 this.switch('trajectory');
                 this.#pages.trajectory.born();
+                $(document).keydown(function(event){
+                    if(event.which == 32 || event.which == 13){
+                        $('#lifeTrajectory').click();
+                    }
+                })
             });
 
         // Trajectory
         const trajectoryPage = $(`
         <div id="main">
+            <ul id="lifeProperty" class="lifeProperty"></ul>
             <ul id="lifeTrajectory" class="lifeTrajectory"></ul>
             <button id="summary" class="mainbtn" style="top:auto; bottom:0.1rem">人生总结</button>
         </div>
@@ -289,8 +313,19 @@ class App{
                 li.appendTo('#lifeTrajectory');
                 $("#lifeTrajectory").scrollTop($("#lifeTrajectory")[0].scrollHeight);
                 if(isEnd) {
+                    $(document).unbind("keydown");
                     this.#isEnd = true;
                     trajectoryPage.find('#summary').show();
+                } else {
+                    // 如未死亡，更新数值
+                    // Update properties if not die yet
+                    const property = this.#life.getLastRecord();
+                    $("#lifeProperty").html(`
+                    <li>颜值：${property.CHR} </li> 
+                    <li>智力：${property.INT} </li> 
+                    <li>体质：${property.STR} </li> 
+                    <li>家境：${property.MNY} </li>
+                    <li>快乐：${property.SPR} </li>`);
                 }
             });
 
@@ -461,6 +496,9 @@ class App{
         $('#main').detach();
         p.clear();
         p.page.appendTo('body');
+        if(typeof p.page.mounted === 'function'){
+            p.page.mounted()
+        }
     }
 
     hint(message, type='info') {
@@ -483,7 +521,7 @@ class App{
         const themeLink = $(document).find('#themeLink');
 
         if(theme == 'light') {
-            themeLink.attr('href', 'style.css');
+            themeLink.attr('href', 'light.css');
         } else {
             themeLink.attr('href', 'dark.css');
         }
