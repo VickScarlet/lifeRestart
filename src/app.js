@@ -328,9 +328,9 @@ class App{
                     // Update properties if not die yet
                     const property = this.#life.getLastRecord();
                     $("#lifeProperty").html(`
-                    <li>颜值：${property.CHR} </li> 
-                    <li>智力：${property.INT} </li> 
-                    <li>体质：${property.STR} </li> 
+                    <li>颜值：${property.CHR} </li>
+                    <li>智力：${property.INT} </li>
+                    <li>体质：${property.STR} </li>
                     <li>家境：${property.MNY} </li>
                     <li>快乐：${property.SPR} </li>`);
                 }
@@ -414,6 +414,9 @@ class App{
                 page: propertyPage,
                 clear: ()=>{
                     freshTotal();
+                    propertyPage
+                        .find('#talentSelectedView')
+                        .empty();
                 },
             },
             trajectory: {
