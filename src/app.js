@@ -214,10 +214,10 @@ class App{
             return {group, get, set};
         }
 
-        groups.CHR = getBtnGroups("颜值", 0, TOT_MAX); // 颜值 charm CHR
-        groups.INT = getBtnGroups("智力", 0, TOT_MAX); // 智力 intelligence INT
-        groups.STR = getBtnGroups("体质", 0, TOT_MAX); // 体质 strength STR
-        groups.MNY = getBtnGroups("家境", 0, TOT_MAX); // 家境 money MNY
+        groups.CHR = getBtnGroups("颜值", 0-TOT_MAX, TOT_MAX); // 颜值 charm CHR
+        groups.INT = getBtnGroups("智力", 0-TOT_MAX, TOT_MAX); // 智力 intelligence INT
+        groups.STR = getBtnGroups("体质", 0-TOT_MAX, TOT_MAX); // 体质 strength STR
+        groups.MNY = getBtnGroups("家境", 0-TOT_MAX, TOT_MAX); // 家境 money MNY
 
         const ul = propertyPage.find('#propertyAllocation');
 
@@ -249,13 +249,6 @@ class App{
         propertyPage
             .find('#start')
             .click(()=>{
-                if(total() < this.#totalMax) {
-                    this.hint(`你还有${this.#totalMax-total()}属性点没有分配完`);
-                    return;
-                } else if (total() > this.#totalMax) {
-                    this.hint(`你多使用了${total() - this.#totalMax}属性点`);
-                    return;
-                }
                 this.#life.restart({
                     CHR: groups.CHR.get(),
                     INT: groups.INT.get(),
