@@ -164,7 +164,7 @@ body {
   overflow: auto;
   transform: translateX(-50%);
   display: flex;
-  color: white;
+  color: black;
 }
 
 .lifeProperty > li {
@@ -270,7 +270,7 @@ body {
 
 .propinitial {
     top: 5rem;
-    bottom: 14rem;
+    bottom: 17rem;
 }
 
 .propinitial > li {

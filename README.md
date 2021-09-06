@@ -10,6 +10,8 @@ English | [简体中文](./README-zh_CN.md)
 
 ## Usage
 
+### Web Version
+
 1. Clone project code.
 
 ```bash
@@ -41,12 +43,12 @@ Or
 npm run dev
 ```
 
-4. Command Line version
+4. After the startup is complete, will automatically open a browser and visit [http://localhost:8081/view/index.html](http://localhost:8081/view/index.html).
+
+### Command Line Version
 
 ```bash
 node repl
 ```
-
-5. After the startup is complete, will automatically open a browser and visit [http://localhost:8081/view/index.html](http://localhost:8081/view/index.html).
 
 > More instructions at [documentation](https://liferestart.syaro.io/)。
