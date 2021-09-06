@@ -56,7 +56,7 @@ class Life {
 
         const contents = [];
         for(const talentId of talents) {
-            const result = this.#talent.do(talentId, this.#property);//如果符合情况，会返回一个result，否则就是不用触发
+            const result = this.#talent.do(talentId, this.#property);
             if(!result) continue;
             const talent = this.#talent.get(talentId);
             let {condition} = talent;
