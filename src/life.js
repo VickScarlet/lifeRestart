@@ -99,12 +99,36 @@ class Life {
         return events[events.length-1];
     }
 
-    talentRandom() {
+    talentRandom() {        
         return this.#talent.talentRandom(JSON.parse(localStorage.extendTalent||'null'));
     }
 
     talentExtend(talentId) {
         localStorage.extendTalent = JSON.stringify(talentId);
+    }
+
+    talentBuff(previous) {
+        let talentBuff = {
+            randFix: 0
+        }
+        talentBuff.randFix = previous.randFix
+        if(previous.SUM>=120){
+            talentBuff.randFix = 0
+        } else if (previous.SUM >= 110){
+            talentBuff.randFix >=0.1?talentBuff.randFix-=0.1:talentBuff.randFix=0
+        } else if (previous.SUM >= 100){
+            talentBuff.randFix >=0.05?talentBuff.randFix -= 0.05:talentBuff.randFix = 0
+        } else if (previous.SUM >= 80){
+            talentBuff.randFix += 0.05
+        } else if (previous.SUM >= 60) {
+            talentBuff.randFix += 0.1
+        } else if (previous.SUM >= 50) {
+            talentBuff.randFix += 0.15
+        } else {
+            talentBuff.randFix += 0.2
+        }
+        localStorage.setItem("talentBuff",JSON.stringify(talentBuff))
+
     }
 
     getRecord() {

@@ -28,4 +28,9 @@ function average(...arr) {
     return s / arr.flat().length;
 }
 
-export { clone, max, min, sum, average };
+let summaryData=(maxData)=>{
+    const value = Math.floor(sum(maxData('CHR'), maxData('INT'), maxData('STR'), maxData('MNY'), maxData('SPR'))*2 + maxData('AGE')/2);
+    return value
+}
+
+export { clone, max, min, sum, average, summaryData };

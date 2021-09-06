@@ -42,9 +42,14 @@ class Talent {
         return null;
     }
 
-    talentRandom(include) {
+    talentRandom(include,randFix=0) {
         // 1000, 100, 10, 1
         const talentList = {};
+        let talentBuffStr = localStorage.getItem("talentBuff")
+        if(talentBuffStr){
+            let talentBuff = JSON.parse(talentBuffStr)
+            randFix = talentBuff.randFix
+        }
         for(const talentId in this.#talents) {
             const { id, grade, name, description } = this.#talents[talentId];
             if(id == include) {
@@ -58,17 +63,18 @@ class Talent {
         return new Array(10)
             .fill(1).map((v, i)=>{
                 if(!i && include) return include;
-                const gradeRandom = Math.random();
+                let gradeRandom = Math.random()+randFix
+                if(gradeRandom>1){
+                    gradeRandom = 1
+                }
                 let grade;
-                if(gradeRandom>=0.111) grade = 0;
-                else if(gradeRandom>=0.011) grade = 1;
-                else if(gradeRandom>=0.001) grade = 2;
-                else grade = 3;
-
+                
+                if(gradeRandom>=0.999) grade = 3; // 0.1%
+                else if(gradeRandom>=0.989) grade = 2; // 1%
+                else if(gradeRandom>=0.889) grade = 1; // 10%
+                else grade = 0;
                 while(talentList[grade].length == 0) grade--;
-
                 const length = talentList[grade].length;
-
                 const random = Math.floor(Math.random()*length) % length;
                 return talentList[grade].splice(random,1)[0];
             });
