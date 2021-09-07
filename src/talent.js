@@ -1,5 +1,5 @@
 import { clone } from './functions/util.js';
-import { checkCondition } from './functions/condition.js';
+import { checkCondition, extractMaxTriggers } from './functions/condition.js';
 
 class Talent {
     constructor() {}
@@ -12,6 +12,7 @@ class Talent {
             const talent = talents[id];
             talent.id= Number(id);
             talent.grade = Number(talent.grade);
+            talent.max_triggers = extractMaxTriggers(talent.condition);
         }
     }
 
