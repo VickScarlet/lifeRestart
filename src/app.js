@@ -14,11 +14,17 @@ class App{
     #isEnd = false;
     #selectedExtendTalent = null;
     #hintTimeout;
+    #specialthanks;
 
     async initial() {
         this.initPages();
         this.switch('loading');
-        await this.#life.initial();
+        const [,specialthanks] = await Promise.all([
+            this.#life.initial(),
+            json('specialthanks')
+        ]);
+        this.#specialthanks = specialthanks;
+        console.table(specialthanks);
         this.switch('index');
         window.onerror = (event, source, lineno, colno, error) => {
             this.hint(`[ERROR] at (${source}:${lineno}:${colno})\n\n${error?.stack||error||'unknow Error'}`, 'error');
@@ -42,6 +48,7 @@ class App{
         <div id="main">
             <div id="cnt" class="head">已重开1次</div>
             <button id="rank">排行榜</button>
+            <button id="specialthanks">特别感谢</button>
             <button id="themeToggleBtn">黑</button>
             <div id="title">
                 人生重开模拟器<br>
@@ -73,6 +80,25 @@ class App{
 
                 this.setTheme(localStorage.getItem('theme'))
             });
+
+        indexPage
+            .find('#specialthanks')
+            .click(()=>this.switch('specialthanks'));
+
+        const specialThanksPage = $(`
+        <div id="main">
+            <button id="specialthanks">返回</button>
+            <div id="spthx">
+                <ul class="g1"></ul>
+                <ul class="g2"></ul>
+            </div>
+            <button id="sponsor" onclick="window.open('https://afdian.net/@LifeRestart')">打赏作者</button>
+        </div>
+        `);
+
+        specialThanksPage
+            .find('#specialthanks')
+            .click(()=>this.switch('index'));
 
         // Talent
         const talentPage = $(`
@@ -285,7 +311,11 @@ class App{
         <div id="main">
             <ul id="lifeProperty" class="lifeProperty"></ul>
             <ul id="lifeTrajectory" class="lifeTrajectory"></ul>
-            <button id="summary" class="mainbtn" style="top:auto; bottom:0.1rem">人生总结</button>
+            <button id="summary" class="mainbtn" style="top:auto; bottom:0.1rem; left: 25%;">人生总结</button>
+            <button id="domToImage" class="mainbtn" style="top:auto; bottom:0.1rem; left: 75%; display: none">人生回放</button>
+            <div class="domToImage2wx">
+                <img src="" id="endImage" />
+            </div>
         </div>
         `);
 
@@ -295,7 +325,6 @@ class App{
                 if(this.#isEnd) return;
                 const trajectory = this.#life.next();
                 const { age, content, isEnd } = trajectory;
-
                 const li = $(`<li><span>${age}岁：</span>${
                     content.map(
                         ({type, description, grade, name, postEvent}) => {
@@ -314,6 +343,7 @@ class App{
                     $(document).unbind("keydown");
                     this.#isEnd = true;
                     trajectoryPage.find('#summary').show();
+                    trajectoryPage.find('#domToImage').show();
                 } else {
                     // 如未死亡，更新数值
                     // Update properties if not die yet
@@ -326,7 +356,26 @@ class App{
                     <li>快乐：${property.SPR} </li>`);
                 }
             });
+        // html2canvas
+        trajectoryPage
+            .find('#domToImage')
+            .click(()=>{
+                $("#lifeTrajectory").addClass("deleteFixed");
+                const ua = navigator.userAgent.toLowerCase();
+                domtoimage.toJpeg(document.getElementById('lifeTrajectory'))
+                    .then(function (dataUrl) {
+                        let link = document.createElement('a');
+                        link.download = '我的人生回放.jpeg';
+                        link.href = dataUrl;
+                        link.click();
+                        $("#lifeTrajectory").removeClass("deleteFixed");
+                        // 微信内置浏览器，显示图片，需要用户单独保存
+                        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+                            $('#endImage').attr('src', dataUrl);
+                        }
 
+                    });
+            })
         trajectoryPage
             .find('#summary')
             .click(()=>{
@@ -392,6 +441,25 @@ class App{
                     btnRank.hide();
                     cnt.hide();
                 },
+            },
+            specialthanks: {
+                page: specialThanksPage,
+                clear: () => {
+                    const groups = [
+                        specialThanksPage.find('#spthx > ul.g1'),
+                        specialThanksPage.find('#spthx > ul.g2'),
+                    ];
+                    groups.forEach(g=>g.empty());
+                    Object
+                        .values(this.#specialthanks)
+                        .sort(()=>0.5-Math.random())
+                        .forEach(({group, name, comment})=>groups[--group].append(`
+                            <li>
+                                <span class="name">${name}</span>
+                                <span class="comment">${comment||''}</span>
+                            </li>
+                        `))
+                }
             },
             talent: {
                 page: talentPage,
@@ -487,7 +555,7 @@ class App{
                         })(),
                     ].join(''));
                 }
-            }
+            },
         }
     }
 

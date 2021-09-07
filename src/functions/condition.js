@@ -113,4 +113,17 @@ function checkProp(property, condition) {
     }
 }
 
-export { checkCondition };
+function extractMaxTriggers(condition) {
+    // Assuming only age related talents can be triggered multiple times.
+    const RE_AGE_CONDITION = /AGE\?\[([0-9\,]+)\]/;
+    const match_object = RE_AGE_CONDITION.exec(condition);
+    if (match_object == null) {
+        // Not age related, single trigger.
+        return 1;
+    }
+    
+    const age_list = match_object[1].split(",");
+    return age_list.length;
+}
+
+export { checkCondition, extractMaxTriggers };
