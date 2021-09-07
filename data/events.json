@@ -10976,7 +10976,8 @@
         "effect": {
             "CHR": 5
         },
-        "include": "EVT?[20335]"
+        "include": "EVT?[20335]",
+        "exclude": "EVT?[20338]"
     },
     "20339": {
         "id": 20339,
