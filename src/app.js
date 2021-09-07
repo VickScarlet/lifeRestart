@@ -1,7 +1,7 @@
 import { max, sum } from './functions/util.js';
 import { summary } from './functions/summary.js'
 import Life from './life.js'
-
+import domtoimage from 'dom-to-image';
 class App{
     constructor(){
         this.#life = new Life();
@@ -285,7 +285,11 @@ class App{
         <div id="main">
             <ul id="lifeProperty" class="lifeProperty"></ul>
             <ul id="lifeTrajectory" class="lifeTrajectory"></ul>
-            <button id="summary" class="mainbtn" style="top:auto; bottom:0.1rem">人生总结</button>
+            <button id="summary" class="mainbtn" style="top:auto; bottom:0.1rem; left: 25%;">人生总结</button>
+            <button id="domToImage" class="mainbtn" style="top:auto; bottom:0.1rem; left: 75%; display: none">人生回放</button>
+            <div class="domToImage2wx">
+                <img src="" id="endImage" />
+            </div>
         </div>
         `);
 
@@ -295,7 +299,6 @@ class App{
                 if(this.#isEnd) return;
                 const trajectory = this.#life.next();
                 const { age, content, isEnd } = trajectory;
-
                 const li = $(`<li><span>${age}岁：</span>${
                     content.map(
                         ({type, description, grade, name, postEvent}) => {
@@ -314,6 +317,7 @@ class App{
                     $(document).unbind("keydown");
                     this.#isEnd = true;
                     trajectoryPage.find('#summary').show();
+                    trajectoryPage.find('#domToImage').show();
                 } else {
                     // 如未死亡，更新数值
                     // Update properties if not die yet
@@ -326,7 +330,26 @@ class App{
                     <li>快乐：${property.SPR} </li>`);
                 }
             });
-
+        // html2canvas
+        trajectoryPage
+            .find('#domToImage')
+            .click(()=>{
+                $("#lifeTrajectory").addClass("deleteFixed");
+                const ua = navigator.userAgent.toLowerCase();
+                domtoimage.toJpeg(document.getElementById('lifeTrajectory'))
+                    .then(function (dataUrl) {
+                        let link = document.createElement('a');
+                        link.download = '我的人生回放.jpeg';
+                        link.href = dataUrl;
+                        link.click();
+                        $("#lifeTrajectory").removeClass("deleteFixed");
+                        // 微信内置浏览器，显示图片，需要用户单独保存
+                        if(ua.match(/MicroMessenger/i)=="micromessenger") {
+                            $('#endImage').attr('src', dataUrl);
+                        }
+                        
+                    });
+            })
         trajectoryPage
             .find('#summary')
             .click(()=>{
@@ -352,7 +375,7 @@ class App{
             <button id="again" class="mainbtn" style="top:auto; bottom:0.1em"><span class="iconfont">&#xe6a7;</span>再次重开</button>
         </div>
         `);
-
+            
         summaryPage
             .find('#again')
             .click(()=>{
@@ -370,6 +393,7 @@ class App{
                 page: loadingPage,
                 clear: ()=>{},
             },
+
             index: {
                 page: indexPage,
                 btnRank: indexPage.find('#rank'),
