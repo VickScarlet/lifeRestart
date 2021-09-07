@@ -62,13 +62,21 @@ class App{
             .find('#rank')
             .click(()=>this.hint('别卷了！没有排行榜'));
 
+        if(localStorage.getItem('theme') == 'light') {
+            indexPage.find('#themeToggleBtn').text('黑')
+        } else{
+            indexPage.find('#themeToggleBtn').text('白')
+        }
+        
         indexPage
             .find("#themeToggleBtn")
             .click(() => {
                 if(localStorage.getItem('theme') == 'light') {
                     localStorage.setItem('theme', 'dark');
+                    indexPage.find('#themeToggleBtn').text('白')
                 } else {
                     localStorage.setItem('theme', 'light');
+                    indexPage.find('#themeToggleBtn').text('黑')
                 }
 
                 this.setTheme(localStorage.getItem('theme'))
