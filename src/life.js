@@ -26,7 +26,7 @@ class Life {
     }
 
     restart(allocation) {
-        this.#triggerTalents = new Set();
+        this.#triggerTalents = {};
         this.#property.restart(allocation);
         this.doTalent();
         this.#property.record();
@@ -34,6 +34,10 @@ class Life {
 
     getTalentAllocationAddition(talents) {
         return this.#talent.allocationAddition(talents);
+    }
+
+    getTalentCurrentTriggerCount(talentId) {
+        return this.#triggerTalents[talentId] || 0;
     }
 
     next() {
@@ -52,13 +56,13 @@ class Life {
     doTalent(talents) {
         if(talents) this.#property.change(this.#property.TYPES.TLT, talents);
         talents = this.#property.get(this.#property.TYPES.TLT)
-            .filter(talentId=>!this.#triggerTalents.has(talentId));
+            .filter(talentId => this.getTalentCurrentTriggerCount(talentId) < this.#talent.get(talentId).max_triggers);
 
         const contents = [];
         for(const talentId of talents) {
             const result = this.#talent.do(talentId, this.#property);
             if(!result) continue;
-            this.#triggerTalents.add(talentId);
+            this.#triggerTalents[talentId] = this.getTalentCurrentTriggerCount(talentId) + 1;
             const { effect, name, description, grade } = result;
             contents.push({
                 type: this.#property.TYPES.TLT,

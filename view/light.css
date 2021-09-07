@@ -593,3 +593,39 @@ i {
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+.deleteFixed {
+  position: relative;
+  transform: translateX(0);
+  left: 0;
+  top: 0;
+  text-align: left;
+}
+
+.operateBtn {
+  padding: 0.5rem 1.5rem;
+  border: 1px #EEEEEE solid;
+  border-radius: 0.2rem;
+  background-color:#393E46;
+  font-size: 1.6rem;
+  white-space: nowrap;
+  transform: translate(-50%,-50%);
+  cursor: pointer;
+  z-index:2;
+  color: #EEEEEE;
+}
+
+.operateBtn:hover {
+  background: #ff7878;
+  color: #fff;
+  transition: all .4s ease 0s;
+}
+
+.domToImage2wx {
+  position: fixed;
+  z-index: 1111;
+  width: 100%;
+}
+
+.domToImage2wx img {
+  width: 100%;
+}
