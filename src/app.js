@@ -14,6 +14,7 @@ class App {
   #isEnd = false;
   #selectedExtendTalent = null;
   #hintTimeout;
+  #talentMax = 8;
 
   async initial() {
     this.initPages();
@@ -96,14 +97,14 @@ class App {
           if (li.hasClass("selected")) {
             li.removeClass("selected");
             this.#talentSelected.delete(talent);
-            if (this.#talentSelected.size < 3) {
-              talentPage.find("#next").text("请选择3个");
-            }
+            // if (this.#talentSelected.size < 3) {
+            //   talentPage.find("#next").text("请选择3个");
+            // }
           } else {
-            if (this.#talentSelected.size == 3) {
-              this.hint("只能选3个天赋");
-              return;
-            }
+            // if (this.#talentSelected.size == 3) {
+            //   this.hint("只能选3个天赋");
+            //   return;
+            // }
 
             const exclusive = this.#life.exclusive(
               Array.from(this.#talentSelected).map(({ id }) => id),
@@ -129,10 +130,6 @@ class App {
     });
 
     talentPage.find("#next").click(() => {
-      if (this.#talentSelected.size != 3) {
-        this.hint("请选择3个天赋");
-        return;
-      }
       this.#totalMax =
         20 +
         this.#life.getTalentAllocationAddition(
@@ -245,6 +242,7 @@ class App {
       }
       groups.CHR.set(10 - arr[0]);
       groups.INT.set(10 - arr[1]);
+      3;
       groups.STR.set(10 - arr[2]);
       groups.MNY.set(10 - arr[3]);
     });
