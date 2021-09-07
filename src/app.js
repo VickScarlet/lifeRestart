@@ -1,7 +1,7 @@
 import { max, sum } from "./functions/util.js";
 import { summary } from "./functions/summary.js";
 import Life from "./life.js";
-
+import domtoimage from "dom-to-image";
 class App {
   constructor() {
     this.#life = new Life();
@@ -10,11 +10,10 @@ class App {
   #life;
   #pages;
   #talentSelected = new Set();
-  #totalMax = 40;
+  #totalMax = 20;
   #isEnd = false;
   #selectedExtendTalent = null;
   #hintTimeout;
-  #talentMax = 8;
 
   async initial() {
     this.initPages();
@@ -79,7 +78,7 @@ class App {
             <div class="head" style="font-size: 1.6rem">天赋抽卡</div>
             <button id="random" class="mainbtn" style="top: 50%;">10连抽！</button>
             <ul id="talents" class="selectlist"></ul>
-            <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">确认选择</button>
+            <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">请选择3个</button>
         </div>
         `);
 
@@ -97,9 +96,12 @@ class App {
           if (li.hasClass("selected")) {
             li.removeClass("selected");
             this.#talentSelected.delete(talent);
+            if (this.#talentSelected.size < 3) {
+              talentPage.find("#next").text("请选择3个");
+            }
           } else {
-            if (this.#talentSelected.size >= this.#talentMax) {
-              this.hint(`只能选${this.#talentMax}个天赋`);
+            if (this.#talentSelected.size == 3) {
+              this.hint("只能选3个天赋");
               return;
             }
 
@@ -118,18 +120,21 @@ class App {
             }
             li.addClass("selected");
             this.#talentSelected.add(talent);
+            if (this.#talentSelected.size == 3) {
+              talentPage.find("#next").text("开始新人生");
+            }
           }
         });
       });
     });
 
     talentPage.find("#next").click(() => {
-      if (this.#talentSelected.size < 1) {
-        this.hint("请选择至少1个天赋");
+      if (this.#talentSelected.size != 3) {
+        this.hint("请选择3个天赋");
         return;
       }
       this.#totalMax =
-        32 +
+        20 +
         this.#life.getTalentAllocationAddition(
           Array.from(this.#talentSelected).map(({ id }) => id)
         );
@@ -137,18 +142,30 @@ class App {
     });
 
     // Property
-    const propertyPage = $(`
+    // hint of extension tobermory.es6-string-html
+    const propertyPage = $(/*html*/ `
         <div id="main">
             <div class="head" style="font-size: 1.6rem">
                 调整初始属性<br>
                 <div id="total" style="font-size:1rem; font-weight:normal;">可用属性点：0</div>
             </div>
             <ul id="propertyAllocation" class="propinitial"></ul>
-            <button id="random" class="mainbtn" style="top:auto; bottom:7rem">自动分配</button>
-            <button id="start" class="mainbtn" style="top:auto; bottom:0.1rem">开始新人生</button>
+            <ul class="selectlist" id="talentSelectedView" style="top:calc(100% - 17rem); bottom:7rem"></ul>
+            <button id="random" class="mainbtn" style="top:auto; bottom:0.1rem; left:auto; right:50%; transform: translate(-2rem,-50%);">随机分配</button>
+            <button id="start" class="mainbtn" style="top:auto; bottom:0.1rem; left:50%; right:auto; transform: translate(2rem,-50%);">开始新人生</button>
         </div>
         `);
-
+    propertyPage.mounted = () => {
+      propertyPage.find("#talentSelectedView").append(
+        `<li>已选天赋</li>` +
+          Array.from(this.#talentSelected)
+            .map(
+              ({ name, description }) =>
+                `<li class="grade0b">${name}(${description})</li>`
+            )
+            .join("")
+      );
+    };
     const groups = {};
     const total = () => {
       let t = 0;
@@ -213,36 +230,31 @@ class App {
       ul.append(groups[type].group);
     }
 
-    const autoGenerator = function (n, sum) {
-      const rest = sum % n;
-      const value = Math.ceil(sum / n);
-      if (rest === 0) {
-        return [value, value, value, value];
-      }
-      return [value, value, value, sum - value * 3];
-    };
     propertyPage.find("#random").click(() => {
       let t = this.#totalMax;
-
-      const diff = 40 - t || 0;
-      if (diff > 0) {
-        const arr = autoGenerator(4, diff);
-        // console.log("arr", arr);
-        groups.CHR.set(10 - arr[0]);
-        groups.INT.set(10 - arr[1]);
-        groups.STR.set(10 - arr[2]);
-        groups.MNY.set(10 - arr[3]);
-      } else {
-        groups.CHR.set(10);
-        groups.INT.set(10);
-        groups.STR.set(10);
-        groups.MNY.set(10);
+      const arr = [10, 10, 10, 10];
+      while (t > 0) {
+        const sub = Math.round(Math.random() * (Math.min(t, 10) - 1)) + 1;
+        while (true) {
+          const select = Math.floor(Math.random() * 4) % 4;
+          if (arr[select] - sub < 0) continue;
+          arr[select] -= sub;
+          t -= sub;
+          break;
+        }
       }
+      groups.CHR.set(10 - arr[0]);
+      groups.INT.set(10 - arr[1]);
+      groups.STR.set(10 - arr[2]);
+      groups.MNY.set(10 - arr[3]);
     });
 
     propertyPage.find("#start").click(() => {
-      if (total() > this.#totalMax) {
-        this.hint(`你多用了${total() - this.#totalMax}属性点`);
+      if (total() < this.#totalMax) {
+        this.hint(`你还有${this.#totalMax - total()}属性点没有分配完`);
+        return;
+      } else if (total() > this.#totalMax) {
+        this.hint(`你多使用了${total() - this.#totalMax}属性点`);
         return;
       }
       this.#life.restart({
@@ -255,13 +267,23 @@ class App {
       });
       this.switch("trajectory");
       this.#pages.trajectory.born();
+      $(document).keydown(function (event) {
+        if (event.which == 32 || event.which == 13) {
+          $("#lifeTrajectory").click();
+        }
+      });
     });
 
     // Trajectory
     const trajectoryPage = $(`
         <div id="main">
+            <ul id="lifeProperty" class="lifeProperty"></ul>
             <ul id="lifeTrajectory" class="lifeTrajectory"></ul>
-            <button id="summary" class="mainbtn" style="top:auto; bottom:0.1rem">人生总结</button>
+            <button id="summary" class="mainbtn" style="top:auto; bottom:0.1rem; left: 25%;">人生总结</button>
+            <button id="domToImage" class="mainbtn" style="top:auto; bottom:0.1rem; left: 75%; display: none">人生回放</button>
+            <div class="domToImage2wx">
+                <img src="" id="endImage" />
+            </div>
         </div>
         `);
 
@@ -269,7 +291,6 @@ class App {
       if (this.#isEnd) return;
       const trajectory = this.#life.next();
       const { age, content, isEnd } = trajectory;
-
       const li = $(
         `<li><span>${age}岁：</span>${content
           .map(({ type, description, grade, name, postEvent }) => {
@@ -285,11 +306,40 @@ class App {
       li.appendTo("#lifeTrajectory");
       $("#lifeTrajectory").scrollTop($("#lifeTrajectory")[0].scrollHeight);
       if (isEnd) {
+        $(document).unbind("keydown");
         this.#isEnd = true;
         trajectoryPage.find("#summary").show();
+        trajectoryPage.find("#domToImage").show();
+      } else {
+        // 如未死亡，更新数值
+        // Update properties if not die yet
+        const property = this.#life.getLastRecord();
+        $("#lifeProperty").html(`
+                    <li>颜值：${property.CHR} </li>
+                    <li>智力：${property.INT} </li>
+                    <li>体质：${property.STR} </li>
+                    <li>家境：${property.MNY} </li>
+                    <li>快乐：${property.SPR} </li>`);
       }
     });
-
+    // html2canvas
+    trajectoryPage.find("#domToImage").click(() => {
+      $("#lifeTrajectory").addClass("deleteFixed");
+      const ua = navigator.userAgent.toLowerCase();
+      domtoimage
+        .toJpeg(document.getElementById("lifeTrajectory"))
+        .then(function (dataUrl) {
+          let link = document.createElement("a");
+          link.download = "我的人生回放.jpeg";
+          link.href = dataUrl;
+          link.click();
+          $("#lifeTrajectory").removeClass("deleteFixed");
+          // 微信内置浏览器，显示图片，需要用户单独保存
+          if (ua.match(/MicroMessenger/i) == "micromessenger") {
+            $("#endImage").attr("src", dataUrl);
+          }
+        });
+    });
     trajectoryPage.find("#summary").click(() => {
       this.switch("summary");
     });
@@ -319,7 +369,7 @@ class App {
       this.#life.talentExtend(this.#selectedExtendTalent);
       this.#selectedExtendTalent = null;
       this.#talentSelected.clear();
-      this.#totalMax = 40;
+      this.#totalMax = 20;
       this.#isEnd = false;
       this.switch("index");
     });
@@ -329,6 +379,7 @@ class App {
         page: loadingPage,
         clear: () => {},
       },
+
       index: {
         page: indexPage,
         btnRank: indexPage.find("#rank"),
@@ -357,13 +408,14 @@ class App {
         clear: () => {
           talentPage.find("ul.selectlist").empty();
           talentPage.find("#random").show();
-          this.#totalMax = 40;
+          this.#totalMax = 20;
         },
       },
       property: {
         page: propertyPage,
         clear: () => {
           freshTotal();
+          propertyPage.find("#talentSelectedView").empty();
         },
       },
       trajectory: {
@@ -459,6 +511,9 @@ class App {
     $("#main").detach();
     p.clear();
     p.page.appendTo("body");
+    if (typeof p.page.mounted === "function") {
+      p.page.mounted();
+    }
   }
 
   hint(message, type = "info") {
@@ -481,7 +536,7 @@ class App {
     const themeLink = $(document).find("#themeLink");
 
     if (theme == "light") {
-      themeLink.attr("href", "style.css");
+      themeLink.attr("href", "light.css");
     } else {
       themeLink.attr("href", "dark.css");
     }

@@ -47,6 +47,10 @@ html {
     font-family: PingFangSC, 'Noto Sans CJK SC', 'MS Yahei';
 }
 
+body {
+	user-select: none;
+}
+
 #main {
     align-content: center;
     width: 100%;
@@ -69,7 +73,7 @@ html {
     position: fixed;
     top: 65%;
     left: 50%;
-    padding: 0.8rem 1rem;
+	padding: 0.5rem 1.5rem;
     border: 1px #ccc solid;
     border-radius: 0.2rem;
     background-color:white;
@@ -78,6 +82,12 @@ html {
     transform: translate(-50%,-50%);
     cursor: pointer;
     z-index:2;
+}
+
+.mainbtn:hover {
+	background: #ff7878;
+	color: #fff;
+	transition: all .4s ease 0s;
 }
 
 .iconfont {
@@ -140,6 +150,32 @@ html {
     padding: 0;
     overflow: auto;
     transform: translateX(-50%);
+    text-align: center;
+}
+
+.lifeProperty{
+  position: fixed;
+  list-style-type: none;
+  left: 50%;
+  top: 2rem;
+  width: 30rem;
+  max-width: calc(100% - 2rem);
+  padding: 0;
+  overflow: auto;
+  transform: translateX(-50%);
+  display: flex;
+  color: black;
+}
+
+.lifeProperty > li {
+  width: 100%;
+  position: relative;
+  border: 1px #ccc solid;
+  display: inline-block;
+  margin: 0.1rem 2px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 0.2rem;
 }
 
 .selectlist > li {
@@ -154,42 +190,87 @@ html {
     cursor: pointer;
 }
 
-.selectlist > li::before {
-    position: absolute;
-    display: inline-block;
-    left: 0;
-    top: 0;
-    border-radius: 0.2rem 0 0 0.2rem;
-    margin: -1px;
-    padding: 1px;
-    height: 100%;
-    width: 1.5rem;
-    content: "　";
+.grade0b {
+	background-color: #ededed;
+	border: #c5c5c5 2px solid !important;
 }
 
-.grade1,
-.grade1b::before {
-    background-color: rgb(116, 191, 255) !important;
+.grade1b {
+	background-color: #7ea5ec;
+	border: #c5c5c5 2px solid !important;
 }
 
-.grade2,
-.grade2b::before {
-    background-color: rgb(226, 167, 255) !important;
+.grade2b {
+	background-color: #e2a7ff;
+	border: #c5c5c5 2px solid !important;
 }
 
-.grade3,
-.grade3b::before {
-    background-color: lightsalmon !important;
+.grade3b {
+	background-color: #ffa07a;
+	border: #c5c5c5 2px solid !important;
 }
 
-.selected {
-    background-color: gray;
-    color: white;
+@media (min-width:1080px) {
+    .grade0b:hover {
+        background-color: #868686;
+        transition: all .3s ease 0s;
+    }
+
+    .grade1b:hover {
+        background-color: #5d90ff;
+        transition: all .3s ease 0s;
+    }
+
+    .grade2b:hover {
+        background-color: #bc72ec;
+        transition: all .3s ease 0s;
+    }
+
+    .grade3b:hover {
+        background-color: #e09074;
+        transition: all .3s ease 0s;
+    }
+}
+.grade0b.selected {
+    background-color: #444;
+    box-shadow: #bbb 0px 0px 10px;
+    color: #fff;
+}
+
+.grade1b.selected {
+    background-color: #407dec;
+    box-shadow: #bbb 0px 0px 10px;
+    color: #fff;
+}
+
+.grade2b.selected {
+	background-color: #b362e7;
+    box-shadow: #bbb 0px 0px 10px;
+    color: #fff;
+}
+
+.grade3b.selected {
+    background-color: #ff7f4d;
+    box-shadow: #bbb 0px 0px 10px;
+    color: #fff;
+}
+
+.judge > li.grade1 span,
+.judge > li.grade1{
+    background-color: #7ea5ec;
+}
+.judge > li.grade2 span,
+.judge > li.grade2{
+    background-color: #e2a7ff;
+}
+.judge > li.grade3 span,
+.judge > li.grade3{
+    background-color: #ffa07a;
 }
 
 .propinitial {
-    top: 6rem;
-    bottom: 14rem;
+    top: 5rem;
+    bottom: 17rem;
 }
 
 .propinitial > li {
@@ -220,9 +301,15 @@ html {
     user-select: none;
 }
 
+.propbtn:hover{
+	color: #5c5c5c;
+	transition: all .2s ease 0s;
+}
+
 .lifeTrajectory {
-    border: 1px lightblue solid;
-    background-color: aliceblue;
+    border: 1px #a7a7a7 solid;
+    border-radius: 10px;
+    background-color: #ffffff;
 }
 
 .judge > li,
@@ -232,8 +319,8 @@ html {
     margin: 0.5rem 0;
     padding: 0.5rem 1rem 0.5rem 6rem;
     font-size: 1.4rem;
-    background-color: white;
-    box-shadow: lightblue 0 0 0.4rem;
+    background-color: #fff;
+    box-shadow: #a7a7a7 0 0 0.4rem;
     user-select: none;
 }
 
@@ -250,13 +337,14 @@ html {
     width: calc(100% - 9rem);
     margin: 0.5rem;
     padding: 0.5rem 1rem 0.5rem 7rem;
+    border-radius: 10px;
 }
 
 .judge > li > span {
-    background-color: white;
     height: calc(100% - 1rem);
     padding: 0.5rem 0;
     top: 0;
+    border-radius: 10px;
 }
 
 
@@ -386,17 +474,12 @@ i {
   margin: 0.25rem;
 }
 
-ins.adsbygoogle {
-  position: fixed;
-  bottom: 0;
-}
-
 /**
  * @license
  * Copyright Akveo. All Rights Reserved.
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
- .eva-animation {
+  .eva-animation {
     animation-duration: 1s;
     animation-fill-mode: both; }
 
@@ -476,3 +559,7 @@ ins.adsbygoogle {
       transform: scale3d(0.5, 0.5, 0.5); }
     50% {
       opacity: 1; } }
+
+::-webkit-scrollbar {
+	width: 0 !important
+}
