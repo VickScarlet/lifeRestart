@@ -593,6 +593,7 @@ i {
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+
 .deleteFixed {
   position: relative;
   transform: translateX(0);

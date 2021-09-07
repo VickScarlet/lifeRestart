@@ -571,6 +571,7 @@ i {
     width: 0 !important
 }
 
+
 @keyframes fadeOutUp {
   from {
     opacity: 0;
@@ -600,6 +601,7 @@ i {
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
+
 .deleteFixed {
   position: relative;
   transform: translateX(0);
