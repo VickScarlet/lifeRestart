@@ -288,7 +288,12 @@ class App{
             <button id="summary" class="mainbtn" style="top:auto; bottom:0.1rem; left: 25%;">人生总结</button>
             <button id="domToImage" class="mainbtn" style="top:auto; bottom:0.1rem; left: 75%; display: none">人生回放</button>
             <div class="domToImage2wx">
+<<<<<<< HEAD
+                <img src="" id="successSaveImage" />
+                <button id="hideDomToImageBtn" style="position: fixed; top:auto; bottom: 20px; left: 75%">隐藏截图</button>
+=======
                 <img src="" id="endImage" />
+>>>>>>> 6e91b19c1f23cffa1cb1782dd3b2d2577d5be45f
             </div>
         </div>
         `);
@@ -330,7 +335,11 @@ class App{
                     <li>快乐：${property.SPR} </li>`);
                 }
             });
+<<<<<<< HEAD
+        // domToImage
+=======
         // html2canvas
+>>>>>>> 6e91b19c1f23cffa1cb1782dd3b2d2577d5be45f
         trajectoryPage
             .find('#domToImage')
             .click(()=>{
@@ -345,10 +354,25 @@ class App{
                         $("#lifeTrajectory").removeClass("deleteFixed");
                         // 微信内置浏览器，显示图片，需要用户单独保存
                         if(ua.match(/MicroMessenger/i)=="micromessenger") {
+<<<<<<< HEAD
+                            trajectoryPage.find('#hideDomToImageBtn').show();
+                            $('#successSaveImage').attr('src', dataUrl);
+                        }
+                        
+                    });
+            });
+        // 微信内置浏览器 隐藏截图
+        trajectoryPage
+            .find('#hideDomToImageBtn')
+            .click(()=>{
+                trajectoryPage.find('#successSaveImage').hide();
+                trajectoryPage.find('#hideDomToImageBtn').hide();
+=======
                             $('#endImage').attr('src', dataUrl);
                         }
                         
                     });
+>>>>>>> 6e91b19c1f23cffa1cb1782dd3b2d2577d5be45f
             })
         trajectoryPage
             .find('#summary')
@@ -439,6 +463,10 @@ class App{
                 clear: ()=>{
                     trajectoryPage.find('#lifeTrajectory').empty();
                     trajectoryPage.find('#summary').hide();
+                    // fix 第二次进入时不显示人生回放功能
+                    trajectoryPage.find('#domToImage').hide();
+                    // 在微信内置浏览器中，显示的截图不能关闭，增加 隐藏截图 按钮，初始化隐藏
+                    trajectoryPage.find('#hideDomToImageBtn').hide();
                     this.#isEnd = false;
                 },
                 born: ()=>{
