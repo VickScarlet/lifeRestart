@@ -42,6 +42,7 @@ async function debug() {
                 }
             ).join('\n    ')
         );
+        console.debug(life.getLastRecord())
     } while(!trajectory.isEnd)
     // debugger;
 }
