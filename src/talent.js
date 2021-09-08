@@ -74,6 +74,37 @@ class Talent {
             });
     }
 
+    talentGod(include){
+        const talentList = {};
+        for(const talentId in this.#talents) {
+            const { id, grade, name, description } = this.#talents[talentId];
+            if(id == include) {
+                include = { grade, name, description, id };
+                continue;
+            }
+            if(!talentList[grade]) talentList[grade] = [{ grade, name, description, id }];
+            else talentList[grade].push({ grade, name, description, id });
+        } 
+
+        return new Array(10)
+            .fill(1).map((v, i)=>{
+                if(!i && include) return include;
+                const gradeRandom = Math.random();
+                let grade;
+                if(gradeRandom>=0.9) grade = 0;
+                else if(gradeRandom>=0.7) grade = 1;
+                else if(gradeRandom>=0.6) grade = 2;
+                else grade = 3;
+
+                while(talentList[grade].length == 0) grade--;
+
+                const length = talentList[grade].length;
+
+                const random = Math.floor(Math.random()*length) % length;
+                return talentList[grade].splice(random,1)[0];
+            });
+    }
+
     allocationAddition(talents) {
         if(Array.isArray(talents)) {
             let addition = 0;

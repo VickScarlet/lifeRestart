@@ -10,7 +10,7 @@ class App{
     #life;
     #pages;
     #talentSelected = new Set();
-    #totalMax=20;
+    #totalMax=40;   //初始属性分配点数改到40
     #isEnd = false;
     #selectedExtendTalent = null;
     #hintTimeout;
@@ -79,6 +79,7 @@ class App{
         <div id="main">
             <div class="head" style="font-size: 1.6rem">天赋抽卡</div>
             <button id="random" class="mainbtn" style="top: 50%;">10连抽！</button>
+            <button id="god" class="mainbtn" style="top: 65%;">开挂人生！</button>
             <ul id="talents" class="selectlist"></ul>
             <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">请选择3个</button>
         </div>
@@ -92,6 +93,7 @@ class App{
             .find('#random')
             .click(()=>{
                 talentPage.find('#random').hide();
+                talentPage.find('#god').hide(); //隐藏掉
                 const ul = talentPage.find('#talents');
                 this.#life.talentRandom()
                     .forEach(talent=>{
@@ -127,6 +129,47 @@ class App{
                     });
             });
 
+
+        talentPage
+            .find('#god')
+            .click(()=>{
+                talentPage.find('#god').hide();
+                talentPage.find('#random').hide();
+                const ul = talentPage.find('#talents');
+                this.#life.talentGod()
+                    .forEach(talent=>{
+                        const li = createTalent(talent);
+                        ul.append(li);
+                        li.click(()=>{
+                            if(li.hasClass('selected')) {
+                                li.removeClass('selected')
+                                this.#talentSelected.delete(talent);
+                            } else {
+                                if(this.#talentSelected.size==3) {
+                                    this.hint('只能选3个天赋');
+                                    return;
+                                }
+
+                                const exclusive = this.#life.exclusive(
+                                    Array.from(this.#talentSelected).map(({id})=>id),
+                                    talent.id
+                                );
+                                if(exclusive != null) {
+                                    for(const { name, id } of this.#talentSelected) {
+                                        if(id == exclusive) {
+                                            this.hint(`与已选择的天赋【${name}】冲突`);
+                                            return;
+                                        }
+                                    }
+                                    return;
+                                }
+                                li.addClass('selected');
+                                this.#talentSelected.add(talent);
+                            }
+                        });
+                    });
+            });
+            
         talentPage
             .find('#next')
             .click(()=>{

@@ -102,6 +102,9 @@ class Life {
         return this.#talent.talentRandom(JSON.parse(localStorage.extendTalent||'null'));
     }
 
+    talentGod() {
+        return this.#talent.talentGod(JSON.parse(localStorage.extendTalent||'null'));
+    }
     talentExtend(talentId) {
         localStorage.extendTalent = JSON.stringify(talentId);
     }
