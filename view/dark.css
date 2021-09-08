@@ -100,7 +100,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-#sponsor,
+.sponsor,
 #specialthanks,
 #rank {
     position: fixed;
@@ -123,11 +123,11 @@ body {
     top: 1rem;
 }
 
-#sponsor {
+.sponsor {
   top: auto;
   bottom: 0;
-  right: 50%;
-  transform: translate(50%, -50%);
+  width: auto;
+  padding: 0.5rem;
 }
 
 #spthx {

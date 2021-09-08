@@ -84,7 +84,7 @@ class App{
         } else{
             indexPage.find('#themeToggleBtn').text('白')
         }
-        
+
         indexPage
             .find("#themeToggleBtn")
             .click(() => {
@@ -110,7 +110,8 @@ class App{
                 <ul class="g1"></ul>
                 <ul class="g2"></ul>
             </div>
-            <button id="sponsor" onclick="window.open('https://afdian.net/@LifeRestart')">打赏作者</button>
+            <button class="sponsor" onclick="window.open('https://afdian.net/@LifeRestart')" style="background: linear-gradient(90deg,#946ce6,#7e5fd9); left:auto; right:50%; transform: translate(-2rem,-50%);">打赏策划(爱发电)</button>
+            <button class="sponsor" onclick="window.open('https://dun.mianbaoduo.com/@vickscarlet')" style="background-color:#c69; left:50%; right:auto; transform: translate(2rem,-50%);">打赏程序(顿顿饭)</button>
         </div>
         `);
 
