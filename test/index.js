@@ -43,6 +43,7 @@ async function debug() {
                 }
             ).join('\n    ')
         );
+        console.debug(life.getLastRecord())
         if(age == 99) debugger
     } while(!trajectory.isEnd)
     // debugger;
