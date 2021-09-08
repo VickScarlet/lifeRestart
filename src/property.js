@@ -4,15 +4,16 @@ class Property {
     constructor() {}
 
     TYPES = {
-        AGE: "AGE",
-        CHR: "CHR",
-        INT: "INT",
-        STR: "STR",
-        MNY: "MNY",
-        SPR: "SPR",
-        LIF: "LIF",
-        TLT: "TLT",
-        EVT: "EVT",
+        AGE: "AGE", // 年龄 age AGE
+        CHR: "CHR", // 颜值 charm CHR
+        INT: "INT", // 智力 intelligence INT
+        STR: "STR", // 体质 strength STR
+        MNY: "MNY", // 家境 money MNY
+        SPR: "SPR", // 快乐 spirit SPR
+        LIF: "LIF", // 生命 life LIFE
+        TLT: "TLT", // 天赋 talent TLT
+        EVT: "EVT", // 事件 event EVT
+        TMS: "TMS", // 次数 times TMS
     };
 
     #ageData;
@@ -71,6 +72,8 @@ class Property {
             case this.TYPES.TLT:
             case this.TYPES.EVT:
                 return clone(this.#data[prop]);
+            case this.TYPES.TMS:
+                return JSON.parse(localStorage.times||'0') || 0;
             default: return 0;
         }
     }
@@ -87,8 +90,11 @@ class Property {
             case this.TYPES.TLT:
             case this.TYPES.EVT:
                 this.#data[prop] = clone(value);
-                break;
-            default: return 0;
+                return;
+            case this.TYPES.TMS:
+                localStorage.times = JSON.stringify(parseInt(value) || 0);
+                return;
+            default: return;
         }
     }
 
@@ -126,7 +132,7 @@ class Property {
             case this.TYPES.SPR:
             case this.TYPES.LIF:
                 this.#data[prop] += Number(value);
-                break;
+                return;
             case this.TYPES.TLT:
             case this.TYPES.EVT:
                 const v = this.#data[prop];
@@ -135,7 +141,13 @@ class Property {
                     if(index!=-1) v.splice(index,1);
                 }
                 if(!v.includes(value)) v.push(value);
-                break;
+                return;
+            case this.TYPES.TMS:
+                this.set(
+                    prop,
+                    this.get(prop) + parseInt(value)
+                );
+                return;
             default: return;
         }
     }
