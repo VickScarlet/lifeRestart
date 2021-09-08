@@ -133,6 +133,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.sponsor,
 #specialthanks,
 #rank {
   position: fixed;
@@ -155,11 +156,11 @@ body {
   top: 1rem;
 }
 
-#sponsor {
-  position: fixed;
+.sponsor {
+  top: auto;
   bottom: 0;
-  left: 0;
-  right: 0;
+  width: auto;
+  padding: 0.5rem;
 }
 
 #spthx {
