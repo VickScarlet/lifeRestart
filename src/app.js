@@ -9,6 +9,7 @@ class App{
 
     #life;
     #pages;
+    #currentPage;
     #talentSelected = new Set();
     #totalMax=20;
     #isEnd = false;
@@ -29,6 +30,14 @@ class App{
         window.onerror = (event, source, lineno, colno, error) => {
             this.hint(`[ERROR] at (${source}:${lineno}:${colno})\n\n${error?.stack||error||'unknow Error'}`, 'error');
         }
+        const keyDownCallback = (keyboardEvent) => {
+            if (keyboardEvent.which === 13 || keyboardEvent.keyCode === 13) {
+                const pressEnterFunc = this.#pages[this.#currentPage]?.pressEnter;
+                pressEnterFunc && typeof pressEnterFunc === 'function' && pressEnterFunc();
+            }
+        }
+        window.removeEventListener('keydown', keyDownCallback);
+        window.addEventListener('keydown', keyDownCallback);
     }
 
     initPages() {
@@ -300,11 +309,11 @@ class App{
                 });
                 this.switch('trajectory');
                 this.#pages.trajectory.born();
-                $(document).keydown(function(event){
-                    if(event.which == 32 || event.which == 13){
-                        $('#lifeTrajectory').click();
-                    }
-                })
+                // $(document).keydown(function(event){
+                //     if(event.which == 32 || event.which == 13){
+                //         $('#lifeTrajectory').click();
+                //     }
+                // })
             });
 
         // Trajectory
@@ -418,7 +427,9 @@ class App{
         this.#pages = {
             loading: {
                 page: loadingPage,
-                clear: ()=>{},
+                clear: ()=>{
+                    this.#currentPage = 'loading';
+                },
             },
             index: {
                 page: indexPage,
@@ -426,7 +437,11 @@ class App{
                 btnRestart: indexPage.find('#restart'),
                 hint: indexPage.find('.hint'),
                 cnt: indexPage.find('#cnt'),
+                pressEnter: ()=>{
+                    this.#pages.index.btnRestart.click();
+                },
                 clear: ()=>{
+                    this.#currentPage = 'index';
                     indexPage.find('.hint').hide();
 
                     const times = this.times;
@@ -464,7 +479,21 @@ class App{
             },
             talent: {
                 page: talentPage,
+                talentList: talentPage.find('#talents'),
+                btnRandom: talentPage.find('#random'),
+                btnNext: talentPage.find('#next'),
+                pressEnter: ()=>{
+                    const talentList = this.#pages.talent.talentList;
+                    const btnRandom = this.#pages.talent.btnRandom;
+                    const btnNext = this.#pages.talent.btnNext;
+                    if (talentList.children().length) {
+                        btnNext.click();
+                    } else {
+                        btnRandom.click();
+                    }
+                },
                 clear: ()=>{
+                    this.#currentPage = 'talent';
                     talentPage.find('ul.selectlist').empty();
                     talentPage.find('#random').show();
                     this.#totalMax = 20;
@@ -472,7 +501,12 @@ class App{
             },
             property: {
                 page: propertyPage,
+                btnStart: propertyPage.find('#start'),
+                pressEnter: ()=>{
+                    this.#pages.property.btnStart.click();
+                },
                 clear: ()=>{
+                    this.#currentPage = 'property';
                     freshTotal();
                     propertyPage
                         .find('#talentSelectedView')
@@ -481,7 +515,12 @@ class App{
             },
             trajectory: {
                 page: trajectoryPage,
+                lifeTrajectory: trajectoryPage.find('#lifeTrajectory'),
+                pressEnter: ()=>{
+                    this.#pages.trajectory.lifeTrajectory.click();
+                },
                 clear: ()=>{
+                    this.#currentPage = 'trajectory';
                     trajectoryPage.find('#lifeTrajectory').empty();
                     trajectoryPage.find('#summary').hide();
                     this.#isEnd = false;
@@ -493,6 +532,7 @@ class App{
             summary: {
                 page: summaryPage,
                 clear: ()=>{
+                    this.#currentPage = 'summary';
                     const judge = summaryPage.find('#judge');
                     const talents = summaryPage.find('#talents');
                     judge.empty();
