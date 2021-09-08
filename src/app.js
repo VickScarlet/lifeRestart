@@ -335,11 +335,7 @@ class App{
                     <li>快乐：${property.SPR} </li>`);
                 }
             });
-<<<<<<< HEAD
         // domToImage
-=======
-        // html2canvas
->>>>>>> 6e91b19c1f23cffa1cb1782dd3b2d2577d5be45f
         trajectoryPage
             .find('#domToImage')
             .click(()=>{
@@ -354,7 +350,6 @@ class App{
                         $("#lifeTrajectory").removeClass("deleteFixed");
                         // 微信内置浏览器，显示图片，需要用户单独保存
                         if(ua.match(/MicroMessenger/i)=="micromessenger") {
-<<<<<<< HEAD
                             trajectoryPage.find('#hideDomToImageBtn').show();
                             $('#successSaveImage').attr('src', dataUrl);
                         }
@@ -367,12 +362,6 @@ class App{
             .click(()=>{
                 trajectoryPage.find('#successSaveImage').hide();
                 trajectoryPage.find('#hideDomToImageBtn').hide();
-=======
-                            $('#endImage').attr('src', dataUrl);
-                        }
-                        
-                    });
->>>>>>> 6e91b19c1f23cffa1cb1782dd3b2d2577d5be45f
             })
         trajectoryPage
             .find('#summary')
