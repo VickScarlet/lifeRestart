@@ -1,5 +1,5 @@
-# lifeRestartWX
-人生重开模拟器微信小程序版
+# lifeRestartWX - 人生重开模拟器微信小程序版
+人生重开模拟器[微信小程序版](https://github.com/uiiang/lifeRestartWX)
 
 ## 简介
 - 根据[人生重开模拟器](https://github.com/VickScarlet/lifeRestart)开发的微信小程序版
