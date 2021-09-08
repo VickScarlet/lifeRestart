@@ -122,6 +122,9 @@ class Life {
     exclusive(talents, exclusive) {
         return this.#talent.exclusive(talents, exclusive);
     }
+
+    get times() { return this.#property?.get(this.#property.TYPES.TMS) || 0; }
+    set times(v) { return this.#property?.set(this.#property.TYPES.TMS, v) || 0; }
 }
 
 export default Life;
