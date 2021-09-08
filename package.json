@@ -1,7 +1,7 @@
 {
-    "name": "xlsx_transform",
+    "name": "life_restart",
     "type": "module",
-    "bin": "test/index.js",
+    "bin": "repl/index.js",
     "scripts": {
         "test": "node test",
         "xlsxTransform": "node utils/xlsxTransform.js data",

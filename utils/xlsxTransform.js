@@ -19,7 +19,8 @@ async function transform(filePath) {
         const newData = {};
         data[sheetName] = newData;
         rawData.shift();
-        for(const row of rawData) {
+        for(const index in rawData) {
+            const row = rawData[index];
             const rowData = {};
             let mainKey;
             for(let key in row) {
@@ -51,7 +52,11 @@ async function transform(filePath) {
                     rowData[key] = cell;
                 }
             }
-            if(mainKey===undefined) return console.error('No Main Key', rowData);
+            if(mainKey===undefined) {
+                console.warn('[WARN][No Main Key]', filePath, sheetName, parseInt(index), rowData);
+                continue;
+            }
+            if(newData[mainKey]) console.warn('[WARN][Duplicate Key]', mainKey, filePath, sheetName, parseInt(index), '\n\t', JSON.stringify(newData[mainKey]), '\n\t', JSON.stringify(rowData));
             newData[mainKey] = rowData;
         }
     }
