@@ -44,6 +44,12 @@ npm run dev
 ```
 
 4. After the startup is complete, will automatically open a browser and visit [http://localhost:8081/view/index.html](http://localhost:8081/view/index.html).
+5. Production Usage
+
+```bash
+yarn build
+```
+after that, you will get a dist folder. Copy the dist folder to whatever server you want and set the index url to view/index.html. GOOD LUCK!
 
 ### Command Line Version
 
