@@ -288,12 +288,8 @@ class App{
             <button id="summary" class="mainbtn" style="top:auto; bottom:0.1rem; left: 25%;">人生总结</button>
             <button id="domToImage" class="mainbtn" style="top:auto; bottom:0.1rem; left: 75%; display: none">人生回放</button>
             <div class="domToImage2wx">
-<<<<<<< HEAD
                 <img src="" id="successSaveImage" />
                 <button id="hideDomToImageBtn" style="position: fixed; top:auto; bottom: 20px; left: 75%">隐藏截图</button>
-=======
-                <img src="" id="endImage" />
->>>>>>> 6e91b19c1f23cffa1cb1782dd3b2d2577d5be45f
             </div>
         </div>
         `);
