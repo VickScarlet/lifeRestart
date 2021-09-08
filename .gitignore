@@ -107,4 +107,6 @@ utils/xlsxTransform-*
 
 /.idea
 
-__localStorage.json
+__localStorage.
+
+/public
