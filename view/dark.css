@@ -448,7 +448,7 @@ body {
   flex-direction: column;
   border: 1px solid #EEEEEE;
   border-radius: 4px;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .judge>li {
