@@ -123,9 +123,9 @@ class App{
         const talentPage = $(`
         <div id="main">
             <div class="head" style="font-size: 1.6rem">天赋抽卡</div>
-            <button id="random" class="mainbtn" style="top: 50%;">10连抽！</button>
+            <button id="random" class="mainbtn" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"">10连抽！</button>
             <ul id="talents" class="selectlist"></ul>
-            <button id="next" class="mainbtn" style="top:auto; bottom:0.1em">请选择3个</button>
+            <button id="next" class="mainbtn">请选择3个</button>
         </div>
         `);
 
@@ -176,6 +176,7 @@ class App{
                             }
                         });
                     });
+                talentPage.find('#next').show()
             });
 
         talentPage
@@ -185,6 +186,7 @@ class App{
                     this.hint('请选择3个天赋');
                     return;
                 }
+                talentPage.find('#next').hide()
                 this.#totalMax = 20 + this.#life.getTalentAllocationAddition(Array.from(this.#talentSelected).map(({id})=>id));
                 this.switch('property');
             })
@@ -194,13 +196,15 @@ class App{
         const propertyPage = $(/*html*/`
         <div id="main">
             <div class="head" style="font-size: 1.6rem">
-                调整初始属性<br>
+                <div>调整初始属性</div>
                 <div id="total" style="font-size:1rem; font-weight:normal;">可用属性点：0</div>
             </div>
             <ul id="propertyAllocation" class="propinitial"></ul>
-            <ul class="selectlist" id="talentSelectedView" style="top:calc(100% - 17rem); bottom:7rem"></ul>
-            <button id="random" class="mainbtn" style="top:auto; bottom:0.1rem; left:auto; right:50%; transform: translate(-2rem,-50%);">随机分配</button>
-            <button id="start" class="mainbtn" style="top:auto; bottom:0.1rem; left:50%; right:auto; transform: translate(2rem,-50%);">开始新人生</button>
+            <ul class="selectlist" id="talentSelectedView"></ul>
+            <div class="btn-area">
+                <button id="random" class="mainbtn">随机分配</button>
+                <button id="start" class="mainbtn">开始新人生</button>
+            </div>
         </div>
         `);
         propertyPage.mounted = ()=>{
@@ -330,8 +334,10 @@ class App{
         <div id="main">
             <ul id="lifeProperty" class="lifeProperty"></ul>
             <ul id="lifeTrajectory" class="lifeTrajectory"></ul>
-            <button id="summary" class="mainbtn" style="top:auto; bottom:0.1rem; left:auto; right:50%; transform: translate(-2rem,-50%);">人生总结</button>
-            <button id="domToImage" class="mainbtn" style="top:auto; bottom:0.1rem; left:50%; right:auto; transform: translate(2rem,-50%); display: none;">人生回放</button>
+            <div class="btn-area">
+                <button id="summary" class="mainbtn">人生总结</button>
+                <button id="domToImage" class="mainbtn">人生回放</button>
+            </div>
             <div class="domToImage2wx">
                 <img src="" id="endImage" />
             </div>
@@ -344,7 +350,7 @@ class App{
                 if(this.#isEnd) return;
                 const trajectory = this.#life.next();
                 const { age, content, isEnd } = trajectory;
-                const li = $(`<li><span>${age}岁：</span>${
+                const li = $(`<li><span>${age}岁：</span><span>${
                     content.map(
                         ({type, description, grade, name, postEvent}) => {
                             switch(type) {
@@ -355,7 +361,7 @@ class App{
                             }
                         }
                     ).join('<br>')
-                }</li>`);
+                }</span></li>`);
                 li.appendTo('#lifeTrajectory');
                 $("#lifeTrajectory").scrollTop($("#lifeTrajectory")[0].scrollHeight);
                 if(isEnd) {
@@ -368,11 +374,12 @@ class App{
                     // Update properties if not die yet
                     const property = this.#life.getLastRecord();
                     $("#lifeProperty").html(`
-                    <li>颜值：${property.CHR} </li>
-                    <li>智力：${property.INT} </li>
-                    <li>体质：${property.STR} </li>
-                    <li>家境：${property.MNY} </li>
-                    <li>快乐：${property.SPR} </li>`);
+                    <li><span>颜值</span><span>${property.CHR}</span></li>
+                    <li><span>智力</span><span>${property.INT}</span</li>
+                    <li><span>体质</span><span>${property.STR}</span</li>
+                    <li><span>家境</span><span>${property.MNY}</span</li>
+                    <li><span>快乐</span><span>${property.SPR}</span</li>
+                    `);
                 }
             });
         // html2canvas
@@ -405,19 +412,19 @@ class App{
         const summaryPage = $(`
         <div id="main">
             <div class="head">人生总结</div>
-            <ul id="judge" class="judge" style="bottom: calc(35% + 2.5rem)">
-                <li class="grade2"><span>颜值：</span>9级 美若天仙</li>
-                <li><span>智力：</span>4级 智力一般</li>
-                <li><span>体质：</span>1级 极度虚弱</li>
-                <li><span>家境：</span>6级 小康之家</li>
-                <li><span>享年：</span>3岁 早夭</li>
-                <li><span>快乐：</span>3级 不太幸福的人生</li>
+            <ul id="judge" class="judge">
+                <li class="grade2"><span>颜值：</span><span>9级 美若天仙</span></li>
+                <li class="grade0"><span>智力：</span><span>4级 智力一般</span></li>
+                <li class="grade0"><span>体质：</span><span>1级 极度虚弱</span></li>
+                <li class="grade0"><span>家境：</span><span>6级 小康之家</span></li>
+                <li class="grade0"><span>享年：</span><span>3岁 早夭</span></li>
+                <li class="grade0"><span>快乐：</span><span></span>3级 不太幸福的人生</li>
             </ul>
-            <div class="head" style="top:auto; bottom:35%">天赋，你可以选一个，下辈子还能抽到</div>
-            <ul id="talents" class="selectlist" style="top:calc(65% + 0.5rem); bottom:8rem">
+            <div class="head" style="height:auto;">天赋，你可以选一个，下辈子还能抽到</div>
+            <ul id="talents" class="selectlist" style="flex: 0 1 auto;">
                 <li class="grade2b">黑幕（面试一定成功）</li>
             </ul>
-            <button id="again" class="mainbtn" style="top:auto; bottom:0.1em"><span class="iconfont">&#xe6a7;</span>再次重开</button>
+            <button id="again" class="mainbtn"><span class="iconfont">&#xe6a7;</span>再次重开</button>
         </div>
         `);
 
@@ -575,33 +582,33 @@ class App{
                     judge.append([
                         (()=>{
                             const { judge, grade, value } = s('CHR', max);
-                            return `<li class="grade${grade}"><span>颜值：</span>${value} ${judge}</li>`
+                            return `<li class="grade${grade}"><span>颜值：</span><span>${value} ${judge}</span></li>`
                         })(),
                         (()=>{
                             const { judge, grade, value } = s('INT', max);
-                            return `<li class="grade${grade}"><span>智力：</span>${value} ${judge}</li>`
+                            return `<li class="grade${grade}"><span>智力：</span><span>${value} ${judge}</span></li>`
                         })(),
                         (()=>{
                             const { judge, grade, value } = s('STR', max);
-                            return `<li class="grade${grade}"><span>体质：</span>${value} ${judge}</li>`
+                            return `<li class="grade${grade}"><span>体质：</span><span>${value} ${judge}</span></li>`
                         })(),
                         (()=>{
                             const { judge, grade, value } = s('MNY', max);
-                            return `<li class="grade${grade}"><span>家境：</span>${value} ${judge}</li>`
+                            return `<li class="grade${grade}"><span>家境：</span><span>${value} ${judge}</span></li>`
                         })(),
                         (()=>{
                             const { judge, grade, value } = s('SPR', max);
-                            return `<li class="grade${grade}"><span>快乐：</span>${value} ${judge}</li>`
+                            return `<li class="grade${grade}"><span>快乐：</span><span>${value} ${judge}</span></li>`
                         })(),
                         (()=>{
                             const { judge, grade, value } = s('AGE', max);
-                            return `<li class="grade${grade}"><span>享年：</span>${value} ${judge}</li>`
+                            return `<li class="grade${grade}"><span>享年：</span><span>${value} ${judge}</span></li>`
                         })(),
                         (()=>{
                             const m = type=>max(records.map(({[type]: value})=>value));
                             const value = Math.floor(sum(m('CHR'), m('INT'), m('STR'), m('MNY'), m('SPR'))*2 + m('AGE')/2);
                             const { judge, grade } = summary('SUM', value);
-                            return `<li class="grade${grade}"><span>总评：</span>${value} ${judge}</li>`
+                            return `<li class="grade${grade}"><span>总评：</span><span>${value} ${judge}</span></li>`
                         })(),
                     ].join(''));
                 }
