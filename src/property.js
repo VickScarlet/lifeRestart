@@ -100,6 +100,7 @@ class Property {
             [this.TYPES.STR]: this.get(this.TYPES.STR),
             [this.TYPES.MNY]: this.get(this.TYPES.MNY),
             [this.TYPES.SPR]: this.get(this.TYPES.SPR),
+            [this.TYPES.TLT]: this.get(this.TYPES.TLT),
         });
     }
 
@@ -127,7 +128,16 @@ class Property {
             case this.TYPES.LIF:
                 this.#data[prop] += Number(value);
                 break;
-            case this.TYPES.TLT:
+            case this.TYPES.TLT: {
+                const v = this.#data[prop];
+                const index = v.indexOf(Math.abs(value));
+                if(value < 0 && index != -1) {
+                    v.splice(index, 1);
+                } else if(value > 0 && index == -1) {
+                    v.push(value);
+                }
+                break;
+            }
             case this.TYPES.EVT:
                 const v = this.#data[prop];
                 if(value<0) {

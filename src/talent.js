@@ -10,7 +10,7 @@ class Talent {
         this.#talents = talents;
         for(const id in talents) {
             const talent = talents[id];
-            talent.id= Number(id);
+            talent.id = Number(id);
             talent.grade = Number(talent.grade);
             talent.max_triggers = extractMaxTriggers(talent.condition);
         }
@@ -47,7 +47,8 @@ class Talent {
         // 1000, 100, 10, 1
         const talentList = {};
         for(const talentId in this.#talents) {
-            const { id, grade, name, description } = this.#talents[talentId];
+            const { id, grade, name, description, hide } = this.#talents[talentId];
+            if(!!hide) continue;
             if(id == include) {
                 include = { grade, name, description, id };
                 continue;

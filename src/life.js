@@ -64,12 +64,13 @@ class Life {
             if(!result) continue;
             this.#triggerTalents[talentId] = this.getTalentCurrentTriggerCount(talentId) + 1;
             const { effect, name, description, grade } = result;
-            contents.push({
-                type: this.#property.TYPES.TLT,
-                name,
-                grade,
-                description,
-            })
+            if(!this.#talent.get(talentId).hide)
+                contents.push({
+                    type: this.#property.TYPES.TLT,
+                    name,
+                    grade,
+                    description,
+                })
             if(!effect) continue;
             this.#property.effect(effect);
         }
@@ -77,9 +78,11 @@ class Life {
     }
 
     doEvent(eventId) {
-        const { effect, next, description, postEvent } = this.#event.do(eventId, this.#property);
+        const { effect, next, description, postEvent, talent } = this.#event.do(eventId, this.#property);
         this.#property.change(this.#property.TYPES.EVT, eventId);
         this.#property.effect(effect);
+        if(talent)
+            this.#property.change(this.#property.TYPES.TLT, talent);
         const content = {
             type: this.#property.TYPES.EVT,
             description,
@@ -125,4 +128,3 @@ class Life {
 }
 
 export default Life;
-

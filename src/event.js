@@ -10,12 +10,18 @@ class Event {
         this.#events = events;
         for(const id in events) {
             const event = events[id];
-            if(!event.branch) continue;
-            event.branch = event.branch.map(b=>{
-                b = b.split(':');
-                b[1] = Number(b[1]);
-                return b;
-            });
+            if(event.branch) {
+                event.branch = event.branch.map(b=>{
+                    b = b.split(':');
+                    b[1] = Number(b[1]);
+                    return b;
+                });
+            }
+            if(event.talent) {
+                event.talent = event.talent.map(t => {
+                    return Number(t);
+                });
+            }
         }
     }
 
@@ -39,12 +45,12 @@ class Event {
     }
 
     do(eventId, property) {
-        const { effect, branch, event: description, postEvent } = this.get(eventId);
+        const { effect, branch, event: description, postEvent, talent } = this.get(eventId);
         if(branch)
             for(const [cond, next] of branch)
                 if(checkCondition(property, cond))
-                    return { effect, next, description };
-        return { effect, postEvent, description };
+                    return { effect, next, description, talent };
+        return { effect, postEvent, description, talent };
     }
 
 }
