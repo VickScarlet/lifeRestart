@@ -1169,5 +1169,19 @@
         "name": "转世重修",
         "description": "渡劫失败重生",
         "grade": 2
+    },
+    "10001": {
+        "id": 10001,
+        "name": "男性",
+        "description": "你是男性",
+        "hide": true,
+        "grade": 0
+    },
+    "10002": {
+        "id": 10002,
+        "name": "女性",
+        "description": "你是女性",
+        "hide": true,
+        "grade": 0
     }
 }
