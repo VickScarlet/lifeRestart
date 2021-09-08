@@ -502,31 +502,31 @@
     "1059": {
         "id": "1059",
         "name": "理财达人",
-        "description": "30、40、50岁时家境+1",
-        "condition": "AGE?[30,40,50]",
+        "description": "40岁时家境+3",
+        "condition": "AGE?[40]",
         "grade": 0,
         "effect": {
-            "MNY": 1
+            "MNY": 3
         }
     },
     "1060": {
         "id": "1060",
         "name": "成熟",
-        "description": "12、18岁时智力+1",
-        "condition": "AGE?[12,18]",
+        "description": "18岁时智力+2",
+        "condition": "AGE?[18]",
         "grade": 1,
         "effect": {
-            "INT": 1
+            "INT": 2
         }
     },
     "1061": {
         "id": "1061",
         "name": "形象管理",
-        "description": "16、24岁时颜值+1",
-        "condition": "AGE?[16,24]",
+        "description": "24岁时颜值+2",
+        "condition": "AGE?[24]",
         "grade": 1,
         "effect": {
-            "CHR": 1
+            "CHR": 2
         }
     },
     "1062": {

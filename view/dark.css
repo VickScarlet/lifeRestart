@@ -100,11 +100,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+#sponsor,
+#specialthanks,
 #rank {
     position: fixed;
-    top: 1rem;
+    top: 4rem;
     right: 1rem;
-    padding: 0.1rem 1rem;
+    padding: 0.1rem;
+    width: 6rem;
     border: none;
     border-radius: 0.2rem;
     background-color:lightsteelblue;
@@ -112,6 +115,74 @@ body {
     color: #EEEEEE;
     cursor: pointer;
     z-index:2;
+    word-wrap: none;
+}
+
+#specialthanks {
+    background-color: #5865F2;
+    top: 1rem;
+}
+
+#sponsor {
+  top: auto;
+  bottom: 0;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+#spthx {
+    position: fixed;
+    display: grid;
+    top: 4rem;
+    bottom: 5rem;
+    left: 50%;
+    width: 30rem;
+    max-width: calc(100% - 2rem);
+    transform: translateX(-50%);
+}
+
+#spthx ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#spthx ul li {
+  margin: 0;
+}
+
+#spthx ul.g1 {
+  display: grid;
+  max-block-size: 9rem;
+  max-height: 9rem;
+  overflow: scroll;
+}
+
+#spthx ul.g1 li {
+  display: inline-grid;
+  background-color: orange;
+  margin-bottom: 0.5rem;
+  padding: 0.2rem 0;
+  grid-template-columns: 7rem auto;
+}
+
+#spthx ul.g1 li .name {
+  padding: 0 0.5rem;
+  font-weight: 700;
+}
+
+#spthx ul.g1 li .comment {
+  padding: 0 0.5rem;
+}
+
+#spthx ul.g2 {
+  color: white;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  overflow: scroll;
+}
+
+#spthx ul.g2 li {
+  text-align: center;
 }
 
 #themeToggleBtn {
