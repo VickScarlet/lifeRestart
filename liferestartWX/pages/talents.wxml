@@ -1,0 +1,42 @@
+<!--miniprogram/pages/liferestart/talents.wxml-->
+<wux-toptips id="wux-toptips" />
+<view class="container">
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <view class="title1 wux-text--center">天赋抽卡</view>
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <wux-wing-blank size="large" wx:if="{{showSelectTalents}}">
+    <scroll-view style="height:100%;width:100%;display: flex;flex-direction: column;" scroll-y="true">
+    <wux-checkbox-group name="talentsList"
+    value="{{ selectedTalentsID }}"
+    bind:change="onSelectTalents">
+      <block wx:for="{{talentsArray}}" wx:key="*this">
+        <wux-checkbox class="grade{{item.grade}}b"
+        title="{{item.name}} ({{item.description}})" 
+        value="{{item._id}}" disabled="{{item.disabled?true:false}}"/>
+      </block>
+    </wux-checkbox-group>
+    </scroll-view>
+  <wux-white-space size="large" />
+  <wux-button block bindtap="toProperty" type="light" class="title2">
+    请选择3个
+  </wux-button>
+  </wux-wing-blank>
+  <wux-wing-blank size="large" wx:if="{{!showSelectTalents}}">
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <view class="btn-view">
+    <view bindtap="randomLife" class="btn">
+      <view class="btn-text">盲盒人生</view>
+    </view>
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+    <view bindtap="showTalents" class="btn">
+      <view class="btn-text">十连抽</view>
+    </view>
+  </view>
+  </wux-wing-blank>
+</view>

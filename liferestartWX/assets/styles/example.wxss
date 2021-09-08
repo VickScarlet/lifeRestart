@@ -1,0 +1,97 @@
+page {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: rgba(0, 0, 0, .85);
+    background-color: #f8f8f8;
+    font-size: 16px;
+    font-family: PingFang SC, Helvetica Neue, Hiragino Sans GB, Helvetica, Microsoft YaHei, Arial;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.page__hd {
+    padding: 40px;
+}
+
+.page__bd {
+    padding-bottom: 40px;
+}
+
+.page__bd_spacing {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.page__ft {
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.page__title {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.page__desc {
+    margin-top: 5px;
+    color: rgba(0, 0, 0, .45);
+    text-align: left;
+    font-size: 14px;
+}
+
+.placeholder {
+    background-color: #ebebef;
+    color: #bbb;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.sub-title {
+    padding: 30rpx 30rpx 18rpx;
+    font-size: 28rpx;
+    color: rgba(0, 0, 0, .65);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.button-sp-area {
+    margin: 20px auto 0;
+    width: 80%;
+    text-align: center;
+}
+
+.btn-area {
+    margin: 1.17647059em 15px 0.3em;
+}
+
+.btn-area button {
+    margin-bottom: 10px;
+}
+
+.btn-area button:last-child {
+    margin-bottom: 0;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.btn-group {
+    position: relative;
+    z-index: 1010;
+    margin-bottom: 50px;
+}

@@ -1,0 +1,41 @@
+<wux-popup wux-content-class="{{ theme === 'ios' ? classes.popup : '' }}" position="bottom" visible="{{ in }}" safeArea="bottom" bind:close="cancel">
+    <view class="wux-class {{ classes.wrap }}">
+        <view class="{{ classes.content }}">
+            <view class="{{ classes.options }}">
+                <view class="{{ classes.title }}" wx:if="{{ titleText }}">{{ titleText }}</view>
+                <block wx:for="{{ buttons }}" wx:for-item="button" wx:key="index">
+                    <button
+                        class="{{ classes.button[index].wrap }}"
+                        data-index="{{ index }}"
+                        disabled="{{ button.disabled }}"
+                        open-type="{{ button.openType }}"
+                        hover-class="{{ !button.disabled ? classes.button[index].hover : 'none' }}"
+                        hover-stop-propagation="{{ button.hoverStopPropagation }}"
+                        hover-start-time="{{ button.hoverStartTime }}"
+                        hover-stay-time="{{ button.hoverStayTime }}"
+                        lang="{{ button.lang }}"
+                        bindgetuserinfo="bindgetuserinfo"
+                        session-from="{{ button.sessionFrom }}"
+                        send-message-title="{{ button.sendMessageTitle }}"
+                        send-message-path="{{ button.sendMessagePath }}"
+                        send-message-img="{{ button.sendMessageImg }}"
+                        show-message-card="{{ button.showMessageCard }}"
+                        bindcontact="bindcontact"
+                        bindgetphonenumber="bindgetphonenumber"
+                        app-parameter="{{ button.appParameter }}"
+                        binderror="onError"
+                        bindopensetting="bindopensetting"
+                        catchtap="buttonClicked"
+                    >
+                        <image class="{{ classes.icon }}" src="{{ button.icon }}" wx:if="{{ button.icon }}" />
+                        <text class="{{ classes.text }}">{{ button.text }}</text>
+                    </button>
+                </block>
+                <button class="{{ classes.destructive }}" wx:if="{{ destructiveText }}" catchtap="destructiveButtonClicked">{{ destructiveText }}</button>
+            </view>
+            <view class="{{ classes.group }}" wx:if="{{ cancelText }}">
+                <button class="{{ classes.cancel }}" hover-class="{{ classes.hover }}" catchtap="cancel">{{ cancelText }}</button>
+            </view>
+        </view>
+    </view>
+</wux-popup>

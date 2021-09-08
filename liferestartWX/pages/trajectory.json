@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "wux-divider": "/utils/wux/divider/index",
+    "wux-button": "/utils/wux/button/index",
+    "wux-row": "/utils/wux/row/index",
+    "wux-col": "/utils/wux/col/index",
+    "wux-wing-blank": "/utils/wux/wing-blank/index",
+    "wux-white-space": "/utils/wux/white-space/index"
+  }
+}

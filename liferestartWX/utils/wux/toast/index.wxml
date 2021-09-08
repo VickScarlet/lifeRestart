@@ -1,0 +1,7 @@
+<wux-backdrop id="wux-backdrop" transparent="{{ transparent }}" wx:if="{{ mask }}" />
+<wux-animation-group wux-class="{{ classes.wrap }}" in="{{ in }}" classNames="{{ classNames }}">
+    <view class="{{ classes.content }}">
+        <wux-icon wux-class="{{ classes.icon }}" type="{{ icon }}" size="55" color="{{ color }}" wx:if="{{ icon }}" />
+        <view class="{{ classes.text }}">{{ text }}</view>
+    </view>
+</wux-animation-group>

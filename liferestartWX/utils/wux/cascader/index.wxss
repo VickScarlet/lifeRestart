@@ -1,0 +1,144 @@
+.wux-cascader__hd {
+  position: relative;
+  width: 100%;
+  font-size: 34rpx;
+  line-height: 1.5;
+  color: #444
+}
+.wux-cascader__hd::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1PX;
+  border-bottom: 1PX solid #d9d9d9;
+  color: #d9d9d9;
+  transform-origin: 0 100%;
+  transform: scaleY(.5)
+}
+.wux-cascader__title {
+  position: relative;
+  height: 88rpx;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box
+}
+.wux-cascader__title::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1PX;
+  border-bottom: 1PX solid #d9d9d9;
+  color: #d9d9d9;
+  transform-origin: 0 100%;
+  transform: scaleY(.5)
+}
+.wux-cascader__menus {
+  display: -ms-flexbox;
+  display: flex;
+  height: 88rpx;
+  padding: 0 20rpx;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box
+}
+.wux-cascader__menu {
+  font-size: 26rpx;
+  padding: 0 20rpx;
+  max-width: 40%;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal
+}
+.wux-cascader__menu--active {
+  color: #ef473a
+}
+.wux-cascader__bd {
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  transition: transform .3s;
+  background-color: #f5f5f5
+}
+.wux-cascader__inner {
+  display: block;
+  height: inherit;
+  width: 50%;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  background-color: #fff
+}
+.wux-cascader__inner:nth-child(2n) {
+  background-color: #f5f5f5
+}
+.wux-cascader__scroll-view {
+  max-height: 540rpx
+}
+.wux-cascader__option {
+  width: 100%;
+  height: inherit;
+  display: block;
+  padding-left: 40rpx;
+  padding-right: 10rpx;
+  box-sizing: border-box
+}
+.wux-cascader__item {
+  position: relative;
+  z-index: 10;
+  display: block;
+  color: rgba(0,0,0,.85);
+  font-size: 26rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: left;
+  padding-right: 36rpx;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal
+}
+.wux-cascader__item::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1PX;
+  border-bottom: 1PX solid #d9d9d9;
+  color: #d9d9d9;
+  transform-origin: 0 100%;
+  transform: scaleY(.5)
+}
+.wux-cascader__item--active {
+  color: #ef473a
+}
+.wux-cascader__item--disabled {
+  opacity: .3
+}
+.wux-cascader__icon {
+  position: absolute;
+  top: 0;
+  right: 20rpx;
+  bottom: 50rpx;
+  z-index: 20;
+  font-size: 0;
+  line-height: 1
+}
+.searchicon {
+  top: 0;
+  padding-right: 20rpx;
+  z-index: 20;
+  font-size: 0;
+  line-height: 1
+}

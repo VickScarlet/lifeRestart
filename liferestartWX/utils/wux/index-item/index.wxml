@@ -1,0 +1,6 @@
+<view class="wux-class {{ classes.wrap }}">
+    <view class="{{ classes.hd }}">{{ name }}</view>
+    <view class="{{ classes.bd }}">
+        <slot></slot>
+    </view>
+</view>

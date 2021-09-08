@@ -1,0 +1,56 @@
+<wux-popup
+    visible="{{ in }}"
+    z-index="{{ zIndex }}"
+    closable="{{ closable }}"
+    mask="{{ mask }}"
+    mask-closable="{{ maskClosable }}"
+    bind:close="onClose"
+    bind:closed="onClosed"
+>
+    <view slot="header">{{ title }}</view>
+    <view wx:if="{{ content || prompt }}">
+        <text>{{ content }}</text>
+        <view class="{{ classes.prompt }}" wx:if="{{ prompt }}">
+            <label>
+                <input
+                    type="{{ prompt.fieldtype }}"
+                    class="{{ classes.input }}"
+                    value="{{ prompt.response }}"
+                    password="{{ prompt.password }}"
+                    placeholder="{{ prompt.placeholder }}"
+                    maxlength="{{ maxlength }}"
+                    bindinput="bindinput"
+                />
+            </label>
+        </view>
+    </view>
+    <view slot="footer" class="{{ classes.buttons }}">
+        <block wx:for="{{ buttons }}" wx:for-item="button" wx:key="">
+            <button
+                class="{{ classes.button[index].wrap }}"
+                disabled="{{ button.disabled }}"
+                open-type="{{ button.openType }}"
+                hover-class="{{ !button.disabled ? classes.button[index].hover : 'none' }}"
+                hover-stop-propagation="{{ button.hoverStopPropagation }}"
+                hover-start-time="{{ button.hoverStartTime || 20 }}"
+                hover-stay-time="{{ button.hoverStayTime || 70 }}"
+                lang="{{ button.lang || 'en' }}"
+                bindgetuserinfo="bindgetuserinfo"
+                session-from="{{ button.sessionFrom }}"
+                send-message-title="{{ button.sendMessageTitle }}"
+                send-message-path="{{ button.sendMessagePath }}"
+                send-message-img="{{ button.sendMessageImg }}"
+                show-message-card="{{ button.showMessageCard }}"
+                bindcontact="bindcontact"
+                bindgetphonenumber="bindgetphonenumber"
+                app-parameter="{{ button.appParameter }}"
+                binderror="onError"
+                bindopensetting="bindopensetting"
+                data-index="{{ index }}"
+                bindtap="buttonTapped"
+            >
+                {{ button.text }}
+            </button>
+        </block>
+    </view>
+</wux-popup>

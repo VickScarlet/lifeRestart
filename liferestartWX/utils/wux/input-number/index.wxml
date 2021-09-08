@@ -1,0 +1,9 @@
+<view class="wux-class {{ classes.wrap }}">
+    <view bindlongpress="onLongpress" bindtap="onTap" bindtouchend="onTouchEnd" touchcancel="onTouchCancel" data-type="sub" class="wux-sub-class {{ classes.sub }}">
+        <wux-icon wux-class="{{ classes.icon }}" type="ios-remove"></wux-icon>
+    </view>
+    <input bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" value="{{ inputValue }}" disabled="{{ disabled }}" type="number" class="wux-input-class {{ classes.input }}" />
+    <view bindlongpress="onLongpress" bindtap="onTap" bindtouchend="onTouchEnd" touchcancel="onTouchCancel" data-type="add" class="wux-add-class {{ classes.add }}">
+        <wux-icon wux-class="{{ classes.icon }}" type="ios-add"></wux-icon>
+    </view>
+</view>

@@ -1,0 +1,61 @@
+<!--miniprogram/pages/liferestart/talents.wxml-->
+<view class="container">
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <wux-wing-blank size="large">
+  <wux-row>
+    <wux-col span="4">
+      <view class="lifeProperty">颜值：{{propertyCHR}}</view>
+    </wux-col>
+    <wux-col span="4">
+      <view class="lifeProperty">智力：{{propertyINT}}</view>
+    </wux-col>
+    <wux-col span="4">
+      <view class="lifeProperty">体质：{{propertySTR}}</view>
+    </wux-col>
+  </wux-row>
+  <wux-row>
+    <wux-col span="6">
+      <view class="lifeProperty">家境：{{propertyMNY}}</view>
+    </wux-col>
+    <wux-col span="6">
+      <view class="lifeProperty">快乐：{{propertyMNY}}</view>
+    </wux-col>
+  </wux-row>
+  <view class="main"
+    bindtap="nextAge">
+      <wux-wing-blank size="large">
+      <scroll-view style="height:{{pageHeight}}px;width: 100%;display: flex;flex-direction: column;margin-top: 54rpx;" scroll-y="true" scroll-top="{{scrollTopVal}}" bindtap="resetInputStatus">
+			<block wx:for="{{items}}" wx:key="index">
+        <wux-row>
+          <wux-col span="2">
+            {{ item.age }}岁：
+          </wux-col>
+          <wux-col span="10">
+          
+          <block wx:for="{{item.content}}" wx:for-item="itemContent" wx:key="index">
+  <wux-row wx:if="{{itemContent.type == 'TLT'}}">
+    <wux-col span="12">
+      <view>天赋【{{itemContent.name}}】发动：{{itemContent.description}}</view>
+    </wux-col>
+  </wux-row>
+  <wux-row wx:if="{{itemContent.type == 'EVT'}}">
+    <wux-col span="12">
+      <view>
+            {{itemContent.description}} \r\n{{itemContent.postEvent}}</view>
+    </wux-col>
+  </wux-row>
+          </block>
+            </wux-col>
+          </wux-row>
+          <wux-divider show-text="{{ false }}" dashed />
+			</block>
+		</scroll-view>
+    </wux-wing-blank>
+  </view>
+  <wux-button block wx:if="{{isEnd}}" 
+    type="light" class="title2" bindtap="toSummary">
+      人生总结
+  </wux-button>
+  </wux-wing-blank>
+</view>

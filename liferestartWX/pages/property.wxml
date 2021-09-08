@@ -1,0 +1,44 @@
+<!--miniprogram/pages/liferestart/property.wxml-->
+<wux-toptips id="wux-toptips" />
+
+<view class="container">
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <view class="title1 wux-text--center">调整初始属性</view>
+  <view class="title2 wux-text--center">可用属性点：{{propertyResidue}}</view>
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <wux-wing-blank size="large">
+  <wux-cell-group>
+    <wux-cell title="颜值" hover-class="none">
+      <wux-input-number id="propertyCHR" value="{{ propertyCHR }}" 
+        controlled min="{{ 0 }}" max="{{ propertyCHRMAX }}" bind:change="onChange" longpress 
+        color="assertive" slot="footer" />
+    </wux-cell>
+    <wux-cell title="智力" hover-class="none">
+      <wux-input-number id="propertyINT" value="{{ propertyINT }}" 
+        controlled min="{{ 0 }}" max="{{ propertyINTMAX }}" bind:change="onChange" longpress 
+        color="assertive" slot="footer" />
+    </wux-cell>
+    <wux-cell title="体质" hover-class="none">
+      <wux-input-number id="propertySTR" value="{{ propertySTR }}" 
+        controlled min="{{ 0 }}" max="{{ propertySTRMAX }}"  bind:change="onChange" longpress
+        color="assertive" slot="footer" />
+    </wux-cell>
+    <wux-cell title="家境" hover-class="none">
+      <wux-input-number id="propertyMNY" value="{{ propertyMNY }}" 
+        controlled min="{{ 0 }}" max="{{ propertyMNYMAX }}"bind:change="onChange" longpress
+        color="assertive" slot="footer" />
+    </wux-cell>
+  </wux-cell-group>
+  <wux-white-space size="large" />
+  <view class="title2 wux-text--center">已选天赋</view>
+  <view class="talentsTable">
+  <block wx:for="{{selectedTalents}}" wx:key="*this">
+    <view class="grade{{item.grade}}b">{{item.name}} ({{item.description}})</view>
+  </block>
+  </view>
+  <wux-button block type="royal" bindtap="randomProperty">随机分配</wux-button>
+  <wux-button block type="balanced" bindtap="bron">开启新人生</wux-button>
+  </wux-wing-blank>
+</view>

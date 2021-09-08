@@ -1,0 +1,42 @@
+<wux-popup position="bottom" visible="{{ visible }}" safeArea="bottom" bind:close="onPopupClose">
+	<view class="wux-class {{ classes.wrap }}">
+	    <view class="{{ classes.hd }}">
+			<wux-button block size="small" type="assertive"
+				catchtap="onItemDelete" class="{{ classes.icon }}" >
+			删除</wux-button>
+	    	<view class="{{ classes.title }}" wx:if="{{ title }}">{{ title }}</view>
+	    	<view class="{{ classes.menus }}" wx:if="{{ activeOptions.length }}">
+	    		<block wx:for="{{ activeOptions }}" wx:key="">
+	    			<view class="{{ classes.menu }} {{ activeIndex === index ? prefixCls + '__menu--active' : '' }}" data-menu-index="{{ index }}" bindtap="onMenuClick">{{ item[fieldNames['label']] }}</view>
+	    		</block>
+	    	</view>
+	    </view>
+	    <view class="{{ classes.bd }}" style="{{ bodyStyle }}">
+	    	<block wx:for="{{ showOptions }}" wx:for-item="option" wx:for-index="optionIndex" wx:key="">
+	    		<view class="{{ classes.inner }}">
+		    		<scroll-view scroll-y class="wux-scroll-view-class {{ classes.scrollView }}">
+			    		<view class="{{ classes.option }}">
+			    			<block wx:for="{{ option }}" wx:key="">
+					    		<view
+						    		class="{{ classes.item }} {{ activeValue[optionIndex] === item[fieldNames['value']] ? prefixCls + '__item--active' : '' }} {{ item.disabled ? prefixCls + '__item--disabled' : '' }}"
+						    		data-option-index="{{ optionIndex }}"
+						    		data-item="{{ item }}"
+						    		bindtap="onItemSelect"
+					    		>
+					    			<text>{{ item[fieldNames['label']] }}</text>
+					    			<!-- <icon class="{{ classes.icon }}" type="success_no_circle" size="16" color="#ef473a" wx:if="{{ activeValue[optionIndex] === item[fieldNames['value']] }}" /> -->
+										<wux-button block size="small" 
+										outline class="{{ classes.icon }}" 
+										 wx:if="{{ item.isLeaf && activeValue[optionIndex] === item[fieldNames['value']] }}" 
+										type="balanced" data-item="{{ item }}"
+										data-option-index="{{ optionIndex }}"
+						    		catchtap="onItemCheck">选择</wux-button>
+					    		</view>
+					    	</block>
+			    		</view>
+		    		</scroll-view>
+	    		</view>
+	    	</block>
+	    </view>
+	</view>
+</wux-popup>

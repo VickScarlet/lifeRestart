@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "wux-toptips": "/utils/wux/toptips/index",
+    "wux-checkbox-group": "/utils/wux/checkbox-group/index",
+    "wux-checkbox": "/utils/wux/checkbox/index",
+    "wux-cell-group": "/utils/wux/cell-group/index",
+    "wux-cell": "/utils/wux/cell/index",
+    "wux-icon": "/utils/wux/icon/index",
+    "wux-button": "/utils/wux/button/index",
+    "wux-wing-blank": "/utils/wux/wing-blank/index",
+    "wux-white-space": "/utils/wux/white-space/index"
+  }
+}
