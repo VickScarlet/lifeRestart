@@ -1,7 +1,7 @@
 {
-    "name": "xlsx_transform",
+    "name": "life_restart",
     "type": "module",
-    "bin": "test/index.js",
+    "bin": "repl/index.js",
     "scripts": {
         "test": "node test",
         "xlsxTransform": "node utils/xlsxTransform.js data",
@@ -13,7 +13,6 @@
         "@babel/preset-env": "^7.15.4",
         "babel-loader": "^8.2.2",
         "core-js": "^3.17.2",
-        "dom-to-image": "^2.6.0",
         "webpack": "^5.51.2",
         "webpack-dev-server": "^4.1.0",
         "xlsx": "^0.17.0"

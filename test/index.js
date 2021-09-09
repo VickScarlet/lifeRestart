@@ -14,7 +14,8 @@ async function debug() {
         STR: 5,                     // 体质 strength STR
         MNY: 5,                     // 家境 money MNY
         SPR: 5,                     // 快乐 spirit SPR
-        TLT: [1004, 1005, 1009],    // 天赋 talent TLT
+        // AGE: 100,
+        TLT: [1134, 1048, 1114],    // 天赋 talent TLT
     });
     const lifeTrajectory = [];
     let trajectory;
@@ -42,6 +43,7 @@ async function debug() {
                 }
             ).join('\n    ')
         );
+        if(age == 60) debugger
     } while(!trajectory.isEnd)
     // debugger;
 }
