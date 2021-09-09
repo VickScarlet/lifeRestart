@@ -29,7 +29,7 @@ class Life {
         this.#triggerTalents = {};
         this.#property.restart(allocation);
         this.doTalent();
-        this.#property.record();
+        this.#property.restartLastStep();
     }
 
     getTalentAllocationAddition(talents) {
@@ -45,7 +45,6 @@ class Life {
 
         const talentContent = this.doTalent(talent);
         const eventContent = this.doEvent(this.random(event));
-        this.#property.record();
 
         const isEnd = this.#property.isEnd();
 
@@ -104,15 +103,27 @@ class Life {
     }
 
     talentRandom() {
-        return this.#talent.talentRandom(JSON.parse(localStorage.extendTalent||'null'));
+        return this.#talent.talentRandom(this.getLastExtendTalent());
     }
 
     talentExtend(talentId) {
-        localStorage.extendTalent = JSON.stringify(talentId);
+        this.#property.set(this.#property.TYPES.EXT, talentId);
     }
 
-    getRecord() {
-        return this.#property.getRecord();
+    getLastExtendTalent() {
+        return this.#property.get(this.#property.TYPES.EXT);
+    }
+
+    getSummary() {
+        return {
+            AGE: this.#property.get(this.#property.TYPES.HAGE),
+            CHR: this.#property.get(this.#property.TYPES.HCHR),
+            INT: this.#property.get(this.#property.TYPES.HINT),
+            STR: this.#property.get(this.#property.TYPES.HSTR),
+            MNY: this.#property.get(this.#property.TYPES.HMNY),
+            SPR: this.#property.get(this.#property.TYPES.HSPR),
+            SUM: this.#property.get(this.#property.TYPES.SUM),
+        };
     }
 
     getLastRecord() {

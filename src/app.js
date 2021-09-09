@@ -568,45 +568,22 @@ class App{
                         });
                     });
 
-                    const records = this.#life.getRecord();
-                    const s = (type, func)=>{
-                        const value = func(records.map(({[type]:v})=>v));
+                    const summaryData = this.#life.getSummary();
+                    const format = (discription, type)=>{
+                        const value = summaryData[type];
                         const { judge, grade } = summary(type, value);
-                        return { judge, grade, value };
+                        return `<li class="grade${grade}"><span>${discription}：</span><span>${value} ${judge}</span></li>`;
                     };
 
-                    judge.append([
-                        (()=>{
-                            const { judge, grade, value } = s('CHR', max);
-                            return `<li class="grade${grade}"><span>颜值：</span><span>${value} ${judge}</span></li>`
-                        })(),
-                        (()=>{
-                            const { judge, grade, value } = s('INT', max);
-                            return `<li class="grade${grade}"><span>智力：</span><span>${value} ${judge}</span></li>`
-                        })(),
-                        (()=>{
-                            const { judge, grade, value } = s('STR', max);
-                            return `<li class="grade${grade}"><span>体质：</span><span>${value} ${judge}</span></li>`
-                        })(),
-                        (()=>{
-                            const { judge, grade, value } = s('MNY', max);
-                            return `<li class="grade${grade}"><span>家境：</span><span>${value} ${judge}</span></li>`
-                        })(),
-                        (()=>{
-                            const { judge, grade, value } = s('SPR', max);
-                            return `<li class="grade${grade}"><span>快乐：</span><span>${value} ${judge}</span></li>`
-                        })(),
-                        (()=>{
-                            const { judge, grade, value } = s('AGE', max);
-                            return `<li class="grade${grade}"><span>享年：</span><span>${value} ${judge}</span></li>`
-                        })(),
-                        (()=>{
-                            const m = type=>max(records.map(({[type]: value})=>value));
-                            const value = Math.floor(sum(m('CHR'), m('INT'), m('STR'), m('MNY'), m('SPR'))*2 + m('AGE')/2);
-                            const { judge, grade } = summary('SUM', value);
-                            return `<li class="grade${grade}"><span>总评：</span><span>${value} ${judge}</span></li>`
-                        })(),
-                    ].join(''));
+                    judge.append(`
+                        ${format('颜值', 'CHR')}
+                        ${format('智力', 'INT')}
+                        ${format('体质', 'STR')}
+                        ${format('家境', 'MNY')}
+                        ${format('快乐', 'SPR')}
+                        ${format('享年', 'AGE')}
+                        ${format('总评', 'SUM')}
+                    `);
                 }
             },
         }
