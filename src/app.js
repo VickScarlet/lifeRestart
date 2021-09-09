@@ -1,4 +1,3 @@
-import { max, sum } from './functions/util.js';
 import { summary } from './functions/summary.js'
 import Life from './life.js'
 
@@ -26,7 +25,7 @@ class App{
         ]);
         this.#specialthanks = specialthanks;
         this.switch('index');
-        window.onerror = (event, source, lineno, colno, error) => {
+        globalThis.onerror = (event, source, lineno, colno, error) => {
             this.hint(`[ERROR] at (${source}:${lineno}:${colno})\n\n${error?.stack||error||'unknow Error'}`, 'error');
         }
         const keyDownCallback = (keyboardEvent) => {
@@ -35,8 +34,8 @@ class App{
                 pressEnterFunc && typeof pressEnterFunc === 'function' && pressEnterFunc();
             }
         }
-        window.removeEventListener('keydown', keyDownCallback);
-        window.addEventListener('keydown', keyDownCallback);
+        globalThis.removeEventListener('keydown', keyDownCallback);
+        globalThis.addEventListener('keydown', keyDownCallback);
     }
 
     initPages() {
@@ -109,8 +108,8 @@ class App{
                 <ul class="g1"></ul>
                 <ul class="g2"></ul>
             </div>
-            <button class="sponsor" onclick="window.open('https://afdian.net/@LifeRestart')" style="background: linear-gradient(90deg,#946ce6,#7e5fd9); left:auto; right:50%; transform: translate(-2rem,-50%);">打赏策划(爱发电)</button>
-            <button class="sponsor" onclick="window.open('https://dun.mianbaoduo.com/@vickscarlet')" style="background-color:#c69; left:50%; right:auto; transform: translate(2rem,-50%);">打赏程序(顿顿饭)</button>
+            <button class="sponsor" onclick="globalThis.open('https://afdian.net/@LifeRestart')" style="background: linear-gradient(90deg,#946ce6,#7e5fd9); left:auto; right:50%; transform: translate(-2rem,-50%);">打赏策划(爱发电)</button>
+            <button class="sponsor" onclick="globalThis.open('https://dun.mianbaoduo.com/@vickscarlet')" style="background-color:#c69; left:50%; right:auto; transform: translate(2rem,-50%);">打赏程序(顿顿饭)</button>
         </div>
         `);
 
@@ -374,10 +373,10 @@ class App{
                     const property = this.#life.getLastRecord();
                     $("#lifeProperty").html(`
                     <li><span>颜值</span><span>${property.CHR}</span></li>
-                    <li><span>智力</span><span>${property.INT}</span</li>
-                    <li><span>体质</span><span>${property.STR}</span</li>
-                    <li><span>家境</span><span>${property.MNY}</span</li>
-                    <li><span>快乐</span><span>${property.SPR}</span</li>
+                    <li><span>智力</span><span>${property.INT}</span></li>
+                    <li><span>体质</span><span>${property.STR}</span></li>
+                    <li><span>家境</span><span>${property.MNY}</span></li>
+                    <li><span>快乐</span><span>${property.SPR}</span></li>
                     `);
                 }
             });
@@ -587,6 +586,10 @@ class App{
                 }
             },
         }
+
+        $$on('achievement', ({name})=>{
+            this.hint(`解锁成就【${name}】`, 'success');
+        })
     }
 
     switch(page) {

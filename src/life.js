@@ -1,28 +1,33 @@
 import Property from './property.js';
 import Event from './event.js';
 import Talent from './talent.js';
+import Achievement from './achievement.js';
 
 class Life {
     constructor() {
         this.#property = new Property();
         this.#event = new Event();
         this.#talent = new Talent();
+        this.#achievement = new Achievement();
     }
 
     #property;
     #event;
     #talent;
+    #achievement;
     #triggerTalents;
 
     async initial() {
-        const [age, talents, events] = await Promise.all([
+        const [age, talents, events, achievements] = await Promise.all([
           json('age'),
           json('talents'),
           json('events'),
+          json('achievement'),
         ])
         this.#property.initial({age});
         this.#talent.initial({talents});
         this.#event.initial({events});
+        this.#achievement.initial({achievements});
     }
 
     restart(allocation) {
@@ -30,6 +35,10 @@ class Life {
         this.#property.restart(allocation);
         this.doTalent();
         this.#property.restartLastStep();
+        this.#achievement.achieve(
+            this.#achievement.Opportunity.START,
+            this.#property
+        )
     }
 
     getTalentAllocationAddition(talents) {
@@ -49,6 +58,10 @@ class Life {
         const isEnd = this.#property.isEnd();
 
         const content = [talentContent, eventContent].flat();
+        this.#achievement.achieve(
+            this.#achievement.Opportunity.TRAJECTORY,
+            this.#property
+        )
         return { age, content, isEnd };
     }
 
@@ -115,6 +128,10 @@ class Life {
     }
 
     getSummary() {
+        this.#achievement.achieve(
+            this.#achievement.Opportunity.SUMMARY,
+            this.#property
+        )
         return {
             AGE: this.#property.get(this.#property.TYPES.HAGE),
             CHR: this.#property.get(this.#property.TYPES.HCHR),
@@ -134,8 +151,18 @@ class Life {
         return this.#talent.exclusive(talents, exclusive);
     }
 
+    getAchievements() {
+        return this.#achievement.list();
+    }
+
     get times() { return this.#property?.get(this.#property.TYPES.TMS) || 0; }
-    set times(v) { return this.#property?.set(this.#property.TYPES.TMS, v) || 0; }
+    set times(v) {
+        this.#property?.set(this.#property.TYPES.TMS, v) || 0;
+        this.#achievement.achieve(
+            this.#achievement.Opportunity.END,
+            this.#property
+        )
+    }
 }
 
 export default Life;

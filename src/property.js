@@ -38,10 +38,12 @@ class Property {
         // Achievement Total
         ATLT: "ATLT", // 拥有过的天赋 Achieve Talent
         AEVT: "AEVT", // 触发过的事件 Achieve Event
+
+        ACHV: "ACHV", // 达成的成就 Achievement
     };
 
     #ageData;
-    #data;
+    #data = {};
 
     initial({age}) {
 
@@ -160,6 +162,7 @@ class Property {
                 return this.lsget('extendTalent') || null;
             case this.TYPES.ATLT:
             case this.TYPES.AEVT:
+            case this.TYPES.ACHV:
                 return this.lsget(prop) || [];
             default: return 0;
         }
@@ -289,9 +292,16 @@ class Property {
         this.#data[h] = max(this.#data[h], value);
     }
 
-    achieve(prop, newData = []) {
+    achieve(prop, newData) {
         let key;
         switch(prop) {
+            case this.TYPES.ACHV:
+                const lastData = this.lsget(prop);
+                this.lsset(
+                    prop,
+                    (lastData || []).concat([[newData, Date.now()]])
+                );
+                return;
             case this.TYPES.TLT: key = this.TYPES.ATLT; break;
             case this.TYPES.EVT: key = this.TYPES.AEVT; break;
             default: return;
@@ -302,7 +312,7 @@ class Property {
             Array.from(
                 new Set(
                     lastData
-                        .concat(newData)
+                        .concat(newData||[])
                         .flat()
                 )
             )
