@@ -31,7 +31,7 @@ async function write(sheets) {
     }
 }
 
-function format(rawSheet, isArray) {
+function format(rawSheet, isArray, xlsxPath, rawSheetName) {
     const newSheet = isArray?[]:{};
     rawSheet.shift();
     for(const index in rawSheet) {
@@ -72,10 +72,10 @@ function format(rawSheet, isArray) {
             continue;
         }
         if(mainKey===undefined) {
-            console.warn('[WARN][No Main Key]', filePath, sheetName, parseInt(index), rowData);
+            console.warn(`[WARN][No Main Key] ${xlsxPath}:${rawSheetName}`, parseInt(index)+3, rowData);
             continue;
         }
-        if(newSheet[mainKey]) console.warn('[WARN][Duplicate Key]', mainKey, filePath, sheetName, parseInt(index), '\n\t', JSON.stringify(newSheet[mainKey]), '\n\t', JSON.stringify(rowData));
+        if(newSheet[mainKey]) console.warn(`[WARN][Duplicate Key] ${mainKey} ${xlsxPath}:${rawSheetName}`, parseInt(index), '\n\t', JSON.stringify(newSheet[mainKey]), '\n\t', JSON.stringify(rowData));
         newSheet[mainKey] = rowData;
     }
     return newSheet;
@@ -87,7 +87,7 @@ function merge(original, rawData, isMerge, isArray, xlsxPath, rawSheetName) {
             isMerge,
             isArray,
             source: [[xlsxPath, rawSheetName]],
-            data: format(rawData, isArray)
+            data: format(rawData, isArray, xlsxPath, rawSheetName)
         };
 
 
@@ -108,7 +108,7 @@ function merge(original, rawData, isMerge, isArray, xlsxPath, rawSheetName) {
         return original;
     }
 
-    const formatData = format(rawData, isArray);
+    const formatData = format(rawData, isArray, xlsxPath, rawSheetName);
 
     original.source.push([xlsxPath, rawSheetName]);
 

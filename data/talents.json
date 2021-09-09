@@ -42,7 +42,7 @@
     },
     "1006": {
         "id": "1006",
-        "name": "乐天派",
+        "name": "乐观",
         "description": "快乐+1",
         "grade": 0,
         "effect": {
@@ -818,7 +818,7 @@
     "1091": {
         "id": "1091",
         "name": "活死人",
-        "description": "体质<-1时其他属性+2",
+        "description": "体质<0时其他属性+2",
         "condition": "STR<0",
         "grade": 1,
         "effect": {

@@ -45,7 +45,8 @@
     },
     {
         "group": 2,
-        "name": "狂啸"
+        "name": "狂啸",
+        "color": "#23238E"
     },
     {
         "group": 2,
@@ -547,7 +548,7 @@
     },
     {
         "group": 2,
-        "name": "没人要的瓜娃子"
+        "name": "青天癞蛤蟆"
     },
     {
         "group": 2,
@@ -759,8 +760,9 @@
         "name": "活着到达梦想"
     },
     {
-        "group": 2,
-        "name": "乌君"
+        "group": 1,
+        "name": "乌君",
+        "comment": "我们来玩一个游戏，规则是:不要看这条特别感谢 → 你输了。"
     },
     {
         "group": 2,
@@ -1000,6 +1002,77 @@
     },
     {
         "group": 2,
+        "name": "B.X."
+    },
+    {
+        "group": 2,
+        "name": "七喜打倒雪碧"
+    },
+    {
+        "group": 2,
+        "name": "jev"
+    },
+    {
+        "group": 1,
+        "name": "吴老枸",
+        "comment": "优秀的创意和作品值得被大家认识！作者加油！"
+    },
+    {
+        "group": 2,
+        "name": "Maple"
+    },
+    {
+        "group": 2,
+        "name": "42Q"
+    },
+    {
+        "group": 2,
+        "name": "伊藤泉"
+    },
+    {
+        "group": 2,
+        "name": "追梦绿"
+    },
+    {
+        "group": 2,
+        "name": "dwdww"
+    },
+    {
+        "group": 2,
+        "name": "何黄黄"
+    },
+    {
+        "group": 2,
+        "name": "李狗蛋76"
+    },
+    {
+        "group": 1,
+        "name": "巴普斯定理",
+        "comment": "感谢你们的创意。"
+    },
+    {
+        "group": 2,
+        "name": "ZPEOVH"
+    },
+    {
+        "group": 2,
+        "name": "朦朧"
+    },
+    {
+        "group": 1,
+        "name": "柴来人",
+        "comment": "希望独立游戏势头越来越好"
+    },
+    {
+        "group": 2,
+        "name": "OQ"
+    },
+    {
+        "group": 2,
+        "name": "三点多睡的"
+    },
+    {
+        "group": 2,
         "name": "有梦人天涯若比邻"
     },
     {
@@ -1146,5 +1219,40 @@
     {
         "group": 2,
         "name": "佐克洛邦"
+    },
+    {
+        "group": 2,
+        "name": "墨鸿苍穹"
+    },
+    {
+        "group": 2,
+        "name": "佚名"
+    },
+    {
+        "group": 2,
+        "name": "zhongyang"
+    },
+    {
+        "group": 1,
+        "name": "狂啸",
+        "comment": "游戏很有创意，也感觉很有深度加油吧，看好你们",
+        "color": "#23238E"
+    },
+    {
+        "group": 2,
+        "name": "LoZo"
+    },
+    {
+        "group": 2,
+        "name": "七年"
+    },
+    {
+        "group": 2,
+        "name": "爱静静"
+    },
+    {
+        "group": 2,
+        "name": "一只海狗",
+        "color": "yellow"
     }
 ]
