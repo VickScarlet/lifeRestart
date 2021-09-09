@@ -208,7 +208,6 @@ body {
 }
 
 #spthx ul.g2 {
-  color: white;
   display: grid;
   grid-template-columns: 50% 50%;
   overflow: scroll;

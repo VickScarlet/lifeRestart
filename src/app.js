@@ -485,9 +485,9 @@ class App{
                     Object
                         .values(this.#specialthanks)
                         .sort(()=>0.5-Math.random())
-                        .forEach(({group, name, comment})=>groups[--group].append(`
+                        .forEach(({group, name, comment, color})=>groups[--group].append(`
                             <li>
-                                <span class="name">${name}</span>
+                                <span class="name" ${color?('style="color:'+color+'"'):''}>${name}</span>
                                 <span class="comment">${comment||''}</span>
                             </li>
                         `))
