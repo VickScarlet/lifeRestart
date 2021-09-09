@@ -25,7 +25,6 @@ class App{
             json('specialthanks')
         ]);
         this.#specialthanks = specialthanks;
-        console.table(specialthanks);
         this.switch('index');
         window.onerror = (event, source, lineno, colno, error) => {
             this.hint(`[ERROR] at (${source}:${lineno}:${colno})\n\n${error?.stack||error||'unknow Error'}`, 'error');
@@ -482,8 +481,7 @@ class App{
                         specialThanksPage.find('#spthx > ul.g2'),
                     ];
                     groups.forEach(g=>g.empty());
-                    Object
-                        .values(this.#specialthanks)
+                    this.#specialthanks
                         .sort(()=>0.5-Math.random())
                         .forEach(({group, name, comment, color})=>groups[--group].append(`
                             <li>
@@ -576,8 +574,6 @@ class App{
                         const { judge, grade } = summary(type, value);
                         return { judge, grade, value };
                     };
-                    console.table(records);
-                    console.debug(records);
 
                     judge.append([
                         (()=>{
