@@ -165,7 +165,7 @@ class Life {
             )=>{
                 a = ticks[a];
                 b = ticks[b];
-                if(a&&b) return a - b;
+                if(a&&b) return b - a;
                 if(!a&&!b) {
                     if(ah&&bh) return bg - ag;
                     if(ah) return 1;
