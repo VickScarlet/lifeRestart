@@ -16,6 +16,7 @@ class App{
     #selectedExtendTalent = null;
     #hintTimeout;
     #specialthanks;
+    #autoTrajectory;
 
     async initial() {
         this.initPages();
@@ -347,6 +348,8 @@ class App{
             <ul id="lifeProperty" class="lifeProperty"></ul>
             <ul id="lifeTrajectory" class="lifeTrajectory"></ul>
             <div class="btn-area">
+                <button id="auto" class="mainbtn">自动播放</button>
+                <button id="auto2x" class="mainbtn">自动播放2x</button>
                 <button id="summary" class="mainbtn">人生总结</button>
                 <button id="domToImage" class="mainbtn">人生回放</button>
             </div>
@@ -380,6 +383,8 @@ class App{
                     $(document).unbind("keydown");
                     this.#isEnd = true;
                     trajectoryPage.find('#summary').show();
+                    trajectoryPage.find('#auto').hide();
+                    trajectoryPage.find('#auto2x').hide();
                     // trajectoryPage.find('#domToImage').show();
                 } else {
                     // 如未死亡，更新数值
@@ -419,8 +424,39 @@ class App{
         trajectoryPage
             .find('#summary')
             .click(()=>{
+                clearInterval(this.#autoTrajectory);
+                this.#autoTrajectory = null;
                 this.switch('summary');
             });
+
+        const auto = tick=>{
+            if(this.#autoTrajectory) {
+                clearInterval(this.#autoTrajectory);
+                this.#autoTrajectory = null;
+            } else {
+                if(!this.isEnd)
+                    trajectoryPage
+                        .find('#lifeTrajectory')
+                        .click();
+                this.#autoTrajectory = setInterval(()=>{
+                    if(this.isEnd) {
+                        clearInterval(this.#autoTrajectory);
+                        this.#autoTrajectory = null;
+                    } else {
+                        trajectoryPage
+                            .find('#lifeTrajectory')
+                            .click();
+                    }
+                }, tick);
+            }
+        };
+
+        trajectoryPage
+            .find('#auto')
+            .click(()=>auto(1000));
+        trajectoryPage
+            .find('#auto2x')
+            .click(()=>auto(500));
 
         // Summary
         const summaryPage = $(`
@@ -543,7 +579,7 @@ class App{
                     total.append(`
                         <li class="achvg${getGrade('times', times)}"><span class="achievementtitle">已重开${times}次</span>${formatRate('times', times)}</li>
                         <li class="achvg${getGrade('achievement', achievement)}"><span class="achievementtitle">成就达成${achievement}个</span>${formatRate('achievement', achievement)}</li>
-                        <li class="achvg${getGrade('eventRate', eventRate)}"><span class="achievementtitle">事件选择率</span>${Math.floor(eventRate * 100)}%</li>
+                        <li class="achvg${getGrade('eventRate', eventRate)}"><span class="achievementtitle">事件收集率</span>${Math.floor(eventRate * 100)}%</li>
                         <li class="achvg${getGrade('talentRate', talentRate)}"><span class="achievementtitle">天赋收集率</span>${Math.floor(talentRate * 100)}%</li>
                     `);
 
@@ -606,6 +642,8 @@ class App{
                     this.#currentPage = 'trajectory';
                     trajectoryPage.find('#lifeTrajectory').empty();
                     trajectoryPage.find('#summary').hide();
+                    trajectoryPage.find('#auto').show();
+                    trajectoryPage.find('#auto2x').show();
                     this.#isEnd = false;
                 },
                 born: ()=>{
@@ -620,22 +658,34 @@ class App{
                     const talents = summaryPage.find('#talents');
                     judge.empty();
                     talents.empty();
-                    this.#talentSelected.forEach(talent=>{
-                        const li = createTalent(talent);
-                        talents.append(li);
-                        li.click(()=>{
-                            if(li.hasClass('selected')) {
-                                this.#selectedExtendTalent = null;
-                                li.removeClass('selected');
-                            } else if(this.#selectedExtendTalent != null) {
-                                this.hint('只能继承一个天赋');
-                                return;
-                            } else {
-                                this.#selectedExtendTalent = talent.id;
-                                li.addClass('selected');
-                            }
+                    const lastExtendTalent = this.#life.getLastExtendTalent();
+                    Array
+                        .from(this.#talentSelected)
+                        .sort((
+                            {id:a, grade:ag},
+                            {id:b, grade:bg},
+                        )=>{
+                            if(a == lastExtendTalent) return -1;
+                            if(b == lastExtendTalent) return 1;
+                            return bg - ag;
+                        })
+                        .forEach((talent, i)=>{
+                            const li = createTalent(talent);
+                            talents.append(li);
+                            li.click(()=>{
+                                if(li.hasClass('selected')) {
+                                    this.#selectedExtendTalent = null;
+                                    li.removeClass('selected');
+                                } else if(this.#selectedExtendTalent != null) {
+                                    this.hint('只能继承一个天赋');
+                                    return;
+                                } else {
+                                    this.#selectedExtendTalent = talent.id;
+                                    li.addClass('selected');
+                                }
+                            });
+                            if(!i) li.click();
                         });
-                    });
 
                     const summaryData = this.#life.getSummary();
                     const format = (discription, type)=>{
