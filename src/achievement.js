@@ -18,6 +18,10 @@ class Achievement {
         this.#achievements = achievements;
     }
 
+    count() {
+        return Object.keys(this.#achievements).length;
+    }
+
     list(property) {
         return Object
             .values(this.#achievements)

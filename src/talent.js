@@ -16,6 +16,10 @@ class Talent {
         }
     }
 
+    count() {
+        return Object.keys(this.#talents).length;
+    }
+
     check(talentId, property) {
         const { condition } = this.get(talentId);
         return checkCondition(property, condition);

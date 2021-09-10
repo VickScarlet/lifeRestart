@@ -38,8 +38,12 @@ class Property {
         // Achievement Total
         ATLT: "ATLT", // 拥有过的天赋 Achieve Talent
         AEVT: "AEVT", // 触发过的事件 Achieve Event
-
         ACHV: "ACHV", // 达成的成就 Achievement
+
+        CTLT: "RTLT", // 天赋选择数 Count Talent
+        CEVT: "REVT", // 事件收集数 Count Event
+        CACHV: "CACHV", // 成就达成数 Count Achievement
+
     };
 
     #ageData;
@@ -164,9 +168,16 @@ class Property {
             case this.TYPES.AEVT:
             case this.TYPES.ACHV:
                 return this.lsget(prop) || [];
+            case this.TYPES.CTLT:
+            case this.TYPES.CEVT:
+            case this.TYPES.CACHV:
+                return this.get(
+                    this.fallback(prop)
+                ).length;
             default: return 0;
         }
     }
+
     fallback(prop) {
         switch(prop) {
             case this.TYPES.LAGE:
@@ -181,6 +192,9 @@ class Property {
             case this.TYPES.HMNY: return this.TYPES.MNY;
             case this.TYPES.LSPR:
             case this.TYPES.HSPR: return this.TYPES.SPR;
+            case this.TYPES.CTLT: return this.TYPES.ATLT;
+            case this.TYPES.CEVT: return this.TYPES.AEVT;
+            case this.TYPES.CACHV: return this.TYPES.ACHV;
             default: return;
         }
     }

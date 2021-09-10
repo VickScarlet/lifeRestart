@@ -517,7 +517,7 @@
         "name": "妖孽",
         "description": "成为亲传弟子",
         "grade": 1,
-        "condition": "EVT?[20348]",
+        "condition": "EVT?[20348,40015]",
         "hide": 1,
         "opportunity": "TRAJECTORY"
     },
@@ -535,7 +535,7 @@
         "name": "掌控混沌",
         "description": "悟出混沌大道",
         "grade": 2,
-        "condition": "EVT?[10388]",
+        "condition": "EVT?[10388,40036]",
         "hide": 1,
         "opportunity": "TRAJECTORY"
     },
@@ -1324,11 +1324,47 @@
     },
     "248": {
         "id": 248,
-        "name": "破碎虚空",
+        "name": "无上存在",
         "description": "总评超过6000",
         "grade": 3,
         "condition": "SUM>6000",
         "hide": 1,
+        "opportunity": "SUMMARY"
+    },
+    "249": {
+        "id": 249,
+        "name": "太古仙传",
+        "description": "突破到净息境",
+        "grade": 3,
+        "condition": "EVT?[40001]",
+        "hide": 1,
+        "opportunity": "TRAJECTORY"
+    },
+    "250": {
+        "id": 250,
+        "name": "你是我的了",
+        "description": "被夺舍",
+        "grade": 1,
+        "condition": "EVT?[40033]",
+        "hide": 1,
+        "opportunity": "TRAJECTORY"
+    },
+    "251": {
+        "id": 251,
+        "name": "破碎虚空",
+        "description": "撕裂世界之壁",
+        "grade": 3,
+        "condition": "EVT?[40040]",
+        "hide": 1,
+        "opportunity": "TRAJECTORY"
+    },
+    "252": {
+        "id": 252,
+        "name": "不祥之胎",
+        "description": "总评小于0",
+        "grade": 2,
+        "condition": "SUM<0",
+        "hide": 0,
         "opportunity": "SUMMARY"
     }
 }

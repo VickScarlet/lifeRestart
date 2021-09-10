@@ -152,7 +152,46 @@ class Life {
     }
 
     getAchievements() {
-        return this.#achievement.list();
+        const ticks = {};
+        this.#property
+            .get(this.#property.TYPES.ACHV)
+            .forEach(([id, tick]) => ticks[id] = tick);
+        return this
+            .#achievement
+            .list(this.#property)
+            .sort((
+                {id: a, grade: ag, hide: ah},
+                {id: b, grade: bg, hide: bh}
+            )=>{
+                a = ticks[a];
+                b = ticks[b];
+                if(a&&b) return a - b;
+                if(!a&&!b) {
+                    if(ah&&bh) return bg - ag;
+                    if(ah) return 1;
+                    if(bh) return -1;
+                    return bg - ag;
+                }
+                if(!a) return 1;
+                if(!b) return -1;
+            });
+    }
+
+    getTotal() {
+        const TMS = this.#property.get(this.#property.TYPES.TMS);
+        const CACHV = this.#property.get(this.#property.TYPES.CACHV);
+        const CTLT = this.#property.get(this.#property.TYPES.CTLT);
+        const CEVT = this.#property.get(this.#property.TYPES.CEVT);
+
+        const totalTalent = this.#talent.count();
+        const totalEvent = this.#event.count();
+
+        return {
+            times: TMS,
+            achievement: CACHV,
+            talentRate: CTLT / totalTalent,
+            eventRate: CEVT / totalEvent,
+        }
     }
 
     get times() { return this.#property?.get(this.#property.TYPES.TMS) || 0; }

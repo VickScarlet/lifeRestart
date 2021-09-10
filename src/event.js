@@ -19,6 +19,10 @@ class Event {
         }
     }
 
+    count() {
+        return Object.keys(this.#events).length;
+    }
+
     check(eventId, property) {
         const { include, exclude, NoRandom } = this.get(eventId);
         if(NoRandom) return false;
