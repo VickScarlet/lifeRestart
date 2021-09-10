@@ -116,7 +116,9 @@ class Life {
     }
 
     talentRandom() {
-        return this.#talent.talentRandom(this.getLastExtendTalent());
+        const times = this.#property.get(this.#property.TYPES.TMS);
+        const achievement = this.#property.get(this.#property.TYPES.CACHV);
+        return this.#talent.talentRandom(this.getLastExtendTalent(), { times, achievement });
     }
 
     talentExtend(talentId) {

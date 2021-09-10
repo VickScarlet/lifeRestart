@@ -1,8 +1,20 @@
 export function getRate(type, value) {
     switch(type) {
         case 'times':
+            if(value >= 100) return {2:6};
+            if(value >= 70) return {2:5};
+            if(value >= 50) return {2:4};
+            if(value >= 30) return {2:3};
+            if(value >= 10) return {2:2};
+            return {2: 1};
         case 'achievement':
-        default: return 0;
+            if(value >= 100) return {3:6};
+            if(value >= 70) return {3:5};
+            if(value >= 50) return {3:4};
+            if(value >= 30) return {3:3};
+            if(value >= 10) return {3:2};
+            return {3:1};
+        default: return {};
     }
 }
 

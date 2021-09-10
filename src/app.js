@@ -1,5 +1,5 @@
 import { summary } from './functions/summary.js';
-import { getGrade } from './functions/addition.js';
+import { getRate, getGrade } from './functions/addition.js';
 import Life from './life.js';
 
 class App{
@@ -516,14 +516,35 @@ class App{
                     total.empty();
                     achievements.empty();
 
-                    `<li><span class="achievementtitle">重开次数</span>紫色几率翻倍</li>`
+                    const formatRate = (type, value) => {
+                        const rate = getRate(type, value);
+                        let color = Object.keys(rate)[0];
+                        switch(parseInt(color)) {
+                            case 0: color = '白色'; break;
+                            case 1: color = '蓝色'; break;
+                            case 2: color = '紫色'; break;
+                            case 3: color = '橙色'; break;
+                            default: break;
+                        }
+                        let r = Object.values(rate)[0];
+                        switch(parseInt(r)) {
+                            case 1: r = '不变'; break;
+                            case 2: r = '翻倍'; break;
+                            case 3: r = '三倍'; break;
+                            case 4: r = '四倍'; break;
+                            case 5: r = '五倍'; break;
+                            case 6: r = '六倍'; break;
+                            default: break;
+                        }
+                        return `抽到${color}概率${r}`;
+                    }
 
                     const { times, achievement, talentRate, eventRate } = this.#life.getTotal();
                     total.append(`
-                        <li class="achvg${getGrade('times', times)}"><span class="achievementtitle">已重开${times}次</span>抽到紫色几率不变</li>
-                        <li class="achvg${getGrade('achievement', achievement)}"><span class="achievementtitle">成就达成${achievement}个</span>抽到橙色几率翻倍</li>
-                        <li class="achvg${getGrade('talentRate', talentRate)}"><span class="achievementtitle">事件收集率</span>${Math.floor(talentRate * 100)}%</li>
-                        <li class="achvg${getGrade('eventRate', eventRate)}"><span class="achievementtitle">天赋选择率</span>${Math.floor(eventRate * 100)}%</li>
+                        <li class="achvg${getGrade('times', times)}"><span class="achievementtitle">已重开${times}次</span>${formatRate('times', times)}</li>
+                        <li class="achvg${getGrade('achievement', achievement)}"><span class="achievementtitle">成就达成${achievement}个</span>${formatRate('achievement', achievement)}</li>
+                        <li class="achvg${getGrade('eventRate', eventRate)}"><span class="achievementtitle">事件选择率</span>${Math.floor(eventRate * 100)}%</li>
+                        <li class="achvg${getGrade('talentRate', talentRate)}"><span class="achievementtitle">天赋收集率</span>${Math.floor(talentRate * 100)}%</li>
                     `);
 
                     const achievementsData = this.#life.getAchievements();
