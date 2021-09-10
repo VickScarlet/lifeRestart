@@ -28,13 +28,13 @@ export function getGrade(type, value) {
             return 0;
         case 'talentRate':
             if(value >= 0.9) return 3;
-            if(value >= 0.5) return 2;
-            if(value >= 0.1) return 1;
+            if(value >= 0.6) return 2;
+            if(value >= 0.3) return 1;
             return 0;
         case 'eventRate':
-            if(value >= 0.5) return 3;
-            if(value >= 0.3) return 2;
-            if(value >= 0.1) return 1;
+            if(value >= 0.6) return 3;
+            if(value >= 0.4) return 2;
+            if(value >= 0.2) return 1;
             return 0;
         default: return 0;
     }
