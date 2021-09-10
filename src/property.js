@@ -19,6 +19,7 @@ class Property {
     #ageData;
     #data;
     #record;
+    #recordLog;
 
     initial({age}) {
 
@@ -58,6 +59,7 @@ class Property {
         for(const key in data)
             this.change(key, data[key]);
         this.#record = [];
+        this.#recordLog=[];
     }
 
     get(prop) {
@@ -107,6 +109,19 @@ class Property {
             [this.TYPES.MNY]: this.get(this.TYPES.MNY),
             [this.TYPES.SPR]: this.get(this.TYPES.SPR),
         });
+
+        // calc the diff log and save it
+        if(this.#record.length>=2){
+            let currentRecord=this.#record[this.#record.length-1];
+            let lastRecord=this.#record[this.#record.length-2];
+            let logItem={}
+            for (let propName in this.TYPES){
+                if(Number.isFinite(currentRecord[propName])){
+                    logItem[propName]=currentRecord[propName]-lastRecord[propName];
+                }
+            }
+            this.#recordLog.push(logItem);
+        }
     }
 
     getRecord() {
@@ -115,6 +130,14 @@ class Property {
 
     getLastRecord() {
         return clone(this.#record[this.#record.length - 1]);
+    }
+
+    getRecordLog(){
+        return clone(this.#recordLog);
+    }
+
+    getLastRecordLog() {
+        return clone(this.#recordLog[this.#recordLog.length - 1]);
     }
 
     change(prop, value) {
