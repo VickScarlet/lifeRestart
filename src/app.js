@@ -124,7 +124,7 @@ class App{
             <span class="title">统计</span>
             <ul id="total"></ul>
             <span style="padding:0.25rem; margin: 0.5rem 0; border: none; background: #ccc;"></span>
-            <span class="title">成就</span>
+            <span class="title">成就<button id="rank">排行榜</button></span>
             <ul id="achievements"></ul>
         `)
 
@@ -132,6 +132,9 @@ class App{
             .find('#specialthanks')
             .click(()=>this.switch('index'));
 
+        achievementPage
+            .find('#rank')
+            .click(()=>this.hint('别卷了，没有排行榜'));
         // Talent
         const talentPage = $(`
         <div id="main">

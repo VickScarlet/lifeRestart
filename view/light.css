@@ -134,6 +134,7 @@ body {
 }
 
 .sponsor,
+#rank,
 #specialthanks,
 #achievement {
   position: fixed;
@@ -161,6 +162,13 @@ body {
   bottom: 0;
   width: auto;
   padding: 0.5rem;
+}
+
+#rank {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
 }
 
 #spthx {
@@ -218,6 +226,7 @@ body {
 }
 
 .title {
+  position: relative;
   font-size: 1.5rem;
   font-weight: 700;
   padding: 1rem;
