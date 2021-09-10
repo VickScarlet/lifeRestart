@@ -4,12 +4,14 @@ import { readFile, writeFile } from 'fs/promises';
 async function main() {
 
     try {
-        global.localStorage = JSON.parse(await readFile('__localStorage.json'));
+        globalThis.localStorage = JSON.parse(await readFile('__localStorage.json'));
     } catch (e) {
-        global.localStorage = {};
+        globalThis.localStorage = {};
     }
+    localStorage.getItem = key => localStorage[key]===void 0? null: localStorage[key];
+    localStorage.setItem = (key, value) => (localStorage[key] = value);
 
-    global.dumpLocalStorage = async ()=>await writeFile('__localStorage.json', JSON.stringify( global.localStorage))
+    globalThis.dumpLocalStorage = async ()=>await writeFile('__localStorage.json', JSON.stringify( global.localStorage))
 
     const app = new App();
     app.io(

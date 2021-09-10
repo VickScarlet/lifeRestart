@@ -1,5 +1,6 @@
 import { clone } from './functions/util.js';
 import { checkCondition, extractMaxTriggers } from './functions/condition.js';
+import { getRate } from './functions/addition.js';
 
 class Talent {
     constructor() {}
@@ -14,6 +15,10 @@ class Talent {
             talent.grade = Number(talent.grade);
             talent.max_triggers = extractMaxTriggers(talent.condition);
         }
+    }
+
+    count() {
+        return Object.keys(this.#talents).length;
     }
 
     check(talentId, property) {
@@ -43,7 +48,29 @@ class Talent {
         return null;
     }
 
-    talentRandom(include) {
+    talentRandom(include, {times = 0, achievement = 0} = {}) {
+        const rate = { 1:100, 2:10, 3:1, };
+        const rateAddition = { 1:1, 2:1, 3:1, };
+        const timesRate = getRate('times', times);
+        const achievementRate = getRate('achievement', achievement);
+
+        for(const grade in timesRate)
+            rateAddition[grade] += timesRate[grade] - 1;
+
+        for(const grade in achievementRate)
+            rateAddition[grade] += achievementRate[grade] - 1;
+
+        for(const grade in rateAddition)
+            rate[grade] *= rateAddition[grade];
+
+        const randomGrade = () => {
+            let randomNumber = Math.floor(Math.random() * 1000);
+            if((randomNumber -= rate[3]) < 0) return 3;
+            if((randomNumber -= rate[2]) < 0) return 2;
+            if((randomNumber -= rate[1]) < 0) return 1;
+            return 0;
+        }
+
         // 1000, 100, 10, 1
         const talentList = {};
         for(const talentId in this.#talents) {
@@ -59,15 +86,8 @@ class Talent {
         return new Array(10)
             .fill(1).map((v, i)=>{
                 if(!i && include) return include;
-                const gradeRandom = Math.random();
-                let grade;
-                if(gradeRandom>=0.111) grade = 0;
-                else if(gradeRandom>=0.011) grade = 1;
-                else if(gradeRandom>=0.001) grade = 2;
-                else grade = 3;
-
+                let grade = randomGrade();
                 while(talentList[grade].length == 0) grade--;
-
                 const length = talentList[grade].length;
 
                 const random = Math.floor(Math.random()*length) % length;

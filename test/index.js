@@ -1,7 +1,30 @@
 import { readFile } from 'fs/promises';
 import Life from '../src/life.js'
 
-global.json = async fileName => JSON.parse(await readFile(`data/${fileName}.json`));
+globalThis.json = async fileName => JSON.parse(await readFile(`data/${fileName}.json`));
+
+globalThis.localStorage = {};
+localStorage.getItem = key => localStorage[key]===void 0? null: localStorage[key];
+localStorage.setItem = (key, value) => (localStorage[key] = value);
+
+
+globalThis.$$eventMap = new Map();
+globalThis.$$event = (tag, data) => {
+    const listener = $$eventMap.get(tag);
+    if(listener) listener.forEach(fn=>fn(data));
+}
+globalThis.$$on = (tag, fn) => {
+    let listener = $$eventMap.get(tag);
+    if(!listener) {
+        listener = new Set();
+        $$eventMap.set(tag, listener);
+    }
+    listener.add(fn);
+}
+globalThis.$$off = (tag, fn) => {
+    const listener = $$eventMap.get(tag);
+    if(listener) listener.delete(fn);
+}
 
 async function debug() {
 
