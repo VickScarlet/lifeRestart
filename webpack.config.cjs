@@ -22,6 +22,10 @@ module.exports = {
         directory: path.join(__dirname, 'src'),
         publicPath: '/src',
       },
+      {
+        directory: path.join(__dirname, 'lib'),
+        publicPath: '/lib',
+      }
     ],
   },
   output: {
