@@ -403,32 +403,33 @@ ul#total li .achievementtitle,
   color: #3b3b3b;
   overflow: hidden;
 }
-.grade0b.selected.selected::after,
-.grade1b.selected.selected::after,
-.grade2b.selected.selected::after,
-.grade3b.selected.selected::after {
+.grade0b.selected::after,
+.grade1b.selected::after,
+.grade2b.selected::after,
+.grade3b.selected::after {
   content: '';
   position: absolute;
-  background-image: linear-gradient(to left, transparent, #fff 50%, transparent 100%);
-  opacity: 1;
+  background-color:#000;
   top: 0;
   bottom: 0;
-  width: 40px;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 10px #000;
   opacity: 0;
-  animation: blink 2s linear infinite;
+  animation: blink 3s linear infinite;
 }
 
 @keyframes blink {
   0% {
     opacity: 0;
-    transform: translateX(-100vw);
+    transform: translateX(-150%);
   }
   50% {
-    opacity: .5;
+    opacity: .2;
   }
   100% {
     opacity: 0;
-    transform: translateX(80px);
+    transform: translateX(150%);
   }
 }
 
