@@ -622,28 +622,57 @@ i {
   }
 }
 
-.grade0b.selected {
-  background-color: #444 !important;
+.grade0b.selected,
+.grade1b.selected,
+.grade2b.selected,
+.grade3b.selected {
   box-shadow: #bbb 0px 0px 10px;
   color: #fff;
+  overflow: hidden;
+}
+.grade0b.selected.selected::after,
+.grade1b.selected.selected::after,
+.grade2b.selected.selected::after,
+.grade3b.selected.selected::after {
+  content: '';
+  position: absolute;
+  background-image: linear-gradient(to left, transparent, #fff 50%, transparent 100%);
+  opacity: 1;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  opacity: 0;
+  animation: blink 2s linear infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+    transform: translateX(-100vw);
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+}
+
+.grade0b.selected {
+  background-color: #444 !important;
 }
 
 .grade1b.selected {
   background-color: #407dec !important;
-  box-shadow: #bbb 0px 0px 10px;
-  color: #fff;
 }
 
 .grade2b.selected {
   background-color: #b362e7 !important;
-  box-shadow: #bbb 0px 0px 10px;
-  color: #fff;
 }
 
 .grade3b.selected {
   background-color: #ff7f4d !important;
-  box-shadow: #bbb 0px 0px 10px;
-  color: #fff;
 }
 
 @keyframes banner-in {
