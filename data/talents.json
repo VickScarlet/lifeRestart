@@ -79,6 +79,9 @@
         "name": "天龙人",
         "description": "你拥有北京户口",
         "grade": 2,
+        "effect": {
+            "MNY": 1
+        },
         "exclusive": [
             "1012",
             "1013",
@@ -119,7 +122,7 @@
         "description": "你有美国国籍",
         "grade": 2,
         "effect": {
-            "MNY": 3
+            "MNY": 1
         },
         "exclusive": [
             "1010",
@@ -1169,5 +1172,11 @@
         "name": "转世重修",
         "description": "渡劫失败重生",
         "grade": 2
+    },
+    "1135": {
+        "id": 1135,
+        "name": "轮回之外",
+        "description": "死后可能灵魂离体",
+        "grade": 3
     }
 }

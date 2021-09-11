@@ -1066,7 +1066,7 @@
         "name": "刷刷刷",
         "description": "集齐橙色天赋",
         "grade": 3,
-        "condition": "(ATLT?[1023])&(ATLT?[1048])&(ATLT?[1064])&(ATLT?[1114])",
+        "condition": "(ATLT?[1023])&(ATLT?[1048])&(ATLT?[1064])&(ATLT?[1114])&(ATLT?[1135])",
         "hide": 0,
         "opportunity": "START"
     },
@@ -1342,7 +1342,7 @@
     },
     "250": {
         "id": 250,
-        "name": "你是我的了",
+        "name": "嫁衣",
         "description": "被夺舍",
         "grade": 1,
         "condition": "EVT?[40033]",
@@ -1419,6 +1419,24 @@
         "grade": 1,
         "condition": "EVT?[11176]",
         "hide": 0,
+        "opportunity": "TRAJECTORY"
+    },
+    "259": {
+        "id": 259,
+        "name": "你是我的了",
+        "description": "夺舍成功",
+        "grade": 2,
+        "condition": "EVT?[40083,40084]",
+        "hide": 1,
+        "opportunity": "TRAJECTORY"
+    },
+    "260": {
+        "id": 260,
+        "name": "孽魂",
+        "description": "被炼进魂幡里",
+        "grade": 1,
+        "condition": "EVT?[40070]",
+        "hide": 1,
         "opportunity": "TRAJECTORY"
     }
 }
