@@ -1402,5 +1402,23 @@
         "condition": "EVT?[40061]",
         "hide": 1,
         "opportunity": "TRAJECTORY"
+    },
+    "257": {
+        "id": 257,
+        "name": "关我啥事",
+        "description": "按下某个按钮",
+        "grade": 0,
+        "condition": "EVT?[21315]",
+        "hide": 0,
+        "opportunity": "TRAJECTORY"
+    },
+    "258": {
+        "id": 258,
+        "name": "实现梦想",
+        "description": "开一家二次元公司",
+        "grade": 1,
+        "condition": "EVT?[11176]",
+        "hide": 0,
+        "opportunity": "TRAJECTORY"
     }
 }
