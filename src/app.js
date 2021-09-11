@@ -389,18 +389,15 @@ class App{
                     trajectoryPage.find('#auto').hide();
                     trajectoryPage.find('#auto2x').hide();
                     // trajectoryPage.find('#domToImage').show();
-                } else {
-                    // 如未死亡，更新数值
-                    // Update properties if not die yet
-                    const property = this.#life.getLastRecord();
-                    $("#lifeProperty").html(`
-                    <li><span>颜值</span><span>${property.CHR}</span></li>
-                    <li><span>智力</span><span>${property.INT}</span></li>
-                    <li><span>体质</span><span>${property.STR}</span></li>
-                    <li><span>家境</span><span>${property.MNY}</span></li>
-                    <li><span>快乐</span><span>${property.SPR}</span></li>
-                    `);
                 }
+                const property = this.#life.getLastRecord();
+                $("#lifeProperty").html(`
+                <li><span>颜值</span><span>${property.CHR}</span></li>
+                <li><span>智力</span><span>${property.INT}</span></li>
+                <li><span>体质</span><span>${property.STR}</span></li>
+                <li><span>家境</span><span>${property.MNY}</span></li>
+                <li><span>快乐</span><span>${property.SPR}</span></li>
+                `);
             });
         // html2canvas
         trajectoryPage
