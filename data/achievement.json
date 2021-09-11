@@ -76,7 +76,7 @@
         "name": "虚假的天空",
         "description": "飞升仙界",
         "grade": 3,
-        "condition": "EVT?[10409]",
+        "condition": "EVT?[10409,40050]",
         "hide": 1,
         "opportunity": "TRAJECTORY"
     },
@@ -94,7 +94,7 @@
         "name": "执念",
         "description": "转世后飞升",
         "grade": 2,
-        "condition": "(EVT?[10409])&(EVT?[20409])",
+        "condition": "(EVT?[10409,40050])&(EVT?[20409])",
         "hide": 1,
         "opportunity": "TRAJECTORY"
     },
@@ -1316,18 +1316,18 @@
     "247": {
         "id": 247,
         "name": "大能者",
-        "description": "总评超过3000",
+        "description": "总评超过4000",
         "grade": 2,
-        "condition": "SUM>3000",
+        "condition": "SUM>4000",
         "hide": 1,
         "opportunity": "SUMMARY"
     },
     "248": {
         "id": 248,
         "name": "无上存在",
-        "description": "总评超过6000",
+        "description": "总评超过10000",
         "grade": 3,
-        "condition": "SUM>6000",
+        "condition": "SUM>10000",
         "hide": 1,
         "opportunity": "SUMMARY"
     },
@@ -1335,7 +1335,7 @@
         "id": 249,
         "name": "太古仙传",
         "description": "突破到净息境",
-        "grade": 3,
+        "grade": 1,
         "condition": "EVT?[40001]",
         "hide": 1,
         "opportunity": "TRAJECTORY"
@@ -1353,7 +1353,7 @@
         "id": 251,
         "name": "破碎虚空",
         "description": "撕裂世界之壁",
-        "grade": 3,
+        "grade": 2,
         "condition": "EVT?[40040]",
         "hide": 1,
         "opportunity": "TRAJECTORY"
@@ -1366,5 +1366,41 @@
         "condition": "SUM<0",
         "hide": 0,
         "opportunity": "SUMMARY"
+    },
+    "253": {
+        "id": 253,
+        "name": "登仙",
+        "description": "达到羽化境",
+        "grade": 3,
+        "condition": "EVT?[40050]",
+        "hide": 1,
+        "opportunity": "TRAJECTORY"
+    },
+    "254": {
+        "id": 254,
+        "name": "千世",
+        "description": "踏入凡尘期",
+        "grade": 2,
+        "condition": "EVT?[40056]",
+        "hide": 1,
+        "opportunity": "TRAJECTORY"
+    },
+    "255": {
+        "id": 255,
+        "name": "星生",
+        "description": "达到星尘境",
+        "grade": 3,
+        "condition": "EVT?[40058]",
+        "hide": 1,
+        "opportunity": "TRAJECTORY"
+    },
+    "256": {
+        "id": 256,
+        "name": "前前前世",
+        "description": "得到自己留下的法门",
+        "grade": 3,
+        "condition": "EVT?[40061]",
+        "hide": 1,
+        "opportunity": "TRAJECTORY"
     }
 }
