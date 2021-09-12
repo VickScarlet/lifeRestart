@@ -1,3 +1,4 @@
+import { weightRandom } from './functions/util.js'
 import Property from './property.js';
 import Event from './event.js';
 import Talent from './talent.js';
@@ -32,13 +33,15 @@ class Life {
 
     restart(allocation) {
         this.#triggerTalents = {};
+        const contents = this.talentReplace(allocation.TLT);
         this.#property.restart(allocation);
-        this.doTalent();
+        this.doTalent()
         this.#property.restartLastStep();
         this.#achievement.achieve(
             this.#achievement.Opportunity.START,
             this.#property
         )
+        return contents;
     }
 
     getTalentAllocationAddition(talents) {
@@ -63,6 +66,21 @@ class Life {
             this.#property
         )
         return { age, content, isEnd };
+    }
+
+    talentReplace(talents) {
+        const result = this.#talent.replace(talents);
+        const contents = [];
+        for(const id in result) {
+            talents.push(result[id]);
+            const source = this.#talent.get(id);
+            const target = this.#talent.get(result[id]);
+            contents.push({
+                type: 'talentReplace',
+                source, target
+            });
+        }
+        return contents;
     }
 
     doTalent(talents) {
@@ -102,17 +120,11 @@ class Life {
     }
 
     random(events) {
-        events = events.filter(([eventId])=>this.#event.check(eventId, this.#property));
-
-        let totalWeights = 0;
-        for(const [, weight] of events)
-            totalWeights += weight;
-
-        let random = Math.random() * totalWeights;
-        for(const [eventId, weight] of events)
-            if((random-=weight)<0)
-                return eventId;
-        return events[events.length-1];
+        return weightRandom(
+            events.filter(
+                ([eventId])=>this.#event.check(eventId, this.#property)
+            )
+        );
     }
 
     talentRandom() {

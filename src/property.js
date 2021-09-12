@@ -1,4 +1,4 @@
-import { max, min, sum, clone } from './functions/util.js';
+import { max, min, sum, clone, listRandom } from './functions/util.js';
 
 class Property {
     constructor() {}
@@ -44,7 +44,21 @@ class Property {
         CEVT: "REVT", // 事件收集数 Count Event
         CACHV: "CACHV", // 成就达成数 Count Achievement
 
+        // SPECIAL
+        RDM: 'RDM', // 随机属性 random RDM
+
     };
+
+    // 特殊类型
+    SPECIAL = {
+        RDM: [ // 随机属性 random RDM
+            this.TYPES.CHR,
+            this.TYPES.INT,
+            this.TYPES.STR,
+            this.TYPES.MNY,
+            this.TYPES.SPR,
+        ]
+    }
 
     #ageData;
     #data = {};
@@ -270,9 +284,19 @@ class Property {
         }
     }
 
+    hookSpecial(prop) {
+        switch(prop) {
+            case this.TYPES.RDM: return listRandom(this.SPECIAL.RDM);
+            default: return prop;
+        }
+    }
+
     effect(effects) {
-        for(const prop in effects)
-            this.change(prop, Number(effects[prop]));
+        for(let prop in effects)
+            this.change(
+                this.hookSpecial(prop),
+                Number(effects[prop])
+            );
     }
 
     isEnd() {

@@ -28,4 +28,20 @@ function average(...arr) {
     return s / arr.flat().length;
 }
 
-export { clone, max, min, sum, average };
+function weightRandom(list) {
+    let totalWeights = 0;
+    for(const [, weight] of list)
+        totalWeights += weight;
+
+    let random = Math.random() * totalWeights;
+    for(const [id, weight] of list)
+        if((random-=weight)<0)
+            return id;
+    return list[list.length-1];
+}
+
+function listRandom(list) {
+    return list[Math.floor(Math.random() * list.length)];
+}
+
+export { clone, max, min, sum, average, weightRandom, listRandom };

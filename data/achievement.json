@@ -1066,7 +1066,7 @@
         "name": "刷刷刷",
         "description": "集齐橙色天赋",
         "grade": 3,
-        "condition": "(ATLT?[1023])&(ATLT?[1048])&(ATLT?[1064])&(ATLT?[1114])&(ATLT?[1135])",
+        "condition": "(ATLT?[1023])&(ATLT?[1048])&(ATLT?[1064])&(ATLT?[1114])&(ATLT?[1135])&(ATLT?[1141])",
         "hide": 0,
         "opportunity": "START"
     },
@@ -1120,7 +1120,7 @@
         "name": "信条",
         "description": "遇到时光倒流",
         "grade": 1,
-        "condition": "EVT?[11468,11469]",
+        "condition": "EVT?[11468,11469,20390]",
         "hide": 0,
         "opportunity": "TRAJECTORY"
     },
@@ -1438,5 +1438,23 @@
         "condition": "EVT?[40070]",
         "hide": 1,
         "opportunity": "TRAJECTORY"
+    },
+    "261": {
+        "id": 261,
+        "name": "薅羊毛专家",
+        "description": "有会员，所以急着投胎",
+        "grade": 2,
+        "condition": "(TLT?[1122])&(TLT?[1141])",
+        "hide": 0,
+        "opportunity": "START"
+    },
+    "262": {
+        "id": 262,
+        "name": "上当了",
+        "description": "太贪婪而被骗",
+        "grade": 0,
+        "condition": "TLT?[1136]",
+        "hide": 1,
+        "opportunity": "START"
     }
 }

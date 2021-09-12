@@ -328,7 +328,7 @@ class App{
                     this.hint(`你多使用了${total() - this.#totalMax}属性点`);
                     return;
                 }
-                this.#life.restart({
+                const contents = this.#life.restart({
                     CHR: groups.CHR.get(),
                     INT: groups.INT.get(),
                     STR: groups.STR.get(),
@@ -337,7 +337,7 @@ class App{
                     TLT: Array.from(this.#talentSelected).map(({id})=>id),
                 });
                 this.switch('trajectory');
-                this.#pages.trajectory.born();
+                this.#pages.trajectory.born(contents);
                 // $(document).keydown(function(event){
                 //     if(event.which == 32 || event.which == 13){
                 //         $('#lifeTrajectory').click();
@@ -646,7 +646,15 @@ class App{
                     trajectoryPage.find('#auto2x').show();
                     this.#isEnd = false;
                 },
-                born: ()=>{
+                born: contents => {
+                    if(contents.length > 0)
+                        $('#lifeTrajectory')
+                            .append(`<li><span>初始：</span><span>${
+                                contents.map(
+                                    ({source, target}) => `天赋【${source.name}】发动：替换为天赋【${target.name}】`
+                                ).join('<br>')
+                            }</span></li>`);
+
                     trajectoryPage.find('#lifeTrajectory').trigger("click");
                 }
             },
