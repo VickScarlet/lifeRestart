@@ -1,5 +1,4 @@
-
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+/* @import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700"); */
 @import url("./iconfont.css");
 
 @media (min-width:640px){html{font-size:24px;}}
@@ -267,8 +266,6 @@ i {
 .selectlist>li {
   margin-bottom: 0.6rem;
   display: block;
-  border: 1px solid var(--selectlist-li-border-color);
-  border-radius: 0.2rem;
   color: var(--selectlist-li-text-color);
   font-size: 1.2rem;
   line-height: 1.6;
@@ -314,32 +311,44 @@ i {
   }
 }
 
+.achvg0,
 .grade0b {
   background-color: var(--selectlist-li-0b-bg-color);
+  border: 2px solid var(--selectlist-li-border-color);
+  border-radius: 0.2rem;
 }
 
 .grade0b.selected {
   background-color: var(--selectlist-li-0b-selected-bg-color) !important;
 }
 
+.achvg1,
 .grade1b {
   background-color: var(--selectlist-li-1b-bg-color);
+  border: 2px solid var(--selectlist-li-border-color);
+  border-radius: 0.2rem;
 }
 
 .grade1b.selected {
   background-color: var(--selectlist-li-1b-selected-bg-color) !important;
 }
 
+.achvg2,
 .grade2b {
   background-color: var(--selectlist-li-2b-bg-color);
+  border: 2px solid var(--selectlist-li-border-color);
+  border-radius: 0.2rem;
 }
 
 .grade2b.selected {
   background-color: var(--selectlist-li-2b-selected-bg-color) !important;
 }
 
+.achvg3,
 .grade3b {
   background-color: var(--selectlist-li-3b-bg-color);
+  border: 2px solid var(--selectlist-li-border-color);
+  border-radius: 0.2rem;
 }
 
 .grade3b.selected {
@@ -552,14 +561,11 @@ i {
 
 /* page - specialThanks */
 #spthx {
-  position: fixed;
+  padding: 4.5rem 1rem 0;
   display: grid;
-  top: 4rem;
-  bottom: 5rem;
-  left: 50%;
-  width: 30rem;
-  max-width: calc(100% - 2rem);
-  transform: translateX(-50%);
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 #spthx ul {
@@ -605,21 +611,8 @@ overflow: scroll;
 text-align: center;
 }
 
-.sponsor {
-  position: fixed;
-  top: auto;
-  right: 1rem;
-  bottom: 0;
-  padding: 0.5rem;
-  width: auto;
-  border: none;
-  border-radius: 0.2rem;
-  background-color:lightsteelblue;
-  font-size: 1.4rem;
-  color: #EEEEEE;
-  cursor: pointer;
-  z-index:2;
-  word-wrap: none;
+#spthx+.btn-area>.mainbtn {
+  font-size: 1.1rem;
 }
 
 /* page - achievement */

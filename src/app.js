@@ -109,8 +109,10 @@ class App{
                 <ul class="g1"></ul>
                 <ul class="g2"></ul>
             </div>
-            <button class="sponsor" onclick="globalThis.open('https://afdian.net/@LifeRestart')" style="background: linear-gradient(90deg,#946ce6,#7e5fd9); left:auto; right:50%; transform: translate(-2rem,-50%);">打赏策划(爱发电)</button>
-            <button class="sponsor" onclick="globalThis.open('https://dun.mianbaoduo.com/@vickscarlet')" style="background-color:#c69; left:50%; right:auto; transform: translate(2rem,-50%);">打赏程序(顿顿饭)</button>
+            <div class="btn-area">
+                <button class="mainbtn" onclick="globalThis.open('https://afdian.net/@LifeRestart')" style="background:linear-gradient(90deg,#946ce6,#7e5fd9);">打赏策划(爱发电)</button>
+                <button class="mainbtn" onclick="globalThis.open('https://dun.mianbaoduo.com/@vickscarlet')" style="background-color:#c69;">打赏程序(顿顿饭)</button>
+            </div>
         </div>
         `);
 
