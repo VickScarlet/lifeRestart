@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-import { max, sum } from './functions/util.js';
 import { summary } from './functions/summary.js'
 import Life from './life.js'
 import domtoimage from 'dom-to-image';
-=======
-import { summary } from './functions/summary.js';
 import { getRate, getGrade } from './functions/addition.js';
-import Life from './life.js';
 
->>>>>>> upstream/master
 class App{
     constructor(){
         this.#life = new Life();
@@ -354,25 +348,20 @@ class App{
 
         // Trajectory
         const trajectoryPage = $(`
-        <div id="main">
-            <ul id="lifeProperty" class="lifeProperty"></ul>
-            <ul id="lifeTrajectory" class="lifeTrajectory"></ul>
-<<<<<<< HEAD
-            <button id="summary" class="mainbtn" style="top:auto; bottom:0.1rem; left: 25%;">人生总结</button>
-            <button id="domToImage" class="mainbtn" style="top:auto; bottom:0.1rem; left: 75%; display: none">人生回放</button>
-=======
-            <div class="btn-area">
-                <button id="auto" class="mainbtn">自动播放</button>
-                <button id="auto2x" class="mainbtn">自动播放2x</button>
-                <button id="summary" class="mainbtn">人生总结</button>
-                <button id="domToImage" class="mainbtn">人生回放</button>
+            <div id="main">
+                <ul id="lifeProperty" class="lifeProperty"></ul>
+                <ul id="lifeTrajectory" class="lifeTrajectory"></ul>
+                <div class="btn-area">
+                    <button id="auto" class="mainbtn">自动播放</button>
+                    <button id="auto2x" class="mainbtn">自动播放2x</button>
+                    <button id="summary" class="mainbtn">人生总结</button>
+                    <button id="domToImage" class="mainbtn">人生回放</button>
+                </div>
+                <div class="domToImage2wx">
+                    <img src="" id="successSaveImage" />
+                    <button id="hideDomToImageBtn" style="position: fixed; top:auto; bottom: 20px; left: 75%">隐藏截图</button>
+                </div>
             </div>
->>>>>>> upstream/master
-            <div class="domToImage2wx">
-                <img src="" id="successSaveImage" />
-                <button id="hideDomToImageBtn" style="position: fixed; top:auto; bottom: 20px; left: 75%">隐藏截图</button>
-            </div>
-        </div>
         `);
 
         trajectoryPage
@@ -666,15 +655,12 @@ class App{
                     this.#currentPage = 'trajectory';
                     trajectoryPage.find('#lifeTrajectory').empty();
                     trajectoryPage.find('#summary').hide();
-<<<<<<< HEAD
                     // fix 第二次进入时不显示人生回放功能
                     trajectoryPage.find('#domToImage').hide();
                     // 在微信内置浏览器中，显示的截图不能关闭，增加 隐藏截图 按钮，初始化隐藏
                     trajectoryPage.find('#hideDomToImageBtn').hide();
-=======
                     trajectoryPage.find('#auto').show();
                     trajectoryPage.find('#auto2x').show();
->>>>>>> upstream/master
                     this.#isEnd = false;
                 },
                 born: contents => {
