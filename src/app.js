@@ -390,7 +390,7 @@ class App{
                     trajectoryPage.find('#summary').show();
                     trajectoryPage.find('#auto').hide();
                     trajectoryPage.find('#auto2x').hide();
-                    // trajectoryPage.find('#domToImage').show();
+                    trajectoryPage.find('#domToImage').show();
                 }
                 const property = this.#life.getLastRecord();
                 $("#lifeProperty").html(`
