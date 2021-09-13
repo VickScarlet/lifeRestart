@@ -417,7 +417,6 @@ class App{
                         // 微信内置浏览器，显示图片，需要用户单独保存
                         if(ua.match(/MicroMessenger/i)=="micromessenger") {
                             trajectoryPage.find('#hideDomToImageBtn').show();
-                            trajectoryPage.find('#successSaveImage').show();
                             $('#successSaveImage').attr('src', dataUrl);
                         }
                         
@@ -427,7 +426,6 @@ class App{
         trajectoryPage
             .find('#hideDomToImageBtn')
             .click(()=>{
-                $('#successSaveImage').attr('src', '');
                 trajectoryPage.find('#successSaveImage').hide();
                 trajectoryPage.find('#hideDomToImageBtn').hide();
             })
