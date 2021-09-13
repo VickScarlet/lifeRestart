@@ -1,9 +1,26 @@
-import { max, sum } from '../src/functions/util.js';
 import { summary } from '../src/functions/summary.js'
 import { readFile } from 'fs/promises';
 import Life from '../src/life.js';
 
-global.json = async fileName => JSON.parse(await readFile(`data/${fileName}.json`));
+globalThis.json = async fileName => JSON.parse(await readFile(`data/${fileName}.json`));
+
+globalThis.$$eventMap = new Map();
+globalThis.$$event = (tag, data) => {
+    const listener = $$eventMap.get(tag);
+    if(listener) listener.forEach(fn=>fn(data));
+}
+globalThis.$$on = (tag, fn) => {
+    let listener = $$eventMap.get(tag);
+    if(!listener) {
+        listener = new Set();
+        $$eventMap.set(tag, listener);
+    }
+    listener.add(fn);
+}
+globalThis.$$off = (tag, fn) => {
+    const listener = $$eventMap.get(tag);
+    if(listener) listener.delete(fn);
+}
 
 class App {
     constructor() {
@@ -47,7 +64,7 @@ class App {
 
     async initial() {
         this.output('Now Loading...');
-        this.#talentExtend = global.localStorage.talentExtend;
+        this.#talentExtend = localStorage.talentExtend;
         await this.#life.initial();
         this.output(`\rLoading Complete.
 人生重开模拟器
@@ -55,6 +72,11 @@ class App {
 \n🎉键入 \x1B[4m/remake\x1B[24m 开始游戏`,
             true
         );
+        $$on('achievement', ({name})=>this.output(`
+-------------------------
+    解锁成就【${name}】
+-------------------------
+`))
     }
 
     io(input, output, exit) {
@@ -289,7 +311,7 @@ class App {
     remake() {
         if(this.#talentExtend) {
             this.#life.talentExtend(this.#talentExtend)
-            global.dumpLocalStorage();
+            dumpLocalStorage();
             this.#talentExtend = null;
         }
 
@@ -549,34 +571,22 @@ class App {
     }
 
     summary() {
-
-        const records = this.#life.getRecord();
-        const s = (type, func)=>{
-            const value = func(records.map(({[type]:v})=>v));
+        const summaryData = this.#life.getSummary();
+        const format = (name, type) => {
+            const value = summaryData[type];
             const { judge, grade } = summary(type, value);
-            return { judge, grade, value };
-        };
-
-        const style = (name, grade, judge, value) => this.style(`grade${grade}b`, `${name}：${value} ${judge}`);
-        const judge = (name, type, func) => {
-            const { judge, grade, value } = s(type, func);
-            return style(name, grade, judge, value );
+            return this.style(`grade${grade}b`, `${name}：${value} ${judge}`);
         }
 
         return [
             '🎉 总评',
-            judge('颜值', 'CHR', max),
-            judge('智力', 'INT', max),
-            judge('体质', 'STR', max),
-            judge('家境', 'MNY', max),
-            judge('快乐', 'SPR', max),
-            judge('享年', 'AGE', max),
-            (()=>{
-                const m = type=>max(records.map(({[type]: value})=>value));
-                const value = Math.floor(sum(m('CHR'), m('INT'), m('STR'), m('MNY'), m('SPR'))*2 + m('AGE')/2);
-                const { judge, grade } = summary('SUM', value);
-                return style('总评', grade, judge, value );
-            })(),
+            format('颜值', 'CHR'),
+            format('智力', 'INT'),
+            format('体质', 'STR'),
+            format('家境', 'MNY'),
+            format('快乐', 'SPR'),
+            format('享年', 'AGE'),
+            format('总评', 'SUM'),
         ].join('\n');
     }
 }
