@@ -266,6 +266,8 @@ ul#total li .achievementtitle,
   overflow: scroll;
 }
 
+#save,
+#load,
 #themeToggleBtn {
   padding: 0 0.7rem;
   width: 6.5rem;
@@ -282,6 +284,17 @@ ul#total li .achievementtitle,
   z-index:2;
   right: 0.5rem;
   bottom: 0.5rem;
+}
+
+#save {
+  background-color:#007046;
+  color: white;
+  bottom: 6.5rem;
+}
+#load {
+  background-color: #fc5531;
+  color: white;
+  bottom: 3.5rem;
 }
 
 .head {
