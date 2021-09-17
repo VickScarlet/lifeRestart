@@ -14,7 +14,6 @@ class App{
     #totalMax=20;
     #isEnd = false;
     #selectedExtendTalent = null;
-    #hintTimeout;
     #specialthanks;
     #autoTrajectory;
     #themes = {}
@@ -777,7 +776,7 @@ class App{
         })
     }
 
-    switch(page) {
+    switch (page) {
         const p = this.#pages[page];
         if(!p) return;
         $('#main').detach();
@@ -788,20 +787,13 @@ class App{
         }
     }
 
-    hint(message, type='info') {
-        if(this.#hintTimeout) {
-            clearTimeout(this.#hintTimeout);
-            this.#hintTimeout = null;
-        }
-        hideBanners();
-        requestAnimationFrame(() => {
-            const banner = $(`.banner.${type}`);
-            banner.addClass('visible');
-            banner.find('.banner-message').text(message);
-            if(type != 'error') {
-                this.#hintTimeout = setTimeout(hideBanners, 3000);
-            }
-        });
+    hint (message, type = 'info') {
+        new $.toptips({
+            message,
+            type,
+            duration: type === 'error' ? '0' : '3',
+            closeExisting: true
+        })
     }
 
     async loadTheme (newTheme) {

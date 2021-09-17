@@ -379,122 +379,6 @@ i {
   }
 }
 
-/* banner */
-.banners-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9;
-}
-
-.banner {
-  color: white;
-  font-weight: 700;
-  padding: 2rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.banner .banner-message {
-  flex: 1;
-  padding: 0 2rem;
-  word-break: break-word;
-  overflow: auto;
-}
-
-.banner .banner-close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.banner .iconfont {
-  font-size: 2rem;
-}
-
-.banner .banner-close:hover {
-  background: rgba(0, 0, 0, 0.12);
-}
-
-.banner.success {
-  background: lightgreen;
-}
-
-.banner.success::after {
-  background: lightgreen;
-}
-
-.banner.error {
-  background: #ed1c24;
-}
-
-.banner.error::after {
-  background: #ed1c24;
-}
-
-.banner.info {
-  background: skyblue;
-}
-
-.banner.info::after {
-  background: skyblue;
-}
-
-.banner::after {
-  content: "";
-  position: absolute;
-  height: 10%;
-  width: 100%;
-  bottom: 100%;
-  left: 0;
-}
-
-.banner:not(.visible) {
-  display: none;
-  transform: translateY(-100%);
-}
-
-.banner.visible {
-  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.12);
-  animation-name: banner-in;
-  animation-direction: forwards;
-  animation-duration: 0.6s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
-}
-
-@keyframes banner-in {
-  0% {
-    transform: translateY(-100%);
-  }
-
-  50% {
-    transform: translateY(10%);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.show-banner {
-  appearance: none;
-  background: #ededed;
-  border: 0;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-  cursor: pointer;
-  text-transform: uppercase;
-  margin: 0.25rem;
-}
-
 /* page - index */
 #achievement {
   position: fixed;
@@ -858,7 +742,7 @@ ul#total li .achievementtitle,
   flex-direction: column;
   border: 1px solid #EEEEEE;
   border-radius: 4px;
-  overflow: none;
+  overflow: hidden;
 }
 
 .judge>li {

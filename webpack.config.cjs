@@ -15,6 +15,10 @@ module.exports = {
     filename: "./scripts/[name].js",
     clean: true
   },
+  performance: {
+    maxEntrypointSize: 100000000, // 最大入口文件大小
+    maxAssetSize: 100000000 // 最大资源文件大小
+  },
   devServer:{
     compress: true,
     port: 8081,
