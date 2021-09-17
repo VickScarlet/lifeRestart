@@ -1,5 +1,5 @@
-import { summary } from '@/utils/summary.js';
-import { getRate, getGrade } from '@/utils/addition.js';
+import { summary } from '../utils/summary.js';
+import { getRate, getGrade } from '../utils/addition.js';
 import Life from './life.js';
 
 class App{
@@ -827,7 +827,7 @@ class App{
           // eslint-disable-next-line no-console
           console.log(`LOADING THEME - ${newTheme}`);
       
-          import(/* webpackChunkName: "dark" */ '@/style.scss?dark').then(() => {
+          import(/* webpackChunkName: "dark" */ '../style.scss?dark').then(() => {
             this.#themes[newTheme] = document.querySelector('#theme');
       
             // eslint-disable-next-line no-console

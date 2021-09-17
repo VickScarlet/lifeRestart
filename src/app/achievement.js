@@ -1,5 +1,5 @@
-import { clone } from '@/utils/util.js';
-import { checkCondition } from '@/utils/condition.js';
+import { clone } from '../utils/util.js';
+import { checkCondition } from '../utils/condition.js';
 
 class Achievement {
     constructor() {}

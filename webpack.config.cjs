@@ -99,11 +99,6 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    alias: {
-      '@': resolve('src')
-    }
-  },
   plugins: [
     // html 
     new HtmlWebpackPlugin({
