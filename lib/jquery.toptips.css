@@ -22,6 +22,7 @@
 }
 
 .toptips--animation {
+  animation-name: fadeIn;
   animation-duration: 1s;
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
