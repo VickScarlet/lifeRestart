@@ -803,30 +803,30 @@ class App{
         const themeElement = document.querySelector('#theme');
       
         if (themeElement) {
-          themeElement.remove();
+            themeElement.remove();
         }
       
         if (this.#themes[newTheme]) {
-          // eslint-disable-next-line no-console
-          console.log(`THEME ALREADY LOADED - ${newTheme}`);
-      
-          document.head.appendChild(this.#themes[newTheme]);
-      
-          return;
+            // eslint-disable-next-line no-console
+            console.log(`THEME ALREADY LOADED - ${newTheme}`);
+        
+            document.head.appendChild(this.#themes[newTheme]);
+        
+            return;
         }
       
         if (newTheme === 'dark') {
-          // eslint-disable-next-line no-console
-          console.log(`LOADING THEME - ${newTheme}`);
-      
-          import(/* webpackChunkName: "dark" */ '../style.scss?dark').then(() => {
-            this.#themes[newTheme] = document.querySelector('#theme');
-      
             // eslint-disable-next-line no-console
-            console.log(`LOADED - ${newTheme}`);
-          });
+            console.log(`LOADING THEME - ${newTheme}`);
+        
+            import(/* webpackChunkName: "dark" */ '../style.scss?dark').then(() => {
+                this.#themes[newTheme] = document.querySelector('#theme');
+        
+                // eslint-disable-next-line no-console
+                console.log(`LOADED - ${newTheme}`);
+            });
         }
-      }
+    }
 
     get times() { return this.#life?.times || 0 }
     set times(v) { if(this.#life) this.#life.times = v }
