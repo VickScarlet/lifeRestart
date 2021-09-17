@@ -22,22 +22,24 @@
 }
 
 .toptips--animation {
-  animation-name: fadeIn;
+  animation-name: toptipsIn;
   animation-duration: 1s;
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
 }
 
-@keyframes fadeIn {
+@keyframes toptipsIn {
   0% {
-		opacity: 0;
-	}
-	20% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
+    transform: translateY(-100%);
+  }
+
+  50% {
+    transform: translateY(10%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .toptips__message {
