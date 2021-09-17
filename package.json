@@ -9,12 +9,6 @@
     "test": "node test"
   },
   "dependencies": {
-    "core-js": "^3.17.2",
-    "v-transform": "^1.0.1",
-    "webpack": "^5.51.2",
-    "webpack-dev-server": "^4.1.0"
-  },
-  "devDependencies": {
     "@babel/core": "^7.15.4",
     "@babel/preset-env": "^7.15.4",
     "babel-loader": "^8.2.2",
@@ -26,6 +20,11 @@
     "sass": "^1.41.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
+    "v-transform": "^1.0.1",
+    "webpack": "^5.51.2",
+    "webpack-dev-server": "^4.1.0"
+  },
+  "devDependencies": {
     "webpack-cli": "^4.8.0"
   }
 }
