@@ -1,5 +1,5 @@
-import { summary } from './functions/summary.js';
-import { getRate, getGrade } from './functions/addition.js';
+import { summary } from '@/utils/summary.js';
+import { getRate, getGrade } from '@/utils/addition.js';
 import Life from './life.js';
 
 class App{
@@ -17,6 +17,7 @@ class App{
     #hintTimeout;
     #specialthanks;
     #autoTrajectory;
+    #themes = {}
 
     async initial() {
         this.initPages();
@@ -70,7 +71,7 @@ class App{
         `);
 
         // Init theme
-        this.setTheme(localStorage.getItem('theme'))
+        this.loadTheme(localStorage.getItem('theme'))
 
         indexPage
             .find('#restart')
@@ -120,7 +121,7 @@ class App{
                             localStorage[key] = data[key];
                         }
                         this.switch('index');
-                        this.setTheme(localStorage.getItem('theme'))
+                        this.loadTheme(localStorage.getItem('theme'))
                         if(localStorage.getItem('theme') == 'light') {
                             indexPage.find('#themeToggleBtn').text('黑')
                         } else{
@@ -149,7 +150,7 @@ class App{
                     indexPage.find('#themeToggleBtn').text('黑')
                 }
 
-                this.setTheme(localStorage.getItem('theme'))
+                this.loadTheme(localStorage.getItem('theme'))
             });
 
         indexPage
@@ -163,8 +164,10 @@ class App{
                 <ul class="g1"></ul>
                 <ul class="g2"></ul>
             </div>
-            <button class="sponsor" onclick="globalThis.open('https://afdian.net/@LifeRestart')" style="background: linear-gradient(90deg,#946ce6,#7e5fd9); left:auto; right:50%; transform: translate(-2rem,-50%);">打赏策划(爱发电)</button>
-            <button class="sponsor" onclick="globalThis.open('https://dun.mianbaoduo.com/@vickscarlet')" style="background-color:#c69; left:50%; right:auto; transform: translate(2rem,-50%);">打赏程序(顿顿饭)</button>
+            <div class="btn-area">
+                <button class="mainbtn" onclick="globalThis.open('https://afdian.net/@LifeRestart')" style="background:linear-gradient(90deg,#946ce6,#7e5fd9);">打赏策划(爱发电)</button>
+                <button class="mainbtn" onclick="globalThis.open('https://dun.mianbaoduo.com/@vickscarlet')" style="background-color:#c69;">打赏程序(顿顿饭)</button>
+            </div>
         </div>
         `);
 
@@ -801,19 +804,40 @@ class App{
         });
     }
 
-    setTheme(theme) {
-        const themeLink = $(document).find('#themeLink');
-
-        if(theme == 'light') {
-            themeLink.attr('href', 'light.css');
-        } else {
-            themeLink.attr('href', 'dark.css');
+    async loadTheme (newTheme) {
+        // eslint-disable-next-line no-console
+        console.log(`CHANGE THEME - ${newTheme}`);
+      
+        const themeElement = document.querySelector('#theme');
+      
+        if (themeElement) {
+          themeElement.remove();
         }
-    }
+      
+        if (this.#themes[newTheme]) {
+          // eslint-disable-next-line no-console
+          console.log(`THEME ALREADY LOADED - ${newTheme}`);
+      
+          document.head.appendChild(this.#themes[newTheme]);
+      
+          return;
+        }
+      
+        if (newTheme === 'dark') {
+          // eslint-disable-next-line no-console
+          console.log(`LOADING THEME - ${newTheme}`);
+      
+          import(/* webpackChunkName: "dark" */ '@/style.scss?dark').then(() => {
+            this.#themes[newTheme] = document.querySelector('#theme');
+      
+            // eslint-disable-next-line no-console
+            console.log(`LOADED - ${newTheme}`);
+          });
+        }
+      }
 
-    get times() {return this.#life?.times || 0;}
-    set times(v) { if(this.#life) this.#life.times = v };
-
+    get times() { return this.#life?.times || 0 }
+    set times(v) { if(this.#life) this.#life.times = v }
 }
 
 export default App;

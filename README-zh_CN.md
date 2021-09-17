@@ -36,16 +36,16 @@ npm install
 3. 启动本地服务器。
 
 ```bash
-yarn dev
+yarn serve
 ```
 
 或者
 
 ```bash
-npm run dev
+npm run serve
 ```
 
-4. 启动完成后会自动打开浏览器访问 [http://localhost:8081/view/index.html](http://localhost:8081/view/index.html)。
+4. 启动完成后会自动打开浏览器访问 [http://localhost:8081](http://localhost:8081)。
 
 </details>
 

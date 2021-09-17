@@ -1,4 +1,4 @@
-import { max, min, sum, clone, listRandom } from './functions/util.js';
+import { max, min, sum, clone, listRandom } from '@/utils/util.js';
 
 class Property {
     constructor() {}

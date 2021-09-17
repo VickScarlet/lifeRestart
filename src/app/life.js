@@ -1,4 +1,4 @@
-import { weightRandom } from './functions/util.js'
+import { weightRandom } from '@/utils/util.js'
 import Property from './property.js';
 import Event from './event.js';
 import Talent from './talent.js';
