@@ -1,6 +1,6 @@
-import { summary } from '@/utils/summary.js'
+import { summary } from '../src/utils/summary.js'
 import { readFile } from 'fs/promises';
-import Life from '@/app/life.js';
+import Life from '../src/app/life.js';
 
 globalThis.json = async fileName => JSON.parse(await readFile(`data/${fileName}.json`));
 

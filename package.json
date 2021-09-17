@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "core-js": "^3.17.2",
-    "v-transform": "^1.0.1"
+    "v-transform": "^1.0.1",
+    "webpack": "^5.51.2",
+    "webpack-dev-server": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.4",
@@ -24,9 +26,6 @@
     "sass": "^1.41.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
-    "url-loader": "^4.1.1",
-    "webpack": "^5.52.1",
-    "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "^4.2.1"
+    "webpack-cli": "^4.8.0"
   }
 }
