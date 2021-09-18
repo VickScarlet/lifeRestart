@@ -1,5 +1,5 @@
-import { clone } from './functions/util.js';
-import { checkCondition } from './functions/condition.js';
+import { clone } from '../utils/util.js';
+import { checkCondition } from '../utils/condition.js';
 
 class Event {
     constructor() {}

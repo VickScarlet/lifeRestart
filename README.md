@@ -36,13 +36,13 @@ npm install
 3. Start local server.
 
 ```bash
-yarn dev
+yarn serve
 ```
 
 Or
 
 ```bash
-npm run dev
+npm run serve
 ```
 
 4. After the startup is complete, will automatically open a browser and visit [http://localhost:8081/view/index.html](http://localhost:8081/view/index.html).
