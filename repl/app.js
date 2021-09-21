@@ -128,9 +128,13 @@ class App {
 
             case 'a':
             case 'alloc':
-            case 'allocation':
+            case 'allocate':
+            case 'attrib':
+            case 'attribute':
             case '/alloc':
-            case '/allocation': return this.alloc(...command);
+            case '/allocate':
+            case '/attrib':
+            case '/attribute': return this.alloc(...command);
 
             case 'rd':
             case 'random':
@@ -200,17 +204,21 @@ class App {
 
             case 'a':
             case 'alloc':
-            case 'allocation':
+            case 'allocate':
+            case 'attrib':
+            case 'attribute':
             case '/alloc':
-            case '/allocation': return `分配属性点
-    a, alloc, allocation
-    /alloc, /allocation 命令同等效果
+            case '/allocate':
+            case '/attrib':
+            case '/attribute': return `分配属性点
+    a, alloc, allocate, attrib, attribute
+    /alloc, /allocate, /attrib, /attribute 命令同等效果
 
-    Example:    /allocation STR 1
-                /allocation INT -3
-                /allocation CHR +5
+    Example:    /allocate STR 1
+                /allocate INT -3
+                /allocate CHR +5
 
-    参数解释    /allocation <TAG> <[+/-]value>
+    参数解释    /allocate <TAG> <[+/-]value>
 
                 <TAG>   表示要分配的属性标签
                         可选有
@@ -286,9 +294,13 @@ class App {
 
     a
     alloc
-    allocation
+    allocate
+    attrib
+    attribute
     /alloc
-    /allocation     分配属性点      /allocation <TAG> <[+/-]value>
+    /allocate
+    /attrib
+    /attribute      分配属性点      /allocate <TAG> <[+/-]value>
 
     n
     next
