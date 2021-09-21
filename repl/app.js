@@ -346,7 +346,7 @@ class App {
             if(!s) return warn(`${number} 为未知天赋`);
             if(this.#talentSelected.has(s)) continue;
             if(this.#talentSelected.size == 3)
-                return warn('⚠只能选3个天赋');
+                return warn('你只能选3个天赋。请使用 \x1B[4m/unselect\x1B[24m 取消选择你不想要的天赋');
 
             const exclusive = this.#life.exclusive(
                 Array.from(this.#talentSelected).map(({id})=>id),
@@ -391,12 +391,12 @@ class App {
         let description, list, check;
         switch(this.#step) {
             case this.Steps.TALENT:
-                description = '🎉 请选择3个天赋';
+                description = '🎉 请选择（\x1B[4m/select\x1B[24m）3 个天赋';
                 list = this.#randomTalents;
                 check = talent=>this.#talentSelected.has(talent);
                 break;
             case this.Steps.SUMMARY:
-                description = '🎉 你可以选一个天赋继承';
+                description = '🎉 你可以选（\x1B[4m/select\x1B[24m）一个天赋继承';
                 list = Array.from(this.#talentSelected);
                 check = ({id})=>this.#talentExtend == id;
                 break;
@@ -418,7 +418,7 @@ class App {
         const warn = (a, b) => `${a}\n${this.style('warn', this.style('warn', b))}`;
         switch(this.#step) {
             case this.Steps.TALENT:
-                if(this.#talentSelected.size != 3) return warn(this.list(), `⚠请选择3个天赋`);
+                if(this.#talentSelected.size != 3) return warn(this.list(), `请选择 3 个天赋`);
                 this.#step = this.Steps.PROPERTY;
                 this.#propertyAllocation.total = 20 + this.#life.getTalentAllocationAddition(
                     Array.from(this.#talentSelected).map(({id})=>id)
@@ -427,7 +427,7 @@ class App {
                 return this.prop();
             case this.Steps.PROPERTY:
                 const less = this.less();
-                if(less > 0) return warn(this.prop(), `你还有${less}属性点没有分配完`);
+                if(less > 0) return warn(this.prop(), `你还有 ${less} 属性点没有分配完`);
                 this.#step = this.Steps.TRAJECTORY;
                 delete this.#propertyAllocation.total;
                 this.#life.restart(this.#propertyAllocation);
@@ -486,7 +486,8 @@ class App {
 
     prop() {
         const { CHR, INT, STR, MNY } = this.#propertyAllocation;
-        return `🎉属性分配
+        return `🎉 属性分配
+请使用 \x1B[4m/alloc\x1B[24m <TAG> <value> 分配属性
 剩余点数 ${this.less()}
 
 属性(TAG)       当前值
