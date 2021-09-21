@@ -69,7 +69,9 @@ class App {
         this.output(`\rLoading Complete.
 人生重开模拟器
 这垃圾人生一秒也不想待了
-\n🎉键入 \x1B[4m/remake\x1B[24m 开始游戏`,
+
+键入 \x1B[4m/remake\x1B[24m 开始游戏
+键入 \x1B[4m/help\x1B[24m 获取帮助`,
             true
         );
         $$on('achievement', ({name})=>this.output(`
