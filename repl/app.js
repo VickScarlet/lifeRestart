@@ -123,7 +123,8 @@ class App {
 
             case 'n':
             case 'next':
-            case '/next': return this.next(true);
+            case '/next':
+            case '': return this.next(true);
 
             case 'a':
             case 'alloc':
