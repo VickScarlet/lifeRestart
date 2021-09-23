@@ -2219,6 +2219,19 @@
     },
     {
         "group": 2,
+        "name": "coz"
+    },
+    {
+        "group": 2,
+        "name": "迪拜小泥人"
+    },
+    {
+        "group": 1,
+        "name": "各自安好",
+        "comment": "多多支持国产游戏加油"
+    },
+    {
+        "group": 2,
         "name": "超级无敌暴龙战士"
     },
     {
@@ -3831,5 +3844,17 @@
     {
         "group": 2,
         "name": "zhangbohuan"
+    },
+    {
+        "group": 2,
+        "name": "北极熊"
+    },
+    {
+        "group": 2,
+        "name": "mark"
+    },
+    {
+        "group": 2,
+        "name": "刘宇轩"
     }
 ]
