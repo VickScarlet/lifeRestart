@@ -1,6 +1,6 @@
-import { summary } from './functions/summary.js';
-import { getRate, getGrade } from './functions/addition.js';
-import Life from './life.js';
+import { summary } from './utils/summary.js';
+import { getRate, getGrade } from './utils/addition.js';
+import Life from './app/life.js';
 
 class App{
     constructor(){
@@ -14,9 +14,9 @@ class App{
     #totalMax=20;
     #isEnd = false;
     #selectedExtendTalent = null;
-    #hintTimeout;
     #specialthanks;
     #autoTrajectory;
+    #themes = {}
 
     async initial() {
         this.initPages();
@@ -70,7 +70,7 @@ class App{
         `);
 
         // Init theme
-        this.setTheme(localStorage.getItem('theme'))
+        this.loadTheme(localStorage.getItem('theme'))
 
         indexPage
             .find('#restart')
@@ -120,7 +120,7 @@ class App{
                             localStorage[key] = data[key];
                         }
                         this.switch('index');
-                        this.setTheme(localStorage.getItem('theme'))
+                        this.loadTheme(localStorage.getItem('theme'))
                         if(localStorage.getItem('theme') == 'light') {
                             indexPage.find('#themeToggleBtn').text('黑')
                         } else{
@@ -149,7 +149,7 @@ class App{
                     indexPage.find('#themeToggleBtn').text('黑')
                 }
 
-                this.setTheme(localStorage.getItem('theme'))
+                this.loadTheme(localStorage.getItem('theme'))
             });
 
         indexPage
@@ -163,8 +163,10 @@ class App{
                 <ul class="g1"></ul>
                 <ul class="g2"></ul>
             </div>
-            <button class="sponsor" onclick="globalThis.open('https://afdian.net/@LifeRestart')" style="background: linear-gradient(90deg,#946ce6,#7e5fd9); left:auto; right:50%; transform: translate(-2rem,-50%);">打赏策划(爱发电)</button>
-            <button class="sponsor" onclick="globalThis.open('https://dun.mianbaoduo.com/@vickscarlet')" style="background-color:#c69; left:50%; right:auto; transform: translate(2rem,-50%);">打赏程序(顿顿饭)</button>
+            <div class="btn-area">
+                <button class="mainbtn" onclick="globalThis.open('https://afdian.net/@LifeRestart')" style="background:linear-gradient(90deg,#946ce6,#7e5fd9);">打赏策划(爱发电)</button>
+                <button class="mainbtn" onclick="globalThis.open('https://dun.mianbaoduo.com/@vickscarlet')" style="background-color:#c69;">打赏程序(顿顿饭)</button>
+            </div>
         </div>
         `);
 
@@ -299,7 +301,7 @@ class App{
         const getBtnGroups = (name, min, max)=>{
             const group = $(`<li>${name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>`);
             const btnSub = $(`<span class="iconfont propbtn">&#xe6a5;</span>`);
-            const inputBox = $(`<input value="0" type="number" />`);
+            const inputBox = $(`<input value="0">`);
             const btnAdd = $(`<span class="iconfont propbtn">&#xe6a6;</span>`);
             group.append(btnSub);
             group.append(inputBox);
@@ -774,7 +776,7 @@ class App{
         })
     }
 
-    switch(page) {
+    switch (page) {
         const p = this.#pages[page];
         if(!p) return;
         $('#main').detach();
@@ -785,35 +787,62 @@ class App{
         }
     }
 
-    hint(message, type='info') {
-        if(this.#hintTimeout) {
-            clearTimeout(this.#hintTimeout);
-            this.#hintTimeout = null;
+    hint (message, type = 'info') {
+        new $.toptips({
+            message,
+            type,
+            duration: type === 'error' ? '0' : '3',
+            closeExisting: true
+        })
+    }
+
+    async loadTheme (newTheme) {
+        // eslint-disable-next-line no-console
+        console.log(`CHANGE THEME - ${newTheme}`);
+      
+        const themeElement = document.querySelector('#theme');
+      
+        if (themeElement) {
+            themeElement.remove();
         }
-        hideBanners();
-        requestAnimationFrame(() => {
-            const banner = $(`.banner.${type}`);
-            banner.addClass('visible');
-            banner.find('.banner-message').text(message);
-            if(type != 'error') {
-                this.#hintTimeout = setTimeout(hideBanners, 3000);
+      
+        if (this.#themes[newTheme]) {
+            // eslint-disable-next-line no-console
+            console.log(`THEME ALREADY LOADED - ${newTheme}`);
+        
+            document.head.appendChild(this.#themes[newTheme]);
+        
+            return;
+        }
+
+        // eslint-disable-next-line no-console
+        console.log(`LOADING THEME - ${newTheme}`);
+
+        switch (newTheme) {
+            case 'dark': {
+                import(/* webpackChunkName: "dark" */ './style.scss?dark').then(() => {
+                    this.#themes[newTheme] = document.querySelector('#theme');
+            
+                    // eslint-disable-next-line no-console
+                    console.log(`LOADED - ${newTheme}`);
+                });
+                break;
             }
-        });
-    }
-
-    setTheme(theme) {
-        const themeLink = $(document).find('#themeLink');
-
-        if(theme == 'light') {
-            themeLink.attr('href', 'light.css');
-        } else {
-            themeLink.attr('href', 'dark.css');
+        
+            default: {
+                import(/* webpackChunkName: "light" */ './style.scss?light').then(() => {
+                    this.#themes[newTheme] = document.querySelector('#theme');
+            
+                    // eslint-disable-next-line no-console
+                    console.log(`LOADED - ${newTheme}`);
+                });
+                break;
+            }
         }
     }
 
-    get times() {return this.#life?.times || 0;}
-    set times(v) { if(this.#life) this.#life.times = v };
-
+    get times() { return this.#life?.times || 0 }
+    set times(v) { if(this.#life) this.#life.times = v }
 }
 
 export default App;

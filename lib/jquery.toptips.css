@@ -1,0 +1,97 @@
+/* toptips */
+.toptips-container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.toptips {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  flex-direction: row;
+  align-items: center;
+}
+
+.toptips--animation {
+  animation-name: toptipsIn;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+}
+
+@keyframes toptipsIn {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  50% {
+    transform: translateY(10%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.toptips__message {
+  flex: 1;
+  min-width: 0;
+  padding: 0 0.5rem;
+  word-break: break-word;
+}
+
+.toptips__icon,
+.toptips__close {
+  font-size: 2rem;
+  font-family: "iconfont";
+}
+
+.toptips__close {
+  padding: 0.1rem;
+  border-radius: 4px;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.toptips__close::before {
+  content: "\e6a8";
+}
+
+.toptips__close:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.toptips.error {
+  background: #ed1c24;
+}
+
+.toptips.error .toptips__icon::before {
+  content: "\e6a1";
+}
+
+.toptips.success {
+  background: lightgreen;
+}
+
+.toptips.success .toptips__icon::before {
+  content: "\e6a2";
+}
+
+.toptips.info {
+  background: skyblue;
+}
+
+.toptips.info .toptips__icon::before {
+  content: "\e6a3";
+}
