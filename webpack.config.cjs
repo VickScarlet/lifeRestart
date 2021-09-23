@@ -8,7 +8,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin")
 module.exports = {
   mode: 'production',
   entry: {
-    bundle: "./src/main.js"
+    bundle: "./src/index.js"
   },
   output: {
     path: resolve("./view"),
@@ -55,6 +55,19 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         oneOf: [
+          {
+            resourceQuery: "?light",
+            use: [
+              MiniCssExtractPlgin.loader,
+              "css-loader",
+              {
+                loader: "sass-loader",
+                options: {
+                  additionalData: `@use 'theme/light-vars' as vars;`,
+                },
+              },
+            ],
+          },
           {
             resourceQuery: "?dark",
             use: [
@@ -126,7 +139,7 @@ module.exports = {
       ignore: ["*.html"]
     }),
     new MiniCssExtractPlgin({
-      filename: "./styles/[name].css",
+      filename: "[name].css",
       attributes: {
         id: "theme"
       }

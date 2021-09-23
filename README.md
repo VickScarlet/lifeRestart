@@ -45,7 +45,7 @@ Or
 npm run serve
 ```
 
-4. After the startup is complete, will automatically open a browser and visit [http://localhost:8081/view/index.html](http://localhost:8081/view/index.html).
+4. After the startup is complete, will automatically open a browser and visit [http://localhost:8081](http://localhost:8081).
 </details>
 
 <details>

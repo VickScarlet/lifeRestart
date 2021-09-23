@@ -1,1 +1,1 @@
-"use strict";(self.webpackChunklife_restart=self.webpackChunklife_restart||[]).push([[588],{2515:(e,s,r)=>{r.r(s)}}]);
+"use strict";(self.webpackChunklife_restart=self.webpackChunklife_restart||[]).push([[588],{2759:(e,s,r)=>{r.r(s)}}]);

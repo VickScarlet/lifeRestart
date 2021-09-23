@@ -1,5 +1,4 @@
-import App from './app/index.js';
-import './style.scss';
+import App from './app.js';
 
 globalThis.$$eventMap = new Map();
 globalThis.$$event = (tag, data) => {

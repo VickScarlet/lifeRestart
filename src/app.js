@@ -1,6 +1,6 @@
-import { summary } from '../utils/summary.js';
-import { getRate, getGrade } from '../utils/addition.js';
-import Life from './life.js';
+import { summary } from './utils/summary.js';
+import { getRate, getGrade } from './utils/addition.js';
+import Life from './app/life.js';
 
 class App{
     constructor(){
@@ -814,17 +814,30 @@ class App{
         
             return;
         }
-      
-        if (newTheme === 'dark') {
-            // eslint-disable-next-line no-console
-            console.log(`LOADING THEME - ${newTheme}`);
+
+        // eslint-disable-next-line no-console
+        console.log(`LOADING THEME - ${newTheme}`);
+
+        switch (newTheme) {
+            case 'dark': {
+                import(/* webpackChunkName: "dark" */ './style.scss?dark').then(() => {
+                    this.#themes[newTheme] = document.querySelector('#theme');
+            
+                    // eslint-disable-next-line no-console
+                    console.log(`LOADED - ${newTheme}`);
+                });
+                break;
+            }
         
-            import(/* webpackChunkName: "dark" */ '../style.scss?dark').then(() => {
-                this.#themes[newTheme] = document.querySelector('#theme');
-        
-                // eslint-disable-next-line no-console
-                console.log(`LOADED - ${newTheme}`);
-            });
+            default: {
+                import(/* webpackChunkName: "light" */ './style.scss?light').then(() => {
+                    this.#themes[newTheme] = document.querySelector('#theme');
+            
+                    // eslint-disable-next-line no-console
+                    console.log(`LOADED - ${newTheme}`);
+                });
+                break;
+            }
         }
     }
 
