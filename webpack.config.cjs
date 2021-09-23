@@ -8,11 +8,11 @@ const CopyWebpackPlugin = require("copy-webpack-plugin")
 module.exports = {
   mode: 'production',
   entry: {
-    bundle: "./src/index.js"
+    "../public/bundle": "./src/index.js"
   },
   output: {
     path: resolve("./view"),
-    filename: "./scripts/[name].js",
+    filename: "[name].js",
     clean: true
   },
   performance: {
@@ -29,20 +29,12 @@ module.exports = {
         publicPath: "/data"
       },
       {
-        directory: resolve("./public/images"),
-        publicPath: "/images"
-      },
-      {
-        directory: resolve("./public/styles"),
-        publicPath: "/styles"
+        directory: resolve("./public"),
+        publicPath: "/public"
       },
       {
         directory: resolve("./view"),
         publicPath: "/view"
-      },
-      {
-        directory: resolve("./src"),
-        publicPath: "/src"
       },
       {
         directory: resolve("./lib"),
@@ -131,7 +123,7 @@ module.exports = {
           // 把复制的文件存放到dis里面
           to: resolve("./view"),
           globOptions: {
-            ignore: ["**/index.html"]
+            ignore: ["**/index.html", "**/bundle.js"]
           }
         }
       ]
