@@ -4,7 +4,7 @@
     "bin": "repl/index.js",
     "scripts": {
         "test": "node test",
-        "xlsxTransform": "node utils/xlsxTransform.js data",
+        "xlsxTransform": "vt transform data",
         "dev": "webpack serve --open /view/index.html",
         "build": "webpack --mode production"
     },
@@ -13,9 +13,9 @@
         "@babel/preset-env": "^7.15.4",
         "babel-loader": "^8.2.2",
         "core-js": "^3.17.2",
+        "v-transform": "git+https://github.com/VickScarlet/vTransform",
         "webpack": "^5.51.2",
-        "webpack-dev-server": "^4.1.0",
-        "xlsx": "^0.17.0"
+        "webpack-dev-server": "^4.1.0"
     },
     "devDependencies": {
         "webpack-cli": "^4.8.0"

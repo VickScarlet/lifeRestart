@@ -58,6 +58,8 @@ class App{
             <button id="achievement">成就</button>
             <button id="specialthanks">特别感谢</button>
             <button id="themeToggleBtn">黑</button>
+            <button id="save">Save</button>
+            <button id="load">Load</button>
             <div id="title">
                 人生重开模拟器<br>
                 <div style="font-size:1.5rem; font-weight:normal;">这垃圾人生一秒也不想呆了</div>
@@ -77,6 +79,58 @@ class App{
         indexPage
             .find('#achievement')
             .click(()=>this.switch('achievement'));
+
+
+        indexPage
+            .find('#save')
+            .click(()=>{
+                const data = {};
+                Object
+                    .keys(localStorage)
+                    .filter(v=>v.substr(0,4)!='goog')
+                    .forEach(key=>data[key] = localStorage[key]);
+
+                let blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+                const slice = blob.slice || blob.webkitSlice || blob.mozSlice;
+                blob = slice.call(blob, 0, blob.size, 'application/octet-stream');
+                const a = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+                a.href = URL.createObjectURL(blob);
+                a.download = `Remake_save_${new Date().toISOString().replace(':','.')}.json`;
+
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(a.href);
+            });
+
+        indexPage
+            .find('#load')
+            .click(()=>{
+                const file = $(`<input type="file" name="file" accept="application/json" style="display: none;" />`)
+                file.appendTo('body');
+                file.click();
+                file.on('change', (e)=>{
+                    this.switch('loading');
+                    const file = e.target.files[0];
+                    if(!file) return;
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        const data = JSON.parse(reader.result);
+                        for(const key in data) {
+                            localStorage[key] = data[key];
+                        }
+                        this.switch('index');
+                        this.setTheme(localStorage.getItem('theme'))
+                        if(localStorage.getItem('theme') == 'light') {
+                            indexPage.find('#themeToggleBtn').text('黑')
+                        } else{
+                            indexPage.find('#themeToggleBtn').text('白')
+                        }
+                        this.hint('加载存档成功', 'success');
+                    }
+                    reader.readAsText(file);
+                });
+            });
 
         if(localStorage.getItem('theme') == 'light') {
             indexPage.find('#themeToggleBtn').text('黑')
@@ -245,7 +299,7 @@ class App{
         const getBtnGroups = (name, min, max)=>{
             const group = $(`<li>${name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>`);
             const btnSub = $(`<span class="iconfont propbtn">&#xe6a5;</span>`);
-            const inputBox = $(`<input value="0">`);
+            const inputBox = $(`<input value="0" type="number" />`);
             const btnAdd = $(`<span class="iconfont propbtn">&#xe6a6;</span>`);
             group.append(btnSub);
             group.append(inputBox);
