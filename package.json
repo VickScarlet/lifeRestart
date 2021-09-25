@@ -13,7 +13,7 @@
         "@babel/preset-env": "^7.15.4",
         "babel-loader": "^8.2.2",
         "core-js": "^3.17.2",
-        "v-transform": "git+https://github.com/VickScarlet/vTransform",
+        "v-transform": "^1.0.1",
         "webpack": "^5.51.2",
         "webpack-dev-server": "^4.1.0"
     },
