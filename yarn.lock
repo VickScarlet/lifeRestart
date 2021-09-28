@@ -3296,9 +3296,10 @@ uuid@^3.4.0:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
-"v-transform@git+https://github.com/VickScarlet/vTransform":
-  version "1.0.0"
-  resolved "git+https://github.com/VickScarlet/vTransform#960fc092f715a44022b406dd99c40e993e505406"
+v-transform@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/v-transform/-/v-transform-1.0.1.tgz#380dd837e3b14189ccc47aafa8e675601403f2f2"
+  integrity sha512-F1VBbBLoFkFdpxFiHCq5neSoBsfFPDbecye5+B5OjE05U0K2RcdZR7lFkziqo1WP4Do36lUjN5Ok/E6GLUJgiQ==
   dependencies:
     commander "^8.2.0"
     xlsx "^0.17.1"
