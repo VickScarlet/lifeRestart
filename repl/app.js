@@ -210,13 +210,17 @@ class App {
             case '/alloc':
             case '/allocate':
             case '/attrib':
-            case '/attribute': return `分配属性点
+            case '/attribute': return `分配或查看属性点
     a, alloc, allocate, attrib, attribute
     /alloc, /allocate, /attrib, /attribute 命令同等效果
 
-    Example:    /allocate STR 1
+    Example:    /attribute
+                /allocate STR 1
                 /allocate INT -3
                 /allocate CHR +5
+
+    效果        在属性分配时分配属性点
+                在人生的过程中查看当前属性点
 
     参数解释    /allocate <TAG> <[+/-]value>
 
@@ -300,7 +304,7 @@ class App {
     /alloc
     /allocate
     /attrib
-    /attribute      分配属性点      /allocate <TAG> <[+/-]value>
+    /attribute      分配或查看属性点 /allocate <TAG> <[+/-]value>
 
     n
     next
