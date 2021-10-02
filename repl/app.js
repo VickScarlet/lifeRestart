@@ -522,14 +522,14 @@ class App {
                 return this.alloc(tag, value);
 
             case this.Steps.TRAJECTORY:
-                return this.viewProperty();
+                return this.showProperty();
         
             default:
                 return undefined;
         }
     }
 
-    viewProperty() {
+    showProperty() {
         let property = this.#life.getLastRecord();
         return `当前属性
 
