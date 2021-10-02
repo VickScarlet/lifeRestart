@@ -50,9 +50,9 @@ class App {
         grade1: ['\x1B[94m', '\x1B[39m'], // Bright Blue
         grade2: ['\x1B[95m', '\x1B[39m'], // Bright Magenta
         grade3: ['\x1B[93m', '\x1B[39m'], // Bright Yellow
-        grade1b: ['\x1B[104m', '\x1B[49m'], // Bright Blue BG
-        grade2b: ['\x1B[105m', '\x1B[49m'], // Bright Magenta BG
-        grade3b: ['\x1B[103m', '\x1B[49m'], // Bright Yellow BG
+        grade1b: ['\x1B[94m\x1B[7m', '\x1B[0m'], // Bright Blue BG
+        grade2b: ['\x1B[95m\x1B[7m', '\x1B[0m'], // Bright Magenta BG
+        grade3b: ['\x1B[93m\x1B[7m', '\x1B[0m'], // Bright Yellow BG
     };
     #randomTalents;
 
