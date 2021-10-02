@@ -134,7 +134,7 @@ class App {
             case '/alloc':
             case '/allocate':
             case '/attrib':
-            case '/attribute': return this.alloc(...command);
+            case '/attribute': return this.attrib(...command);
 
             case 'rd':
             case 'random':
@@ -514,6 +514,31 @@ class App {
     less() {
         const { total, CHR, INT, STR, MNY } = this.#propertyAllocation;
         return total - CHR - INT - STR - MNY;
+    }
+
+    attrib(tag, value) {
+        switch (this.#step) {
+            case this.Steps.PROPERTY:
+                return this.alloc(tag, value);
+
+            case this.Steps.TRAJECTORY:
+                return this.viewProperty();
+        
+            default:
+                return undefined;
+        }
+    }
+
+    viewProperty() {
+        let property = this.#life.getLastRecord();
+        return `当前属性
+
+属性(TAG)       当前值
+颜值(CHR)         ${property.CHR}
+智力(INT)         ${property.INT}
+体质(STR)         ${property.STR}
+家境(MNY)         ${property.MNY}
+快乐(SPR)         ${property.SPR}`
     }
 
     alloc(tag, value) {
