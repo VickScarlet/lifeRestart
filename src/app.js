@@ -30,8 +30,8 @@ class App{
         globalThis.onerror = (event, source, lineno, colno, error) => {
             this.hint(`[ERROR] at (${source}:${lineno}:${colno})\n\n${error?.stack||error||'unknow Error'}`, 'error');
         }
-        const keyDownCallback = (keyboardEvent) => {
-            if (keyboardEvent.which === 13 || keyboardEvent.keyCode === 13) {
+        const keyDownCallback = ({which: w, keyCode: k}) => {
+            if ( w === 13 || k === 13 || w === 32 || k === 32 ) {
                 const pressEnterFunc = this.#pages[this.#currentPage]?.pressEnter;
                 pressEnterFunc && typeof pressEnterFunc === 'function' && pressEnterFunc();
             }
