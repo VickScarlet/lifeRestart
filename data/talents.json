@@ -19,8 +19,7 @@
         "exclusive": [
             "1004",
             "1025",
-            "1024",
-            1113
+            "1024"
         ]
     },
     "1004": {
@@ -42,7 +41,7 @@
     },
     "1006": {
         "id": "1006",
-        "name": "乐天派",
+        "name": "乐观",
         "description": "快乐+1",
         "grade": 0,
         "effect": {
@@ -79,6 +78,9 @@
         "name": "天龙人",
         "description": "你拥有北京户口",
         "grade": 2,
+        "effect": {
+            "MNY": 1
+        },
         "exclusive": [
             "1012",
             "1013",
@@ -119,7 +121,7 @@
         "description": "你有美国国籍",
         "grade": 2,
         "effect": {
-            "MNY": 3
+            "MNY": 1
         },
         "exclusive": [
             "1010",
@@ -502,31 +504,31 @@
     "1059": {
         "id": "1059",
         "name": "理财达人",
-        "description": "30、40、50岁时家境+1",
-        "condition": "AGE?[30,40,50]",
+        "description": "40岁时家境+3",
+        "condition": "AGE?[40]",
         "grade": 0,
         "effect": {
-            "MNY": 1
+            "MNY": 3
         }
     },
     "1060": {
         "id": "1060",
         "name": "成熟",
-        "description": "12、18岁时智力+1",
-        "condition": "AGE?[12,18]",
+        "description": "18岁时智力+2",
+        "condition": "AGE?[18]",
         "grade": 1,
         "effect": {
-            "INT": 1
+            "INT": 2
         }
     },
     "1061": {
         "id": "1061",
         "name": "形象管理",
-        "description": "16、24岁时颜值+1",
-        "condition": "AGE?[16,24]",
+        "description": "24岁时颜值+2",
+        "condition": "AGE?[24]",
         "grade": 1,
         "effect": {
-            "CHR": 1
+            "CHR": 2
         }
     },
     "1062": {
@@ -818,7 +820,7 @@
     "1091": {
         "id": "1091",
         "name": "活死人",
-        "description": "体质<-1时其他属性+2",
+        "description": "体质<0时其他属性+2",
         "condition": "STR<0",
         "grade": 1,
         "effect": {
@@ -901,7 +903,7 @@
     },
     "1098": {
         "id": "1098",
-        "name": "觉醒",
+        "name": "艰苦奋斗",
         "description": "家境<-1时其他属性+2",
         "condition": "MNY<-1",
         "grade": 1,
@@ -971,14 +973,14 @@
         "id": "1104",
         "name": "紫色胶囊",
         "description": "跳过你的40~50岁",
-        "condition": "AGE?[40,41,42,43,44,45,46,47,48,49,50]",
+        "condition": "AGE?[40]",
         "grade": 2
     },
     "1105": {
         "id": "1105",
         "name": "蓝色胶囊",
         "description": "你20、30岁时无事发生",
-        "condition": "AGE?[20,30]",
+        "condition": "AGE?[20]",
         "grade": 1
     },
     "1106": {
@@ -1041,7 +1043,7 @@
         "id": "1114",
         "name": "橙色胶囊",
         "description": "跳过你的60~90岁",
-        "condition": "AGE?[60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90]",
+        "condition": "AGE?[60]",
         "grade": 3
     },
     "1115": {
@@ -1138,7 +1140,7 @@
         "id": "1129",
         "name": "不连续存在",
         "description": "你还拥有其他人格",
-        "grade": 2
+        "grade": 1
     },
     "1130": {
         "id": "1130",
@@ -1151,5 +1153,183 @@
         "name": "魔法棒",
         "description": "不知道有什么用……",
         "grade": 2
+    },
+    "1132": {
+        "id": 1132,
+        "name": "返老还童",
+        "description": "可能会回到年轻的时候",
+        "grade": 1
+    },
+    "1133": {
+        "id": 1133,
+        "name": "时光倒流",
+        "description": "或许时间会倒流",
+        "grade": 0
+    },
+    "1134": {
+        "id": 1134,
+        "name": "转世重修",
+        "description": "渡劫失败重生",
+        "grade": 2
+    },
+    "1135": {
+        "id": 1135,
+        "name": "轮回之外",
+        "description": "死后可能灵魂离体",
+        "grade": 3
+    },
+    "1136": {
+        "id": 1136,
+        "name": "贪婪",
+        "description": "家境+10",
+        "grade": 0,
+        "effect": {
+            "INT": -5
+        }
+    },
+    "1137": {
+        "id": 1137,
+        "name": "百岁百世丸",
+        "description": "某条件下所有属性+2",
+        "condition": "(AGE?[100])&(TMS>99)",
+        "grade": 1,
+        "effect": {
+            "SPR": 2,
+            "MNY": 2,
+            "CHR": 2,
+            "STR": 2,
+            "INT": 2
+        }
+    },
+    "1138": {
+        "id": 1138,
+        "name": "意外之喜",
+        "description": "随机属性+1",
+        "grade": 0,
+        "effect": {
+            "RDM": 1
+        }
+    },
+    "1139": {
+        "id": 1139,
+        "name": "培养爱好",
+        "description": "随机属性+2",
+        "grade": 1,
+        "effect": {
+            "RDM": 2
+        }
+    },
+    "1140": {
+        "id": 1140,
+        "name": "觉醒",
+        "description": "随机属性+4",
+        "grade": 2,
+        "effect": {
+            "RDM": 4
+        }
+    },
+    "1141": {
+        "id": 1141,
+        "name": "阴间大会员",
+        "description": "随机属性+8",
+        "grade": 3,
+        "effect": {
+            "RDM": 8
+        }
+    },
+    "1142": {
+        "id": 1142,
+        "name": "蓝色转盘",
+        "description": "变成随机蓝色天赋",
+        "grade": 0,
+        "replacement": {
+            "grade": [
+                1
+            ]
+        },
+        "exclusive": [
+            "1012",
+            "1013",
+            "1014",
+            1110,
+            1003,
+            1004,
+            1124,
+            1125
+        ]
+    },
+    "1143": {
+        "id": 1143,
+        "name": "紫色转盘",
+        "description": "变成随机紫色天赋",
+        "grade": 1,
+        "replacement": {
+            "grade": [
+                2
+            ]
+        },
+        "exclusive": [
+            "1012",
+            "1013",
+            "1014",
+            1110,
+            1003,
+            1004,
+            1124,
+            1125
+        ]
+    },
+    "1144": {
+        "id": 1144,
+        "name": "橙色转盘",
+        "description": "变成随机橙色天赋",
+        "grade": 2,
+        "replacement": {
+            "grade": [
+                3
+            ]
+        }
+    },
+    "1145": {
+        "id": 1145,
+        "name": "阴间福袋",
+        "description": "可能开出好天赋",
+        "grade": 1,
+        "replacement": {
+            "talent": [
+                1138,
+                1133,
+                1125,
+                1128,
+                1129,
+                1131,
+                1111,
+                1108,
+                1071,
+                1072,
+                1044,
+                1039,
+                1040,
+                1033,
+                1031,
+                1002
+            ]
+        }
+    },
+    "1146": {
+        "id": 1146,
+        "name": "轮盘赌",
+        "description": "1/6几率变橙色天赋",
+        "grade": 1,
+        "replacement": {
+            "talent": [
+                "1141*0.2",
+                "1135*0.2",
+                "1114*0.2",
+                "1023*0.2",
+                "1048*0.2",
+                "1033*5"
+            ]
+        }
     }
 }

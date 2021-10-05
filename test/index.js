@@ -1,7 +1,30 @@
 import { readFile } from 'fs/promises';
 import Life from '../src/life.js'
 
-global.json = async fileName => JSON.parse(await readFile(`data/${fileName}.json`));
+globalThis.json = async fileName => JSON.parse(await readFile(`data/${fileName}.json`));
+
+globalThis.localStorage = {};
+localStorage.getItem = key => localStorage[key]===void 0? null: localStorage[key];
+localStorage.setItem = (key, value) => (localStorage[key] = value);
+
+
+globalThis.$$eventMap = new Map();
+globalThis.$$event = (tag, data) => {
+    const listener = $$eventMap.get(tag);
+    if(listener) listener.forEach(fn=>fn(data));
+}
+globalThis.$$on = (tag, fn) => {
+    let listener = $$eventMap.get(tag);
+    if(!listener) {
+        listener = new Set();
+        $$eventMap.set(tag, listener);
+    }
+    listener.add(fn);
+}
+globalThis.$$off = (tag, fn) => {
+    const listener = $$eventMap.get(tag);
+    if(listener) listener.delete(fn);
+}
 
 async function debug() {
 
@@ -14,7 +37,8 @@ async function debug() {
         STR: 5,                     // 体质 strength STR
         MNY: 5,                     // 家境 money MNY
         SPR: 5,                     // 快乐 spirit SPR
-        TLT: [1004, 1005, 1009],    // 天赋 talent TLT
+        // AGE: 100,
+        TLT: [1134, 1048, 1114],    // 天赋 talent TLT
     });
     const lifeTrajectory = [];
     let trajectory;
@@ -26,7 +50,7 @@ async function debug() {
             // debugger
             throw e;
         }
-        lifeTrajectory.push(lifeTrajectory);
+        lifeTrajectory.push(trajectory);
         const { age, content } = trajectory;
         console.debug(
             `---------------------------------`,
@@ -42,6 +66,7 @@ async function debug() {
                 }
             ).join('\n    ')
         );
+        if(age == 60) debugger
     } while(!trajectory.isEnd)
     // debugger;
 }

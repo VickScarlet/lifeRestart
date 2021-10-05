@@ -1,5 +1,6 @@
-import { clone } from './functions/util.js';
-import { checkCondition } from './functions/condition.js';
+import { clone, weightRandom } from './functions/util.js';
+import { checkCondition, extractMaxTriggers } from './functions/condition.js';
+import { getRate } from './functions/addition.js';
 
 class Talent {
     constructor() {}
@@ -12,7 +13,22 @@ class Talent {
             const talent = talents[id];
             talent.id= Number(id);
             talent.grade = Number(talent.grade);
+            talent.max_triggers = extractMaxTriggers(talent.condition);
+            if(talent.replacement) {
+                for(let key in talent.replacement) {
+                    const obj = {};
+                    for(let value of talent.replacement[key]) {
+                        value = `${value}`.split('*');
+                        obj[value[0]||0] = Number(value[1]) || 1;
+                    }
+                    talent.replacement[key] = obj;
+                }
+            }
         }
+    }
+
+    count() {
+        return Object.keys(this.#talents).length;
     }
 
     check(talentId, property) {
@@ -42,7 +58,29 @@ class Talent {
         return null;
     }
 
-    talentRandom(include) {
+    talentRandom(include, {times = 0, achievement = 0} = {}) {
+        const rate = { 1:100, 2:10, 3:1, };
+        const rateAddition = { 1:1, 2:1, 3:1, };
+        const timesRate = getRate('times', times);
+        const achievementRate = getRate('achievement', achievement);
+
+        for(const grade in timesRate)
+            rateAddition[grade] += timesRate[grade] - 1;
+
+        for(const grade in achievementRate)
+            rateAddition[grade] += achievementRate[grade] - 1;
+
+        for(const grade in rateAddition)
+            rate[grade] *= rateAddition[grade];
+
+        const randomGrade = () => {
+            let randomNumber = Math.floor(Math.random() * 1000);
+            if((randomNumber -= rate[3]) < 0) return 3;
+            if((randomNumber -= rate[2]) < 0) return 2;
+            if((randomNumber -= rate[1]) < 0) return 1;
+            return 0;
+        }
+
         // 1000, 100, 10, 1
         const talentList = {};
         for(const talentId in this.#talents) {
@@ -58,15 +96,8 @@ class Talent {
         return new Array(10)
             .fill(1).map((v, i)=>{
                 if(!i && include) return include;
-                const gradeRandom = Math.random();
-                let grade;
-                if(gradeRandom>=0.111) grade = 0;
-                else if(gradeRandom>=0.011) grade = 1;
-                else if(gradeRandom>=0.001) grade = 2;
-                else grade = 3;
-
+                let grade = randomGrade();
                 while(talentList[grade].length == 0) grade--;
-
                 const length = talentList[grade].length;
 
                 const random = Math.floor(Math.random()*length) % length;
@@ -90,6 +121,56 @@ class Talent {
             return null;
         return { effect, grade, name, description };
     }
+
+    replace(talents) {
+        const getReplaceList = (talent, talents) => {
+            const { replacement } = this.get(talent);
+            if(!replacement) return null;
+            const list = [];
+            if(replacement.grade) {
+                this.forEach(({id, grade})=>{
+                    if(!replacement.grade[grade]) return;
+                    if(this.exclusive(talents, id)) return;
+                    list.push([id, replacement.grade[grade]]);
+                })
+            }
+            if(replacement.talent) {
+                for(let id in replacement.talent) {
+                    id = Number(id);
+                    if(this.exclusive(talents, id)) continue;
+                    list.push([id, replacement.talent[id]]);
+                }
+            }
+            return list;
+        }
+
+        const replace = (talent, talents) => {
+            const replaceList = getReplaceList(talent, talents);
+            if(!replaceList) return talent;
+            const rand = weightRandom(replaceList);
+            return replace(
+                rand, talents.concat(rand)
+            );
+        }
+
+        const newTalents = clone(talents);
+        const result = {};
+        for(const talent of talents) {
+            const replaceId = replace(talent, newTalents);
+            if(replaceId != talent) {
+                result[talent] = replaceId;
+                newTalents.push(replaceId);
+            }
+        }
+        return result;
+    }
+
+    forEach(callback) {
+        if(typeof callback != 'function') return;
+        for(const id in this.#talents)
+            callback(clone(this.#talents[id]), id);
+    }
+
 }
 
 export default Talent;
