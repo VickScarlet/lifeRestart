@@ -1,6 +1,6 @@
 import { summary } from '../src/functions/summary.js'
 import { readFile } from 'fs/promises';
-import Life from '../src/life.js';
+import Life from '../src/modules/life.js';
 
 globalThis.json = async fileName => JSON.parse(await readFile(`data/${fileName}.json`));
 
@@ -527,7 +527,7 @@ class App {
 
             case this.Steps.TRAJECTORY:
                 return this.showProperty();
-        
+
             default:
                 return undefined;
         }

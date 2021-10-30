@@ -1,0 +1,8 @@
+{
+    "configurations": [
+        {
+            "source": "../../data",
+            "target": "../../public/data"
+        }
+    ]
+}
