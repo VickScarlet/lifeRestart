@@ -40,7 +40,9 @@ class App{
         Laya.Text.langPacks = (await import(`./i18n/${this.#language}.js`)).default;
     }
 
-    async start(language = App.languages['zh-cn']) {
+    async start({
+        language = App.languages['zh-cn']
+    }) {
         this.#initLaya();
         const uiManager = UIManager.getInstance();
         uiManager.themes = ViewTypes.themes.default;
@@ -55,21 +57,6 @@ class App{
                 "images/atlas/images/button.atlas",
                 "images/atlas/images/icons.atlas",
                 "images/atlas/images/progress.atlas",
-                "images/background/background_1@3x.png",
-                "images/background/background_2@3x.png",
-                "images/accessories/insert_coin@3x.png",
-                "images/accessories/title@3x.png",
-                "images/accessories/titlebar@3x.png",
-                "images/border/achievement_complete@3x.png",
-                "images/border/border_1@3x.png",
-                "images/border/border_2@3x.png",
-                "images/border/card@3x.png",
-                "images/border/talent_item@3x.png",
-                "images/border/talent_item_selected@3x.png",
-                "images/border/up@3x.png",
-                "images/button/button_main@3x.png",
-                "images/slider/vslider_1@3x$bar.png",
-                "images/slider/vslider_1@3x.png",
             ]
         });
     }

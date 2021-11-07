@@ -42,7 +42,7 @@
         {
             "x":15,
             "type":"Button",
-            "props":{"y":200,"var":"btnBack","skin":"images/button/button_back@3x.png","left":30},
+            "props":{"y":200,"var":"btnBack","skin":"images/button/button_back@3x.png","name":"btnBack","left":30},
             "nodeParent":1,
             "label":"Button(btnBack)",
             "isDirectory":false,

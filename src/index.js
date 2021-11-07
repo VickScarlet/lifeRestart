@@ -12,4 +12,4 @@ location.search.substr(1).split('&').forEach(item => {
     query[parts[0]] = parts[1];
 });
 
-game.start(query.lang);
+game.start(query);

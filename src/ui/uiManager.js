@@ -72,6 +72,12 @@ class UIManager {
             // load view
             const ViewClass = await this.loadView(viewName);
             const resourceList = await ViewClass.load?.(args);
+            const scanedResourceList = this.#loading? this.scanResource(ViewClass.uiView): [];
+            if(preload) {
+                preload = [].concat(preload).concat(scanedResourceList);
+            } else {
+                preload = scanedResourceList;
+            }
             await this.loadRes(resourceList, preload, onProgress);
 
             // create view
@@ -126,5 +132,18 @@ class UIManager {
 
     clearAllDialog() {
         this.#dialogLayer.removeChildren();
+    }
+
+    scanResource(uiView) {
+        if(!uiView) return [];
+        const resourceList = [];
+        if(uiView.props?.skin) {
+            resourceList.push(uiView.props.skin);
+        }
+        uiView.child?.forEach(child => {
+            resourceList.push(...this.scanResource(child));
+        });
+
+        return resourceList;
     }
 }
