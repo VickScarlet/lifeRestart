@@ -1,0 +1,37 @@
+{
+    "x":0,
+    "type":"View",
+    "selectedBox":1,
+    "selecteID":2,
+    "props":{"width":1125,"sceneColor":"#000000","height":2436},
+    "nodeParent":-1,
+    "label":"View",
+    "isOpen":true,
+    "isDirectory":true,
+    "isAniNode":true,
+    "hasChild":true,
+    "compId":1,
+    "child":[
+        {
+            "x":15,
+            "type":"Button",
+            "props":{"y":200,"var":"btnBack","skin":"images/button/button_back@3x.png","name":"btnBack","left":30},
+            "nodeParent":1,
+            "label":"Button(btnBack)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":2,
+            "child":[
+                ]
+        }],
+    "animations":[
+        {
+            "nodes":[
+                ],
+            "name":"ani1",
+            "id":1,
+            "frameRate":24,
+            "action":0
+        }]
+}

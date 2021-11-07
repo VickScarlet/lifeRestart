@@ -16,9 +16,9 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "xlsxTransform",
-            "program": "${workspaceFolder}/utils/xlsxTransform.js",
-            "args": ["data"],
+            "name": "xlsx2json",
+            "program": "${workspaceFolder}/node_modules/v-transform/src/index.js",
+            "args": ["transform", "jobs/xlsx2json/config.json"],
             "skipFiles": [
                 "<node_internals>/**"
             ]

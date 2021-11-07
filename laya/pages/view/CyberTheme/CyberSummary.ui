@@ -1,0 +1,23 @@
+{
+    "x":0,
+    "type":"View",
+    "selectedBox":1,
+    "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberSummary.png","height":2436},
+    "nodeParent":-1,
+    "label":"View",
+    "isDirectory":false,
+    "isAniNode":true,
+    "hasChild":false,
+    "compId":1,
+    "child":[
+        ],
+    "animations":[
+        {
+            "nodes":[
+                ],
+            "name":"ani1",
+            "id":1,
+            "frameRate":24,
+            "action":0
+        }]
+}

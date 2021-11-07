@@ -2,6 +2,7 @@
     "name": "life_restart",
     "type": "module",
     "bin": "repl/index.js",
+    "version": "2.0.0",
     "scripts": {
         "test": "node test",
         "xlsxTransform": "vt transform data",
