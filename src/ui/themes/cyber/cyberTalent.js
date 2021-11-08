@@ -3,11 +3,14 @@ export default class CyberTalent extends CyberTalentUI {
         super();
         this.btnDrawCard.on(Laya.Event.CLICK, this, this.onClickDrawCard);
         this.btnNext.on(Laya.Event.CLICK, this, this.onClickNext);
-        this.listTalents.renderHandler = new Laya.Handler(this, this.renderTalent);
+        this.listTalents.renderHandler = Laya.Handler.create(this, this.renderTalent, null, false);
         this.listTalents.scrollBar.elasticDistance = 150;
     }
 
     #selected = new Set();
+    static load() {
+        return ['images/background/background_2@3x.png'];
+    }
 
     init() {
         this.pageDrawCard.visible = true;
@@ -24,11 +27,12 @@ export default class CyberTalent extends CyberTalentUI {
     }
 
     onClickNext() {
+        if(this.#selected.size < core.talentSelectLimit) {
+            return;
+        }
 
-    }
-
-    onClickTalent() {
-
+        const talents = [...this.#selected].map(index => this.listTalents.array[index]);
+        UIManager.getInstance().switchView(UIManager.getInstance().themes.PROPERTY, { talents });
     }
 
     renderTalent(box, index) {
@@ -85,13 +89,13 @@ export default class CyberTalent extends CyberTalentUI {
             if(this.#selected.has(index)) {
                 this.#selected.delete(index);
             } else {
-                if(this.#selected.size >= 3) {
+                if(this.#selected.size >= core.talentSelectLimit) {
                     return;
                 }
                 this.#selected.add(index);
             }
 
-            this.btnNext.label = this.#selected.size === 3
+            this.btnNext.label = this.#selected.size === core.talentSelectLimit
                 ? 'UI_Next'
                 : 'UI_Talent_Select_Uncomplete';
             unselected.visible = !( selected.visible = this.#selected.has(index) );

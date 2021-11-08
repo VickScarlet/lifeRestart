@@ -98,7 +98,7 @@ class UIManager {
 
     async loadView(viewName) {
         // load view
-        return (await import(`../view/${viewName}.js`)).default;
+        return (await import(`./themes/${viewName}.js`)).default;
     }
 
     async loadRes(resourceList, preload, onProgress) {
@@ -134,12 +134,57 @@ class UIManager {
         this.#dialogLayer.removeChildren();
     }
 
+    #cutPath(path) {
+        path = ''+path;
+        let index = path.length;
+        do {
+            index --;
+            if(path[index] == '.') {
+                break;
+            }
+        } while (index>0)
+        return [
+            path.substring(0, index),
+            path.substring(index, path.length)
+        ];
+    }
+
+    #subSkin(skin, type) {
+        if(!skin || !skin.replace(/\s/g, '')) return [];
+        switch (type) {
+            case 'ProgressBar':
+                return [ skin, ...this.#progressBarSkin(skin) ];
+            case 'ScrollBar':
+                return [ skin, ...this.#scrollBarSkin(skin) ];
+            default:
+                return [skin]
+        }
+    }
+
+    #progressBarSkin(skin) {
+        if(!skin.replace(/\s/g, '')) return [];
+        let p = this.#cutPath(skin);
+        return [`${p[0]}$bar${p[1]}`];
+    }
+
+    #scrollBarSkin(skin) {
+        if(!skin.replace(/\s/g, '')) return [];
+        let p = this.#cutPath(skin);
+        return [
+            `${p[0]}$bar${p[1]}`,
+            `${p[0]}$up${p[1]}`,
+            `${p[0]}$down${p[1]}`
+        ];
+    }
+
     scanResource(uiView) {
         if(!uiView) return [];
         const resourceList = [];
-        if(uiView.props?.skin) {
-            resourceList.push(uiView.props.skin);
-        }
+
+        resourceList.push(...this.#subSkin(uiView.props?.skin, uiView.type));
+        resourceList.push(...this.#subSkin(uiView.props?.hScrollBarSkin, 'ScrollBar'));
+        resourceList.push(...this.#subSkin(uiView.props?.vScrollBarSkin, 'ScrollBar'));
+
         uiView.child?.forEach(child => {
             resourceList.push(...this.scanResource(child));
         });

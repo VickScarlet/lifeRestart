@@ -237,7 +237,7 @@ class Property {
         }
     }
 
-    getLastRecord() {
+    getPropertys() {
         return clone({
             [this.TYPES.AGE]: this.get(this.TYPES.AGE),
             [this.TYPES.CHR]: this.get(this.TYPES.CHR),

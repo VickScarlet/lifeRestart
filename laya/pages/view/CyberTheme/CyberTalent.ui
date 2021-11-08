@@ -3,7 +3,7 @@
     "type":"View",
     "selectedBox":1,
     "selecteID":1,
-    "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberTalent.png","height":2436},
+    "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberTalent.png","runtime":"ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,
@@ -401,13 +401,14 @@
             "props":{"y":0,"x":0,"var":"pageResult","top":0,"right":0,"name":"pageResult","left":0,"bottom":0},
             "nodeParent":1,
             "label":"Box(pageResult)",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":21,
             "child":[
                 {
+                    "x":30,
                     "type":"List",
                     "props":{"var":"listTalents","vScrollBarSkin":" ","top":310,"right":20,"name":"listTalents","left":20,"bottom":370},
                     "nodeParent":21,
@@ -419,6 +420,7 @@
                     "compId":22,
                     "child":[
                         {
+                            "x":45,
                             "type":"Box",
                             "props":{"width":537,"renderType":"render","height":352},
                             "nodeParent":22,
@@ -430,6 +432,7 @@
                             "compId":23,
                             "child":[
                                 {
+                                    "x":60,
                                     "type":"Image",
                                     "props":{"top":0,"skin":"images/border/talent_item@3x.png","right":0,"name":"unselected","left":0,"bottom":0},
                                     "nodeParent":23,
@@ -443,6 +446,7 @@
                                     "$HIDDEN":false
                                 },
                                 {
+                                    "x":60,
                                     "type":"Image",
                                     "props":{"top":0,"skin":"images/border/talent_item_selected@3x.png","right":0,"name":"selected","left":0,"bottom":3},
                                     "nodeParent":23,
@@ -456,6 +460,7 @@
                                     "$HIDDEN":false
                                 },
                                 {
+                                    "x":60,
                                     "type":"HBox",
                                     "props":{"top":104,"space":15,"name":"hboxTitle","left":66,"height":58},
                                     "nodeParent":23,
@@ -467,6 +472,7 @@
                                     "compId":26,
                                     "child":[
                                         {
+                                            "x":75,
                                             "type":"Box",
                                             "props":{"y":0,"x":0,"width":15,"name":"grades","height":58},
                                             "nodeParent":26,
@@ -478,6 +484,7 @@
                                             "compId":108,
                                             "child":[
                                                 {
+                                                    "x":90,
                                                     "type":"Box",
                                                     "props":{"width":15,"name":"grade1","height":58},
                                                     "nodeParent":108,
@@ -489,6 +496,7 @@
                                                     "compId":27,
                                                     "child":[
                                                         {
+                                                            "x":105,
                                                             "type":"Sprite",
                                                             "props":{},
                                                             "nodeParent":27,
@@ -500,6 +508,7 @@
                                                             "compId":28,
                                                             "child":[
                                                                 {
+                                                                    "x":120,
                                                                     "type":"Rect",
                                                                     "props":{"width":15,"lineWidth":1,"height":58,"fillColor":"#55fffe"},
                                                                     "nodeParent":28,
@@ -515,6 +524,7 @@
                                                         }]
                                                 },
                                                 {
+                                                    "x":90,
                                                     "type":"Box",
                                                     "props":{"width":15,"name":"grade2","height":58},
                                                     "nodeParent":108,
@@ -526,6 +536,7 @@
                                                     "compId":105,
                                                     "child":[
                                                         {
+                                                            "x":105,
                                                             "type":"Sprite",
                                                             "props":{},
                                                             "nodeParent":105,
@@ -537,6 +548,7 @@
                                                             "compId":106,
                                                             "child":[
                                                                 {
+                                                                    "x":120,
                                                                     "type":"Rect",
                                                                     "props":{"width":15,"lineWidth":1,"height":58,"fillColor":"#b17cff"},
                                                                     "nodeParent":106,
@@ -552,6 +564,7 @@
                                                         }]
                                                 },
                                                 {
+                                                    "x":90,
                                                     "type":"Box",
                                                     "props":{"width":15,"name":"grade3","height":58},
                                                     "nodeParent":108,
@@ -563,6 +576,7 @@
                                                     "compId":102,
                                                     "child":[
                                                         {
+                                                            "x":105,
                                                             "type":"Sprite",
                                                             "props":{},
                                                             "nodeParent":102,
@@ -574,6 +588,7 @@
                                                             "compId":103,
                                                             "child":[
                                                                 {
+                                                                    "x":120,
                                                                     "type":"Rect",
                                                                     "props":{"width":15,"lineWidth":1,"height":58,"fillColor":"#ffce45"},
                                                                     "nodeParent":103,
@@ -590,6 +605,7 @@
                                                 }]
                                         },
                                         {
+                                            "x":75,
                                             "type":"Label",
                                             "props":{"x":1,"text":"Title","name":"labTitle","fontSize":58,"font":"方正像素12","color":"#ffffff"},
                                             "nodeParent":26,
@@ -603,6 +619,7 @@
                                         }]
                                 },
                                 {
+                                    "x":60,
                                     "type":"Label",
                                     "props":{"y":205,"wordWrap":true,"text":"description","right":66,"name":"labDescription","left":66,"leading":8,"fontSize":44,"font":"方正像素12","color":"#9dacaf"},
                                     "nodeParent":23,
@@ -619,6 +636,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Button",
                     "props":{"width":1040,"var":"btnNext","skin":"images/button/button_main@3x.png","name":"btnNext","labelSize":60,"label":"UI_Next","height":192,"centerY":1040,"centerX":0},
                     "nodeParent":21,
@@ -630,6 +648,7 @@
                     "compId":33,
                     "child":[
                         {
+                            "x":45,
                             "type":"Box",
                             "props":{},
                             "nodeParent":33,
@@ -810,11 +829,12 @@
                                 }]
                         },
                         {
+                            "x":45,
                             "type":"Box",
                             "props":{},
                             "nodeParent":33,
                             "label":"Box",
-                            "isOpen":true,
+                            "isOpen":false,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
@@ -918,14 +938,13 @@
                     "props":{"y":160,"x":563,"space":30,"height":70,"centerX":0,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":20,
                     "label":"HBox",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":13,
                     "child":[
                         {
-                            "x":45,
                             "type":"Image",
                             "props":{"y":10,"x":1,"skin":"images/accessories/title_left@3x.png","name":"left"},
                             "nodeParent":13,
@@ -938,7 +957,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Label",
                             "props":{"y":0,"x":2,"text":"UI_Title_Talent","fontSize":60,"font":"方正像素12","color":"#ffffff"},
                             "nodeParent":13,
@@ -951,7 +969,6 @@
                                 ]
                         },
                         {
-                            "x":45,
                             "type":"Image",
                             "props":{"y":10,"x":3,"skin":"images/accessories/title_right@3x.png","name":"right"},
                             "nodeParent":13,

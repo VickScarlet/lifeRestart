@@ -1,4 +1,4 @@
-import ViewTypes from './view/views.js';
+import ViewTypes from './ui/themes/views.js';
 
 class App{
     constructor(){
@@ -57,6 +57,7 @@ class App{
                 "images/atlas/images/button.atlas",
                 "images/atlas/images/icons.atlas",
                 "images/atlas/images/progress.atlas",
+                "images/atlas/images/slider.atlas",
             ]
         });
     }

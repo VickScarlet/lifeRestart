@@ -1,4 +1,4 @@
-import { weightRandom } from '../functions/util.js'
+import { clone, weightRandom } from '../functions/util.js'
 import Property from './property.js';
 import Event from './event.js';
 import Talent from './talent.js';
@@ -17,6 +17,10 @@ class Life {
     #talent;
     #achievement;
     #triggerTalents;
+    #defaultPropertyPoints;
+    #talentSelectLimit;
+    #propertyAllocateLimit;
+    #defaultPropertys;
 
     async initial(loadJSON) {
         const [age, talents, events, achievements] = await Promise.all([
@@ -31,10 +35,28 @@ class Life {
         this.#achievement.initial({achievements});
     }
 
+    config({
+        defaultPropertyPoints = 20, // default number of points for a property
+        talentSelectLimit = 3, // max number of talents that can be selected
+        propertyAllocateLimit = [0, 10], // scoop of properties that can be allocated
+        defaultPropertys = {}, // default propertys
+        talentConfig, // config for talent
+    } = {}) {
+        this.#defaultPropertyPoints = defaultPropertyPoints;
+        this.#talentSelectLimit = talentSelectLimit;
+        this.#propertyAllocateLimit = propertyAllocateLimit;
+        this.#defaultPropertys = defaultPropertys;
+        this.#talent.config(talentConfig);
+    }
+
     restart(allocation) {
+        const propertys = clone(this.#defaultPropertys);
+        for(const key in allocation) {
+            propertys[key] = clone(allocation[key]);
+        }
         this.#triggerTalents = {};
-        const contents = this.talentReplace(allocation.TLT);
-        this.#property.restart(allocation);
+        const contents = this.talentReplace(propertys.TLT);
+        this.#property.restart(propertys);
         this.doTalent()
         this.#property.restartLastStep();
         this.#achievement.achieve(
@@ -44,8 +66,8 @@ class Life {
         return contents;
     }
 
-    getTalentAllocationAddition(talents) {
-        return this.#talent.allocationAddition(talents);
+    getPropertyPoints(selectedTalentIds) {
+        return this.#defaultPropertyPoints + this.#talent.allocationAddition(selectedTalentIds);
     }
 
     getTalentCurrentTriggerCount(talentId) {
@@ -208,6 +230,12 @@ class Life {
         }
     }
 
+    get PropertyTypes() { return clone(this.#property.TYPES); }
+
+    get talentSelectLimit() { return this.#talentSelectLimit; }
+    get propertyAllocateLimit() { return clone(this.#propertyAllocateLimit); }
+
+    get propertys() { return this.#property.getPropertys(); }
     get times() { return this.#property?.get(this.#property.TYPES.TMS) || 0; }
     set times(v) {
         this.#property?.set(this.#property.TYPES.TMS, v) || 0;

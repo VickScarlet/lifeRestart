@@ -6,6 +6,9 @@ class Talent {
     constructor() {}
 
     #talents;
+    #talentPullCount;
+    #talentRate;
+    #rateAddition;
 
     initial({talents}) {
         this.#talents = talents;
@@ -25,6 +28,14 @@ class Talent {
                 }
             }
         }
+    }
+
+    config({
+        talentPullCount = 10, // number of talents to pull from the talent pool
+        talentRate = { 1:100, 2:10, 3:1, total: 1000 }, // rate of talent pull
+    } = {}) {
+        this.#talentPullCount = talentPullCount;
+        this.#talentRate = talentRate;
     }
 
     count() {
@@ -59,7 +70,7 @@ class Talent {
     }
 
     talentRandom(include, {times = 0, achievement = 0} = {}) {
-        const rate = { 1:100, 2:10, 3:1, };
+        const rate = clone(this.#talentRate);
         const rateAddition = { 1:1, 2:1, 3:1, };
         const timesRate = getRate('times', times);
         const achievementRate = getRate('achievement', achievement);
@@ -74,7 +85,7 @@ class Talent {
             rate[grade] *= rateAddition[grade];
 
         const randomGrade = () => {
-            let randomNumber = Math.floor(Math.random() * 1000);
+            let randomNumber = Math.floor(Math.random() * rate.total);
             if((randomNumber -= rate[3]) < 0) return 3;
             if((randomNumber -= rate[2]) < 0) return 2;
             if((randomNumber -= rate[1]) < 0) return 1;
@@ -93,7 +104,7 @@ class Talent {
             else talentList[grade].push({ grade, name, description, id });
         }
 
-        return new Array(10)
+        return new Array(this.#talentPullCount)
             .fill(1).map((v, i)=>{
                 if(!i && include) return include;
                 let grade = randomGrade();

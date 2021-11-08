@@ -38,10 +38,14 @@ P 6ECB5FEC icon_up@3x.png
 D images/progress
 P E2BF0C93 progress_1@3x$bar.png
 P B86E1D0F progress_1@3x.png
+P E7F15BA7 progress_2$bar.png
+P 641A22BF progress_2.png
 D images/resource
 P F3659301 bottombreath.png
 P 496D6FB9 circle.png
 P B5087365 circleflash.png
 D images/slider
 R 8B95E6D3 vslider_1@3x$bar.png
+P 6581FBA8 vslider_1@3x$down.png
+P 6581FBA8 vslider_1@3x$up.png
 R C9587878 vslider_1@3x.png
