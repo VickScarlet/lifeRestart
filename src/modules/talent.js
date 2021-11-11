@@ -1,6 +1,5 @@
 import { clone, weightRandom } from '../functions/util.js';
 import { checkCondition, extractMaxTriggers } from '../functions/condition.js';
-import { getRate } from '../functions/addition.js';
 
 class Talent {
     constructor() {}
@@ -8,7 +7,7 @@ class Talent {
     #talents;
     #talentPullCount;
     #talentRate;
-    #rateAddition;
+    #additions;
 
     initial({talents}) {
         this.#talents = talents;
@@ -28,19 +27,23 @@ class Talent {
                 }
             }
         }
+        return this.count;
+    }
+
+    get count() {
+        return Object.keys(this.#talents).length;
     }
 
     config({
         talentPullCount = 10, // number of talents to pull from the talent pool
         talentRate = { 1:100, 2:10, 3:1, total: 1000 }, // rate of talent pull
+        additions = {}, // additional additions
     } = {}) {
         this.#talentPullCount = talentPullCount;
         this.#talentRate = talentRate;
+        this.#additions = additions;
     }
 
-    count() {
-        return Object.keys(this.#talents).length;
-    }
 
     check(talentId, property) {
         const { condition } = this.get(talentId);
@@ -69,20 +72,32 @@ class Talent {
         return null;
     }
 
-    talentRandom(include, {times = 0, achievement = 0} = {}) {
+    getAddition(type, value) {
+        if(!this.#additions[type]) return {};
+        for(const [min, addition] of this.#additions[type]) {
+            if(value >= min) return addition;
+        }
+        return {};
+    }
+
+    getRate(additionValues = {}) {
         const rate = clone(this.#talentRate);
-        const rateAddition = { 1:1, 2:1, 3:1, };
-        const timesRate = getRate('times', times);
-        const achievementRate = getRate('achievement', achievement);
+        const addition = { 1:1, 2:1, 3:1, };
 
-        for(const grade in timesRate)
-            rateAddition[grade] += timesRate[grade] - 1;
+        Object.keys(additionValues).forEach(key => {
+            const addi = this.getAddition(key, additionValues[key])
+            for(const grade in addi)
+                addition[grade] += addi[grade];
+        });
 
-        for(const grade in achievementRate)
-            rateAddition[grade] += achievementRate[grade] - 1;
+        for(const grade in addition)
+            rate[grade] *= addition[grade];
 
-        for(const grade in rateAddition)
-            rate[grade] *= rateAddition[grade];
+        return rate;
+    }
+
+    talentRandom(include, additionValues) {
+        const rate = this.getRate(additionValues);
 
         const randomGrade = () => {
             let randomNumber = Math.floor(Math.random() * rate.total);
@@ -92,7 +107,6 @@ class Talent {
             return 0;
         }
 
-        // 1000, 100, 10, 1
         const talentList = {};
         for(const talentId in this.#talents) {
             const { id, grade, name, description } = this.#talents[talentId];

@@ -40,9 +40,19 @@ class Property {
         AEVT: "AEVT", // 触发过的事件 Achieve Event
         ACHV: "ACHV", // 达成的成就 Achievement
 
-        CTLT: "RTLT", // 天赋选择数 Count Talent
-        CEVT: "REVT", // 事件收集数 Count Event
+        CTLT: "CTLT", // 天赋选择数 Count Talent
+        CEVT: "CEVT", // 事件收集数 Count Event
         CACHV: "CACHV", // 成就达成数 Count Achievement
+
+        // 总数
+        TTLT: "TTLT", // 总天赋数 Total Talent
+        TEVT: "TEVT", // 总事件数 Total Event
+        TACHV: "TACHV", // 总成就数 Total Achievement
+
+        // 比率
+        REVT: "REVT", // 事件收集率 Rate Event
+        RTLT: "RTLT", // 天赋选择率 Rate Talent
+        RACHV: "RACHV", // 成就达成率 Rate Achievement
 
         // SPECIAL
         RDM: 'RDM', // 随机属性 random RDM
@@ -62,9 +72,10 @@ class Property {
 
     #ageData;
     #data = {};
+    #total;
+    #judge;
 
-    initial({age}) {
-
+    initial({age, total}) {
         this.#ageData = age;
         for(const a in age) {
             let { event, talent } = age[a];
@@ -84,6 +95,11 @@ class Property {
 
             age[a] = { event, talent };
         }
+        this.#total = total;
+    }
+
+    config({judge = {}}) {
+        this.#judge = judge;
     }
 
     restart(data) {
@@ -188,6 +204,15 @@ class Property {
                 return this.get(
                     this.fallback(prop)
                 ).length;
+            case this.TYPES.TTLT:
+            case this.TYPES.TEVT:
+            case this.TYPES.TACHV:
+                return this.#total[prop];
+            case this.TYPES.RTLT:
+            case this.TYPES.REVT:
+            case this.TYPES.RACHV:
+                const fb = this.fallback(prop);
+                return this.get(fb[0]) / this.get(fb[1]);
             default: return 0;
         }
     }
@@ -209,6 +234,10 @@ class Property {
             case this.TYPES.CTLT: return this.TYPES.ATLT;
             case this.TYPES.CEVT: return this.TYPES.AEVT;
             case this.TYPES.CACHV: return this.TYPES.ACHV;
+            case this.TYPES.LIF: return this.TYPES.LIF;
+            case this.TYPES.RTLT: return [this.TYPES.CTLT, this.TYPES.TTLT];
+            case this.TYPES.REVT: return [this.TYPES.CEVT, this.TYPES.TEVT];
+            case this.TYPES.RACHV: return [this.TYPES.CACHV, this.TYPES.TACHV];
             default: return;
         }
     }
@@ -297,6 +326,26 @@ class Property {
                 this.hookSpecial(prop),
                 Number(effects[prop])
             );
+    }
+
+    judge(prop) {
+        const value = this.get(prop);
+
+        const d = this.#judge[prop];
+        let length = d.length;
+        const p = 1/length;
+
+        const progress = () => {
+            const min = d[length][0] || 0;
+            const max = d[length+1]?.[0] || value;
+            if(max == min) return 1;
+            return p * (length + (value - min) / (max - min));
+        }
+
+        while(length--) {
+            const [min, grade, judge] = d[length];
+            if(min==void 0 || value >= min) return {prop, value, judge, grade, progress: progress()};
+        }
     }
 
     isEnd() {

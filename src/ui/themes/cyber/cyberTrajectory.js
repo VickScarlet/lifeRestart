@@ -67,6 +67,7 @@ export default class CyberTrajectory extends CyberTrajectoryUI {
     #talents;
 
     init({propertyAllocate, talents}) {
+        this.btnSummary.visible = false;
         this.#trajectoryItems = [];
         this.#isEnd = false;
         this.#talents = talents;
@@ -100,7 +101,7 @@ export default class CyberTrajectory extends CyberTrajectoryUI {
         this.#isEnd = isEnd;
 
         if(isEnd) {
-            console.debug('end');
+            this.btnSummary.visible = true;
         }
 
         const item = this.#createTrajectoryItem();

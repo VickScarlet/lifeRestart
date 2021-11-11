@@ -44,4 +44,22 @@ function listRandom(list) {
     return list[Math.floor(Math.random() * list.length)];
 }
 
-export { clone, max, min, sum, average, weightRandom, listRandom };
+function getListValuesMap(list, fn) {
+    const map = {};
+    list.forEach(key=>map[key] = fn(key));
+    return map;
+}
+
+function mapConvert(map, fn) {
+    for(const key in map)
+        map[key] = fn(key, map[key]);
+}
+
+function getConvertedMap(map, fn) {
+    const newMap = {};
+    for(const key in map)
+        newMap[key] = fn(key, map[key]);
+    return newMap;
+}
+
+export { clone, max, min, sum, average, weightRandom, listRandom, getListValuesMap, mapConvert, getConvertedMap };

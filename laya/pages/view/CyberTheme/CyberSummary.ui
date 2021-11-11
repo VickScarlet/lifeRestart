@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":16,
-    "selecteID":77,
+    "selectedBox":10,
+    "selecteID":150,
     "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberSummary.png","runtime":"ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
@@ -403,14 +403,13 @@
                                     "props":{"width":120,"left":0,"height":120,"centerY":0},
                                     "nodeParent":17,
                                     "label":"Box",
-                                    "isOpen":true,
+                                    "isOpen":false,
                                     "isDirectory":true,
                                     "isAniNode":true,
                                     "hasChild":true,
                                     "compId":18,
                                     "child":[
                                         {
-                                            "x":75,
                                             "type":"Image",
                                             "props":{"skin":"images/icons/icon_chr@3x.png","scaleY":1.1,"scaleX":1.1,"centerY":0,"centerX":0},
                                             "nodeParent":18,
@@ -439,9 +438,9 @@
                                 {
                                     "x":60,
                                     "type":"Box",
-                                    "props":{"top":20,"runtime":"ColorFilterItem","right":240,"left":255,"bottom":20},
+                                    "props":{"var":"boxCharmGrade","top":20,"runtime":"ColorFilterItem","right":240,"name":"boxCharmGrade","left":255,"bottom":20},
                                     "nodeParent":17,
-                                    "label":"Box",
+                                    "label":"Box(boxCharmGrade)",
                                     "isOpen":true,
                                     "isDirectory":true,
                                     "isAniNode":true,
@@ -458,6 +457,19 @@
                                             "isAniNode":true,
                                             "hasChild":false,
                                             "compId":199,
+                                            "child":[
+                                                ]
+                                        },
+                                        {
+                                            "x":75,
+                                            "type":"Label",
+                                            "props":{"var":"labCharm","text":"100","strokeColor":"#323232","stroke":8,"name":"labCharm","fontSize":50,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                                            "nodeParent":200,
+                                            "label":"Label(labCharm)",
+                                            "isDirectory":false,
+                                            "isAniNode":true,
+                                            "hasChild":false,
+                                            "compId":251,
                                             "child":[
                                                 ]
                                         }]
@@ -530,9 +542,9 @@
                                 {
                                     "x":60,
                                     "type":"Box",
-                                    "props":{"top":20,"runtime":"ColorFilterItem","right":240,"left":255,"bottom":20},
+                                    "props":{"var":"boxIntelligenceGrade","top":20,"runtime":"ColorFilterItem","right":240,"name":"boxIntelligenceGrade","left":255,"bottom":20},
                                     "nodeParent":47,
-                                    "label":"Box",
+                                    "label":"Box(boxIntelligenceGrade)",
                                     "isOpen":true,
                                     "isDirectory":true,
                                     "isAniNode":true,
@@ -549,6 +561,19 @@
                                             "isAniNode":true,
                                             "hasChild":false,
                                             "compId":212,
+                                            "child":[
+                                                ]
+                                        },
+                                        {
+                                            "x":75,
+                                            "type":"Label",
+                                            "props":{"var":"labIntelligence","text":"100","strokeColor":"#323232","stroke":8,"name":"labIntelligence","fontSize":50,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                                            "nodeParent":211,
+                                            "label":"Label(labIntelligence)",
+                                            "isDirectory":false,
+                                            "isAniNode":true,
+                                            "hasChild":false,
+                                            "compId":249,
                                             "child":[
                                                 ]
                                         }]
@@ -621,9 +646,9 @@
                                 {
                                     "x":60,
                                     "type":"Box",
-                                    "props":{"top":20,"runtime":"ColorFilterItem","right":240,"left":255,"bottom":20},
+                                    "props":{"var":"boxStrengthGrade","top":20,"runtime":"ColorFilterItem","right":240,"name":"boxStrengthGrade","left":255,"bottom":20},
                                     "nodeParent":77,
-                                    "label":"Box",
+                                    "label":"Box(boxStrengthGrade)",
                                     "isOpen":true,
                                     "isDirectory":true,
                                     "isAniNode":true,
@@ -640,6 +665,19 @@
                                             "isAniNode":true,
                                             "hasChild":false,
                                             "compId":214,
+                                            "child":[
+                                                ]
+                                        },
+                                        {
+                                            "x":75,
+                                            "type":"Label",
+                                            "props":{"var":"labStrength","text":"100","strokeColor":"#323232","stroke":8,"name":"labStrength","fontSize":50,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                                            "nodeParent":213,
+                                            "label":"Label(labStrength)",
+                                            "isDirectory":false,
+                                            "isAniNode":true,
+                                            "hasChild":false,
+                                            "compId":246,
                                             "child":[
                                                 ]
                                         }]
@@ -712,9 +750,9 @@
                                 {
                                     "x":60,
                                     "type":"Box",
-                                    "props":{"top":20,"runtime":"ColorFilterItem","right":240,"left":255,"bottom":20},
+                                    "props":{"var":"boxMoneyGrade","top":20,"runtime":"ColorFilterItem","right":240,"name":"boxMoneyGrade","left":255,"bottom":20},
                                     "nodeParent":107,
-                                    "label":"Box",
+                                    "label":"Box(boxMoneyGrade)",
                                     "isOpen":true,
                                     "isDirectory":true,
                                     "isAniNode":true,
@@ -731,6 +769,19 @@
                                             "isAniNode":true,
                                             "hasChild":false,
                                             "compId":216,
+                                            "child":[
+                                                ]
+                                        },
+                                        {
+                                            "x":75,
+                                            "type":"Label",
+                                            "props":{"var":"labMoney","text":"100","strokeColor":"#323232","stroke":8,"name":"labMoney","fontSize":50,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                                            "nodeParent":215,
+                                            "label":"Label(labMoney)",
+                                            "isDirectory":false,
+                                            "isAniNode":true,
+                                            "hasChild":false,
+                                            "compId":250,
                                             "child":[
                                                 ]
                                         }]
@@ -803,9 +854,9 @@
                                 {
                                     "x":60,
                                     "type":"Box",
-                                    "props":{"top":20,"runtime":"ColorFilterItem","right":240,"left":255,"bottom":20},
+                                    "props":{"var":"boxSpiritGrade","top":20,"runtime":"ColorFilterItem","right":240,"name":"boxSpiritGrade","left":255,"bottom":20},
                                     "nodeParent":195,
-                                    "label":"Box",
+                                    "label":"Box(boxSpiritGrade)",
                                     "isOpen":true,
                                     "isDirectory":true,
                                     "isAniNode":true,
@@ -822,6 +873,19 @@
                                             "isAniNode":true,
                                             "hasChild":false,
                                             "compId":218,
+                                            "child":[
+                                                ]
+                                        },
+                                        {
+                                            "x":75,
+                                            "type":"Label",
+                                            "props":{"var":"labSpirit","text":"100","strokeColor":"#323232","stroke":8,"name":"labSpirit","fontSize":50,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5,"align":"center"},
+                                            "nodeParent":217,
+                                            "label":"Label(labSpirit)",
+                                            "isDirectory":false,
+                                            "isAniNode":true,
+                                            "hasChild":false,
+                                            "compId":252,
                                             "child":[
                                                 ]
                                         }]
@@ -1009,17 +1073,18 @@
             "props":{"x":10,"width":1000,"name":"buttonGroup","height":200,"centerX":0,"bottom":70},
             "nodeParent":1,
             "label":"Box(buttonGroup)",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":10,
             "child":[
                 {
+                    "x":30,
                     "type":"Button",
-                    "props":{"y":100,"x":250,"width":500,"skin":"images/button/button_main@3x.png","name":"btnRandomAllocate","label":"UI_Remake_Again","centerY":0,"centerX":0},
+                    "props":{"y":100,"x":250,"width":500,"var":"btnAgain","skin":"images/button/button_main@3x.png","name":"btnAgain","label":"UI_Remake_Again","centerY":0,"centerX":0},
                     "nodeParent":10,
-                    "label":"Button(btnRandomAllocate)",
+                    "label":"Button(btnAgain)",
                     "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
@@ -1027,6 +1092,7 @@
                     "compId":150,
                     "child":[
                         {
+                            "x":45,
                             "type":"Box",
                             "props":{},
                             "nodeParent":150,
@@ -1207,6 +1273,7 @@
                                 }]
                         },
                         {
+                            "x":45,
                             "type":"Box",
                             "props":{},
                             "nodeParent":150,
@@ -1286,13 +1353,14 @@
             "props":{"visible":false,"name":"colorBox"},
             "nodeParent":1,
             "label":"VBox(colorBox)",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":210,
             "child":[
                 {
+                    "x":30,
                     "type":"Label",
                     "props":{"y":0,"var":"colorGrade0","text":"#ccccccff","fontSize":40,"font":"方正像素12","color":"#cccccc"},
                     "nodeParent":210,
@@ -1305,6 +1373,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "props":{"y":10,"var":"colorGrade1","text":"#55fffeff","fontSize":40,"font":"方正像素12","color":"#55fffe"},
                     "nodeParent":210,
@@ -1317,6 +1386,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "props":{"y":20,"var":"colorGrade2","text":"#b17cffff","fontSize":40,"font":"方正像素12","color":"#b17cff"},
                     "nodeParent":210,
@@ -1329,6 +1399,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "props":{"y":30,"var":"colorGrade3","text":"#ffce45ff","fontSize":40,"font":"方正像素12","color":"#ffce45"},
                     "nodeParent":210,

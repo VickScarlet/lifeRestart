@@ -8,7 +8,7 @@
             "name": "Launch Chrome",
             "request": "launch",
             "type": "pwa-chrome",
-            "url": "http://172.27.192.1:8000/public/index.html",
+            "url": "http://127.0.0.1:8000/public/index.html",
             "webRoot": "${workspaceFolder}"
         },
         {

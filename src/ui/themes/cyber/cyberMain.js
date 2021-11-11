@@ -5,4 +5,9 @@ export default class cyberMain extends CyberMainUI {
         this.btnAchievement.on(Laya.Event.CLICK, this, ()=>UIManager.getInstance().switchView(UIManager.getInstance().themes.ACHIEVEMENT));
         this.btnThanks.on(Laya.Event.CLICK, this, ()=>UIManager.getInstance().switchView(UIManager.getInstance().themes.THANKS));
     }
+
+    init() {
+        this.btnAchievement.visible =
+        this.btnThanks.visible = !!core.times;
+    }
 }

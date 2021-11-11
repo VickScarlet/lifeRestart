@@ -16,9 +16,10 @@ class Achievement {
 
     initial({achievements}) {
         this.#achievements = achievements;
+        return this.count;
     }
 
-    count() {
+    get count() {
         return Object.keys(this.#achievements).length;
     }
 

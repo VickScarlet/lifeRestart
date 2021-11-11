@@ -17,9 +17,10 @@ class Event {
                 return b;
             });
         }
+        return this.count;
     }
 
-    count() {
+    get count() {
         return Object.keys(this.#events).length;
     }
 
