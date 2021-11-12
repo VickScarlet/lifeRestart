@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":102,
-    "selecteID":19,
+    "selectedBox":14,
+    "selecteID":104,
     "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberTrajectory.png","runtime":"ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
@@ -569,6 +569,71 @@
                     "child":[
                         ],
                     "$HIDDEN":false
+                },
+                {
+                    "x":30,
+                    "type":"Box",
+                    "props":{"y":-155,"width":900,"var":"boxSpeed","name":"boxSpeed","height":150,"centerX":0,"anchorY":0.5,"anchorX":0.5},
+                    "nodeParent":14,
+                    "label":"Box(boxSpeed)",
+                    "isOpen":true,
+                    "isDirectory":true,
+                    "isAniNode":true,
+                    "hasChild":true,
+                    "compId":104,
+                    "child":[
+                        {
+                            "x":45,
+                            "type":"ProgressBar",
+                            "props":{"var":"prgSpeed","skin":"images/progress/progress_s.png","right":0,"name":"prgSpeed","left":0,"bottom":0},
+                            "nodeParent":104,
+                            "label":"ProgressBar(prgSpeed)",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":105,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"HScrollBar",
+                            "props":{"var":"scbSpeed","skin":"images/slider/hslider_s.png","right":0,"name":"scbSpeed","min":0,"max":1000,"left":0,"height":60,"bottom":0},
+                            "nodeParent":104,
+                            "label":"HScrollBar(scbSpeed)",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":106,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "props":{"text":"UI_Manual","fontSize":50,"font":"方正像素12","color":"#55fffe","bottom":70},
+                            "nodeParent":104,
+                            "label":"Label",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":107,
+                            "child":[
+                                ]
+                        },
+                        {
+                            "x":45,
+                            "type":"Label",
+                            "props":{"text":"UI_Auto","right":0,"fontSize":50,"font":"方正像素12","color":"#55fffe","bottom":70},
+                            "nodeParent":104,
+                            "label":"Label",
+                            "isDirectory":false,
+                            "isAniNode":true,
+                            "hasChild":false,
+                            "compId":108,
+                            "child":[
+                                ]
+                        }]
                 }],
             "$LOCKED":true,
             "$HIDDEN":false

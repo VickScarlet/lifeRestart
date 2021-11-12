@@ -45,6 +45,7 @@ class UIManager {
 
         // close current view
         this.clearAllDialog();
+        await this.#currentView?.__close?.(view);
         await this.#currentView?.close?.(view);
         this.#viewLayer.removeChildren();
 
@@ -54,7 +55,7 @@ class UIManager {
         this.#currentView = view;
         this.#viewLayer.addChild(view);
 
-        view.close = actions?.close;
+        view.__close = actions?.close;
         await actions?.open?.(view);
         await view.show?.();
     }

@@ -48,8 +48,12 @@ export default class CyberTrajectory extends CyberTrajectoryUI {
         this.btnUp.on(Laya.Event.MOUSE_OUT, this, clear);
         this.btnDown.on(Laya.Event.MOUSE_UP, this, clear);
         this.btnDown.on(Laya.Event.MOUSE_OUT, this, clear);
-
+        this.scbSpeed.on(Laya.Event.CHANGE, this, () => this.speed = this.scbSpeed.value);
+        this.scbSpeed.on(Laya.Event.MOUSE_UP, this, () => this.onNext());
     }
+
+    #speed;
+    #auto;
 
     static load() {
         return ['images/slider/vslider_1@3x$bar.png'];
@@ -67,6 +71,7 @@ export default class CyberTrajectory extends CyberTrajectoryUI {
     #talents;
 
     init({propertyAllocate, talents}) {
+        this.boxSpeed.visible = true;
         this.btnSummary.visible = false;
         this.#trajectoryItems = [];
         this.#isEnd = false;
@@ -76,6 +81,8 @@ export default class CyberTrajectory extends CyberTrajectoryUI {
     }
 
     close() {
+        this.scbSpeed.value = 0;
+        this.speed = 0;
         this.#trajectoryItems.forEach(item => {
             item.removeSelf();
             item.destroy();
@@ -101,6 +108,7 @@ export default class CyberTrajectory extends CyberTrajectoryUI {
         this.#isEnd = isEnd;
 
         if(isEnd) {
+            this.boxSpeed.visible = false;
             this.btnSummary.visible = true;
         }
 
@@ -130,4 +138,19 @@ export default class CyberTrajectory extends CyberTrajectoryUI {
         UIManager.getInstance().switchView(UIManager.getInstance().themes.SUMMARY, {talents});
     }
 
+    get speed() {
+        return this.#speed;
+    }
+
+    set speed(speed) {
+        this.#speed = speed;
+        this.prgSpeed.value = speed / this.scbSpeed.max;
+        clearInterval(this.#auto);
+        this.#auto = null;
+        if(!speed) return;
+        this.#auto = setInterval(
+            () => this.onNext(),
+            3000 * (1 - this.prgSpeed.value) + 300
+        );
+    }
 }

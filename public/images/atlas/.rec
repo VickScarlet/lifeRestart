@@ -40,11 +40,17 @@ P E2BF0C93 progress_1@3x$bar.png
 P B86E1D0F progress_1@3x.png
 P E7F15BA7 progress_2$bar.png
 P 641A22BF progress_2.png
+P AF80A9AF progress_s$bar.png
+P 41417E8D progress_s.png
 D images/resource
 P F3659301 bottombreath.png
 P 496D6FB9 circle.png
 P B5087365 circleflash.png
 D images/slider
+P 9682C590 hslider_s$bar.png
+P F6238BD4 hslider_s$down.png
+P F4198287 hslider_s$up.png
+P 2A785866 hslider_s.png
 R 8B95E6D3 vslider_1@3x$bar.png
 P 6581FBA8 vslider_1@3x$down.png
 P 6581FBA8 vslider_1@3x$up.png
