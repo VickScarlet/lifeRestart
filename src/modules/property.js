@@ -344,7 +344,7 @@ class Property {
 
         while(length--) {
             const [min, grade, judge] = d[length];
-            if(min==void 0 || value >= min) return {prop, value, judge, grade, progress: progress()};
+            if(!length || min==void 0 || value >= min) return {prop, value, judge, grade, progress: progress()};
         }
     }
 

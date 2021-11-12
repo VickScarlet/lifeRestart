@@ -16,6 +16,7 @@ export default class CyberTalent extends CyberTalentUI {
         this.pageDrawCard.visible = true;
         this.pageResult.visible = false;
         this.btnNext.label = 'UI_Talent_Select_Uncomplete';
+        this.#selected.clear();
     }
 
     close() {}
