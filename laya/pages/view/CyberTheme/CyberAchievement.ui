@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":1,
+    "selecteID":3,
     "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberAchievement.png","runtime":"ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
@@ -55,16 +55,17 @@
         {
             "x":15,
             "type":"Box",
-            "props":{"y":200,"width":260,"height":90,"centerX":391,"anchorY":0.5,"anchorX":0.5},
+            "props":{"y":200,"width":260,"runtime":"ScaleButton","height":90,"centerX":391,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
             "label":"Box",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":3,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"top":0,"skin":"images/button/button_small@3x.png","right":0,"left":0,"bottom":0},
                     "nodeParent":3,
@@ -78,6 +79,7 @@
                     "$HIDDEN":false
                 },
                 {
+                    "x":30,
                     "type":"Box",
                     "props":{"width":90,"left":8,"height":90},
                     "nodeParent":3,
@@ -89,6 +91,7 @@
                     "compId":5,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"skin":"images/icons/icon_rank@3x.png","centerY":0,"centerX":0},
                             "nodeParent":5,
@@ -102,6 +105,7 @@
                         }]
                 },
                 {
+                    "x":30,
                     "type":"Label",
                     "props":{"text":"排行榜","fontSize":50,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":40,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":3,
@@ -120,80 +124,57 @@
             "props":{"y":310,"x":0,"top":310,"right":0,"left":0,"height":120},
             "nodeParent":1,
             "label":"Box",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":16,
             "child":[
                 {
-                    "type":"Box",
-                    "props":{"x":120,"width":130,"height":80,"bottom":0,"anchorY":1,"anchorX":0.5},
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":110,"x":140,"var":"btnStatistics","text":"UI_Statistics","name":"btnStatistics","fontSize":100,"font":"方正像素12","color":"#ffffff","anchorY":1,"anchorX":0.5},
                     "nodeParent":16,
-                    "label":"Box",
-                    "isOpen":true,
-                    "isDirectory":true,
+                    "label":"Label(btnStatistics)",
+                    "isDirectory":false,
                     "isAniNode":true,
-                    "hasChild":true,
-                    "compId":17,
+                    "hasChild":false,
+                    "compId":18,
                     "child":[
-                        {
-                            "type":"Label",
-                            "props":{"text":"统计","fontSize":60,"font":"方正像素12","color":"#ffffff","centerX":0,"bottom":10},
-                            "nodeParent":17,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":18,
-                            "child":[
-                                ]
-                        }]
+                        ]
                 },
                 {
-                    "type":"Box",
-                    "props":{"x":340,"width":130,"height":80,"bottom":0,"anchorY":1,"anchorX":0.5},
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":110,"x":360,"var":"btnAchievement","text":"UI_Achievement","name":"btnAchievement","fontSize":60,"font":"方正像素12","color":"#ffffff","anchorY":1,"anchorX":0.5},
                     "nodeParent":16,
-                    "label":"Box",
-                    "isOpen":true,
-                    "isDirectory":true,
+                    "label":"Label(btnAchievement)",
+                    "isDirectory":false,
                     "isAniNode":true,
-                    "hasChild":true,
-                    "compId":20,
+                    "hasChild":false,
+                    "compId":21,
                     "child":[
-                        {
-                            "type":"Label",
-                            "props":{"text":"成就","fontSize":100,"font":"方正像素12","color":"#ffffff","centerX":0,"bottom":10},
-                            "nodeParent":20,
-                            "label":"Label",
-                            "isDirectory":false,
-                            "isAniNode":true,
-                            "hasChild":false,
-                            "compId":21,
-                            "child":[
-                                ]
-                        }]
+                        ]
                 }]
         },
         {
             "x":15,
             "type":"Box",
-            "props":{"width":2250,"top":450,"left":0,"bottom":80},
+            "props":{"x":0,"width":2250,"var":"boxPage","top":450,"name":"boxPage","bottom":80},
             "nodeParent":1,
-            "label":"Box",
-            "isOpen":true,
+            "label":"Box(boxPage)",
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":8,
             "child":[
                 {
-                    "x":30,
                     "type":"Box",
                     "props":{"width":1125,"top":0,"left":0,"height":1125},
                     "nodeParent":8,
                     "label":"Box",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
@@ -254,27 +235,51 @@
                             "props":{"width":400,"top":150,"left":100,"height":320},
                             "nodeParent":25,
                             "label":"Box",
-                            "isOpen":false,
+                            "isOpen":true,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
                             "compId":28,
                             "child":[
                                 {
-                                    "type":"Label",
-                                    "props":{"y":130,"x":0,"text":"1次","fontSize":70,"font":"方正像素12","color":"#55fffe","bold":true,"anchorY":1,"anchorX":0},
+                                    "type":"HBox",
+                                    "props":{"y":130,"x":0},
                                     "nodeParent":28,
-                                    "label":"Label",
-                                    "isDirectory":false,
+                                    "label":"HBox",
+                                    "isOpen":true,
+                                    "isDirectory":true,
                                     "isAniNode":true,
-                                    "hasChild":false,
-                                    "compId":31,
+                                    "hasChild":true,
+                                    "compId":54,
                                     "child":[
-                                        ]
+                                        {
+                                            "type":"Label",
+                                            "props":{"var":"labRemakeTimes","text":"1","name":"labRemakeTimes","fontSize":70,"font":"方正像素12","color":"#55fffe","bold":true,"anchorY":1,"anchorX":0},
+                                            "nodeParent":54,
+                                            "label":"Label(labRemakeTimes)",
+                                            "isDirectory":false,
+                                            "isAniNode":true,
+                                            "hasChild":false,
+                                            "compId":31,
+                                            "child":[
+                                                ]
+                                        },
+                                        {
+                                            "type":"Label",
+                                            "props":{"text":"UI_Times","fontSize":70,"font":"方正像素12","color":"#55fffe","bold":true,"anchorY":1,"anchorX":0},
+                                            "nodeParent":54,
+                                            "label":"Label",
+                                            "isDirectory":false,
+                                            "isAniNode":true,
+                                            "hasChild":false,
+                                            "compId":53,
+                                            "child":[
+                                                ]
+                                        }]
                                 },
                                 {
                                     "type":"Label",
-                                    "props":{"y":210,"x":0,"text":"重开次数","fontSize":62,"font":"方正像素12","color":"#ffffff","bold":false,"anchorY":1,"anchorX":0},
+                                    "props":{"y":210,"x":0,"text":"UI_Remake_Times","fontSize":62,"font":"方正像素12","color":"#ffffff","bold":false,"anchorY":1,"anchorX":0},
                                     "nodeParent":28,
                                     "label":"Label",
                                     "isDirectory":false,
@@ -286,9 +291,9 @@
                                 },
                                 {
                                     "type":"Label",
-                                    "props":{"y":240,"text":"抽到紫色几率不变","fontSize":42,"font":"方正像素12","color":"#93aaae","bold":false,"anchorY":0,"anchorX":0},
+                                    "props":{"y":240,"var":"labRemakeTimesJudge","text":"抽到紫色几率不变","name":"labRemakeTimesJudge","fontSize":42,"font":"方正像素12","color":"#93aaae","bold":false,"anchorY":0,"anchorX":0},
                                     "nodeParent":28,
-                                    "label":"Label",
+                                    "label":"Label(labRemakeTimesJudge)",
                                     "isDirectory":false,
                                     "isAniNode":true,
                                     "hasChild":false,
@@ -302,27 +307,51 @@
                             "props":{"width":400,"top":150,"right":100,"height":320},
                             "nodeParent":25,
                             "label":"Box",
-                            "isOpen":false,
+                            "isOpen":true,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
                             "compId":29,
                             "child":[
                                 {
-                                    "type":"Label",
-                                    "props":{"y":130,"x":0,"text":"10个","fontSize":70,"font":"方正像素12","color":"#55fffe","bold":true,"anchorY":1,"anchorX":0},
+                                    "type":"HBox",
+                                    "props":{"y":130},
                                     "nodeParent":29,
-                                    "label":"Label",
-                                    "isDirectory":false,
+                                    "label":"HBox",
+                                    "isOpen":true,
+                                    "isDirectory":true,
                                     "isAniNode":true,
-                                    "hasChild":false,
-                                    "compId":37,
+                                    "hasChild":true,
+                                    "compId":55,
                                     "child":[
-                                        ]
+                                        {
+                                            "type":"Label",
+                                            "props":{"var":"labAchievementCount","text":"1","name":"labAchievementCount","fontSize":70,"font":"方正像素12","color":"#55fffe","bold":true,"anchorY":1,"anchorX":0},
+                                            "nodeParent":55,
+                                            "label":"Label(labAchievementCount)",
+                                            "isDirectory":false,
+                                            "isAniNode":true,
+                                            "hasChild":false,
+                                            "compId":56,
+                                            "child":[
+                                                ]
+                                        },
+                                        {
+                                            "type":"Label",
+                                            "props":{"text":"UI_Count","fontSize":70,"font":"方正像素12","color":"#55fffe","bold":true,"anchorY":1,"anchorX":0},
+                                            "nodeParent":55,
+                                            "label":"Label",
+                                            "isDirectory":false,
+                                            "isAniNode":true,
+                                            "hasChild":false,
+                                            "compId":57,
+                                            "child":[
+                                                ]
+                                        }]
                                 },
                                 {
                                     "type":"Label",
-                                    "props":{"y":210,"x":0,"text":"获得成就","fontSize":62,"font":"方正像素12","color":"#ffffff","bold":false,"anchorY":1,"anchorX":0},
+                                    "props":{"y":210,"x":0,"text":"UI_Achievement_Count","fontSize":62,"font":"方正像素12","color":"#ffffff","bold":false,"anchorY":1,"anchorX":0},
                                     "nodeParent":29,
                                     "label":"Label",
                                     "isDirectory":false,
@@ -334,9 +363,9 @@
                                 },
                                 {
                                     "type":"Label",
-                                    "props":{"y":240,"x":0,"text":"抽到橙色几率不变","fontSize":42,"font":"方正像素12","color":"#93aaae","bold":false,"anchorY":0,"anchorX":0},
+                                    "props":{"y":240,"x":0,"var":"labAchievementCountJudge","text":"抽到橙色几率不变","name":"labAchievementCountJudge","fontSize":42,"font":"方正像素12","color":"#93aaae","bold":false,"anchorY":0,"anchorX":0},
                                     "nodeParent":29,
-                                    "label":"Label",
+                                    "label":"Label(labAchievementCountJudge)",
                                     "isDirectory":false,
                                     "isAniNode":true,
                                     "hasChild":false,
@@ -350,7 +379,7 @@
                             "props":{"right":100,"left":100,"height":450,"bottom":100},
                             "nodeParent":25,
                             "label":"Box",
-                            "isOpen":false,
+                            "isOpen":true,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
@@ -369,7 +398,7 @@
                                     "child":[
                                         {
                                             "type":"Label",
-                                            "props":{"y":85,"x":0,"text":"事件收集率","fontSize":62,"font":"方正像素12","color":"#ffffff","bold":false,"anchorY":1,"anchorX":0},
+                                            "props":{"y":85,"x":0,"text":"UI_Event_Collection_Rate","fontSize":62,"font":"方正像素12","color":"#ffffff","bold":false,"anchorY":1,"anchorX":0},
                                             "nodeParent":41,
                                             "label":"Label",
                                             "isDirectory":false,
@@ -382,9 +411,9 @@
                                         },
                                         {
                                             "type":"ProgressBar",
-                                            "props":{"y":135,"value":1,"skin":"images/progress/progress_1@3x.png","right":240,"left":0,"anchorY":0.5,"anchorX":0},
+                                            "props":{"y":135,"var":"prgEventRate","value":1,"skin":"images/progress/progress_1@3x.png","right":240,"name":"prgEventRate","left":0,"anchorY":0.5,"anchorX":0},
                                             "nodeParent":41,
-                                            "label":"ProgressBar",
+                                            "label":"ProgressBar(prgEventRate)",
                                             "isDirectory":false,
                                             "isAniNode":true,
                                             "hasChild":false,
@@ -394,9 +423,9 @@
                                         },
                                         {
                                             "type":"Label",
-                                            "props":{"text":"100%","right":0,"fontSize":110,"font":"方正像素12","color":"#55fffe","centerY":0,"bold":false,"anchorY":0.5,"anchorX":1},
+                                            "props":{"var":"labEventRate","text":"100%","right":0,"name":"labEventRate","fontSize":110,"font":"方正像素12","color":"#55fffe","centerY":0,"bold":false,"anchorY":0.5,"anchorX":1},
                                             "nodeParent":41,
-                                            "label":"Label",
+                                            "label":"Label(labEventRate)",
                                             "isDirectory":false,
                                             "isAniNode":true,
                                             "hasChild":false,
@@ -418,7 +447,7 @@
                                     "child":[
                                         {
                                             "type":"Label",
-                                            "props":{"y":85,"x":0,"text":"天赋收集率","fontSize":62,"font":"方正像素12","color":"#ffffff","bold":false,"anchorY":1,"anchorX":0},
+                                            "props":{"y":85,"x":0,"text":"UI_Talent_Collection_Rate","fontSize":62,"font":"方正像素12","color":"#ffffff","bold":false,"anchorY":1,"anchorX":0},
                                             "nodeParent":45,
                                             "label":"Label",
                                             "isDirectory":false,
@@ -430,9 +459,9 @@
                                         },
                                         {
                                             "type":"ProgressBar",
-                                            "props":{"y":135,"value":0.73,"skin":"images/progress/progress_1@3x.png","right":240,"left":0,"anchorY":0.5,"anchorX":0},
+                                            "props":{"y":135,"var":"prgTalentRate","value":0.73,"skin":"images/progress/progress_1@3x.png","right":240,"name":"prgTalentRate","left":0,"anchorY":0.5,"anchorX":0},
                                             "nodeParent":45,
-                                            "label":"ProgressBar",
+                                            "label":"ProgressBar(prgTalentRate)",
                                             "isDirectory":false,
                                             "isAniNode":true,
                                             "hasChild":false,
@@ -442,9 +471,9 @@
                                         },
                                         {
                                             "type":"Label",
-                                            "props":{"text":"73%","right":0,"fontSize":110,"font":"方正像素12","color":"#55fffe","centerY":0,"bold":false,"anchorY":0.5,"anchorX":1},
+                                            "props":{"var":"labTalentRate","text":"73%","right":0,"name":"labTalentRate","fontSize":110,"font":"方正像素12","color":"#55fffe","centerY":0,"bold":false,"anchorY":0.5,"anchorX":1},
                                             "nodeParent":45,
-                                            "label":"Label",
+                                            "label":"Label(labTalentRate)",
                                             "isDirectory":false,
                                             "isAniNode":true,
                                             "hasChild":false,
@@ -457,12 +486,11 @@
                         }]
                 },
                 {
-                    "x":30,
                     "type":"List",
-                    "props":{"width":1060,"vScrollBarSkin":" ","top":35,"right":35,"bottom":35},
+                    "props":{"width":1060,"var":"listAchievements","vScrollBarSkin":" ","top":35,"right":35,"name":"listAchievements","bottom":35},
                     "nodeParent":8,
-                    "label":"List",
-                    "isOpen":false,
+                    "label":"List(listAchievements)",
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
@@ -470,7 +498,7 @@
                     "child":[
                         {
                             "type":"Box",
-                            "props":{"y":0,"x":0,"width":530,"renderType":"render","height":460},
+                            "props":{"y":0,"x":0,"width":530,"runtime":"ColorFilterItem","renderType":"render","height":460},
                             "nodeParent":9,
                             "label":"Box",
                             "isOpen":true,
@@ -481,9 +509,9 @@
                             "child":[
                                 {
                                     "type":"Image",
-                                    "props":{"top":20,"skin":"images/border/achievement@3x.png","right":20,"left":20,"bottom":20},
+                                    "props":{"top":20,"skin":"images/border/achievement@3x.png","right":20,"name":"uncomplete","left":20,"bottom":20},
                                     "nodeParent":10,
-                                    "label":"Image",
+                                    "label":"Image(uncomplete)",
                                     "isDirectory":false,
                                     "isAniNode":false,
                                     "hasChild":false,
@@ -494,9 +522,9 @@
                                 },
                                 {
                                     "type":"Image",
-                                    "props":{"top":0,"skin":"images/border/achievement_complete@3x.png","right":0,"left":0,"bottom":0},
+                                    "props":{"top":0,"skin":"images/border/achievement_complete@3x.png","right":0,"name":"completed","left":0,"bottom":0},
                                     "nodeParent":10,
-                                    "label":"Image",
+                                    "label":"Image(completed)",
                                     "isDirectory":false,
                                     "isAniNode":false,
                                     "hasChild":false,
@@ -507,9 +535,9 @@
                                 },
                                 {
                                     "type":"Label",
-                                    "props":{"text":"霹雳霹雳","fontSize":80,"font":"方正像素12","color":"#ffffff","centerY":-30,"centerX":0},
+                                    "props":{"text":"霹雳霹雳","name":"name","fontSize":80,"font":"方正像素12","color":"#ffffff","centerY":-30,"centerX":0},
                                     "nodeParent":10,
-                                    "label":"Label",
+                                    "label":"Label(name)",
                                     "isDirectory":false,
                                     "isAniNode":false,
                                     "hasChild":false,
@@ -519,9 +547,9 @@
                                 },
                                 {
                                     "type":"Label",
-                                    "props":{"wordWrap":true,"text":"被第九重雷劫劈死","right":40,"left":40,"height":95,"fontSize":42,"font":"方正像素12","color":"#9ca5a9","bottom":25,"align":"center"},
+                                    "props":{"wordWrap":true,"text":"被第九重雷劫劈死","right":40,"name":"description","left":40,"height":95,"fontSize":42,"font":"方正像素12","color":"#9ca5a9","bottom":25,"align":"center"},
                                     "nodeParent":10,
-                                    "label":"Label",
+                                    "label":"Label(description)",
                                     "isDirectory":false,
                                     "isAniNode":false,
                                     "hasChild":false,
@@ -532,6 +560,71 @@
                         }]
                 }],
             "$HIDDEN":false
+        },
+        {
+            "x":15,
+            "type":"VBox",
+            "props":{"visible":false,"name":"colorBox"},
+            "nodeParent":1,
+            "label":"VBox(colorBox)",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":61,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":0,"var":"colorGrade0","text":"#ccccccff","fontSize":40,"font":"方正像素12","color":"#cccccc"},
+                    "nodeParent":61,
+                    "label":"Label(colorGrade0)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":62,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":10,"var":"colorGrade1","text":"#55fffeff","fontSize":40,"font":"方正像素12","color":"#55fffe"},
+                    "nodeParent":61,
+                    "label":"Label(colorGrade1)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":63,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":20,"var":"colorGrade2","text":"#b17cffff","fontSize":40,"font":"方正像素12","color":"#b17cff"},
+                    "nodeParent":61,
+                    "label":"Label(colorGrade2)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":64,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":30,"var":"colorGrade3","text":"#ffce45ff","fontSize":40,"font":"方正像素12","color":"#ffce45"},
+                    "nodeParent":61,
+                    "label":"Label(colorGrade3)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":65,
+                    "child":[
+                        ]
+                }]
         }],
     "animations":[
         {

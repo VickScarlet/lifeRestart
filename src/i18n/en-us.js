@@ -16,6 +16,8 @@ export default ({
     UI_Error: 'Error',
 
     UI_Colon: ':',
+    UI_Times: 'Times',
+    UI_Count: '',
 
     UI_Property_Charm: 'CHR',
     UI_Property_Intelligence: 'INT',
@@ -47,6 +49,11 @@ export default ({
 
     UI_Final_Age: 'Age',
     UI_Total_Judge: 'Judge',
+
+    'UI_Achievement_Count': 'Achievement',
+    'UI_Remake_Times': 'Remake Times',
+    'UI_Event_Collection_Rate': 'Event Collection',
+    'UI_Talent_Collection_Rate': 'Talent Collection',
 
     'UI_Judge_Level_0': '地狱',
     'UI_Judge_Level_1': '折磨',

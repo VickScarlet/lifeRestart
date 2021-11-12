@@ -199,7 +199,7 @@ class Life {
         );
     }
 
-    get status() {
+    get statistics() {
         const pt = this.PropertyTypes;
 
         return this.#getJudges( pt.TMS,

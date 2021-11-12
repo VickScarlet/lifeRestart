@@ -16,6 +16,8 @@ export default ({
     UI_Error: '错误',
 
     UI_Colon: '：',
+    UI_Times: '次',
+    UI_Count: '个',
 
     UI_Property_Charm: '颜值',
     UI_Property_Intelligence: '智力',
@@ -46,6 +48,12 @@ export default ({
 
     UI_Final_Age: '享年',
     UI_Total_Judge: '总评',
+
+    'UI_Achievement_Count': '获得成就',
+    'UI_Remake_Times': '重开次数',
+    'UI_Event_Collection_Rate': '事件收集率',
+    'UI_Talent_Collection_Rate': '天赋收集率',
+    'UI_Statistics': '统计',
 
     'UI_Judge_Level_0': '地狱',
     'UI_Judge_Level_1': '折磨',
@@ -86,4 +94,18 @@ export default ({
     'UI_Strength_Judge_Level_9': '金丹',
     'UI_Strength_Judge_Level_10': '元婴',
     'UI_Strength_Judge_Level_11': '仙体',
+
+    'UI_Remake_Times_Judge_Level_0': '抽到紫色概率不变',
+    'UI_Remake_Times_Judge_Level_1': '抽到紫色概率翻倍',
+    'UI_Remake_Times_Judge_Level_2': '抽到紫色概率三倍',
+    'UI_Remake_Times_Judge_Level_3': '抽到紫色概率四倍',
+    'UI_Remake_Times_Judge_Level_4': '抽到紫色概率五倍',
+    'UI_Remake_Times_Judge_Level_5': '抽到紫色概率六倍',
+
+    'UI_Achievement_Count_Judge_Level_0': '抽到橙色概率不变',
+    'UI_Achievement_Count_Judge_Level_1': '抽到橙色概率翻倍',
+    'UI_Achievement_Count_Judge_Level_2': '抽到橙色概率三倍',
+    'UI_Achievement_Count_Judge_Level_3': '抽到橙色概率四倍',
+    'UI_Achievement_Count_Judge_Level_4': '抽到橙色概率五倍',
+    'UI_Achievement_Count_Judge_Level_5': '抽到橙色概率六倍',
 });
