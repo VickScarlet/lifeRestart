@@ -31,6 +31,8 @@
    <item name="images/border/up@3x.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=4,4,4,4" picType="0" scale="0"/>
    <item name="images/button/button_small@3x.png" type="Button" compress="0" pack="0" quality="80" props="sizeGrid=8,8,8,8@@!@@stateNum=1@@!@@label= @@!@@runtime=ScaleButton" picType="0" scale="0"/>
    <item name="images/border/achievement@3x.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=16,16,16,16" picType="0" scale="0"/>
-   <item name="images/border/achievement_complete@3x.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=74,74,74,74" picType="0" scale="0"/>
+   <item name="images/border/achievement_complete@3x.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=74,80,74,80" picType="0" scale="0"/>
    <item name="images/resource/circle.png" type="Image" compress="0" pack="0" quality="80" props="" picType="0" scale="0"/>
+   <item name="images/border/talent_item_selected@3x.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=106,150,74,150" picType="0" scale="0"/>
+   <item name="images/accessories/titlebar@3x.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=0,348,116,348" picType="0" scale="0"/>
 </res>

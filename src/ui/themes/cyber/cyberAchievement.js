@@ -10,6 +10,19 @@ export default class cyberAchievement extends CyberAchievementUI {
 
         this.listAchievements.renderHandler = new Laya.Handler(this, this.onRenderAchievement);
         this.listAchievements.scrollBar.elasticDistance = 150;
+        this.on(Laya.Event.RESIZE, this, () => {
+            this.boxPage.width = 2 * this.width;
+            this.boxA.width = this.boxB.width = this.width;
+            if(this.boxPage.x < 0) {
+                this.boxPage.x = - this.width;
+            }
+
+            const renderWidth = this.listAchievements?._itemRender?.props?.width;
+            if(renderWidth) {
+                const col = Math.max(Math.floor((this.width - 65) / renderWidth), 1);
+                this.listAchievements.width = col * renderWidth + (col - 1) * (this.listAchievements.spaceY || 0) + 30;
+            }
+        });
     }
 
     #state;

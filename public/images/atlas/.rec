@@ -1,4 +1,6 @@
 D .
+D fonts
+R 39B4F491 方正像素12.ttf
 D images
 D images/accessories
 P ADDDCB66 cardicon@3x.png

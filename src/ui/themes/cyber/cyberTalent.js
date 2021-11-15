@@ -5,6 +5,13 @@ export default class CyberTalent extends CyberTalentUI {
         this.btnNext.on(Laya.Event.CLICK, this, this.onClickNext);
         this.listTalents.renderHandler = Laya.Handler.create(this, this.renderTalent, null, false);
         this.listTalents.scrollBar.elasticDistance = 150;
+        this.on(Laya.Event.RESIZE, this, () => {
+            const renderWidth = this.listTalents?._itemRender?.props?.width;
+            if(renderWidth) {
+                const col = Math.max(Math.floor((this.width - 40) / renderWidth), 1);
+                this.listTalents.width = col * renderWidth + (col - 1) * (this.listTalents.spaceY || 0);
+            }
+        });
     }
 
     #selected = new Set();
@@ -38,7 +45,6 @@ export default class CyberTalent extends CyberTalentUI {
 
     renderTalent(box, index) {
         const dataSource = box.dataSource;
-        console.debug(index, dataSource, box);
 
         const hboxTitle = box.getChildByName("hboxTitle");
         const labTitle = hboxTitle.getChildByName("labTitle");

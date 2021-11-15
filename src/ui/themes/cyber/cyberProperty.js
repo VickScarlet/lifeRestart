@@ -206,9 +206,8 @@ export default class cyberProperty extends CyberPropertyUI {
         }
     }
 
-    renderTalent(box, index) {
+    renderTalent(box) {
         const dataSource = box.dataSource;
-        console.debug(index, dataSource, box);
 
         const labTitle = box.getChildByName("labTitle");
         const grade1 = box.getChildByName("grade1");

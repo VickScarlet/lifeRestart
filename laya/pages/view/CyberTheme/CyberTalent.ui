@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":1,
+    "selectedBox":21,
+    "selecteID":22,
     "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberTalent.png","runtime":"ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
@@ -12,34 +12,6 @@
     "hasChild":true,
     "compId":1,
     "child":[
-        {
-            "x":15,
-            "type":"Sprite",
-            "props":{"y":0,"x":0},
-            "nodeParent":1,
-            "label":"Sprite",
-            "isOpen":null,
-            "isDirectory":true,
-            "isAniNode":true,
-            "hasChild":true,
-            "compId":6,
-            "child":[
-                {
-                    "type":"Rect",
-                    "props":{"y":0,"x":0,"width":1125,"lineWidth":1,"height":2436,"fillColor":"#04131f"},
-                    "nodeParent":6,
-                    "label":"Rect",
-                    "isDirectory":false,
-                    "isAniNode":true,
-                    "hasChild":false,
-                    "compId":7,
-                    "child":[
-                        ],
-                    "$HIDDEN":false
-                }],
-            "$LOCKED":true,
-            "$HIDDEN":true
-        },
         {
             "x":15,
             "type":"Box",
@@ -410,17 +382,16 @@
                 {
                     "x":30,
                     "type":"List",
-                    "props":{"var":"listTalents","vScrollBarSkin":" ","top":310,"right":20,"name":"listTalents","left":20,"bottom":370},
+                    "props":{"width":1085,"var":"listTalents","vScrollBarSkin":" ","top":310,"name":"listTalents","centerX":0,"bottom":370},
                     "nodeParent":21,
                     "label":"List(listTalents)",
-                    "isOpen":true,
+                    "isOpen":false,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":22,
                     "child":[
                         {
-                            "x":45,
                             "type":"Box",
                             "props":{"width":537,"renderType":"render","height":352},
                             "nodeParent":22,
@@ -432,7 +403,6 @@
                             "compId":23,
                             "child":[
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "props":{"top":0,"skin":"images/border/talent_item@3x.png","right":0,"name":"unselected","left":0,"bottom":0},
                                     "nodeParent":23,
@@ -446,7 +416,6 @@
                                     "$HIDDEN":false
                                 },
                                 {
-                                    "x":60,
                                     "type":"Image",
                                     "props":{"top":0,"skin":"images/border/talent_item_selected@3x.png","right":0,"name":"selected","left":0,"bottom":3},
                                     "nodeParent":23,
@@ -460,7 +429,6 @@
                                     "$HIDDEN":false
                                 },
                                 {
-                                    "x":60,
                                     "type":"HBox",
                                     "props":{"top":104,"space":15,"name":"hboxTitle","left":66,"height":58},
                                     "nodeParent":23,
@@ -472,7 +440,6 @@
                                     "compId":26,
                                     "child":[
                                         {
-                                            "x":75,
                                             "type":"Box",
                                             "props":{"y":0,"x":0,"width":15,"name":"grades","height":58},
                                             "nodeParent":26,
@@ -484,7 +451,6 @@
                                             "compId":108,
                                             "child":[
                                                 {
-                                                    "x":90,
                                                     "type":"Box",
                                                     "props":{"width":15,"name":"grade1","height":58},
                                                     "nodeParent":108,
@@ -496,7 +462,6 @@
                                                     "compId":27,
                                                     "child":[
                                                         {
-                                                            "x":105,
                                                             "type":"Sprite",
                                                             "props":{},
                                                             "nodeParent":27,
@@ -508,7 +473,6 @@
                                                             "compId":28,
                                                             "child":[
                                                                 {
-                                                                    "x":120,
                                                                     "type":"Rect",
                                                                     "props":{"width":15,"lineWidth":1,"height":58,"fillColor":"#55fffe"},
                                                                     "nodeParent":28,
@@ -524,7 +488,6 @@
                                                         }]
                                                 },
                                                 {
-                                                    "x":90,
                                                     "type":"Box",
                                                     "props":{"width":15,"name":"grade2","height":58},
                                                     "nodeParent":108,
@@ -536,7 +499,6 @@
                                                     "compId":105,
                                                     "child":[
                                                         {
-                                                            "x":105,
                                                             "type":"Sprite",
                                                             "props":{},
                                                             "nodeParent":105,
@@ -548,7 +510,6 @@
                                                             "compId":106,
                                                             "child":[
                                                                 {
-                                                                    "x":120,
                                                                     "type":"Rect",
                                                                     "props":{"width":15,"lineWidth":1,"height":58,"fillColor":"#b17cff"},
                                                                     "nodeParent":106,
@@ -564,7 +525,6 @@
                                                         }]
                                                 },
                                                 {
-                                                    "x":90,
                                                     "type":"Box",
                                                     "props":{"width":15,"name":"grade3","height":58},
                                                     "nodeParent":108,
@@ -576,7 +536,6 @@
                                                     "compId":102,
                                                     "child":[
                                                         {
-                                                            "x":105,
                                                             "type":"Sprite",
                                                             "props":{},
                                                             "nodeParent":102,
@@ -588,7 +547,6 @@
                                                             "compId":103,
                                                             "child":[
                                                                 {
-                                                                    "x":120,
                                                                     "type":"Rect",
                                                                     "props":{"width":15,"lineWidth":1,"height":58,"fillColor":"#ffce45"},
                                                                     "nodeParent":103,
@@ -605,7 +563,6 @@
                                                 }]
                                         },
                                         {
-                                            "x":75,
                                             "type":"Label",
                                             "props":{"x":1,"text":"Title","name":"labTitle","fontSize":58,"font":"方正像素12","color":"#ffffff"},
                                             "nodeParent":26,
@@ -619,7 +576,6 @@
                                         }]
                                 },
                                 {
-                                    "x":60,
                                     "type":"Label",
                                     "props":{"y":205,"wordWrap":true,"text":"description","right":66,"name":"labDescription","left":66,"leading":8,"fontSize":44,"font":"方正像素12","color":"#9dacaf"},
                                     "nodeParent":23,
@@ -637,269 +593,280 @@
                 },
                 {
                     "x":30,
-                    "type":"Button",
-                    "props":{"width":1040,"var":"btnNext","skin":"images/button/button_main@3x.png","name":"btnNext","labelSize":60,"label":"UI_Next","height":192,"centerY":1040,"centerX":0},
+                    "type":"Box",
+                    "props":{"right":0,"left":0,"height":1,"bottom":0},
                     "nodeParent":21,
-                    "label":"Button(btnNext)",
+                    "label":"Box",
                     "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
-                    "compId":33,
+                    "compId":109,
                     "child":[
                         {
                             "x":45,
-                            "type":"Box",
-                            "props":{},
-                            "nodeParent":33,
-                            "label":"Box",
+                            "type":"Button",
+                            "props":{"width":1040,"var":"btnNext","skin":"images/button/button_main@3x.png","name":"btnNext","labelSize":60,"label":"UI_Next","height":192,"centerY":-180,"centerX":0},
+                            "nodeParent":109,
+                            "label":"Button(btnNext)",
                             "isOpen":false,
                             "isDirectory":true,
                             "isAniNode":true,
                             "hasChild":true,
-                            "compId":78,
+                            "compId":33,
                             "child":[
                                 {
-                                    "type":"Animation",
-                                    "props":{"y":96,"x":520,"width":0,"source":"view/CyberTheme/animation/circleFlash.ani","scaleX":7,"height":0,"blendMode":"lighter","autoPlay":true},
-                                    "nodeParent":78,
-                                    "label":"Animation",
-                                    "isDirectory":false,
-                                    "isAniNode":true,
-                                    "hasChild":false,
-                                    "compId":80,
-                                    "child":[
-                                        ]
-                                },
-                                {
                                     "type":"Box",
-                                    "props":{"renderType":"mask"},
-                                    "nodeParent":78,
+                                    "props":{},
+                                    "nodeParent":33,
                                     "label":"Box",
                                     "isOpen":false,
                                     "isDirectory":true,
                                     "isAniNode":true,
                                     "hasChild":true,
-                                    "compId":81,
+                                    "compId":78,
                                     "child":[
                                         {
-                                            "type":"Rect",
-                                            "props":{"y":37,"x":25,"width":7,"lineWidth":1,"height":116,"fillColor":"#ff0000"},
-                                            "nodeParent":81,
-                                            "label":"Rect",
+                                            "type":"Animation",
+                                            "props":{"y":96,"x":520,"width":0,"source":"view/CyberTheme/animation/circleFlash.ani","scaleX":7,"height":0,"blendMode":"lighter","autoPlay":true},
+                                            "nodeParent":78,
+                                            "label":"Animation",
                                             "isDirectory":false,
                                             "isAniNode":true,
                                             "hasChild":false,
-                                            "compId":82,
+                                            "compId":80,
                                             "child":[
                                                 ]
                                         },
                                         {
-                                            "type":"Rect",
-                                            "props":{"y":37,"x":1010,"width":7,"lineWidth":1,"height":116,"fillColor":"#ff0000"},
-                                            "nodeParent":81,
-                                            "label":"Rect",
-                                            "isDirectory":false,
+                                            "type":"Box",
+                                            "props":{"renderType":"mask"},
+                                            "nodeParent":78,
+                                            "label":"Box",
+                                            "isOpen":false,
+                                            "isDirectory":true,
                                             "isAniNode":true,
-                                            "hasChild":false,
-                                            "compId":83,
+                                            "hasChild":true,
+                                            "compId":81,
                                             "child":[
-                                                ]
-                                        },
-                                        {
-                                            "type":"Rect",
-                                            "props":{"y":21,"x":44,"width":954,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
-                                            "nodeParent":81,
-                                            "label":"Rect",
-                                            "isDirectory":false,
-                                            "isAniNode":true,
-                                            "hasChild":false,
-                                            "compId":84,
-                                            "child":[
-                                                ]
-                                        },
-                                        {
-                                            "type":"Rect",
-                                            "props":{"y":150,"x":171,"width":700,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
-                                            "nodeParent":81,
-                                            "label":"Rect",
-                                            "isDirectory":false,
-                                            "isAniNode":true,
-                                            "hasChild":false,
-                                            "compId":85,
-                                            "child":[
-                                                ]
-                                        },
-                                        {
-                                            "type":"Rect",
-                                            "props":{"y":163,"x":44,"width":121,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
-                                            "nodeParent":81,
-                                            "label":"Rect",
-                                            "isDirectory":false,
-                                            "isAniNode":true,
-                                            "hasChild":false,
-                                            "compId":86,
-                                            "child":[
-                                                ]
-                                        },
-                                        {
-                                            "type":"Rect",
-                                            "props":{"y":163,"x":877,"width":121,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
-                                            "nodeParent":81,
-                                            "label":"Rect",
-                                            "isDirectory":false,
-                                            "isAniNode":true,
-                                            "hasChild":false,
-                                            "compId":87,
-                                            "child":[
-                                                ]
-                                        },
-                                        {
-                                            "type":"Rect",
-                                            "props":{"y":148,"x":29,"width":25,"rotation":40,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
-                                            "nodeParent":81,
-                                            "label":"Rect",
-                                            "isDirectory":false,
-                                            "isAniNode":true,
-                                            "hasChild":false,
-                                            "compId":88,
-                                            "child":[
-                                                ]
-                                        },
-                                        {
-                                            "type":"Rect",
-                                            "props":{"y":150,"x":871,"width":19,"rotation":55,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
-                                            "nodeParent":81,
-                                            "label":"Rect",
-                                            "isDirectory":false,
-                                            "isAniNode":true,
-                                            "hasChild":false,
-                                            "compId":89,
-                                            "child":[
-                                                ]
-                                        },
-                                        {
-                                            "type":"Rect",
-                                            "props":{"y":166,"x":160,"width":19,"rotation":-55,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
-                                            "nodeParent":81,
-                                            "label":"Rect",
-                                            "isDirectory":false,
-                                            "isAniNode":true,
-                                            "hasChild":false,
-                                            "compId":90,
-                                            "child":[
-                                                ]
-                                        },
-                                        {
-                                            "type":"Rect",
-                                            "props":{"y":21,"x":998,"width":25,"rotation":40,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
-                                            "nodeParent":81,
-                                            "label":"Rect",
-                                            "isDirectory":false,
-                                            "isAniNode":true,
-                                            "hasChild":false,
-                                            "compId":91,
-                                            "child":[
-                                                ]
-                                        },
-                                        {
-                                            "type":"Rect",
-                                            "props":{"y":26,"x":48,"width":25,"rotation":140,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
-                                            "nodeParent":81,
-                                            "label":"Rect",
-                                            "isDirectory":false,
-                                            "isAniNode":true,
-                                            "hasChild":false,
-                                            "compId":92,
-                                            "child":[
-                                                ]
-                                        },
-                                        {
-                                            "type":"Rect",
-                                            "props":{"y":153,"x":1017,"width":25,"rotation":140,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
-                                            "nodeParent":81,
-                                            "label":"Rect",
-                                            "isDirectory":false,
-                                            "isAniNode":true,
-                                            "hasChild":false,
-                                            "compId":93,
-                                            "child":[
-                                                ]
-                                        }]
-                                }]
-                        },
-                        {
-                            "x":45,
-                            "type":"Box",
-                            "props":{},
-                            "nodeParent":33,
-                            "label":"Box",
-                            "isOpen":false,
-                            "isDirectory":true,
-                            "isAniNode":true,
-                            "hasChild":true,
-                            "compId":79,
-                            "child":[
-                                {
-                                    "type":"Box",
-                                    "props":{"renderType":"mask"},
-                                    "nodeParent":79,
-                                    "label":"Box",
-                                    "isOpen":true,
-                                    "isDirectory":true,
-                                    "isAniNode":true,
-                                    "hasChild":true,
-                                    "compId":94,
-                                    "child":[
-                                        {
-                                            "type":"Poly",
-                                            "props":{"y":41,"x":35,"points":"0,0,8,-6,8,113,0,107","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"},
-                                            "nodeParent":94,
-                                            "label":"Poly",
-                                            "isDirectory":false,
-                                            "isAniNode":true,
-                                            "hasChild":false,
-                                            "compId":95,
-                                            "child":[
-                                                ]
-                                        },
-                                        {
-                                            "type":"Poly",
-                                            "props":{"y":41,"x":1004,"points":"0,0,-8,-6,-8,113,0,107","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"},
-                                            "nodeParent":94,
-                                            "label":"Poly",
-                                            "isDirectory":false,
-                                            "isAniNode":true,
-                                            "hasChild":false,
-                                            "compId":96,
-                                            "child":[
-                                                ]
-                                        },
-                                        {
-                                            "type":"Poly",
-                                            "props":{"y":160,"x":177,"points":"0,0,687,0,693,10,-6,10","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"},
-                                            "nodeParent":94,
-                                            "label":"Poly",
-                                            "isDirectory":false,
-                                            "isAniNode":true,
-                                            "hasChild":false,
-                                            "compId":97,
-                                            "child":[
-                                                ],
-                                            "$HIDDEN":false
+                                                {
+                                                    "type":"Rect",
+                                                    "props":{"y":37,"x":25,"width":7,"lineWidth":1,"height":116,"fillColor":"#ff0000"},
+                                                    "nodeParent":81,
+                                                    "label":"Rect",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":82,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Rect",
+                                                    "props":{"y":37,"x":1010,"width":7,"lineWidth":1,"height":116,"fillColor":"#ff0000"},
+                                                    "nodeParent":81,
+                                                    "label":"Rect",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":83,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Rect",
+                                                    "props":{"y":21,"x":44,"width":954,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
+                                                    "nodeParent":81,
+                                                    "label":"Rect",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":84,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Rect",
+                                                    "props":{"y":150,"x":171,"width":700,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
+                                                    "nodeParent":81,
+                                                    "label":"Rect",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":85,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Rect",
+                                                    "props":{"y":163,"x":44,"width":121,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
+                                                    "nodeParent":81,
+                                                    "label":"Rect",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":86,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Rect",
+                                                    "props":{"y":163,"x":877,"width":121,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
+                                                    "nodeParent":81,
+                                                    "label":"Rect",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":87,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Rect",
+                                                    "props":{"y":148,"x":29,"width":25,"rotation":40,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
+                                                    "nodeParent":81,
+                                                    "label":"Rect",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":88,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Rect",
+                                                    "props":{"y":150,"x":871,"width":19,"rotation":55,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
+                                                    "nodeParent":81,
+                                                    "label":"Rect",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":89,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Rect",
+                                                    "props":{"y":166,"x":160,"width":19,"rotation":-55,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
+                                                    "nodeParent":81,
+                                                    "label":"Rect",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":90,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Rect",
+                                                    "props":{"y":21,"x":998,"width":25,"rotation":40,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
+                                                    "nodeParent":81,
+                                                    "label":"Rect",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":91,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Rect",
+                                                    "props":{"y":26,"x":48,"width":25,"rotation":140,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
+                                                    "nodeParent":81,
+                                                    "label":"Rect",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":92,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Rect",
+                                                    "props":{"y":153,"x":1017,"width":25,"rotation":140,"lineWidth":1,"height":6,"fillColor":"#ff0000"},
+                                                    "nodeParent":81,
+                                                    "label":"Rect",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":93,
+                                                    "child":[
+                                                        ]
+                                                }]
                                         }]
                                 },
                                 {
-                                    "type":"Animation",
-                                    "props":{"y":172,"x":520,"source":"view/CyberTheme/animation/bottomBreath.ani","scaleX":6,"blendMode":"lighter","autoPlay":true},
-                                    "nodeParent":79,
-                                    "label":"Animation",
-                                    "isDirectory":false,
+                                    "type":"Box",
+                                    "props":{},
+                                    "nodeParent":33,
+                                    "label":"Box",
+                                    "isOpen":false,
+                                    "isDirectory":true,
                                     "isAniNode":true,
-                                    "hasChild":false,
-                                    "compId":98,
+                                    "hasChild":true,
+                                    "compId":79,
                                     "child":[
-                                        ]
+                                        {
+                                            "type":"Box",
+                                            "props":{"renderType":"mask"},
+                                            "nodeParent":79,
+                                            "label":"Box",
+                                            "isOpen":true,
+                                            "isDirectory":true,
+                                            "isAniNode":true,
+                                            "hasChild":true,
+                                            "compId":94,
+                                            "child":[
+                                                {
+                                                    "type":"Poly",
+                                                    "props":{"y":41,"x":35,"points":"0,0,8,-6,8,113,0,107","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"},
+                                                    "nodeParent":94,
+                                                    "label":"Poly",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":95,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Poly",
+                                                    "props":{"y":41,"x":1004,"points":"0,0,-8,-6,-8,113,0,107","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"},
+                                                    "nodeParent":94,
+                                                    "label":"Poly",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":96,
+                                                    "child":[
+                                                        ]
+                                                },
+                                                {
+                                                    "type":"Poly",
+                                                    "props":{"y":160,"x":177,"points":"0,0,687,0,693,10,-6,10","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"},
+                                                    "nodeParent":94,
+                                                    "label":"Poly",
+                                                    "isDirectory":false,
+                                                    "isAniNode":true,
+                                                    "hasChild":false,
+                                                    "compId":97,
+                                                    "child":[
+                                                        ],
+                                                    "$HIDDEN":false
+                                                }]
+                                        },
+                                        {
+                                            "type":"Animation",
+                                            "props":{"y":172,"x":520,"source":"view/CyberTheme/animation/bottomBreath.ani","scaleX":6,"blendMode":"lighter","autoPlay":true},
+                                            "nodeParent":79,
+                                            "label":"Animation",
+                                            "isDirectory":false,
+                                            "isAniNode":true,
+                                            "hasChild":false,
+                                            "compId":98,
+                                            "child":[
+                                                ]
+                                        }]
                                 }]
                         }]
                 }],
@@ -921,7 +888,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"skin":"images/accessories/titlebar@3x.png"},
+                    "props":{"skin":"images/accessories/titlebar@3x.png","right":0,"left":0},
                     "nodeParent":20,
                     "label":"Image",
                     "isDirectory":false,

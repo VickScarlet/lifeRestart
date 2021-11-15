@@ -5,6 +5,8 @@ export default class cyberSummary extends CyberSummaryUI {
         this.btnAgain.on(Laya.Event.CLICK, this, this.onAgain);
     }
 
+    #selectedTalent;
+
     get gradeFilters() {
         return [
             this.colorGrade0.text,
@@ -24,8 +26,9 @@ export default class cyberSummary extends CyberSummaryUI {
     }
 
     onAgain() {
-        UIManager.getInstance().switchView(UIManager.getInstance().themes.MAIN);
+        core.talentExtend(this.#selectedTalent);
         core.times ++;
+        UIManager.getInstance().switchView(UIManager.getInstance().themes.MAIN);
     }
 
     init({talents}) {
@@ -33,7 +36,6 @@ export default class cyberSummary extends CyberSummaryUI {
         const gradeFilters = this.gradeFilters;
         const gradeColors = this.gradeColors;
 
-        console.debug(summary, lastExtendTalent);
         const age = summary[core.PropertyTypes.HAGE];
         this.labAge.text = ''+age.value;
         this.labAgeJudge.text = age.judge;
@@ -84,18 +86,20 @@ export default class cyberSummary extends CyberSummaryUI {
             if(b == lastExtendTalent) return 1;
             return bg - ag;
         });
+        this.#selectedTalent = talents[0].id;
         this.listSelectedTalents.array = talents;
     }
 
-    renderTalent(box, index) {
+    renderTalent(box) {
         const dataSource = box.dataSource;
-        console.debug(index, dataSource, box);
 
         const labTitle = box.getChildByName("labTitle");
         const grade1 = box.getChildByName("grade1");
         const grade2 = box.getChildByName("grade2");
         const grade3 = box.getChildByName("grade3");
         const labDescription = box.getChildByName("labDescription");
+        const selected = box.getChildByName("selected");
+        const unselected = box.getChildByName("unselected");
 
         labTitle.text = dataSource.name;
         labDescription.text = dataSource.description;
@@ -121,5 +125,20 @@ export default class cyberSummary extends CyberSummaryUI {
                 grade3.visible = false;
                 break;
         }
+
+        selected.visible = dataSource.id == this.#selectedTalent;
+        unselected.visible = !selected.visible;
+        box.off(Laya.Event.CLICK, this, this.onSelectTalent);
+        box.on(Laya.Event.CLICK, this, this.onSelectTalent, [dataSource.id]);
+    }
+
+    onSelectTalent(talentId) {
+        if(talentId == this.#selectedTalent) {
+            this.#selectedTalent = null;
+        } else {
+            this.#selectedTalent = talentId;
+        }
+
+        this.listSelectedTalents.refresh();
     }
 }

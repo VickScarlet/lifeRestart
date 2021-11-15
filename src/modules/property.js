@@ -333,14 +333,17 @@ class Property {
 
         const d = this.#judge[prop];
         let length = d.length;
-        const p = 1/length;
 
-        const progress = () => {
-            const min = d[length][0] || 0;
-            const max = d[length+1]?.[0] || value;
-            if(max == min) return 1;
-            return p * (length + (value - min) / (max - min));
-        }
+        // progress judge
+        // const p = 1/length;
+        // const progress = () => {
+        //     const min = d[length][0] || 0;
+        //     const max = d[length+1]?.[0] || value;
+        //     if(max == min) return 1;
+        //     return p * (length + (value - min) / (max - min));
+        // }
+
+        const progress = () => Math.max(Math.min(value, 10), 0) / 10;
 
         while(length--) {
             const [min, grade, judge] = d[length];

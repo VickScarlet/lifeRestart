@@ -10,6 +10,8 @@ class UIManager {
         this.#viewLayer.zOrder = 1;
         stage.addChild(this.#dialogLayer);
         this.#dialogLayer.zOrder = 2;
+        stage.addChild(this.#popupLayer);
+        this.#popupLayer.zOrder = 3;
         this.#viewLayer.top =
         this.#viewLayer.bottom =
         this.#viewLayer.left =
@@ -17,7 +19,11 @@ class UIManager {
         this.#dialogLayer.top =
         this.#dialogLayer.bottom =
         this.#dialogLayer.left =
-        this.#dialogLayer.right = 0;
+        this.#dialogLayer.right =
+        this.#popupLayer.top =
+        this.#popupLayer.bottom =
+        this.#popupLayer.left =
+        this.#popupLayer.right = 0;
     }
 
     static #instance = {};
@@ -26,7 +32,9 @@ class UIManager {
     #currentView;
     #viewLayer = new Laya.Panel();
     #dialogLayer = new Laya.Panel();
+    #popupLayer = new Laya.Panel();
     #viewMap = new Map();
+    #class = new Map();
     theme;
 
     static getInstance(name="default") {
@@ -35,14 +43,16 @@ class UIManager {
 
     async setLoading(loading) {
         const view = await this.getView(loading);
+        view.top = view.bottom = view.left = view.right = 0;
+        view.zOrder = 4;
         this.#loading = view;
-        this.#loading.zOrder = 3;
     }
 
     async switchView(viewName, args, actions) {
         // get view instance
         const view = await this.getView(viewName, args, actions?.load);
 
+        view.top = view.bottom = view.left = view.right = 0;
         // close current view
         this.clearAllDialog();
         await this.#currentView?.__close?.(view);
@@ -99,7 +109,10 @@ class UIManager {
 
     async loadView(viewName) {
         // load view
-        return (await import(`./themes/${viewName}.js`)).default;
+        if(this.#class.has(viewName)) return this.#class.get(viewName);
+        const c = (await import(`./themes/${viewName}.js`)).default;
+        this.#class.set(viewName, c);
+        return c;
     }
 
     async loadRes(resourceList, preload, onProgress) {
@@ -129,6 +142,13 @@ class UIManager {
         });;
 
         this.#dialogLayer.addChild(dialog);
+    }
+
+    async popup(type, args) {
+        const popup = await this.getView(type, args);
+        this.#popupLayer.addChild(popup);
+        await popup.popup(args, this.#popupLayer);
+        this.#popupLayer.removeChild(popup);
     }
 
     clearAllDialog() {
@@ -191,5 +211,9 @@ class UIManager {
         });
 
         return resourceList;
+    }
+
+    get currentView() {
+        return this.#currentView;
     }
 }

@@ -78,6 +78,7 @@ export default class CyberTrajectory extends CyberTrajectoryUI {
         this.#talents = talents;
         core.restart(propertyAllocate);
         this.updateProperty();
+        this.onNext();
     }
 
     close() {
@@ -112,6 +113,15 @@ export default class CyberTrajectory extends CyberTrajectoryUI {
             this.btnSummary.visible = true;
         }
 
+        this.renderTrajectory(age, content);
+
+        Laya.timer.frameOnce(1, this, () => {
+            this.panelTrajectory.scrollTo(0, this.panelTrajectory.contentHeight);
+        });
+        this.updateProperty();
+    }
+
+    renderTrajectory(age, content) {
         const item = this.#createTrajectoryItem();
         item.labAge.text = ''+age;
         item.labContent.text = content.map(
@@ -127,10 +137,6 @@ export default class CyberTrajectory extends CyberTrajectoryUI {
         this.vboxTrajectory.addChild(item);
         this.#trajectoryItems.push(item);
         this.#trajectoryItems.forEach((item, index) => item.y = index);
-        Laya.timer.frameOnce(1, this, () => {
-            this.panelTrajectory.scrollTo(0, this.panelTrajectory.contentHeight);
-        });
-        this.updateProperty();
     }
 
     onSummary() {

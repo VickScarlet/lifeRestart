@@ -7,6 +7,9 @@ const cyber = {
     SUMMARY: "cyber/cyberSummary",
     ACHIEVEMENT: "cyber/cyberAchievement",
     THANKS: "cyber/cyberThanks",
+    popup: {
+        ACHIEVEMENT: "cyber/popup/cyberAchievementPopup",
+    }
 }
 
 const themes = {
