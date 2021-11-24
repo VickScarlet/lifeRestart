@@ -62,4 +62,9 @@ function getConvertedMap(map, fn) {
     return newMap;
 }
 
-export { clone, max, min, sum, average, weightRandom, listRandom, getListValuesMap, mapConvert, getConvertedMap };
+function mapSet(target, source) {
+    for(const key in source)
+        target[key] = source[key];
+}
+
+export { clone, max, min, sum, average, weightRandom, listRandom, getListValuesMap, mapConvert, getConvertedMap, mapSet };

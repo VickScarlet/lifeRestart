@@ -5,19 +5,9 @@ export default class Talent extends TalentUI {
         this.btnNext.on(Laya.Event.CLICK, this, this.onClickNext);
         this.listTalents.renderHandler = Laya.Handler.create(this, this.renderTalent, null, false);
         this.listTalents.scrollBar.elasticDistance = 150;
-        this.on(Laya.Event.RESIZE, this, () => {
-            const renderWidth = this.listTalents?._itemRender?.props?.width;
-            if(renderWidth) {
-                const col = Math.max(Math.floor((this.width - 40) / renderWidth), 1);
-                this.listTalents.width = col * renderWidth + (col - 1) * (this.listTalents.spaceY || 0);
-            }
-        });
     }
 
     #selected = new Set();
-    static load() {
-        return ['images/background/background_2@3x.png'];
-    }
 
     init() {
         this.pageDrawCard.visible = true;
@@ -46,51 +36,11 @@ export default class Talent extends TalentUI {
     renderTalent(box, index) {
         const dataSource = box.dataSource;
 
-        const hboxTitle = box.getChildByName("hboxTitle");
-        const labTitle = hboxTitle.getChildByName("labTitle");
-        const grades = hboxTitle.getChildByName("grades");
-        const grade1 = grades.getChildByName("grade1");
-        const grade2 = grades.getChildByName("grade2");
-        const grade3 = grades.getChildByName("grade3");
-        const labDescription = box.getChildByName("labDescription");
-        const unselected = box.getChildByName("unselected");
-        const selected = box.getChildByName("selected");
+        box.label = `${dataSource.name}(${dataSource.description})`;
+        const style = $ui.common.card[dataSource.grade];
 
+        $_.mapSet(box, this.#selected.has(index)? style.selected: style.normal);
 
-        switch (dataSource.grade) {
-            case 1:
-                grades.x = 0;
-                labTitle.x = 1;
-                grade1.visible = true;
-                grade2.visible = false;
-                grade3.visible = false;
-                break;
-            case 2:
-                grades.x = 0;
-                labTitle.x = 1;
-                grade1.visible = false;
-                grade2.visible = true;
-                grade3.visible = false;
-                break;
-            case 3:
-                grades.x = 0;
-                labTitle.x = 1;
-                grade1.visible = false;
-                grade2.visible = false;
-                grade3.visible = true;
-                break;
-            default:
-                grades.x = 1;
-                labTitle.x = 0;
-                grade1.visible = false;
-                grade2.visible = false;
-                grade3.visible = false;
-                break;
-        }
-        labTitle.text = dataSource.name;
-        labTitle.event(Laya.Event.RESIZE);
-        labDescription.text = dataSource.description;
-        unselected.visible = !( selected.visible = this.#selected.has(index) );
         box.offAll(Laya.Event.CLICK);
         box.on(Laya.Event.CLICK, this, () => {
             if(this.#selected.has(index)) {
@@ -105,7 +55,8 @@ export default class Talent extends TalentUI {
             this.btnNext.label = this.#selected.size === core.talentSelectLimit
                 ? 'UI_Next'
                 : 'UI_Talent_Select_Uncomplete';
-            unselected.visible = !( selected.visible = this.#selected.has(index) );
+
+            $_.mapSet(box, this.#selected.has(index)? style.selected: style.normal);
         });
     }
 }

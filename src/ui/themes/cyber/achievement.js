@@ -37,11 +37,11 @@ export default class CyberAchievement extends CyberAchievementUI {
 
         this.labRemakeTimes.text = statistics[pt.TMS].value;
         this.labRemakeTimesJudge.text = statistics[pt.TMS].judge;
-        this.labAchievementCountJudge.color = $ui.gradeColor(statistics[pt.TMS].grade);
+        this.labAchievementCountJudge.color = $ui.common.grade[statistics[pt.TMS].grade];
 
         this.labAchievementCount.text = statistics[pt.CACHV].value;
         this.labAchievementCountJudge.text = statistics[pt.CACHV].judge;
-        this.labAchievementCountJudge.color = $ui.gradeColor(statistics[pt.CACHV].grade);
+        this.labAchievementCountJudge.color = $ui.common.grade[statistics[pt.CACHV].grade];
 
         this.labEventRate.text = parseInt(statistics[pt.REVT].value*100)+'%';
         this.prgEventRate.value = statistics[pt.REVT].value;

@@ -138,12 +138,16 @@ export default class UIManager {
     }
 
     async loadRes(resourceList, preload, onProgress) {
-        let list = [];
-        if(resourceList) list = list.concat(resourceList);
-        if(preload) list = list.concat(preload);
-
-        if(list.length) {
-            await Laya.promises.loader.load(list, Laya.Handler.create(null, onProgress));
+        const cnt = (resourceList?.length || 0)
+            +(preload?.length || 0);
+        if(resourceList && resourceList.length) {
+            const s = resourceList.length / cnt;
+            await Laya.promises.loader.load(resourceList, Laya.Handler.create(null, prg=>onProgress?.(prg*s)));
+        }
+        if(preload && preload.length) {
+            const s = 1 - preload.length / cnt;
+            const l = preload.length / cnt;
+            await Laya.promises.loader.load(preload, Laya.Handler.create(null, prg=>onProgress?.(prg*l+s)));
         }
     }
 
@@ -182,7 +186,7 @@ export default class UIManager {
     #config(view, key, type) {
         const config = this.#configs?.[type]?.[key];
         if(!config) return;
-        if(view.config) return view.config(config);
+        if(view.config && view.config(config)) return;
         const applyConfig = (target, config) => {
             if(!target) return;
             if(typeof config == 'string') {
@@ -293,12 +297,12 @@ export default class UIManager {
         return UIManager.theme(this.#theme, 'configs');
     }
     get common() {
-        return this.#configs?.common;
+        return this.#configs.common;
     }
     gradeColor(grade) {
-        return this.common?.['grade'+grade];
+        return this.common.grade[grade];
     }
     gradeFilter(grade) {
-        return this.common?.['filter'+grade];
+        return this.common.filter[grade];
     }
 }

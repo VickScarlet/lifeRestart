@@ -8,6 +8,12 @@ export default class Main extends MainUI {
         this.btnDiscord.on(Laya.Event.CLICK, this, goto, ['discord']);
     }
 
+    static load() {
+        return [
+            "images/atlas/images/icons.atlas",
+        ]
+    }
+
     init() {
         this.btnDiscord.visible =
         this.btnAchievement.visible =

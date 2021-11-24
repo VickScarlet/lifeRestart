@@ -15,6 +15,18 @@ export default class CyberMain extends CyberMainUI {
         });
     }
 
+    static load() {
+        return [
+            "fonts/方正像素12.ttf",
+            "images/atlas/images/accessories.atlas",
+            "images/atlas/images/border.atlas",
+            "images/atlas/images/button.atlas",
+            "images/atlas/images/icons.atlas",
+            "images/atlas/images/progress.atlas",
+            "images/atlas/images/slider.atlas",
+        ]
+    }
+
     init() {
         this.btnDiscord.visible =
         this.btnAchievement.visible =

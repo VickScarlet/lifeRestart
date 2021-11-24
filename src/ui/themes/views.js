@@ -62,14 +62,108 @@ const def = {
     configs: {
         bgColor: '#222831',
         common: {
-            grade0: '#cccccc',
-            grade1: '#55fffe',
-            grade2: '#b17cff',
-            grade3: '#ffce45',
-            filter0: '#ccccccff',
-            filter0: '#55fffeff',
-            filter0: '#b17cffff',
-            filter0: '#ffce45ff',
+            grade: [
+                '#cccccc',
+                '#55fffe',
+                '#b17cff',
+                '#ffce45',
+            ],
+            filter: [
+                '#ccccccff',
+                '#55fffeff',
+                '#b17cffff',
+                '#ffce45ff',
+            ],
+            card: [
+                {
+                    normal: {
+                        defaultColor: '#464646',
+                        defaultStroke: '#f8f8f8',
+                        defaultLabel: '#eeeeee',
+                        hoverColor: '#c0c0c0',
+                        hoverStroke: '#f8f8f8',
+                        hoverLabel: '#3b3b3b',
+                        lineWidth: 4,
+                        radius: 4,
+                    },
+                    selected: {
+                        defaultColor: '#c0c0c0',
+                        defaultStroke: '#a5ff88',
+                        defaultLabel: '#3b3b3b',
+                        hoverColor: '#c0c0c0',
+                        hoverStroke: '#a5ff88',
+                        hoverLabel: '#3b3b3b',
+                        lineWidth: 4,
+                        radius: 4,
+                    }
+                },
+                {
+                    normal: {
+                        defaultColor: '#6495ed',
+                        defaultStroke: '#f8f8f8',
+                        defaultLabel: '#eeeeee',
+                        hoverColor: '#87cefa',
+                        hoverStroke: '#f8f8f8',
+                        hoverLabel: '#3b3b3b',
+                        lineWidth: 4,
+                        radius: 4,
+                    },
+                    selected: {
+                        defaultColor: '#87cefa',
+                        defaultStroke: '#a5ff88',
+                        defaultLabel: '#3b3b3b',
+                        hoverColor: '#87cefa',
+                        hoverStroke: '#a5ff88',
+                        hoverLabel: '#3b3b3b',
+                        lineWidth: 4,
+                        radius: 4,
+                    }
+                },
+                {
+                    normal: {
+                        defaultColor: '#e2a7ff',
+                        defaultStroke: '#f8f8f8',
+                        defaultLabel: '#eeeeee',
+                        hoverColor: '#e7beff',
+                        hoverStroke: '#f8f8f8',
+                        hoverLabel: '#3b3b3b',
+                        lineWidth: 4,
+                        radius: 4,
+                    },
+                    selected: {
+                        defaultColor: '#e7beff',
+                        defaultStroke: '#a5ff88',
+                        defaultLabel: '#3b3b3b',
+                        hoverColor: '#e7beff',
+                        hoverStroke: '#a5ff88',
+                        hoverLabel: '#3b3b3b',
+                        lineWidth: 4,
+                        radius: 4,
+                    }
+                },
+                {
+                    normal: {
+                        defaultColor: '#ffa07a',
+                        defaultStroke: '#f8f8f8',
+                        defaultLabel: '#eeeeee',
+                        hoverColor: '#f7a989',
+                        hoverStroke: '#f8f8f8',
+                        hoverLabel: '#3b3b3b',
+                        lineWidth: 4,
+                        radius: 4,
+                    },
+                    selected: {
+                        defaultColor: '#f8f8f8',
+                        defaultStroke: '#a5ff88',
+                        defaultLabel: '#eeeeee',
+                        hoverColor: '#3b3b3b',
+                        hoverStroke: '#a5ff88',
+                        hoverLabel: '#3b3b3b',
+                        lineWidth: 4,
+                        radius: 4,
+                    }
+                }
+            ]
         },
         class: {
             btn_main: {
@@ -91,6 +185,9 @@ const def = {
                 hoverLabel: '#eeeeee',
                 lineWidth: 0,
                 radius: 4,
+            },
+            title: {
+                color: '#ffffff',
             }
         },
         pages: {
@@ -102,6 +199,15 @@ const def = {
                 },
                 names: {
                     btnSmall: 'btn_small',
+                }
+            },
+            [pages.TALENT]: {
+                vars: {
+                    btnDrawCard: 'btn_main',
+                    btnNext: 'btn_main',
+                },
+                names: {
+                    title: 'title',
                 }
             }
         },

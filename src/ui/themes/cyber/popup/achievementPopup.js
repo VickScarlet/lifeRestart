@@ -8,7 +8,7 @@ export default class CyberAchievementPopup extends CyberAchievementPopupUI {
         Laya.Tween.clearAll(this.boxBg);
         this.alpha = 0.8;
         this.labName.text = achievement.name;
-        this.labName.color = $ui.gradeColor(achievement.grade);
+        this.labName.color = $ui.common.grade[achievement.grade];
         this.x = - this.width;
         this.boxBg.x = this.boxBg.width;
         await Promise.all([

@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":87,
+    "selectedBox":85,
+    "selecteID":86,
     "props":{"y":1218,"x":562,"width":1125,"sceneColor":"#000000","runtime":"ViewBase","height":2436,"anchorY":0.5,"anchorX":0.5},
     "nodeParent":-1,
     "label":"View",
@@ -53,7 +53,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"text":"UI_Remake","name":"label","fontSize":70,"font":"SimHei","centerY":0,"centerX":0},
+                    "props":{"text":"UI_Remake","name":"label","fontSize":70,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0},
                     "nodeParent":85,
                     "label":"Label(label)",
                     "isDirectory":false,
@@ -148,13 +148,14 @@
                     "props":{"y":-175,"x":100,"width":160,"var":"btnGithub","runtime":"ScaleButton","name":"btnGithub","height":160,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":87,
                     "label":"Box(btnGithub)",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":82,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"top":0,"skin":"images/icons/icon_github.png","right":0,"left":0,"bottom":0,"anchorY":0.5,"anchorX":0.5},
                             "nodeParent":82,
@@ -173,13 +174,14 @@
                     "props":{"y":-355,"x":100,"width":160,"var":"btnDiscord","runtime":"ScaleButton","name":"btnDiscord","height":160,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":87,
                     "label":"Box(btnDiscord)",
-                    "isOpen":false,
+                    "isOpen":true,
                     "isDirectory":true,
                     "isAniNode":true,
                     "hasChild":true,
                     "compId":83,
                     "child":[
                         {
+                            "x":45,
                             "type":"Image",
                             "props":{"top":0,"skin":"images/icons/icon_discord.png","right":0,"left":0,"bottom":0,"anchorY":0.5,"anchorX":0.5},
                             "nodeParent":83,

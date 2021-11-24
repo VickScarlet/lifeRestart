@@ -15,18 +15,8 @@ export default class CyberSummary extends CyberSummaryUI {
 
     init({talents}) {
         const {summary, lastExtendTalent} = core;
-        const gradeFilters = [
-            $ui.common.grade0,
-            $ui.common.grade1,
-            $ui.common.grade2,
-            $ui.common.grade3,
-        ];
-        const gradeColors = [
-            $ui.common.filter0,
-            $ui.common.filter1,
-            $ui.common.filter2,
-            $ui.common.filter3,
-        ];
+        const gradeFilters = $ui.common.filter;
+        const gradeColors = $ui.common.grade;
 
         const age = summary[core.PropertyTypes.HAGE];
         this.labAge.text = ''+age.value;

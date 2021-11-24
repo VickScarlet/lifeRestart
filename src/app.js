@@ -1,9 +1,11 @@
 import UIManager from './ui/uiManager.js';
+import * as utils from './functions/util.js';
 
 globalThis.UIManager =
 globalThis.UI =
 UIManager;
 
+globalThis.$_ = utils;
 class App{
     constructor(){
         this.name = 'lifeRestart';
@@ -87,17 +89,7 @@ class App{
         await $ui.setLoading(UI.pages.LOADING);
         await $ui.switchView(UI.pages.LOADING);
         await core.initial(dataSet=>Laya.promises.loader.load(`data/${this.#language}/${dataSet}.json`, null, Laya.Loader.JSON));
-        await $ui.switchView(UI.pages.MAIN, null, {
-            load: [
-                "fonts/方正像素12.ttf",
-                "images/atlas/images/accessories.atlas",
-                "images/atlas/images/border.atlas",
-                "images/atlas/images/button.atlas",
-                "images/atlas/images/icons.atlas",
-                "images/atlas/images/progress.atlas",
-                "images/atlas/images/slider.atlas",
-            ]
-        });
+        await $ui.switchView(UI.pages.MAIN);
     }
 }
 

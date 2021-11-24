@@ -264,9 +264,9 @@ class ColorfulBox extends Laya.Box {
     constructor() {
         super();
         this.on(Laya.Event.MOUSE_OVER, this, this.onMouse, [Laya.Event.MOUSE_DOWN]);
-        this.on(Laya.Event.MOUSE_DOWN, this, this.onMouse, [Laya.Event.MOUSE_DOWN]);
+        // this.on(Laya.Event.MOUSE_DOWN, this, this.onMouse, [Laya.Event.MOUSE_DOWN]);
         this.on(Laya.Event.MOUSE_OUT, this, this.onMouse, [Laya.Event.MOUSE_OUT]);
-        this.on(Laya.Event.MOUSE_UP, this, this.onMouse, [Laya.Event.MOUSE_UP]);
+        // this.on(Laya.Event.MOUSE_UP, this, this.onMouse, [Laya.Event.MOUSE_UP]);
         this.#draw();
     }
 
@@ -278,7 +278,7 @@ class ColorfulBox extends Laya.Box {
     #hoverLabel = '#000000';
     #color = new RGBAItem({hex: this.#defaultColor, on: ()=>this.#draw()});
     #stroke = new RGBAItem({hex: this.#defaultStroke, on: ()=>this.#draw()});
-    #label = new RGBAItem({hex: this.#defaultLabel, on: (hex)=>{
+    #label = new RGBAItem({hex: this.#defaultLabel, on: ({hex})=>{
         const label = this.getChildByName('label');
         if (!label) return;
         label.color = hex;
@@ -292,6 +292,11 @@ class ColorfulBox extends Laya.Box {
         const label = this.getChildByName('label');
         const tween = (colorItem, target, last) => {
             Laya.Tween.clearAll(colorItem);
+            const distance = colorItem.distance(target, last);
+            if(!isFinite(distance)) {
+                colorItem.hex = target;
+                return;
+            }
             Laya.Tween.to(colorItem, colorItem.cRgb(target), colorItem.distance(target, last) * this.#animationTime);
         }
         switch (type) {
@@ -378,6 +383,9 @@ class ColorfulBox extends Laya.Box {
     }
     set defaultColor(value) {
         this.#defaultColor = value;
+        Laya.Tween.clearAll(this.#color);
+        Laya.Tween.clearAll(this.#stroke);
+        Laya.Tween.clearAll(this.#label);
         this.#color.hex = value;
     }
 
@@ -393,6 +401,9 @@ class ColorfulBox extends Laya.Box {
     }
     set defaultStroke(value) {
         this.#defaultStroke = value;
+        Laya.Tween.clearAll(this.#color);
+        Laya.Tween.clearAll(this.#stroke);
+        Laya.Tween.clearAll(this.#label);
         this.#stroke.hex = value;
     }
 
@@ -410,6 +421,9 @@ class ColorfulBox extends Laya.Box {
         this.#defaultLabel = value;
         const label = this.getChildByName('label');
         if (!label) return;
+        Laya.Tween.clearAll(this.#color);
+        Laya.Tween.clearAll(this.#stroke);
+        Laya.Tween.clearAll(this.#label);
         label.color = value;
     }
 
@@ -441,6 +455,14 @@ class ColorfulBox extends Laya.Box {
     set lineWidth(value) {
         this.#lineWidth = value;
         this.#draw();
+    }
+    get label() {
+        return this.getChildByName('label')?.text;
+    }
+    set label(value) {
+        const label = this.getChildByName('label');
+        if (!label) return;
+        label.text = value;
     }
 
 }

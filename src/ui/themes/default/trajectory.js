@@ -59,9 +59,9 @@ export default class Trajectory extends TrajectoryUI {
         return ['images/slider/vslider_1@3x$bar.png'];
     }
 
-    static #createComponent = plugin.extractComponents(CyberTrajectory.uiView, ['boxTrajectoryItem']);
+    static #createComponent = plugin.extractComponents(Trajectory.uiView, ['boxTrajectoryItem']);
     #createTrajectoryItem() {
-        const item = CyberTrajectory.#createComponent('boxTrajectoryItem');
+        const item = Trajectory.#createComponent('boxTrajectoryItem');
         item.labContent = item.getChildByName('labContent');
         item.labAge = item.getChildByName('hboxAge').getChildByName('labAge');
         return item;
