@@ -35,4 +35,5 @@
    <item name="images/resource/circle.png" type="Image" compress="0" pack="0" quality="80" props="" picType="0" scale="0"/>
    <item name="images/border/talent_item_selected@3x.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=106,150,74,150" picType="0" scale="0"/>
    <item name="images/accessories/titlebar@3x.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=0,348,116,348" picType="0" scale="0"/>
+   <item name="images/button/button_001.png" type="Button" compress="0" pack="0" quality="80" props="sizeGrid=4,4,4,4@@!@@labelColors=#000000,#ea6c53,#ea6c53" picType="0" scale="0"/>
 </res>

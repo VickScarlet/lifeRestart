@@ -93,7 +93,7 @@ function checkProp(property, condition) {
         case '!=':
             if(Array.isArray(propData))
                 return !propData.includes(conditionData);
-            return propData == conditionData;
+            return propData != conditionData;
         case '?':
             if(Array.isArray(propData)) {
                 for(const p of propData)
@@ -121,7 +121,7 @@ function extractMaxTriggers(condition) {
         // Not age related, single trigger.
         return 1;
     }
-    
+
     const age_list = match_object[1].split(",");
     return age_list.length;
 }

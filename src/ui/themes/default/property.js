@@ -1,4 +1,4 @@
-export default class cyberProperty extends CyberPropertyUI {
+export default class Property extends PropertyUI {
     constructor() {
         super();
 
@@ -60,8 +60,8 @@ export default class cyberProperty extends CyberPropertyUI {
         if (this.total < this.#propertyPoints) {
             return;
         }
-        UIManager.getInstance().switchView(
-            UIManager.getInstance().themes.TRAJECTORY,
+        $ui.switchView(
+            UI.pages.TRAJECTORY,
             {
                 propertyAllocate: this.#propertyAllocate,
                 talents: this.listSelectedTalents.array,

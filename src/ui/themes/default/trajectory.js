@@ -1,4 +1,4 @@
-export default class CyberTrajectory extends CyberTrajectoryUI {
+export default class Trajectory extends TrajectoryUI {
     constructor() {
         super();
         let pos1 = [0, 0];
@@ -141,7 +141,7 @@ export default class CyberTrajectory extends CyberTrajectoryUI {
 
     onSummary() {
         const talents = this.#talents;
-        UIManager.getInstance().switchView(UIManager.getInstance().themes.SUMMARY, {talents});
+        $ui.switchView(UI.pages.SUMMARY, {talents});
     }
 
     get speed() {

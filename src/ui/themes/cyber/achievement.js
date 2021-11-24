@@ -1,7 +1,7 @@
-export default class cyberAchievement extends CyberAchievementUI {
+export default class CyberAchievement extends CyberAchievementUI {
     constructor() {
         super();
-        this.btnBack.on(Laya.Event.CLICK, this, () => UIManager.getInstance().switchView(UIManager.getInstance().themes.MAIN));
+        this.btnBack.on(Laya.Event.CLICK, this, () => $ui.switchView(UI.pages.MAIN));
         const min = Math.min(this.btnAchievement.fontSize, this.btnStatistics.fontSize);
         const max = Math.max(this.btnAchievement.fontSize, this.btnStatistics.fontSize);
         this.#state = {min, max};
@@ -28,24 +28,6 @@ export default class cyberAchievement extends CyberAchievementUI {
     #state;
     #tweens;
 
-    get colorGrades() {
-        return [
-            this.colorGrade0.color,
-            this.colorGrade1.color,
-            this.colorGrade2.color,
-            this.colorGrade3.color,
-        ];
-    }
-
-    get colorFilters() {
-        return [
-            this.colorGrade0.text,
-            this.colorGrade1.text,
-            this.colorGrade2.text,
-            this.colorGrade3.text,
-        ]
-    }
-
     init() {
         this.switch('statistics', 0);
 
@@ -55,11 +37,11 @@ export default class cyberAchievement extends CyberAchievementUI {
 
         this.labRemakeTimes.text = statistics[pt.TMS].value;
         this.labRemakeTimesJudge.text = statistics[pt.TMS].judge;
-        this.labAchievementCountJudge.color = this.colorGrades[statistics[pt.TMS].grade];
+        this.labAchievementCountJudge.color = $ui.gradeColor(statistics[pt.TMS].grade);
 
         this.labAchievementCount.text = statistics[pt.CACHV].value;
         this.labAchievementCountJudge.text = statistics[pt.CACHV].judge;
-        this.labAchievementCountJudge.color = this.colorGrades[statistics[pt.CACHV].grade];
+        this.labAchievementCountJudge.color = $ui.gradeColor(statistics[pt.CACHV].grade);
 
         this.labEventRate.text = parseInt(statistics[pt.REVT].value*100)+'%';
         this.prgEventRate.value = statistics[pt.REVT].value;
@@ -114,6 +96,6 @@ export default class cyberAchievement extends CyberAchievementUI {
             uncomplete.visible = true;
         }
 
-        box.colorFilter = this.colorFilters[dataSource.grade];
+        box.colorFilter = $ui.gradeFilter(dataSource.grade);
     }
 }

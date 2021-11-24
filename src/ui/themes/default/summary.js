@@ -1,4 +1,4 @@
-export default class cyberSummary extends CyberSummaryUI {
+export default class Summary extends SummaryUI {
     constructor() {
         super();
         this.listSelectedTalents.renderHandler = Laya.Handler.create(this, this.renderTalent, null, false);
@@ -7,34 +7,26 @@ export default class cyberSummary extends CyberSummaryUI {
 
     #selectedTalent;
 
-    get gradeFilters() {
-        return [
-            this.colorGrade0.text,
-            this.colorGrade1.text,
-            this.colorGrade2.text,
-            this.colorGrade3.text,
-        ];
-    }
-
-    get gradeColors() {
-        return [
-            this.colorGrade0.color,
-            this.colorGrade1.color,
-            this.colorGrade2.color,
-            this.colorGrade3.color,
-        ];
-    }
-
     onAgain() {
         core.talentExtend(this.#selectedTalent);
         core.times ++;
-        UIManager.getInstance().switchView(UIManager.getInstance().themes.MAIN);
+        $ui.switchView(UI.pages.MAIN);
     }
 
     init({talents}) {
         const {summary, lastExtendTalent} = core;
-        const gradeFilters = this.gradeFilters;
-        const gradeColors = this.gradeColors;
+        const gradeFilters = [
+            $ui.common.grade0,
+            $ui.common.grade1,
+            $ui.common.grade2,
+            $ui.common.grade3,
+        ];
+        const gradeColors = [
+            $ui.common.filter0,
+            $ui.common.filter1,
+            $ui.common.filter2,
+            $ui.common.filter3,
+        ];
 
         const age = summary[core.PropertyTypes.HAGE];
         this.labAge.text = ''+age.value;

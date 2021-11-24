@@ -1,4 +1,4 @@
-export default class CyberTalent extends CyberTalentUI {
+export default class Talent extends TalentUI {
     constructor() {
         super();
         this.btnDrawCard.on(Laya.Event.CLICK, this, this.onClickDrawCard);
@@ -40,7 +40,7 @@ export default class CyberTalent extends CyberTalentUI {
         }
 
         const talents = [...this.#selected].map(index => this.listTalents.array[index]);
-        UIManager.getInstance().switchView(UIManager.getInstance().themes.PROPERTY, { talents });
+        $ui.switchView(UI.pages.PROPERTY, { talents });
     }
 
     renderTalent(box, index) {

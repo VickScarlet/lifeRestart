@@ -1,4 +1,8 @@
-import ViewTypes from './ui/themes/views.js';
+import UIManager from './ui/uiManager.js';
+
+globalThis.UIManager =
+globalThis.UI =
+UIManager;
 
 class App{
     constructor(){
@@ -15,13 +19,14 @@ class App{
 
     #initLaya() {
         // Laya.init(1125, 2436, Laya.WebGL);
+        Laya.Config.isAntialias = true;
         Laya.init(...this.#fitScreen, Laya.WebGL);
 
         Laya.stage.alignV = Laya.Stage.ALIGN_MIDDLE;
         Laya.stage.alignH = Laya.Stage.ALIGN_CENTER;
 
         Laya.stage.scaleMode = "showall";
-        Laya.stage.bgColor = "#04131f";
+        Laya.stage.bgColor = "#000000";
         window.onresize = () => Laya.stage.size(...this.#fitScreen);
     }
 
@@ -67,7 +72,7 @@ class App{
 
     resigterEvent() {
         $$on('achievement', achievement => {
-            UIManager.getInstance().popup(UIManager.getInstance().themes.popup.ACHIEVEMENT, {achievement});
+            $ui.popup(UI.popups.ACHIEVEMENT, {achievement});
         })
     }
 
@@ -76,13 +81,13 @@ class App{
     }) {
         this.resigterEvent();
         this.#initLaya();
-        const uiManager = UIManager.getInstance();
-        uiManager.themes = ViewTypes.themes.default;
+        globalThis.$ui = UIManager.getInstance();
+        // $ui.theme = 'cyber';
         await this.#setLanguage(language);
-        await uiManager.setLoading(uiManager.themes.LOADING);
-        await uiManager.switchView(uiManager.themes.LOADING);
+        await $ui.setLoading(UI.pages.LOADING);
+        await $ui.switchView(UI.pages.LOADING);
         await core.initial(dataSet=>Laya.promises.loader.load(`data/${this.#language}/${dataSet}.json`, null, Laya.Loader.JSON));
-        await uiManager.switchView(uiManager.themes.MAIN, null, {
+        await $ui.switchView(UI.pages.MAIN, null, {
             load: [
                 "fonts/方正像素12.ttf",
                 "images/atlas/images/accessories.atlas",
