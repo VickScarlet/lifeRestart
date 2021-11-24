@@ -390,8 +390,9 @@
         "name": "神丶暴龙战士灬张杨"
     },
     {
-        "group": 2,
-        "name": "NovaDNG"
+        "group": 1,
+        "name": "NovaDNG",
+        "comment": "感谢你们为世界带来一些欢乐"
     },
     {
         "group": 2,
@@ -2438,6 +2439,14 @@
     {
         "group": 2,
         "name": "路痴"
+    },
+    {
+        "group": 2,
+        "name": "拓舟"
+    },
+    {
+        "group": 2,
+        "name": "又找不到了qwq"
     },
     {
         "group": 2,
