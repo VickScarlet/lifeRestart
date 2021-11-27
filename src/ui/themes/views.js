@@ -27,18 +27,22 @@ const cyber = {
     popups: {
         [popups.ACHIEVEMENT]: "cyber/popup/achievementPopup",
     },
-    common: {
-        grade0: '#cccccc',
-        grade1: '#55fffe',
-        grade2: '#b17cff',
-        grade3: '#ffce45',
-        filter0: '#ccccccff',
-        filter0: '#55fffeff',
-        filter0: '#b17cffff',
-        filter0: '#ffce45ff',
-    },
     configs: {
         bgColor: '#04131f',
+        common: {
+            grade: [
+                '#cccccc',
+                '#55fffe',
+                '#b17cff',
+                '#ffce45',
+            ],
+            filter: [
+                '#ccccccff',
+                '#55fffeff',
+                '#b17cffff',
+                '#ffce45ff',
+            ],
+        },
     }
 }
 

@@ -87,7 +87,7 @@ class App{
         this.resigterEvent();
         this.#initLaya();
         globalThis.$ui = UIManager.getInstance();
-        // $ui.theme = 'cyber';
+        $ui.theme = theme;
         await this.#setLanguage(language);
         await $ui.setLoading(UI.pages.LOADING);
         await $ui.switchView(UI.pages.LOADING);
