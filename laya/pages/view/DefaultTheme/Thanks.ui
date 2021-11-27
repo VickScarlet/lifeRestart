@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":1,
+    "selecteID":3,
     "props":{"width":1125,"sceneColor":"#000000","runtime":"ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
@@ -14,16 +14,28 @@
     "child":[
         {
             "x":15,
-            "type":"Button",
-            "props":{"y":200,"var":"btnBack","skin":"images/button/button_back@3x.png","name":"btnBack","left":30},
+            "type":"Box",
+            "props":{"width":260,"var":"btnBack","top":50,"runtime":"ColorfulBox","right":50,"name":"btnBack","height":90,"anchorY":0.5,"anchorX":0.5},
             "nodeParent":1,
-            "label":"Button(btnBack)",
-            "isDirectory":false,
+            "label":"Box(btnBack)",
+            "isOpen":false,
+            "isDirectory":true,
             "isAniNode":true,
-            "hasChild":false,
-            "compId":2,
+            "hasChild":true,
+            "compId":3,
             "child":[
-                ]
+                {
+                    "type":"Label",
+                    "props":{"y":1028,"x":332,"text":"UI_Back","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0},
+                    "nodeParent":3,
+                    "label":"Label(label)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":4,
+                    "child":[
+                        ]
+                }]
         }],
     "animations":[
         {

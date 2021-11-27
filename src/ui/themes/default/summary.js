@@ -1,6 +1,7 @@
 export default class Summary extends SummaryUI {
     constructor() {
         super();
+        this.listSummary.renderHandler = Laya.Handler.create(this, this.renderSummary, null, false);
         this.listSelectedTalents.renderHandler = Laya.Handler.create(this, this.renderTalent, null, false);
         this.btnAgain.on(Laya.Event.CLICK, this, this.onAgain);
     }
@@ -15,63 +16,22 @@ export default class Summary extends SummaryUI {
 
     init({talents}) {
         const {summary, lastExtendTalent} = core;
-        const gradeFilters = [
-            $ui.common.grade0,
-            $ui.common.grade1,
-            $ui.common.grade2,
-            $ui.common.grade3,
-        ];
-        const gradeColors = [
-            $ui.common.filter0,
-            $ui.common.filter1,
-            $ui.common.filter2,
-            $ui.common.filter3,
-        ];
 
-        const age = summary[core.PropertyTypes.HAGE];
-        this.labAge.text = ''+age.value;
-        this.labAgeJudge.text = age.judge;
-        this.labAgeJudge.color = gradeColors[age.grade];
-
-        const sum = summary[core.PropertyTypes.SUM];
-        this.labTotal.text = ''+sum.value;
-        this.labTotalJudge.text = sum.judge;
-        this.labTotalJudge.color = gradeColors[sum.grade];
-
-        const chr = summary[core.PropertyTypes.HCHR];
-        this.labCharm.text = ''+chr.value;
-        this.prgCharm.value = chr.progress;
-        this.labCharmJudge.text = chr.judge;
-        this.labCharmJudge.color = gradeColors[chr.grade];
-        this.boxCharmGrade.colorFilter = gradeFilters[chr.grade];
-
-        const int = summary[core.PropertyTypes.HINT];
-        this.labIntelligence.text = ''+int.value;
-        this.prgIntelligence.value = int.progress;
-        this.labIntelligenceJudge.text = int.judge;
-        this.labIntelligenceJudge.color = gradeColors[int.grade];
-        this.boxIntelligenceGrade.colorFilter = gradeFilters[int.grade];
-
-        const str = summary[core.PropertyTypes.HSTR];
-        this.labStrength.text = ''+str.value;
-        this.prgStrength.value = str.progress;
-        this.labStrengthJudge.text = str.judge;
-        this.labStrengthJudge.color = gradeColors[str.grade];
-        this.boxStrengthGrade.colorFilter = gradeFilters[str.grade];
-
-        const mny = summary[core.PropertyTypes.HMNY];
-        this.labMoney.text = ''+mny.value;
-        this.prgMoney.value = mny.progress;
-        this.labMoneyJudge.text = mny.judge;
-        this.labMoneyJudge.color = gradeColors[mny.grade];
-        this.boxMoneyGrade.colorFilter = gradeFilters[mny.grade];
-
-        const spr = summary[core.PropertyTypes.HSPR];
-        this.labSpirit.text = ''+spr.value;
-        this.prgSpirit.value = spr.progress;
-        this.labSpiritJudge.text = spr.judge;
-        this.labSpiritJudge.color = gradeColors[spr.grade];
-        this.boxSpiritGrade.colorFilter = gradeFilters[spr.grade];
+        this.listSummary.array = [
+            [core.PropertyTypes.HCHR, $lang.UI_Property_Charm],
+            [core.PropertyTypes.HINT, $lang.UI_Property_Intelligence],
+            [core.PropertyTypes.HSTR, $lang.UI_Property_Strength],
+            [core.PropertyTypes.HMNY, $lang.UI_Property_Money],
+            [core.PropertyTypes.HSPR, $lang.UI_Property_Spirit],
+            [core.PropertyTypes.HAGE, $lang.UI_Final_Age],
+            [core.PropertyTypes.SUM, $lang.UI_Total_Judge],
+        ].map(([type, key]) => {
+            const data = summary[type];
+            return {
+                label: `${key}${$lang.UI_Colon} ${data.value} ${$lang[data.judge]}`,
+                grade: data.grade,
+            }
+        });
 
         talents.sort(({id:a, grade:ag}, {id:b, grade:bg},)=>{
             if(a == lastExtendTalent) return -1;
@@ -81,45 +41,17 @@ export default class Summary extends SummaryUI {
         this.#selectedTalent = talents[0].id;
         this.listSelectedTalents.array = talents;
     }
-
+    renderSummary(box) {
+        const {label, grade} = box.dataSource;
+        box.label = label;
+        $_.deepMapSet(box, $ui.common.summary[grade]);
+    }
     renderTalent(box) {
         const dataSource = box.dataSource;
-
-        const labTitle = box.getChildByName("labTitle");
-        const grade1 = box.getChildByName("grade1");
-        const grade2 = box.getChildByName("grade2");
-        const grade3 = box.getChildByName("grade3");
-        const labDescription = box.getChildByName("labDescription");
-        const selected = box.getChildByName("selected");
-        const unselected = box.getChildByName("unselected");
-
-        labTitle.text = dataSource.name;
-        labDescription.text = dataSource.description;
-        switch (dataSource.grade) {
-            case 1:
-                grade1.visible = true;
-                grade2.visible = false;
-                grade3.visible = false;
-                break;
-            case 2:
-                grade1.visible = false;
-                grade2.visible = true;
-                grade3.visible = false;
-                break;
-            case 3:
-                grade1.visible = false;
-                grade2.visible = false;
-                grade3.visible = true;
-                break;
-            default:
-                grade1.visible = false;
-                grade2.visible = false;
-                grade3.visible = false;
-                break;
-        }
-
-        selected.visible = dataSource.id == this.#selectedTalent;
-        unselected.visible = !selected.visible;
+        box.label = $_.format($lang.F_TalentSelection, dataSource);
+        const style = $ui.common.card[dataSource.grade];
+        $_.deepMapSet(box, dataSource.id == this.#selectedTalent? style.selected: style.normal);
+        box.getChildByName('blank').pause = dataSource.id != this.#selectedTalent;
         box.off(Laya.Event.CLICK, this, this.onSelectTalent);
         box.on(Laya.Event.CLICK, this, this.onSelectTalent, [dataSource.id]);
     }

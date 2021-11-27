@@ -45,6 +45,7 @@ export default ({
     UI_Manual: '手动',
     UI_Auto: '自动',
 
+    UI_Goto_Summary: '人生总结',
     UI_Title_Summary: '人生总结',
     UI_Talent_Extend: '天赋：你可以选择一个，下辈子还能抽到',
     UI_Remake_Again: '再次重开',
@@ -57,6 +58,9 @@ export default ({
     UI_Event_Collection_Rate: '事件收集率',
     UI_Talent_Collection_Rate: '天赋收集率',
     UI_Statistics: '统计',
+    UI_Rank: '排行榜',
+
+    UI_Achievement_Achieve: '获得成就',
 
     UI_Judge_Level_0: '地狱',
     UI_Judge_Level_1: '折磨',
@@ -111,4 +115,8 @@ export default ({
     UI_Achievement_Count_Judge_Level_3: '抽到橙色概率四倍',
     UI_Achievement_Count_Judge_Level_4: '抽到橙色概率五倍',
     UI_Achievement_Count_Judge_Level_5: '抽到橙色概率六倍',
+
+    F_RemakeTimes: '已重开{0}次',
+    F_AchievementCount: '成就达成{0}个',
+    F_TalentSelection: '{name}（{description}）',
 });

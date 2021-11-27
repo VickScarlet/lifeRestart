@@ -46,9 +46,11 @@ export default ({
     UI_Manual: 'Manual',
     UI_Auto: 'Auto',
 
+    UI_Goto_Summary: 'Goto Summary',
     UI_Title_Summary: 'Life Summary',
     UI_Talent_Extend: 'Talent, You can choose one to extend',
     UI_Remake_Again: 'Remake Again',
+    UI_Rank: 'Rank',
 
     UI_Final_Age: 'Age',
     UI_Total_Judge: 'Judge',
@@ -58,35 +60,37 @@ export default ({
     UI_Event_Collection_Rate: 'Event Collection',
     UI_Talent_Collection_Rate: 'Talent Collection',
 
-    UI_Judge_Level_0: '地狱',
-    UI_Judge_Level_1: '折磨',
-    UI_Judge_Level_2: '不佳',
-    UI_Judge_Level_3: '普通',
-    UI_Judge_Level_4: '优秀',
-    UI_Judge_Level_5: '罕见',
-    UI_Judge_Level_6: '逆天',
-    UI_Judge_Level_7: '传说',
+    UI_Achievement_Achieve: 'Achievement',
 
-    UI_Spirit_Judge_Level_0: '地狱',
-    UI_Spirit_Judge_Level_1: '折磨',
-    UI_Spirit_Judge_Level_2: '不幸',
-    UI_Spirit_Judge_Level_3: '普通',
-    UI_Spirit_Judge_Level_4: '幸福',
-    UI_Spirit_Judge_Level_5: '极乐',
-    UI_Spirit_Judge_Level_6: '天命',
+    UI_Judge_Level_0: 'Hell', // 地狱
+    UI_Judge_Level_1: 'Worse', // 折磨
+    UI_Judge_Level_2: 'Bad', // 不佳
+    UI_Judge_Level_3: 'Normal', // 普通
+    UI_Judge_Level_4: 'Good', // 优秀
+    UI_Judge_Level_5: 'Great', // 罕见
+    UI_Judge_Level_6: 'Excellent', // 逆天
+    UI_Judge_Level_7: 'Perfect', // 传说
 
-    UI_AGE_Judge_Level_0: '胎死腹中',
-    UI_AGE_Judge_Level_1: '早夭',
-    UI_AGE_Judge_Level_2: '少年',
-    UI_AGE_Judge_Level_3: '盛年',
-    UI_AGE_Judge_Level_4: '中年',
-    UI_AGE_Judge_Level_5: '花甲',
-    UI_AGE_Judge_Level_6: '古稀',
-    UI_AGE_Judge_Level_7: '杖朝',
-    UI_AGE_Judge_Level_8: '南山',
-    UI_AGE_Judge_Level_9: '不老',
-    UI_AGE_Judge_Level_10: '修仙',
-    UI_AGE_Judge_Level_11: '仙寿',
+    UI_Spirit_Judge_Level_0: 'Hell', // 地狱
+    UI_Spirit_Judge_Level_1: 'Tortured', // 折磨
+    UI_Spirit_Judge_Level_2: 'Unlucky', // 不幸
+    UI_Spirit_Judge_Level_3: 'Normal', // 普通
+    UI_Spirit_Judge_Level_4: 'Happy', // 幸福
+    UI_Spirit_Judge_Level_5: 'Blissful ', // 极乐
+    UI_Spirit_Judge_Level_6: 'Paradise', // 天命
+
+    UI_AGE_Judge_Level_0: 'Stillborn', // 胎死腹中
+    UI_AGE_Judge_Level_1: 'Early', // 早夭
+    UI_AGE_Judge_Level_2: 'Young', // 少年
+    UI_AGE_Judge_Level_3: 'Heyday', // 盛年
+    UI_AGE_Judge_Level_4: 'Middle', // 中年
+    UI_AGE_Judge_Level_5: 'Sexagenarian', // 花甲
+    UI_AGE_Judge_Level_6: 'Septuagenarian', // 古稀
+    UI_AGE_Judge_Level_7: 'Octogenarian', // 杖朝
+    UI_AGE_Judge_Level_8: 'Nonagenarian', // 南山
+    UI_AGE_Judge_Level_9: '不老', // 不老
+    UI_AGE_Judge_Level_10: '修仙', // 修仙
+    UI_AGE_Judge_Level_11: '仙寿', // 仙寿
 
     UI_Intelligence_Judge_Level_7: '识海',
     UI_Intelligence_Judge_Level_8: '元神',
@@ -97,4 +101,8 @@ export default ({
     UI_Strength_Judge_Level_9: '金丹',
     UI_Strength_Judge_Level_10: '元婴',
     UI_Strength_Judge_Level_11: '仙体',
+
+    F_RemakeTimes: 'Remake {0} Times',
+    F_AchievementCount: 'Achievement {0}',
+    F_TalentSelection: '{name} ({description})',
 });

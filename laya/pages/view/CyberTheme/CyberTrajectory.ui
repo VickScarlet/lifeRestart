@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":14,
-    "selecteID":104,
+    "selecteID":13,
     "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberTrajectory.png","runtime":"ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
@@ -559,7 +559,7 @@
                 {
                     "x":30,
                     "type":"Button",
-                    "props":{"y":-155,"width":500,"var":"btnSummary","skin":"images/button/button_main@3x.png","name":"btnSummary","label":"人生总结","centerX":0},
+                    "props":{"y":-155,"width":500,"var":"btnSummary","skin":"images/button/button_main@3x.png","name":"btnSummary","label":"UI_Goto_Summary","centerX":0},
                     "nodeParent":14,
                     "label":"Button(btnSummary)",
                     "isOpen":true,

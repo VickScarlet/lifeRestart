@@ -69,7 +69,9 @@ class App{
                 this.#language = App.languages['zh-cn'];
                 break;
         }
-        Laya.Text.langPacks = (await import(`./i18n/${this.#language}.js`)).default;
+        globalThis.$lang =
+        Laya.Text.langPacks =
+            (await import(`./i18n/${this.#language}.js`)).default;
     }
 
     resigterEvent() {
@@ -79,7 +81,8 @@ class App{
     }
 
     async start({
-        language = App.languages['zh-cn']
+        language = App.languages['zh-cn'],
+        theme = 'default',
     }) {
         this.resigterEvent();
         this.#initLaya();

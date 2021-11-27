@@ -55,10 +55,6 @@ export default class CyberTrajectory extends CyberTrajectoryUI {
     #speed;
     #auto;
 
-    static load() {
-        return ['images/slider/vslider_1@3x$bar.png'];
-    }
-
     static #createComponent = plugin.extractComponents(CyberTrajectory.uiView, ['boxTrajectoryItem']);
     #createTrajectoryItem() {
         const item = CyberTrajectory.#createComponent('boxTrajectoryItem');

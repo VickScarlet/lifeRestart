@@ -97,42 +97,6 @@ export default class Property extends PropertyUI {
         this.btnStrengthReduce.disabled = this.btnStrengthReduce.gray = false;
         this.btnMoneyIncrease.disabled = this.btnMoneyIncrease.gray = false;
         this.btnMoneyReduce.disabled = this.btnMoneyReduce.gray = false;
-
-        if (this.total >= this.#propertyPoints) {
-            this.btnCharmIncrease.disabled = this.btnCharmIncrease.gray = true;
-            this.btnIntelligenceIncrease.disabled = this.btnIntelligenceIncrease.gray = true;
-            this.btnStrengthIncrease.disabled = this.btnStrengthIncrease.gray = true;
-            this.btnMoneyIncrease.disabled = this.btnMoneyIncrease.gray = true;
-        } else if (this.total <= 0) {
-            this.btnCharmReduce.disabled = this.btnCharmReduce.gray = true;
-            this.btnIntelligenceReduce.disabled = this.btnIntelligenceReduce.gray = true;
-            this.btnStrengthReduce.disabled = this.btnStrengthReduce.gray = true;
-            this.btnMoneyReduce.disabled = this.btnMoneyReduce.gray = true;
-        }
-
-        if (charm <= this.#propertyAllocateLimit[0]) {
-            this.btnCharmReduce.disabled = this.btnCharmReduce.gray = true;
-        } else if (charm >= this.#propertyAllocateLimit[1]) {
-            this.btnCharmIncrease.disabled = this.btnCharmIncrease.gray = true;
-        }
-
-        if (intelligence <= this.#propertyAllocateLimit[0]) {
-            this.btnIntelligenceReduce.disabled = this.btnIntelligenceReduce.gray = true;
-        } else if (intelligence >= this.#propertyAllocateLimit[1]) {
-            this.btnIntelligenceIncrease.disabled = this.btnIntelligenceIncrease.gray = true;
-        }
-
-        if (strength <= this.#propertyAllocateLimit[0]) {
-            this.btnStrengthReduce.disabled = this.btnStrengthReduce.gray = true;
-        } else if (strength >= this.#propertyAllocateLimit[1]) {
-            this.btnStrengthIncrease.disabled = this.btnStrengthIncrease.gray = true;
-        }
-
-        if (money <= this.#propertyAllocateLimit[0]) {
-            this.btnMoneyReduce.disabled = this.btnMoneyReduce.gray = true;
-        } else if (money >= this.#propertyAllocateLimit[1]) {
-            this.btnMoneyIncrease.disabled = this.btnMoneyIncrease.gray = true;
-        }
     }
 
     check(left, right, value) {
@@ -209,35 +173,9 @@ export default class Property extends PropertyUI {
     renderTalent(box) {
         const dataSource = box.dataSource;
 
-        const labTitle = box.getChildByName("labTitle");
-        const grade1 = box.getChildByName("grade1");
-        const grade2 = box.getChildByName("grade2");
-        const grade3 = box.getChildByName("grade3");
-        const labDescription = box.getChildByName("labDescription");
+        box.label = $_.format($lang.F_TalentSelection, dataSource);
+        const style = $ui.common.card[dataSource.grade].normal;
 
-        labTitle.text = dataSource.name;
-        labDescription.text = dataSource.description;
-        switch (dataSource.grade) {
-            case 1:
-                grade1.visible = true;
-                grade2.visible = false;
-                grade3.visible = false;
-                break;
-            case 2:
-                grade1.visible = false;
-                grade2.visible = true;
-                grade3.visible = false;
-                break;
-            case 3:
-                grade1.visible = false;
-                grade2.visible = false;
-                grade3.visible = true;
-                break;
-            default:
-                grade1.visible = false;
-                grade2.visible = false;
-                grade3.visible = false;
-                break;
-        }
+        $_.deepMapSet(box, style);
     }
 }

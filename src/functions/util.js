@@ -67,4 +67,36 @@ function mapSet(target, source) {
         target[key] = source[key];
 }
 
-export { clone, max, min, sum, average, weightRandom, listRandom, getListValuesMap, mapConvert, getConvertedMap, mapSet };
+function deepMapSet(target, source) {
+    for(const key in source) {
+        if(typeof source[key] === 'object')
+            deepMapSet(target[key], source[key]);
+        else
+            target[key] = source[key];
+    }
+    return target;
+}
+
+
+function format(str, ...args) {
+    const replace = set => (match, key) => {
+        const value = set[key];
+        switch(typeof value) {
+            case 'object': return JSON.stringify(value);
+            case 'boolean':
+            case 'number':
+            case 'string': return value;
+            default: return value?.toString?.() || match;
+        }
+    };
+
+    switch(args.length) {
+        case 0: return str;
+        case 1:
+            if (typeof(args[0]) != "object") break;
+            return str.replace(/{(.+?)}/g, replace(args[0]));
+    }
+    return str.replace(/{(\d+)}/g, replace(args));
+}
+
+export { clone, max, min, sum, average, weightRandom, listRandom, getListValuesMap, mapConvert, getConvertedMap, mapSet, deepMapSet, format };

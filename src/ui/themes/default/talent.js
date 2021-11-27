@@ -36,10 +36,16 @@ export default class Talent extends TalentUI {
     renderTalent(box, index) {
         const dataSource = box.dataSource;
 
-        box.label = `${dataSource.name}(${dataSource.description})`;
-        const style = $ui.common.card[dataSource.grade];
+        const blank = box.getChildByName('blank');
+        box.label = $_.format($lang.F_TalentSelection, dataSource);
 
-        $_.mapSet(box, this.#selected.has(index)? style.selected: style.normal);
+        const style = $ui.common.card[dataSource.grade];
+        const changeStyle = () => {
+            const selected = this.#selected.has(index);
+            blank.pause = !selected;
+            $_.deepMapSet(box, selected? style.selected: style.normal);
+        }
+        changeStyle();
 
         box.offAll(Laya.Event.CLICK);
         box.on(Laya.Event.CLICK, this, () => {
@@ -56,7 +62,7 @@ export default class Talent extends TalentUI {
                 ? 'UI_Next'
                 : 'UI_Talent_Select_Uncomplete';
 
-            $_.mapSet(box, this.#selected.has(index)? style.selected: style.normal);
+            changeStyle();
         });
     }
 }

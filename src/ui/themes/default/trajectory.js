@@ -14,40 +14,6 @@ export default class Trajectory extends TrajectoryUI {
         this.btnSummary.on(Laya.Event.CLICK, this, this.onSummary);
 
         this.panelTrajectory.vScrollBar.elasticDistance = 150;
-
-        let interval = null;
-        let timeout = null;
-
-        const scroll = alter => {
-            let value = this.panelTrajectory.vScrollBar.value + alter;
-            if(value < 0) value = 0;
-            if(value > this.panelTrajectory.vScrollBar.max) value = this.panelTrajectory.vScrollBar.max;
-            this.panelTrajectory.scrollTo(0, value);
-        }
-        const on = (btn, alter) => {
-            btn.off(Laya.Event.CLICK, this, scroll);
-            btn.on(Laya.Event.CLICK, this, scroll, [100*alter]);
-            timeout = setTimeout(() => {
-                btn.off(Laya.Event.CLICK, this, scroll);
-                interval = setInterval(() => scroll(10*alter), 10);
-            }, 100);
-        }
-        const clear = () => {
-            if(interval) {
-                clearInterval(interval);
-                interval = null;
-            }
-            if(timeout) {
-                clearTimeout(timeout);
-                timeout = null;
-            }
-        };
-        this.btnUp.on(Laya.Event.MOUSE_DOWN, this, on, [this.btnUp, -1]);
-        this.btnDown.on(Laya.Event.MOUSE_DOWN, this, on, [this.btnDown, 1]);
-        this.btnUp.on(Laya.Event.MOUSE_UP, this, clear);
-        this.btnUp.on(Laya.Event.MOUSE_OUT, this, clear);
-        this.btnDown.on(Laya.Event.MOUSE_UP, this, clear);
-        this.btnDown.on(Laya.Event.MOUSE_OUT, this, clear);
         this.scbSpeed.on(Laya.Event.CHANGE, this, () => this.speed = this.scbSpeed.value);
         this.scbSpeed.on(Laya.Event.MOUSE_UP, this, () => this.onNext());
     }
@@ -56,7 +22,10 @@ export default class Trajectory extends TrajectoryUI {
     #auto;
 
     static load() {
-        return ['images/slider/vslider_1@3x$bar.png'];
+        return [
+            "images/atlas/images/progress.atlas",
+            'images/atlas/images/slider.atlas',
+        ];
     }
 
     static #createComponent = plugin.extractComponents(Trajectory.uiView, ['boxTrajectoryItem']);
@@ -64,6 +33,10 @@ export default class Trajectory extends TrajectoryUI {
         const item = Trajectory.#createComponent('boxTrajectoryItem');
         item.labContent = item.getChildByName('labContent');
         item.labAge = item.getChildByName('hboxAge').getChildByName('labAge');
+        const config = $ui.common.trajectoryItem;
+        $_.deepMapSet(item, config.box);
+        item.getChildByName('hboxAge')._childs.forEach(child => child.color = config.ageColor);
+        item.labContent.color = config.contentColor;
         return item;
     }
     #isEnd;

@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":61,
+    "selectedBox":3,
+    "selecteID":7,
     "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberAchievement.png","runtime":"ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
@@ -92,7 +92,7 @@
                         {
                             "x":45,
                             "type":"Label",
-                            "props":{"text":"排行榜","fontSize":50,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":40,"anchorY":0.5,"anchorX":0.5},
+                            "props":{"text":"UI_Rank","fontSize":50,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":40,"anchorY":0.5,"anchorX":0.5},
                             "nodeParent":3,
                             "label":"Label",
                             "isDirectory":false,

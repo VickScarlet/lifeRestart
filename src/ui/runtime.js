@@ -466,3 +466,61 @@ class ColorfulBox extends Laya.Box {
     }
 
 }
+
+class BlankBox extends Laya.Box {
+    constructor() {
+        super();
+        this.mask = new Laya.Sprite();
+        this.#blank = new Laya.Sprite();
+        this.addChild(this.#blank);
+    }
+
+    #blank;
+    #timeLine;
+    #pause = true;
+
+    #draw() {
+        this.mask.graphics.clear();
+        this.#blank.graphics.clear();
+        this.mask.graphics.drawRect(0, 0, this.width, this.height, '#000000');
+        this.#blank.graphics.drawRect(0, 0, this.width, this.height, '#000000');
+        if(this.#timeLine) this.#timeLine.destroy();
+        this.#timeLine = new Laya.TimeLine()
+            .to(this.#blank, { x: this.width }, 2000)
+            .to(this.#blank, { x: -this.width }, 0);
+        this.#timeLine.play(0, true);
+        if(this.#pause) this.#timeLine.pause();
+    }
+    get pause() {
+        return this.#pause;
+    }
+    set pause(value) {
+        if(this.#pause == value) return;
+        this.#pause = value;
+        this.#blank.visible = !value;
+        if(value) this.#timeLine.pause();
+        else this.#timeLine.resume();
+    }
+
+    destroy(destroyChild) {
+        this.#timeLine.destroy(true);
+        super.destroy(destroyChild);
+    }
+
+    get width() {
+        return super.width;
+    }
+    set width(value) {
+        super.width = value;
+        this.#blank.x = -this.width;
+        this.#draw();
+    }
+
+    get height() {
+        return super.height;
+    }
+    set height(value) {
+        super.height = value;
+        this.#draw();
+    }
+}

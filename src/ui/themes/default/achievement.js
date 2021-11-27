@@ -2,100 +2,51 @@ export default class Achievement extends AchievementUI {
     constructor() {
         super();
         this.btnBack.on(Laya.Event.CLICK, this, () => $ui.switchView(UI.pages.MAIN));
-        const min = Math.min(this.btnAchievement.fontSize, this.btnStatistics.fontSize);
-        const max = Math.max(this.btnAchievement.fontSize, this.btnStatistics.fontSize);
-        this.#state = {min, max};
-        this.btnStatistics.on(Laya.Event.CLICK, this, ()=>this.switch('statistics'));
-        this.btnAchievement.on(Laya.Event.CLICK, this, ()=>this.switch('achievement'));
-
         this.listAchievements.renderHandler = new Laya.Handler(this, this.onRenderAchievement);
         this.listAchievements.scrollBar.elasticDistance = 150;
-        this.on(Laya.Event.RESIZE, this, () => {
-            this.boxPage.width = 2 * this.width;
-            this.boxA.width = this.boxB.width = this.width;
-            if(this.boxPage.x < 0) {
-                this.boxPage.x = - this.width;
-            }
-
-            const renderWidth = this.listAchievements?._itemRender?.props?.width;
-            if(renderWidth) {
-                const col = Math.max(Math.floor((this.width - 65) / renderWidth), 1);
-                this.listAchievements.width = col * renderWidth + (col - 1) * (this.listAchievements.spaceY || 0) + 30;
-            }
-        });
     }
 
-    #state;
-    #tweens;
-
     init() {
-        this.switch('statistics', 0);
 
         const {statistics, achievements, PropertyTypes: pt} = core;
 
         this.listAchievements.array = achievements;
 
-        this.labRemakeTimes.text = statistics[pt.TMS].value;
+        this.labRemakeTimes.text = $_.format($lang.F_RemakeTimes, statistics[pt.TMS].value);
         this.labRemakeTimesJudge.text = statistics[pt.TMS].judge;
-        this.labAchievementCountJudge.color = $ui.common.grade[statistics[pt.TMS].grade];
+        $_.deepMapSet(this.boxRemakeTimes, $ui.common.achievement[statistics[pt.TMS].grade]);
 
-        this.labAchievementCount.text = statistics[pt.CACHV].value;
+        this.labAchievementCount.text = $_.format($lang.F_AchievementCount, statistics[pt.CACHV].value);
         this.labAchievementCountJudge.text = statistics[pt.CACHV].judge;
-        this.labAchievementCountJudge.color = $ui.common.grade[statistics[pt.CACHV].grade];
+        $_.deepMapSet(this.boxAchievementCount, $ui.common.achievement[statistics[pt.CACHV].grade]);
 
         this.labEventRate.text = parseInt(statistics[pt.REVT].value*100)+'%';
-        this.prgEventRate.value = statistics[pt.REVT].value;
+        this.prgEventRate.scaleX = statistics[pt.REVT].value;
+        $_.deepMapSet(this.boxEventRate, $ui.common.achievement[statistics[pt.REVT].grade]);
 
         this.labTalentRate.text = parseInt(statistics[pt.RTLT].value*100)+'%';
-        this.prgTalentRate.value = statistics[pt.RTLT].value;
+        this.prgTalentRate.scaleX = statistics[pt.RTLT].value;
+        $_.deepMapSet(this.boxTalentRate, $ui.common.achievement[statistics[pt.RTLT].grade]);
     }
 
-    switch(page, time=300) {
-        if(this.#tweens) {
-            this.#tweens.forEach(tween => Laya.Tween.clear(tween));
-        }
-        this.#tweens = [];
-
-        switch (page) {
-            case 'statistics':
-                time = - this.boxPage.x / this.width * time;
-                this.#tweens.push(
-                    Laya.Tween.to(this.boxPage, {x: 0}, time, Laya.Ease.backOut, Laya.Handler.create(this, () => this.#tweens = null)),
-                    Laya.Tween.to(this.btnStatistics, {fontSize: this.#state.max, anchorX: 0.5, anchorY: 1}, time, Laya.Ease.backOut),
-                    Laya.Tween.to(this.btnAchievement, {fontSize: this.#state.min, anchorX: 0.5, anchorY: 1}, time, Laya.Ease.backOut),
-                );
-                break;
-            case 'achievement':
-                time = (this.width + this.boxPage.x) / this.width * time;
-                this.#tweens.push(
-                    Laya.Tween.to(this.boxPage, {x: - this.width}, time, Laya.Ease.backOut, Laya.Handler.create(this, () => this.#tweens = null)),
-                    Laya.Tween.to(this.btnStatistics, {fontSize: this.#state.min, anchorX: 0.5, anchorY: 1}, time, Laya.Ease.backOut),
-                    Laya.Tween.to(this.btnAchievement, {fontSize: this.#state.max, anchorX: 0.5, anchorY: 1}, time, Laya.Ease.backOut),
-                );
-                break;
-        }
-    }
-
-    onRenderAchievement(box, index) {
+    onRenderAchievement(box) {
         const dataSource = box.dataSource;
 
         const name = box.getChildByName('name');
         const description = box.getChildByName('description');
-        const completed = box.getChildByName('completed');
-        const uncomplete = box.getChildByName('uncomplete');
+        const boxMask = box.getChildByName('boxMask');
+
+        $_.deepMapSet(box, $ui.common.achievement[dataSource.grade]);
+        name.color = description.color = $ui.common.defaultFontColor;
 
         if(dataSource.isAchieved) {
             name.text = dataSource.name;
             description.text = dataSource.description;
-            completed.visible = true;
-            uncomplete.visible = false;
+            boxMask.visible = false;
         } else {
             name.text = dataSource.hide? '???': dataSource.name;
             description.text = dataSource.hide? '???': dataSource.description;
-            completed.visible = false;
-            uncomplete.visible = true;
+            boxMask.visible = true;
         }
-
-        box.colorFilter = $ui.gradeFilter(dataSource.grade);
     }
 }

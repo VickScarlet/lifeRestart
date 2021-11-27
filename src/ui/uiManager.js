@@ -7,7 +7,7 @@ export default class UIManager {
             stage = Laya.stage;
         }
         this.#stage = stage;
-        this.#stage.bgColor = this.#configs.bgColor;
+        this.theme = 'default';
 
         stage.addChild(this.#viewLayer);
         this.#viewLayer.zOrder = 1;
@@ -192,7 +192,7 @@ export default class UIManager {
             if(typeof config == 'string') {
                 config = this.#configs?.class?.[config];
             }
-            for(const key in config) target[key] = config[key];
+            $_.deepMapSet(target, config);
         };
 
         if(config.names)
@@ -285,6 +285,7 @@ export default class UIManager {
     set theme(value) {
         this.#theme = value;
         this.#stage.bgColor = this.#configs.bgColor;
+        document?.querySelector?.('meta[name="theme-color"]')?.setAttribute?.('content', this.#configs.bgColor);
     }
 
     get #pages() {
