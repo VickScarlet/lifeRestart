@@ -116,6 +116,9 @@ export default ({
     UI_Achievement_Count_Judge_Level_4: '抽到橙色概率五倍',
     UI_Achievement_Count_Judge_Level_5: '抽到橙色概率六倍',
 
+    UI_Support_Programmer: '打赏程序(顿顿饭)',
+    UI_Support_Designer: '打赏策划(爱发电)',
+
     F_RemakeTimes: '已重开{0}次',
     F_AchievementCount: '成就达成{0}个',
     F_TalentSelection: '{name}（{description}）',

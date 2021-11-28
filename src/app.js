@@ -20,6 +20,44 @@ class App{
     };
 
     #initLaya() {
+        /**
+        *...特殊的字符，如泰文，必须重新实现这个类
+        */
+        //class laya.webgl.text.CharSegment
+        var CharSegment=(function(){
+            function CharSegment(){
+                this._sourceStr=null;
+            }
+            Laya.class(CharSegment,'laya.webgl.text.CharSegment');
+            var __proto=CharSegment.prototype;
+            Laya.imps(__proto,{"laya.webgl.text.ICharSegment":true})
+            __proto.textToSpit=function(str){
+                this._sourceStr=str;
+                var texLen = str.length;
+                var idx = -1;
+                this._words = [];
+                while (++idx < texLen) {
+                    var character = str.charAt(idx);
+                    var code = str.charCodeAt(idx);
+                    if (code >= 0xD800 && code <= 0xDBFF) {
+                        this._words.push(character + str.charAt(++idx));
+                    } else {
+                        this._words.push(character);
+                    }
+                }
+            }
+            __proto.getChar=function(i){
+                return this._words;
+            }
+            __proto.getCharCode=function(i){
+                return this._words[i].codePointAt(0);
+            }
+            __proto.length=function(){
+                return this._words.length;
+            }
+            return CharSegment;
+        })()
+
         // Laya.init(1125, 2436, Laya.WebGL);
         Laya.Config.isAntialias = true;
         Laya.init(...this.#fitScreen, Laya.WebGL);
@@ -91,7 +129,10 @@ class App{
         await this.#setLanguage(language);
         await $ui.setLoading(UI.pages.LOADING);
         await $ui.switchView(UI.pages.LOADING);
-        await core.initial(dataSet=>Laya.promises.loader.load(`data/${this.#language}/${dataSet}.json`, null, Laya.Loader.JSON));
+        await core.initial(
+            dataSet=>Laya.promises.loader.load(`data/${this.#language}/${dataSet}.json`, null, Laya.Loader.JSON),
+            dataSet=>Laya.promises.loader.load(`data/${dataSet}.json`, null, Laya.Loader.JSON),
+        );
         await $ui.switchView(UI.pages.MAIN);
     }
 }

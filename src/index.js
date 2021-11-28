@@ -6,6 +6,8 @@ globalThis.goto = async tag => {
     switch(tag) {
         case 'github': url = 'https://github.com/VickScarlet/lifeRestart'; break;
         case 'discord': url = 'https://discord.gg/U3qrf49NMQ'; break;
+        case 'sponsor_afd': url = 'https://afdian.net/@LifeRestart'; break;
+        case 'sponsor_ddf': url = 'https://dun.mianbaoduo.com/@vickscarlet'; break;
     }
     try {
         window.open(url, '_blank');

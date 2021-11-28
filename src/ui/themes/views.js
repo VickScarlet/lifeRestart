@@ -22,7 +22,7 @@ const cyber = {
         [pages.TRAJECTORY]: "cyber/trajectory",
         [pages.SUMMARY]: "cyber/summary",
         [pages.ACHIEVEMENT]: "cyber/achievement",
-        [pages.THANKS]: "cyber/thanks",
+        [pages.THANKS]: "default/thanks",
     },
     popups: {
         [popups.ACHIEVEMENT]: "cyber/popup/achievementPopup",
@@ -30,6 +30,13 @@ const cyber = {
     configs: {
         bgColor: '#04131f',
         common: {
+            topSupportItem: {
+                defaultColor: '#ffa500',
+                defaultStroke: '#ffa500',
+                hoverColor: '#ffc500',
+                hoverStroke: '#ffa500',
+            },
+            defaultFontColor: '#cccccc',
             grade: [
                 '#cccccc',
                 '#55fffe',
@@ -43,6 +50,40 @@ const cyber = {
                 '#ffce45ff',
             ],
         },
+        pages: {
+            [pages.THANKS]: {
+                vars: {
+                    btnBack: {
+                        defaultColor: '#5865f2',
+                        defaultStroke: '#eeeeee',
+                        defaultLabel: '#eeeeee',
+                        hoverColor: '#1160b0',
+                        hoverStroke: '#eeeeee',
+                        hoverLabel: '#eeeeee',
+                        lineWidth: 0,
+                        radius: 4,
+                    },
+                    btnAFD: {
+                        defaultColor: '#8764de',
+                        defaultStroke: '#8764de',
+                        defaultLabel: '#ffffff',
+                        hoverColor: '#9774ee',
+                        hoverStroke: '#9774ee',
+                        hoverLabel: '#ffffff',
+                        radius: 4,
+                    },
+                    btnDDF: {
+                        defaultColor: '#cc6699',
+                        defaultStroke: '#cc6699',
+                        defaultLabel: '#ffffff',
+                        hoverColor: '#dc76a9',
+                        hoverStroke: '#dc76a9',
+                        hoverLabel: '#ffffff',
+                        radius: 4,
+                    },
+                },
+            }
+        }
     }
 }
 
@@ -68,14 +109,18 @@ const dark = {
                 box: {
                     defaultColor: '#4a5361',
                     defaultStroke: '#4a5361',
-                    defaultLabel: '#eeeeee',
                     hoverColor: '#4a5361',
                     hoverStroke: '#4a5361',
-                    hoverLabel: '#eeeeee',
                     filters: ()=>[new Laya.GlowFilter("#eeeeee", 8, 0, 0)],
                 },
                 ageColor: '#ffffee',
                 contentColor: '#eeeeee',
+            },
+            topSupportItem: {
+                defaultColor: '#ffa500',
+                defaultStroke: '#ffa500',
+                hoverColor: '#ffc500',
+                hoverStroke: '#ffa500',
             },
             grade: [
                 '#cccccc',
@@ -381,6 +426,24 @@ const dark = {
             [pages.THANKS]: {
                 vars: {
                     btnBack: 'btn_small',
+                    btnAFD: {
+                        defaultColor: '#8764de',
+                        defaultStroke: '#8764de',
+                        defaultLabel: '#ffffff',
+                        hoverColor: '#9774ee',
+                        hoverStroke: '#9774ee',
+                        hoverLabel: '#ffffff',
+                        radius: 4,
+                    },
+                    btnDDF: {
+                        defaultColor: '#cc6699',
+                        defaultStroke: '#cc6699',
+                        defaultLabel: '#ffffff',
+                        hoverColor: '#dc76a9',
+                        hoverStroke: '#dc76a9',
+                        hoverLabel: '#ffffff',
+                        radius: 4,
+                    },
                 },
             }
         },
@@ -419,18 +482,16 @@ const light = {
             defaultFontColor: '#000000',
             trajectoryItem: {
                 box: {
-                    defaultColor: '#ffffff',
-                    defaultStroke: '#ffffff',
-                    defaultLabel: '#000000',
-                    hoverColor: '#ffffff',
-                    hoverStroke: '#ffffff',
-                    hoverLabel: '#000000',
-                    lineWidth: 0,
-                    radius: 0,
                     filters: ()=>[new Laya.GlowFilter("#b1b1b1", 8, 0, 0)],
                 },
                 ageColor: '#000000',
                 contentColor: '#000000',
+            },
+            topSupportItem: {
+                defaultColor: '#ffa500',
+                defaultStroke: '#ffa500',
+                hoverColor: '#ffc500',
+                hoverStroke: '#ffa500',
             },
             grade: [
                 '#000000',
@@ -734,6 +795,24 @@ const light = {
             [pages.THANKS]: {
                 vars: {
                     btnBack: 'btn_small',
+                    btnAFD: {
+                        defaultColor: '#8764de',
+                        defaultStroke: '#8764de',
+                        defaultLabel: '#ffffff',
+                        hoverColor: '#9774ee',
+                        hoverStroke: '#9774ee',
+                        hoverLabel: '#ffffff',
+                        radius: 4,
+                    },
+                    btnDDF: {
+                        defaultColor: '#cc6699',
+                        defaultStroke: '#cc6699',
+                        defaultLabel: '#ffffff',
+                        hoverColor: '#dc76a9',
+                        hoverStroke: '#dc76a9',
+                        hoverLabel: '#ffffff',
+                        radius: 4,
+                    }
                 },
             }
         },

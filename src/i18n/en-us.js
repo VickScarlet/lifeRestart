@@ -116,6 +116,9 @@ export default ({
     UI_Achievement_Count_Judge_Level_4: 'Orange rate Quintuple',
     UI_Achievement_Count_Judge_Level_5: 'Orange rate Sextuple',
 
+    UI_Support_Programmer: 'Programmer',
+    UI_Support_Designer: 'Designer',
+
     F_RemakeTimes: 'Remake {0} Times',
     F_AchievementCount: 'Achievement {0}',
     F_TalentSelection: '{name} ({description})',

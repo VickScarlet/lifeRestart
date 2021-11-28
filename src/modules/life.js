@@ -21,14 +21,17 @@ class Life {
     #talentSelectLimit;
     #propertyAllocateLimit;
     #defaultPropertys;
+    #specialThanks;
 
-    async initial(loadJSON) {
-        const [age, talents, events, achievements] = await Promise.all([
-            loadJSON('age'),
-            loadJSON('talents'),
-            loadJSON('events'),
-            loadJSON('achievement'),
+    async initial(i18nLoad, commonLoad) {
+        const [age, talents, events, achievements, specialThanks] = await Promise.all([
+            i18nLoad('age'),
+            i18nLoad('talents'),
+            i18nLoad('events'),
+            i18nLoad('achievement'),
+            commonLoad('specialthanks'),
         ]);
+        this.#specialThanks = specialThanks;
 
         const total = {
             [this.PropertyTypes.TACEV]: this.#achievement.initial({achievements}),
@@ -246,6 +249,7 @@ class Life {
             this.#property
         )
     }
+    get specialThanks() { return this.#specialThanks; }
 }
 
 export default Life;
