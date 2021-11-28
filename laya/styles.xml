@@ -10,10 +10,10 @@
    <item name="images/border/border_1@3x.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=130,130,130,130" picType="0" scale="0"/>
    <item name="images/button/button_back.png" type="Button" compress="0" pack="0" quality="80" props="stateNum=1@@!@@label=&quot;&quot;@@!@@anchorX=0@@!@@anchorY=0.5" picType="0" scale="0"/>
    <item name="images/button/button_back@2x.png" type="Button" compress="0" pack="0" quality="80" props="stateNum=1@@!@@label=&quot;&quot;@@!@@anchorX=0@@!@@anchorY=0.5" picType="0" scale="0"/>
-   <item name="images/button/button_back@3x.png" type="Button" compress="0" pack="0" quality="80" props="stateNum=1@@!@@label= @@!@@anchorX=0@@!@@anchorY=0.5@@!@@runtime=ScaleButton" picType="0" scale="0"/>
+   <item name="images/button/button_back@3x.png" type="Button" compress="0" pack="0" quality="80" props="stateNum=1@@!@@label= @@!@@anchorX=0@@!@@anchorY=0.5@@!@@runtime=Laya.runtime.ScaleButton" picType="0" scale="0"/>
    <item name="images/button/button_main.png" type="Button" compress="0" pack="0" quality="80" props="stateNum=1@@!@@label=&quot;&quot;@@!@@anchorX=0.5@@!@@anchorY=0.5@@!@@sizeGrid=36,150,36,150@@!@@labelFont=方正像素12@@!@@labelColors=#00fffc,#00fffc,#00fffc@@!@@labelSize=35" picType="0" scale="0"/>
    <item name="images/button/button_main@2x.png" type="Button" compress="0" pack="0" quality="80" props="stateNum=1@@!@@label=&quot;&quot;@@!@@anchorX=0.5@@!@@anchorY=0.5@@!@@sizeGrid=72,300,72,300@@!@@labelFont=方正像素12@@!@@labelColors=#00fffc,#00fffc,#00fffc@@!@@labelSize=70" picType="0" scale="0"/>
-   <item name="images/button/button_main@3x.png" type="Button" compress="0" pack="0" quality="80" props="stateNum=1@@!@@label= @@!@@anchorX=0.5@@!@@anchorY=0.5@@!@@sizeGrid=45,200,45,200@@!@@labelFont=方正像素12@@!@@labelColors=#00fffc,#00fffc,#00fffc@@!@@labelSize=50@@!@@runtime=ScaleButton" picType="0" scale="0"/>
+   <item name="images/button/button_main@3x.png" type="Button" compress="0" pack="0" quality="80" props="stateNum=1@@!@@label= @@!@@anchorX=0.5@@!@@anchorY=0.5@@!@@sizeGrid=45,200,45,200@@!@@labelFont=方正像素12@@!@@labelColors=#00fffc,#00fffc,#00fffc@@!@@labelSize=50@@!@@runtime=Laya.runtime.ScaleButton" picType="0" scale="0"/>
    <item name="images/border/up@2x.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=4,4,4,4" picType="0" scale="0"/>
    <item name="images/border/up.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=2,2,2,2" picType="0" scale="0"/>
    <item name="images/border/talentitem.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=50,100,50,100" picType="0" scale="0"/>
@@ -29,7 +29,7 @@
    <item name="images/border/property.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=10,10,10,10" picType="0" scale="0"/>
    <item name="images/border/property@3x.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=15,15,15,15" picType="0" scale="0"/>
    <item name="images/border/up@3x.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=4,4,4,4" picType="0" scale="0"/>
-   <item name="images/button/button_small@3x.png" type="Button" compress="0" pack="0" quality="80" props="sizeGrid=8,8,8,8@@!@@stateNum=1@@!@@label= @@!@@runtime=ScaleButton" picType="0" scale="0"/>
+   <item name="images/button/button_small@3x.png" type="Button" compress="0" pack="0" quality="80" props="sizeGrid=8,8,8,8@@!@@stateNum=1@@!@@label= @@!@@runtime=Laya.runtime.ScaleButton" picType="0" scale="0"/>
    <item name="images/border/achievement@3x.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=16,16,16,16" picType="0" scale="0"/>
    <item name="images/border/achievement_complete@3x.png" type="Image" compress="0" pack="0" quality="80" props="sizeGrid=74,80,74,80" picType="0" scale="0"/>
    <item name="images/resource/circle.png" type="Image" compress="0" pack="0" quality="80" props="" picType="0" scale="0"/>
