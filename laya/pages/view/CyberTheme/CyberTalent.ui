@@ -3,7 +3,7 @@
     "type":"View",
     "selectedBox":21,
     "selecteID":22,
-    "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberTalent.png","runtime":"ViewBase","height":2436},
+    "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberTalent.png","runtime":"Laya.runtime.ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,

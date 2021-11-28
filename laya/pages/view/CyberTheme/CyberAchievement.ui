@@ -3,7 +3,7 @@
     "type":"View",
     "selectedBox":3,
     "selecteID":7,
-    "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberAchievement.png","runtime":"ViewBase","height":2436},
+    "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberAchievement.png","runtime":"Laya.runtime.ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,
@@ -40,7 +40,7 @@
                 {
                     "x":30,
                     "type":"Box",
-                    "props":{"y":200,"x":-170,"width":260,"var":"btnRank","runtime":"ScaleButton","height":90,"anchorY":0.5,"anchorX":0.5},
+                    "props":{"y":200,"x":-170,"width":260,"var":"btnRank","runtime":"Laya.runtime.ScaleButton","height":90,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":68,
                     "label":"Box(btnRank)",
                     "isOpen":true,
@@ -505,7 +505,7 @@
                             "child":[
                                 {
                                     "type":"Box",
-                                    "props":{"y":0,"x":0,"width":530,"runtime":"ColorFilterItem","renderType":"render","height":460},
+                                    "props":{"y":0,"x":0,"width":530,"runtime":"Laya.runtime.ColorFilterItem","renderType":"render","height":460},
                                     "nodeParent":9,
                                     "label":"Box",
                                     "isOpen":true,

@@ -1,4 +1,4 @@
-export default class CyberProperty extends CyberPropertyUI {
+export default class CyberProperty extends ui.view.CyberTheme.CyberPropertyUI {
     constructor() {
         super();
 

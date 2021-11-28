@@ -1,4 +1,4 @@
-export default class CyberAchievement extends CyberAchievementUI {
+export default class CyberAchievement extends ui.view.CyberTheme.CyberAchievementUI {
     constructor() {
         super();
         this.btnBack.on(Laya.Event.CLICK, this, () => $ui.switchView(UI.pages.MAIN));

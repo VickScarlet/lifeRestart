@@ -1,4 +1,4 @@
-export default class achievementPopup extends AchievementPopupUI {
+export default class achievementPopup extends ui.view.DefaultTheme.AchievementPopupUI {
     constructor() {
         super();
     }

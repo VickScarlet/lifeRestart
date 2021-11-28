@@ -1,4 +1,4 @@
-export default class Loading extends LoadingUI {
+export default class Loading extends ui.view.LoadingUI {
     constructor() {
         super();
     }

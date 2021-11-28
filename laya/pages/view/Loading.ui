@@ -3,7 +3,7 @@
     "type":"View",
     "selectedBox":1,
     "selecteID":12,
-    "props":{"width":1125,"sceneColor":"#000000","runtime":"ViewBase","height":2436},
+    "props":{"width":1125,"sceneColor":"#000000","runtime":"Laya.runtime.ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,

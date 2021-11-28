@@ -1,4 +1,4 @@
-export default class Talent extends TalentUI {
+export default class Talent extends ui.view.DefaultTheme.TalentUI {
     constructor() {
         super();
         this.btnDrawCard.on(Laya.Event.CLICK, this, this.onClickDrawCard);

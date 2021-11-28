@@ -3,7 +3,7 @@
     "type":"View",
     "selectedBox":21,
     "selecteID":114,
-    "props":{"width":1125,"sceneColor":"#000000","runtime":"ViewBase","height":2436},
+    "props":{"width":1125,"sceneColor":"#000000","runtime":"Laya.runtime.ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,
@@ -39,7 +39,7 @@
             "child":[
                 {
                     "type":"Box",
-                    "props":{"width":600,"var":"btnDrawCard","runtime":"ColorfulBox","name":"btnDrawCard","height":150,"centerY":0,"centerX":0},
+                    "props":{"width":600,"var":"btnDrawCard","runtime":"Laya.runtime.ColorfulBox","name":"btnDrawCard","height":150,"centerY":0,"centerX":0},
                     "nodeParent":19,
                     "label":"Box(btnDrawCard)",
                     "isOpen":true,
@@ -91,7 +91,7 @@
                         {
                             "x":45,
                             "type":"Box",
-                            "props":{"y":15,"runtime":"ColorfulBox","right":15,"renderType":"render","left":15,"height":80},
+                            "props":{"y":15,"runtime":"Laya.runtime.ColorfulBox","right":15,"renderType":"render","left":15,"height":80},
                             "nodeParent":22,
                             "label":"Box",
                             "isOpen":true,
@@ -116,7 +116,7 @@
                                 {
                                     "x":60,
                                     "type":"Box",
-                                    "props":{"top":0,"runtime":"BlankBox","right":0,"name":"blank","left":0,"bottom":0,"alpha":0.3},
+                                    "props":{"top":0,"runtime":"Laya.runtime.BlankBox","right":0,"name":"blank","left":0,"bottom":0,"alpha":0.3},
                                     "nodeParent":23,
                                     "label":"Box(blank)",
                                     "isDirectory":false,
@@ -133,7 +133,7 @@
                 {
                     "x":30,
                     "type":"Box",
-                    "props":{"x":263,"width":1085,"var":"btnNext","runtime":"ColorfulBox","name":"btnNext","height":150,"centerX":0,"bottom":30},
+                    "props":{"x":263,"width":1085,"var":"btnNext","runtime":"Laya.runtime.ColorfulBox","name":"btnNext","height":150,"centerX":0,"bottom":30},
                     "nodeParent":21,
                     "label":"Box(btnNext)",
                     "isOpen":true,

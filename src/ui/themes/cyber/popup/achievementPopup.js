@@ -1,4 +1,4 @@
-export default class CyberAchievementPopup extends CyberAchievementPopupUI {
+export default class CyberAchievementPopup extends ui.view.CyberTheme.CyberAchievementPopupUI {
     constructor() {
         super();
     }

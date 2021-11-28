@@ -1,4 +1,4 @@
-export default class Trajectory extends TrajectoryUI {
+export default class Trajectory extends ui.view.DefaultTheme.TrajectoryUI {
     constructor() {
         super();
         let pos1 = [0, 0];
@@ -28,7 +28,7 @@ export default class Trajectory extends TrajectoryUI {
         ];
     }
 
-    static #createComponent = plugin.extractComponents(Trajectory.uiView, ['boxTrajectoryItem']);
+    static #createComponent = Laya.plugin.extractComponents(Trajectory.uiView, ['boxTrajectoryItem']);
     #createTrajectoryItem() {
         const item = Trajectory.#createComponent('boxTrajectoryItem');
         item.labContent = item.getChildByName('labContent');

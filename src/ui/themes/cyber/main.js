@@ -1,4 +1,4 @@
-export default class CyberMain extends CyberMainUI {
+export default class CyberMain extends ui.view.CyberTheme.CyberMainUI {
     constructor() {
         super();
         this.btnRemake.on(Laya.Event.CLICK, this, ()=>$ui.switchView(UI.pages.TALENT));

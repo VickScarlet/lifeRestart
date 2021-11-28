@@ -1,4 +1,4 @@
-export default class CyberTalent extends CyberTalentUI {
+export default class CyberTalent extends ui.view.CyberTheme.CyberTalentUI {
     constructor() {
         super();
         this.btnDrawCard.on(Laya.Event.CLICK, this, this.onClickDrawCard);

@@ -1,4 +1,4 @@
-export default class Achievement extends AchievementUI {
+export default class Achievement extends ui.view.DefaultTheme.AchievementUI {
     constructor() {
         super();
         this.btnBack.on(Laya.Event.CLICK, this, () => $ui.switchView(UI.pages.MAIN));

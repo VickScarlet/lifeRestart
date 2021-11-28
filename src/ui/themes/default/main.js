@@ -1,4 +1,4 @@
-export default class Main extends MainUI {
+export default class Main extends ui.view.DefaultTheme.MainUI {
     constructor() {
         super();
         this.btnRemake.on(Laya.Event.CLICK, this, ()=>$ui.switchView(UI.pages.TALENT));

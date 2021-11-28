@@ -1,4 +1,4 @@
-export default class Summary extends SummaryUI {
+export default class Summary extends ui.view.DefaultTheme.SummaryUI {
     constructor() {
         super();
         this.listSummary.renderHandler = Laya.Handler.create(this, this.renderSummary, null, false);

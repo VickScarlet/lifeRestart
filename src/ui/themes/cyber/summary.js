@@ -1,4 +1,4 @@
-export default class CyberSummary extends CyberSummaryUI {
+export default class CyberSummary extends ui.view.CyberTheme.CyberSummaryUI {
     constructor() {
         super();
         this.listSelectedTalents.renderHandler = Laya.Handler.create(this, this.renderTalent, null, false);

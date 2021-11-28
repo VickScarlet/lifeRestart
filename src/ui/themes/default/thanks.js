@@ -1,4 +1,4 @@
-export default class Thanks extends ThanksUI {
+export default class Thanks extends ui.view.DefaultTheme.ThanksUI {
     constructor() {
         super();
         this.btnBack.on(Laya.Event.CLICK, this, ()=>$ui.switchView(UI.pages.MAIN));
@@ -9,7 +9,7 @@ export default class Thanks extends ThanksUI {
         this.btnDDF.on(Laya.Event.CLICK, this, goto, ['sponsor_ddf']);
     }
 
-    static #createComponent = plugin.extractComponents(Thanks.uiView, ['boxTopSupport']);
+    static #createComponent = Laya.plugin.extractComponents(Thanks.uiView, ['boxTopSupport']);
     #createTopSupportItem() {
         const item = Thanks.#createComponent('boxTopSupport');
         item.name = item.getChildByName('name');

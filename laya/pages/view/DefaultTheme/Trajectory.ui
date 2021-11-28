@@ -3,7 +3,7 @@
     "type":"View",
     "selectedBox":1,
     "selecteID":102,
-    "props":{"width":1125,"sceneColor":"#000000","runtime":"ViewBase","height":2436},
+    "props":{"width":1125,"sceneColor":"#000000","runtime":"Laya.runtime.ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,
@@ -37,7 +37,7 @@
                     "child":[
                         {
                             "type":"Box",
-                            "props":{"x":0,"width":200,"runtime":"ColorfulBox","name":"propertyBox","height":120,"centerY":0},
+                            "props":{"x":0,"width":200,"runtime":"Laya.runtime.ColorfulBox","name":"propertyBox","height":120,"centerY":0},
                             "nodeParent":71,
                             "label":"Box(propertyBox)",
                             "isOpen":true,
@@ -60,7 +60,7 @@
                                 },
                                 {
                                     "type":"Box",
-                                    "props":{"runtime":"ColorfulBox","right":0,"name":"propertyValue","left":0,"height":60,"bottom":0},
+                                    "props":{"runtime":"Laya.runtime.ColorfulBox","right":0,"name":"propertyValue","left":0,"height":60,"bottom":0},
                                     "nodeParent":34,
                                     "label":"Box(propertyValue)",
                                     "isOpen":true,
@@ -86,7 +86,7 @@
                         },
                         {
                             "type":"Box",
-                            "props":{"x":1,"width":200,"runtime":"ColorfulBox","name":"propertyBox","height":120,"centerY":0},
+                            "props":{"x":1,"width":200,"runtime":"Laya.runtime.ColorfulBox","name":"propertyBox","height":120,"centerY":0},
                             "nodeParent":71,
                             "label":"Box(propertyBox)",
                             "isOpen":true,
@@ -109,7 +109,7 @@
                                 },
                                 {
                                     "type":"Box",
-                                    "props":{"runtime":"ColorfulBox","right":0,"name":"propertyValue","left":0,"height":60,"bottom":0},
+                                    "props":{"runtime":"Laya.runtime.ColorfulBox","right":0,"name":"propertyValue","left":0,"height":60,"bottom":0},
                                     "nodeParent":50,
                                     "label":"Box(propertyValue)",
                                     "isOpen":true,
@@ -135,7 +135,7 @@
                         },
                         {
                             "type":"Box",
-                            "props":{"x":2,"width":200,"runtime":"ColorfulBox","name":"propertyBox","height":120,"centerY":0},
+                            "props":{"x":2,"width":200,"runtime":"Laya.runtime.ColorfulBox","name":"propertyBox","height":120,"centerY":0},
                             "nodeParent":71,
                             "label":"Box(propertyBox)",
                             "isOpen":true,
@@ -158,7 +158,7 @@
                                 },
                                 {
                                     "type":"Box",
-                                    "props":{"runtime":"ColorfulBox","right":0,"name":"propertyValue","left":0,"height":60,"bottom":0},
+                                    "props":{"runtime":"Laya.runtime.ColorfulBox","right":0,"name":"propertyValue","left":0,"height":60,"bottom":0},
                                     "nodeParent":74,
                                     "label":"Box(propertyValue)",
                                     "isOpen":true,
@@ -183,7 +183,7 @@
                         },
                         {
                             "type":"Box",
-                            "props":{"x":3,"width":200,"runtime":"ColorfulBox","name":"propertyBox","height":120,"centerY":0},
+                            "props":{"x":3,"width":200,"runtime":"Laya.runtime.ColorfulBox","name":"propertyBox","height":120,"centerY":0},
                             "nodeParent":71,
                             "label":"Box(propertyBox)",
                             "isOpen":true,
@@ -206,7 +206,7 @@
                                 },
                                 {
                                     "type":"Box",
-                                    "props":{"runtime":"ColorfulBox","right":0,"name":"propertyValue","left":0,"height":60,"bottom":0},
+                                    "props":{"runtime":"Laya.runtime.ColorfulBox","right":0,"name":"propertyValue","left":0,"height":60,"bottom":0},
                                     "nodeParent":43,
                                     "label":"Box(propertyValue)",
                                     "isOpen":true,
@@ -231,7 +231,7 @@
                         },
                         {
                             "type":"Box",
-                            "props":{"x":4,"width":200,"runtime":"ColorfulBox","name":"propertyBox","height":120,"centerY":0},
+                            "props":{"x":4,"width":200,"runtime":"Laya.runtime.ColorfulBox","name":"propertyBox","height":120,"centerY":0},
                             "nodeParent":71,
                             "label":"Box(propertyBox)",
                             "isOpen":true,
@@ -254,7 +254,7 @@
                                 },
                                 {
                                     "type":"Box",
-                                    "props":{"runtime":"ColorfulBox","right":0,"name":"propertyValue","left":0,"height":60,"bottom":0},
+                                    "props":{"runtime":"Laya.runtime.ColorfulBox","right":0,"name":"propertyValue","left":0,"height":60,"bottom":0},
                                     "nodeParent":81,
                                     "label":"Box(propertyValue)",
                                     "isOpen":true,
@@ -284,7 +284,7 @@
         {
             "x":15,
             "type":"Box",
-            "props":{"x":20,"var":"boxTrajectory","top":240,"runtime":"ColorfulBox","right":20,"name":"boxTrajectory","left":20,"bottom":250},
+            "props":{"x":20,"var":"boxTrajectory","top":240,"runtime":"Laya.runtime.ColorfulBox","right":20,"name":"boxTrajectory","left":20,"bottom":250},
             "nodeParent":1,
             "label":"Box(boxTrajectory)",
             "isOpen":true,
@@ -320,7 +320,7 @@
                                 {
                                     "x":60,
                                     "type":"Box",
-                                    "props":{"runtime":"ColorfulBox","right":0,"name":"boxTrajectoryItem","left":0},
+                                    "props":{"runtime":"Laya.runtime.ColorfulBox","right":0,"name":"boxTrajectoryItem","left":0},
                                     "nodeParent":17,
                                     "label":"Box(boxTrajectoryItem)",
                                     "isOpen":true,
@@ -411,7 +411,7 @@
                 {
                     "x":30,
                     "type":"Box",
-                    "props":{"width":600,"var":"btnSummary","runtime":"ColorfulBox","name":"btnSummary","height":150,"centerX":0,"bottom":80},
+                    "props":{"width":600,"var":"btnSummary","runtime":"Laya.runtime.ColorfulBox","name":"btnSummary","height":150,"centerX":0,"bottom":80},
                     "nodeParent":14,
                     "label":"Box(btnSummary)",
                     "isOpen":true,
@@ -437,7 +437,7 @@
                 {
                     "x":30,
                     "type":"Box",
-                    "props":{"y":-155,"var":"boxSpeed","runtime":"ColorFilterItem","right":100,"name":"boxSpeed","left":100,"height":150,"anchorY":0.5,"anchorX":0.5},
+                    "props":{"y":-155,"var":"boxSpeed","runtime":"Laya.runtime.ColorFilterItem","right":100,"name":"boxSpeed","left":100,"height":150,"anchorY":0.5,"anchorX":0.5},
                     "nodeParent":14,
                     "label":"Box(boxSpeed)",
                     "isOpen":true,

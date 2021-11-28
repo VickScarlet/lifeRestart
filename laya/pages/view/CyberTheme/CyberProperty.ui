@@ -4,7 +4,7 @@
     "selectedBox":1,
     "selecteID":97,
     "referenceLines":null,
-    "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberProperty.png","runtime":"ViewBase","height":2436},
+    "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberProperty.png","runtime":"Laya.runtime.ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,
@@ -300,7 +300,7 @@
                                                 },
                                                 {
                                                     "type":"Box",
-                                                    "props":{"width":110,"runtime":"ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
+                                                    "props":{"width":110,"runtime":"Laya.runtime.ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
                                                     "nodeParent":21,
                                                     "label":"Box",
                                                     "isDirectory":true,
@@ -465,7 +465,7 @@
                                                 },
                                                 {
                                                     "type":"Box",
-                                                    "props":{"width":110,"runtime":"ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
+                                                    "props":{"width":110,"runtime":"Laya.runtime.ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
                                                     "nodeParent":22,
                                                     "label":"Box",
                                                     "isDirectory":true,
@@ -653,7 +653,7 @@
                                                 },
                                                 {
                                                     "type":"Box",
-                                                    "props":{"width":110,"runtime":"ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
+                                                    "props":{"width":110,"runtime":"Laya.runtime.ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
                                                     "nodeParent":126,
                                                     "label":"Box",
                                                     "isDirectory":true,
@@ -818,7 +818,7 @@
                                                 },
                                                 {
                                                     "type":"Box",
-                                                    "props":{"width":110,"runtime":"ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
+                                                    "props":{"width":110,"runtime":"Laya.runtime.ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
                                                     "nodeParent":140,
                                                     "label":"Box",
                                                     "isDirectory":true,
@@ -1006,7 +1006,7 @@
                                                 },
                                                 {
                                                     "type":"Box",
-                                                    "props":{"width":110,"runtime":"ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
+                                                    "props":{"width":110,"runtime":"Laya.runtime.ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
                                                     "nodeParent":156,
                                                     "label":"Box",
                                                     "isDirectory":true,
@@ -1171,7 +1171,7 @@
                                                 },
                                                 {
                                                     "type":"Box",
-                                                    "props":{"width":110,"runtime":"ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
+                                                    "props":{"width":110,"runtime":"Laya.runtime.ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
                                                     "nodeParent":170,
                                                     "label":"Box",
                                                     "isDirectory":true,
@@ -1359,7 +1359,7 @@
                                                 },
                                                 {
                                                     "type":"Box",
-                                                    "props":{"width":110,"runtime":"ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
+                                                    "props":{"width":110,"runtime":"Laya.runtime.ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
                                                     "nodeParent":186,
                                                     "label":"Box",
                                                     "isDirectory":true,
@@ -1524,7 +1524,7 @@
                                                 },
                                                 {
                                                     "type":"Box",
-                                                    "props":{"width":110,"runtime":"ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
+                                                    "props":{"width":110,"runtime":"Laya.runtime.ScaleButton","height":110,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},
                                                     "nodeParent":200,
                                                     "label":"Box",
                                                     "isDirectory":true,
@@ -2053,7 +2053,7 @@
                             "child":[
                                 {
                                     "type":"Box",
-                                    "props":{"runtime":"ColorFilterItem","colorFilter":"#ffce45ff","blendMode":"lighter"},
+                                    "props":{"runtime":"Laya.runtime.ColorFilterItem","colorFilter":"#ffce45ff","blendMode":"lighter"},
                                     "nodeParent":75,
                                     "label":"Box",
                                     "isOpen":false,
@@ -2232,7 +2232,7 @@
                                 },
                                 {
                                     "type":"Box",
-                                    "props":{"runtime":"ColorFilterItem","colorFilter":"#ffce45ff","blendMode":"lighter"},
+                                    "props":{"runtime":"Laya.runtime.ColorFilterItem","colorFilter":"#ffce45ff","blendMode":"lighter"},
                                     "nodeParent":75,
                                     "label":"Box",
                                     "isOpen":false,

@@ -1,3 +1,7 @@
+import './ui/runtime.js';
+import './ui/pluginFunction.js'
+import './ui/promisesLaya.js'
+import './ui/layaUI.max.all.js';
 import UIManager from './ui/uiManager.js';
 import * as utils from './functions/util.js';
 
@@ -24,14 +28,11 @@ class App{
         *...特殊的字符，如泰文，必须重新实现这个类
         */
         //class laya.webgl.text.CharSegment
-        var CharSegment=(function(){
-            function CharSegment(){
+        class CharSegment {
+            constructor() {
                 this._sourceStr=null;
             }
-            Laya.class(CharSegment,'laya.webgl.text.CharSegment');
-            var __proto=CharSegment.prototype;
-            Laya.imps(__proto,{"laya.webgl.text.ICharSegment":true})
-            __proto.textToSpit=function(str){
+            textToSpit(str) {
                 this._sourceStr=str;
                 var texLen = str.length;
                 var idx = -1;
@@ -46,17 +47,19 @@ class App{
                     }
                 }
             }
-            __proto.getChar=function(i){
+            getChar(i){
                 return this._words;
             }
-            __proto.getCharCode=function(i){
+            getCharCode(i){
                 return this._words[i].codePointAt(0);
             }
-            __proto.length=function(){
+            length(){
                 return this._words.length;
             }
-            return CharSegment;
-        })()
+        }
+        Laya.class(CharSegment,'laya.webgl.text.CharSegment');
+        Laya.imps(CharSegment.prototype,{"laya.webgl.text.ICharSegment":true})
+
 
         // Laya.init(1125, 2436, Laya.WebGL);
         Laya.Config.isAntialias = true;

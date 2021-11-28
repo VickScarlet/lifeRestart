@@ -1,4 +1,5 @@
-var plugin = {};
+const plugin =
+Laya.plugin = {};
 
 plugin.extractComponents = function(uiView, componentNames) {
     const components = {};

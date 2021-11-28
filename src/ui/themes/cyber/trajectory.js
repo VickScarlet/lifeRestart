@@ -1,4 +1,4 @@
-export default class CyberTrajectory extends CyberTrajectoryUI {
+export default class CyberTrajectory extends ui.view.CyberTheme.CyberTrajectoryUI {
     constructor() {
         super();
         let pos1 = [0, 0];
@@ -55,7 +55,7 @@ export default class CyberTrajectory extends CyberTrajectoryUI {
     #speed;
     #auto;
 
-    static #createComponent = plugin.extractComponents(CyberTrajectory.uiView, ['boxTrajectoryItem']);
+    static #createComponent = Laya.plugin.extractComponents(CyberTrajectory.uiView, ['boxTrajectoryItem']);
     #createTrajectoryItem() {
         const item = CyberTrajectory.#createComponent('boxTrajectoryItem');
         item.labContent = item.getChildByName('labContent');

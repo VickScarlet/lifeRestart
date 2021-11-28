@@ -40,7 +40,7 @@
                 {
                     "x":30,
                     "type":"Box",
-                    "props":{"var":"bg1","top":0,"runtime":"ColorfulBox","right":10,"left":0,"bottom":0},
+                    "props":{"var":"bg1","top":0,"runtime":"Laya.runtime.ColorfulBox","right":10,"left":0,"bottom":0},
                     "nodeParent":5,
                     "label":"Box(bg1)",
                     "isDirectory":false,

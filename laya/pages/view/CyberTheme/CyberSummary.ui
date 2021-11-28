@@ -3,7 +3,7 @@
     "type":"View",
     "selectedBox":1,
     "selecteID":8,
-    "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberSummary.png","runtime":"ViewBase","height":2436},
+    "props":{"width":1125,"sceneColor":"#000000","sceneBg":"laya/views/view/CyberTheme/CyberSummary.png","runtime":"Laya.runtime.ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,
@@ -393,7 +393,7 @@
                                 },
                                 {
                                     "type":"Box",
-                                    "props":{"var":"boxCharmGrade","top":20,"runtime":"ColorFilterItem","right":240,"name":"boxCharmGrade","left":255,"bottom":20},
+                                    "props":{"var":"boxCharmGrade","top":20,"runtime":"Laya.runtime.ColorFilterItem","right":240,"name":"boxCharmGrade","left":255,"bottom":20},
                                     "nodeParent":17,
                                     "label":"Box(boxCharmGrade)",
                                     "isOpen":true,
@@ -489,7 +489,7 @@
                                 },
                                 {
                                     "type":"Box",
-                                    "props":{"var":"boxIntelligenceGrade","top":20,"runtime":"ColorFilterItem","right":240,"name":"boxIntelligenceGrade","left":255,"bottom":20},
+                                    "props":{"var":"boxIntelligenceGrade","top":20,"runtime":"Laya.runtime.ColorFilterItem","right":240,"name":"boxIntelligenceGrade","left":255,"bottom":20},
                                     "nodeParent":47,
                                     "label":"Box(boxIntelligenceGrade)",
                                     "isOpen":true,
@@ -585,7 +585,7 @@
                                 },
                                 {
                                     "type":"Box",
-                                    "props":{"var":"boxStrengthGrade","top":20,"runtime":"ColorFilterItem","right":240,"name":"boxStrengthGrade","left":255,"bottom":20},
+                                    "props":{"var":"boxStrengthGrade","top":20,"runtime":"Laya.runtime.ColorFilterItem","right":240,"name":"boxStrengthGrade","left":255,"bottom":20},
                                     "nodeParent":77,
                                     "label":"Box(boxStrengthGrade)",
                                     "isOpen":true,
@@ -681,7 +681,7 @@
                                 },
                                 {
                                     "type":"Box",
-                                    "props":{"var":"boxMoneyGrade","top":20,"runtime":"ColorFilterItem","right":240,"name":"boxMoneyGrade","left":255,"bottom":20},
+                                    "props":{"var":"boxMoneyGrade","top":20,"runtime":"Laya.runtime.ColorFilterItem","right":240,"name":"boxMoneyGrade","left":255,"bottom":20},
                                     "nodeParent":107,
                                     "label":"Box(boxMoneyGrade)",
                                     "isOpen":true,
@@ -777,7 +777,7 @@
                                 },
                                 {
                                     "type":"Box",
-                                    "props":{"var":"boxSpiritGrade","top":20,"runtime":"ColorFilterItem","right":240,"name":"boxSpiritGrade","left":255,"bottom":20},
+                                    "props":{"var":"boxSpiritGrade","top":20,"runtime":"Laya.runtime.ColorFilterItem","right":240,"name":"boxSpiritGrade","left":255,"bottom":20},
                                     "nodeParent":195,
                                     "label":"Box(boxSpiritGrade)",
                                     "isOpen":true,

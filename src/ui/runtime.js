@@ -1,3 +1,7 @@
+const runtime =
+Laya.runtime = {};
+
+runtime.ColorFilterItem =
 class ColorFilterItem extends Laya.Image {
     constructor() {
         super();
@@ -43,24 +47,28 @@ class ColorFilterItem extends Laya.Image {
         }
     }
 }
+runtime.UIBase =
 class UIBase extends Laya.View {
     constructor() {
         super();
     }
 }
 
-class ViewBase extends UIBase {
+runtime.ViewBase =
+class ViewBase extends runtime.UIBase {
     constructor() {
         super();
     }
 }
 
-class dialogBase extends UIBase {
+runtime.DialogBase =
+class DialogBase extends runtime.UIBase {
     constructor() {
         super();
     }
 }
 
+runtime.ScaleButton =
 class ScaleButton extends Laya.Button {
     constructor() {
         super();
@@ -85,6 +93,7 @@ class ScaleButton extends Laya.Button {
     }
 }
 
+runtime.RGBAItem =
 class RGBAItem {
     constructor(config={}) {
         for(const key in config)
@@ -260,6 +269,7 @@ class RGBAItem {
         }
     }
 }
+runtime.ColorfulBox =
 class ColorfulBox extends Laya.Box {
     constructor() {
         super();
@@ -276,9 +286,9 @@ class ColorfulBox extends Laya.Box {
     #hoverStroke = '#ffffff';
     #defaultLabel = '#000000';
     #hoverLabel = '#000000';
-    #color = new RGBAItem({hex: this.#defaultColor, on: ()=>this.#draw()});
-    #stroke = new RGBAItem({hex: this.#defaultStroke, on: ()=>this.#draw()});
-    #label = new RGBAItem({hex: this.#defaultLabel, on: ({hex})=>{
+    #color = new runtime.RGBAItem({hex: this.#defaultColor, on: ()=>this.#draw()});
+    #stroke = new runtime.RGBAItem({hex: this.#defaultStroke, on: ()=>this.#draw()});
+    #label = new runtime.RGBAItem({hex: this.#defaultLabel, on: ({hex})=>{
         const label = this.getChildByName('label');
         if (!label) return;
         label.color = hex;
@@ -467,6 +477,7 @@ class ColorfulBox extends Laya.Box {
 
 }
 
+runtime.BlankBox =
 class BlankBox extends Laya.Box {
     constructor() {
         super();

@@ -1,4 +1,4 @@
-export default class Property extends PropertyUI {
+export default class Property extends ui.view.DefaultTheme.PropertyUI {
     constructor() {
         super();
 
