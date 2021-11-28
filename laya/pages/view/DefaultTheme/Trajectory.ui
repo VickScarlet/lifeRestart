@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":102,
+    "selectedBox":18,
+    "selecteID":17,
     "props":{"width":1125,"sceneColor":"#000000","runtime":"ViewBase","height":2436},
     "nodeParent":-1,
     "label":"View",
@@ -308,7 +308,7 @@
                         {
                             "x":45,
                             "type":"VBox",
-                            "props":{"y":15,"var":"vboxTrajectory","space":15,"right":-6,"name":"vboxTrajectory","left":-6},
+                            "props":{"y":15,"var":"vboxTrajectory","space":20,"right":-6,"name":"vboxTrajectory","left":-6},
                             "nodeParent":18,
                             "label":"VBox(vboxTrajectory)",
                             "isOpen":true,
@@ -332,17 +332,16 @@
                                         {
                                             "x":75,
                                             "type":"HBox",
-                                            "props":{"y":10,"x":200,"name":"hboxAge","anchorX":1,"align":"middle"},
+                                            "props":{"y":25,"x":200,"name":"hboxAge","anchorX":1,"align":"middle"},
                                             "nodeParent":88,
                                             "label":"HBox(hboxAge)",
-                                            "isOpen":true,
+                                            "isOpen":false,
                                             "isDirectory":true,
                                             "isAniNode":true,
                                             "hasChild":true,
                                             "compId":91,
                                             "child":[
                                                 {
-                                                    "x":90,
                                                     "type":"Label",
                                                     "props":{"x":0,"text":"3000","name":"labAge","fontSize":50,"font":"SimHei","color":"#cfea5c","anchorX":0},
                                                     "nodeParent":91,
@@ -355,7 +354,6 @@
                                                         ]
                                                 },
                                                 {
-                                                    "x":90,
                                                     "type":"Label",
                                                     "props":{"x":1,"text":"岁","fontSize":50,"font":"SimHei","color":"#cfea5c","anchorX":0},
                                                     "nodeParent":91,
@@ -368,7 +366,6 @@
                                                         ]
                                                 },
                                                 {
-                                                    "x":90,
                                                     "type":"Label",
                                                     "props":{"x":2,"text":"：","fontSize":50,"font":"SimHei","color":"#cfea5c","anchorX":0},
                                                     "nodeParent":91,
@@ -384,7 +381,7 @@
                                         {
                                             "x":75,
                                             "type":"Label",
-                                            "props":{"y":10,"wordWrap":true,"text":"你的父母开始辅导你数学和英语，智力+1","right":0,"name":"labContent","left":220,"leading":10,"fontSize":50,"font":"SimHei","color":"#ffffff"},
+                                            "props":{"y":25,"wordWrap":true,"text":"你的父母开始辅导你数学和英语，智力+1","right":0,"name":"labContent","left":220,"leading":25,"fontSize":50,"font":"SimHei","color":"#ffffff"},
                                             "nodeParent":88,
                                             "label":"Label(labContent)",
                                             "isDirectory":false,

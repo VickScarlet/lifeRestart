@@ -69,10 +69,16 @@ function mapSet(target, source) {
 
 function deepMapSet(target, source) {
     for(const key in source) {
-        if(typeof source[key] === 'object')
-            deepMapSet(target[key], source[key]);
-        else
-            target[key] = source[key];
+        let value = source[key];
+        switch(typeof value) {
+            case 'function': value = value();
+            case 'object':
+                if(!Array.isArray(value)) {
+                    deepMapSet(target[key], value);
+                    break;
+                }
+            default: target[key] = value;
+        }
     }
     return target;
 }
