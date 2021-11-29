@@ -87,13 +87,23 @@ function checkProp(property, condition) {
         case '>=': return propData >= conditionData;
         case '<=': return propData <= conditionData;
         case '=':
-            if(Array.isArray(propData))
-                return propData.includes(conditionData);
-            return propData == conditionData;
+            if (Array.isArray(propData)) {
+                if (propData.length != conditionData.length) 
+                    return false
+                for (let p of propData) 
+                    if (!conditionData.includes(p)) return false
+                return true
+            }
+            return propData == conditionData
         case '!=':
-            if(Array.isArray(propData))
-                return !propData.includes(conditionData);
-            return propData != conditionData;
+            if (Array.isArray(propData)) {
+                if (propData.length != conditionData.length) 
+                    return true
+                for (let p of propData) 
+                    if (!conditionData.includes(p)) return true
+                return false
+            }
+            return propData == conditionData
         case '?':
             if(Array.isArray(propData)) {
                 for(const p of propData)
