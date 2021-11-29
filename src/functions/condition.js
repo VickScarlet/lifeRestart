@@ -90,7 +90,7 @@ function checkProp(property, condition) {
             if (Array.isArray(propData)) {
                 if (propData.length != conditionData.length) 
                     return false
-                for (let p of propData) 
+                for (const p of propData) 
                     if (!conditionData.includes(p)) return false
                 return true
             }
@@ -99,11 +99,11 @@ function checkProp(property, condition) {
             if (Array.isArray(propData)) {
                 if (propData.length != conditionData.length) 
                     return true
-                for (let p of propData) 
+                for (const p of propData) 
                     if (!conditionData.includes(p)) return true
                 return false
             }
-            return propData == conditionData
+            return propData != conditionData
         case '?':
             if(Array.isArray(propData)) {
                 for(const p of propData)
