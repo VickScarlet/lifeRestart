@@ -57,7 +57,7 @@ input[type="number"]{
 }
 
 html {
-  background-color: #222831;
+  background-color: #241619;
   font-family: PingFangSC, 'Noto Sans CJK SC', 'MS Yahei';
 }
 
@@ -84,7 +84,7 @@ body {
   left: 50%;
   white-space: nowrap;
   transform: translate(-50%, -50%);
-  color: #EEEEEE;
+  color: #ff9f27;
 }
 
 #restart {
@@ -109,18 +109,18 @@ body {
 .mainbtn {
   margin: 0.5rem 1rem 1rem;
   padding: 0.5rem 1.5rem;
-  background-color: #393E46;
-  border: 1px #EEEEEE solid;
+  background-color: #4a0388;
+  border: 1px #4a0388 solid;
   border-radius: 0.2rem;
-  color: #EEEEEE;
+  color: #ff197b;
   font-size: 1.6rem;
   white-space: nowrap;
   cursor: pointer;
 }
 
 .mainbtn:hover {
-  background: #ff7878;
-  color: #fff;
+  background: #fd373c;
+  color: #4a0388;
   transition: all .4s ease 0s;
 }
 
@@ -153,16 +153,16 @@ body {
   width: 6rem;
   border: none;
   border-radius: 0.2rem;
-  background-color:lightsteelblue;
+  background-color: #1a0c18;
   font-size: 1.4rem;
-  color: #EEEEEE;
+  color: #ff9f27;
   cursor: pointer;
   z-index:2;
   word-wrap: none;
 }
 
 #specialthanks {
-  background-color: #5865F2;
+  background-color: #1a0c18;
   top: 1rem;
 }
 
@@ -236,7 +236,7 @@ body {
 }
 
 .title {
-  color: white;
+  color: #ff9f27;
   position: relative;
   font-size: 1.5rem;
   font-weight: 700;
@@ -256,7 +256,7 @@ ul#total,
 ul#total li,
 #achievements li {
   position: relative;
-  color: white;
+  color: #ff9f27;
   display: inline-grid;
   margin: 0.5rem;
   width: 12rem;
@@ -279,11 +279,11 @@ ul#total li .achievementtitle,
 #themeToggleBtn {
   padding: 0 0.7rem;
   width: 6.5rem;
-  background-color:#EEEEEE;
+  background-color: #1a0c18;
   border: none;
   border-radius: 4px;
   font-size: 1.4rem;
-  color: #222831;
+  color: #ff9f27;
   line-height: 2.5rem;
   text-align: center;
   vertical-align: middle;
@@ -294,14 +294,11 @@ ul#total li .achievementtitle,
   bottom: 0.5rem;
 }
 
-#save {
-  background-color:#007046;
-  color: white;
-  bottom: 6.5rem;
+#themeToggleBtn {
+  display: none;
 }
-#load {
-  background-color: #fc5531;
-  color: white;
+
+#save {
   bottom: 3.5rem;
 }
 
@@ -312,7 +309,7 @@ ul#total li .achievementtitle,
   height: 5.2rem;
   font-size: 1.4rem;
   white-space: nowrap;
-  color: #EEEEEE;
+  color: #ff9f27;
 }
 
 .propinitial,
@@ -326,7 +323,7 @@ ul#total li .achievementtitle,
   list-style: none;
   padding: 2rem 1rem 0.5rem 1rem;
   display: flex;
-  color: #FFFFFF;
+  color: #fd373c;
   overflow: auto;
 }
 
@@ -335,23 +332,23 @@ ul#total li .achievementtitle,
   margin: 0.1rem 2px;
   display: flex;
   flex-direction: column;
-  border: 1px #ccc solid;
+  border: 1px #fd373c solid;
   border-radius: 0.2rem;
   font-size: 1rem;
   position: relative;
 }
 
 .lifeProperty>li>span:last-child {
-  background: #eee;
-  color: #666;
+  background: #fd373c;
+  color: #4a0388;
 }
 
 .selectlist>li {
   margin-bottom: 0.6rem;
   display: block;
-  border: 1px #EEEEEE solid;
+  border: 1px #ff9f27 solid;
   border-radius: 0.2rem;
-  color: #EEEEEE;
+  color: #ff9f27;
   font-size: 1.2rem;
   line-height: 1.6;
   user-select: none;
@@ -365,25 +362,27 @@ ul#total li .achievementtitle,
 
 .achvg0,
 .grade0b {
-  background-color: #464646;
-  border: #f8f8f8 2px solid !important;
+  background-color: #231815;
+  border: #ff9f27 2px solid !important;
+  color: #ff9f27 !important;
 }
 .achvg1,
 .grade1b {
-  background-color: #6495ed;
-  border: #f8f8f8 2px solid !important;
+  background-color: #3b3894;
+  border: #ff9f27 2px solid !important;
 }
 
 .achvg2,
 .grade2b {
-  background-color: #e2a7ff;
-  border: #f8f8f8 2px solid !important;
+  background-color: #470063;
+  border: #ff9f27 2px solid !important;
 }
 
 .achvg3,
 .grade3b {
-  background-color: #ffa07a;
-  border: #f8f8f8 2px solid !important;
+  background-color: #f73c47;
+  border: #ff9f27 2px solid !important;
+  color: #f8ea8b !important;
 }
 
 .mask::before {
@@ -394,32 +393,28 @@ ul#total li .achievementtitle,
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #000;
+  background-color: #241619;
   opacity: 0.5;
 }
 
 @media (min-width:1080px) {
   .grade0b:hover {
-    background-color: #c0c0c0;
-    color: #3b3b3b;
+    background-color: #452915;
     transition: all .3s ease 0s;
   }
 
   .grade1b:hover {
-    background-color: #87cefa;
-    color: #3b3b3b;
+    background-color: #5553b3;
     transition: all .3s ease 0s;
   }
 
   .grade2b:hover {
-    background-color: #e7beff;
-    color: #3b3b3b;
+    background-color: #672183;
     transition: all .3s ease 0s;
   }
 
   .grade3b:hover {
-    background-color: #f7a989;
-    color: #3b3b3b;
+    background-color: #ff8561;
     transition: all .3s ease 0s;
   }
 }
@@ -428,8 +423,7 @@ ul#total li .achievementtitle,
 .grade1b.selected,
 .grade2b.selected,
 .grade3b.selected {
-  box-shadow: #ccc 0px 0px 10px;
-  color: #3b3b3b;
+  box-shadow: #f74745 8px 4px 4px;
   overflow: hidden;
 }
 .grade0b.selected::after,
@@ -438,12 +432,12 @@ ul#total li .achievementtitle,
 .grade3b.selected::after {
   content: '';
   position: absolute;
-  background-color:#000;
+  background-color: #fe028b;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  box-shadow: 0 0 10px #000;
+  box-shadow: 0 0 10px #fe028b;
   opacity: 0;
   animation: blink 3s linear infinite;
 }
@@ -463,19 +457,19 @@ ul#total li .achievementtitle,
 }
 
 .grade0b.selected {
-  background-color: #c0c0c0 !important;
+  background-color: #452915 !important;
 }
 
 .grade1b.selected {
-  background-color: #87cefa !important;
+  background-color: #5553b3!important;
 }
 
 .grade2b.selected {
-  background-color: #e7beff !important;
+  background-color: #672183 !important;
 }
 
 .grade3b.selected {
-  background-color: #f1bfac !important;
+  background-color: #ff8561 !important;
 }
 
 .propinitial {
@@ -495,7 +489,7 @@ ul#total li .achievementtitle,
   padding: 0.2rem;
   display: inline-block;
   border-radius: 0.2rem;
-  color: #EEEEEE;
+  color: #ff9f27;
   font-size: 1.6rem;
   line-height: 2;
 }
@@ -506,9 +500,9 @@ ul#total li .achievementtitle,
   margin: 0 0.5rem;
   padding: 0;
   font-size: 2rem;
-  border: 0.1rem #EEEEEE solid;
+  border: 0.1rem #ff9f27 solid;
   background-color: #393E46;
-  color: #EEEEEE;
+  color: #ff9f27;
   text-align: center;
 }
 
@@ -516,7 +510,7 @@ ul#total li .achievementtitle,
   position: relative;
   cursor: pointer;
   font-size: 2rem;
-  color: #EEEEEE;
+  color: #ff9f27;
 }
 
 .judge>li>span:nth-child(1),
@@ -534,8 +528,8 @@ ul#total li .achievementtitle,
   flex: 1;
   margin: 0.5rem 1rem;
   padding: 0;
-  border: 1px #9b9b9b solid;
-  background-color: #393E46;
+  border: 1px #ff9f27 solid;
+  background-color: #241619;
   border-radius: 4px;
   overflow: auto;
 }
@@ -544,9 +538,9 @@ ul#total li .achievementtitle,
   margin: 10px 0;
   padding: 5px 10px;
   display: flex;
-  background-color: #4a5361;
-  box-shadow: #EEEEEE 0 0 0.4rem;
-  color: #EEEEEE;
+  background-color: #231815;
+  box-shadow: #ff9f27 0 0 0.4rem;
+  color: #ff9f27;
   font-size: 1rem;
   position: relative;
 }
@@ -558,7 +552,7 @@ ul#total li .achievementtitle,
   margin: 1rem;
   display: flex;
   flex-direction: column;
-  border: 1px solid #EEEEEE;
+  border: 1px solid #ff9f27;
   border-radius: 4px;
   overflow: scroll;
 }
@@ -567,10 +561,10 @@ ul#total li .achievementtitle,
   flex: 1;
   display: flex;
   align-items: center;
-  background-color: #4a5361;
-  border-bottom: 1px solid #EEEEEE;
+  background-color: #231815;
+  border-bottom: 1px solid #ff9f27;
   box-shadow: none;
-  color: #EEEEEE;
+  color: #ff9f27;
 }
 
 .judge>li:last-child {
@@ -579,20 +573,18 @@ ul#total li .achievementtitle,
 
 .judge>li.grade1 span,
 .judge>li.grade1 {
-  background-color: #87cefa;
-  color: #4a5361;
+  background-color: #3b3894;
 }
 
 .judge>li.grade2 span,
 .judge>li.grade2 {
-  background-color: #e7beff;
-  color: #4a5361;
+  background-color: #470063;
 }
 
 .judge>li.grade3 span,
 .judge>li.grade3 {
-  background-color: #f7a989;
-  color: #4a5361;
+  background-color: #f73c47;
+  color: #f8ea8b !important;
 }
 
 
@@ -661,27 +653,27 @@ i {
 }
 
 .banner.success {
-  background: lightgreen;
+  background: #c101f9;
 }
 
 .banner.success::after {
-  background: lightgreen;
+  background: #c101f9;
 }
 
 .banner.error {
-  background: #ed1c24;
+  background: #ff3a3f;
 }
 
 .banner.error::after {
-  background: #ed1c24;
+  background: #ff3a3f;
 }
 
 .banner.info {
-  background: skyblue;
+  background: #282366;
 }
 
 .banner.info::after {
-  background: skyblue;
+  background: #282366;
 }
 
 .banner::after {
@@ -900,4 +892,15 @@ i {
 
 .domToImage2wx img {
   width: 100%;
+}
+
+.github-corner,
+.discord-btn {
+  background-color: #1a0c18 !important;
+  color: #ff9f27 !important;
+}
+.github-corner > svg path.octo-arm,
+.github-corner > svg path.octo-body,
+.discord-btn > svg > g > path {
+  fill: #ff9f27 !important;
 }

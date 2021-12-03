@@ -59,4 +59,14 @@ node repl
 
 </details>
 
+## 其他版本
+
+<details>
+<summary><strong>版本列表</strong></summary>
+<br />
+
+- Cocos版：[gameall3d/LifeRestart_Cocos](https://github.com/gameall3d/LifeRestart_Cocos)
+
+</details>
+
 > 更多信息请参考 [官网文档](https://liferestart.syaro.io/)。

@@ -30,8 +30,8 @@ class App{
         globalThis.onerror = (event, source, lineno, colno, error) => {
             this.hint(`[ERROR] at (${source}:${lineno}:${colno})\n\n${error?.stack||error||'unknow Error'}`, 'error');
         }
-        const keyDownCallback = (keyboardEvent) => {
-            if (keyboardEvent.which === 13 || keyboardEvent.keyCode === 13) {
+        const keyDownCallback = ({which: w, keyCode: k}) => {
+            if ( w === 13 || k === 13 || w === 32 || k === 32 ) {
                 const pressEnterFunc = this.#pages[this.#currentPage]?.pressEnter;
                 pressEnterFunc && typeof pressEnterFunc === 'function' && pressEnterFunc();
             }
@@ -70,7 +70,14 @@ class App{
         `);
 
         // Init theme
-        this.setTheme(localStorage.getItem('theme'))
+        let date = new Date();
+        if( date.getMonth() == 9 && date.getDate() == 31
+            || date.getMonth() == 10 && date.getDate() == 1
+        ){
+            this.setTheme('halloween');
+        } else {
+            this.setTheme(localStorage.getItem('theme'))
+        }
 
         indexPage
             .find('#restart')
@@ -804,10 +811,14 @@ class App{
     setTheme(theme) {
         const themeLink = $(document).find('#themeLink');
 
-        if(theme == 'light') {
-            themeLink.attr('href', 'light.css');
-        } else {
-            themeLink.attr('href', 'dark.css');
+        switch(theme){
+            case 'dark':
+            case 'light':
+            case 'halloween':
+                themeLink.attr('href', `${theme}.css`);
+                break;
+            default:
+                themeLink.attr('href', 'dark.css');
         }
     }
 

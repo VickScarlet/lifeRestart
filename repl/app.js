@@ -50,9 +50,9 @@ class App {
         grade1: ['\x1B[94m', '\x1B[39m'], // Bright Blue
         grade2: ['\x1B[95m', '\x1B[39m'], // Bright Magenta
         grade3: ['\x1B[93m', '\x1B[39m'], // Bright Yellow
-        grade1b: ['\x1B[104m', '\x1B[49m'], // Bright Blue BG
-        grade2b: ['\x1B[105m', '\x1B[49m'], // Bright Magenta BG
-        grade3b: ['\x1B[103m', '\x1B[49m'], // Bright Yellow BG
+        grade1b: ['\x1B[94m\x1B[7m', '\x1B[0m'], // Bright Blue BG
+        grade2b: ['\x1B[95m\x1B[7m', '\x1B[0m'], // Bright Magenta BG
+        grade3b: ['\x1B[93m\x1B[7m', '\x1B[0m'], // Bright Yellow BG
     };
     #randomTalents;
 
@@ -69,7 +69,9 @@ class App {
         this.output(`\rLoading Complete.
 人生重开模拟器
 这垃圾人生一秒也不想待了
-\n🎉键入 \x1B[4m/remake\x1B[24m 开始游戏`,
+
+键入 \x1B[4m/remake\x1B[24m 开始游戏
+键入 \x1B[4m/help\x1B[24m 获取帮助`,
             true
         );
         $$on('achievement', ({name})=>this.output(`
@@ -121,13 +123,18 @@ class App {
 
             case 'n':
             case 'next':
-            case '/next': return this.next(true);
+            case '/next':
+            case '': return this.next(true);
 
             case 'a':
             case 'alloc':
-            case 'allocation':
+            case 'allocate':
+            case 'attrib':
+            case 'attribute':
             case '/alloc':
-            case '/allocation': return this.alloc(...command);
+            case '/allocate':
+            case '/attrib':
+            case '/attribute': return this.attrib(...command);
 
             case 'rd':
             case 'random':
@@ -197,17 +204,25 @@ class App {
 
             case 'a':
             case 'alloc':
-            case 'allocation':
+            case 'allocate':
+            case 'attrib':
+            case 'attribute':
             case '/alloc':
-            case '/allocation': return `分配属性点
-    a, alloc, allocation
-    /alloc, /allocation 命令同等效果
+            case '/allocate':
+            case '/attrib':
+            case '/attribute': return `分配或查看属性点
+    a, alloc, allocate, attrib, attribute
+    /alloc, /allocate, /attrib, /attribute 命令同等效果
 
-    Example:    /allocation STR 1
-                /allocation INT -3
-                /allocation CHR +5
+    Example:    /attribute
+                /allocate STR 1
+                /allocate INT -3
+                /allocate CHR +5
 
-    参数解释    /allocation <TAG> <[+/-]value>
+    效果        在属性分配时分配属性点
+                在人生的过程中查看当前属性点
+
+    参数解释    /allocate <TAG> <[+/-]value>
 
                 <TAG>   表示要分配的属性标签
                         可选有
@@ -283,9 +298,13 @@ class App {
 
     a
     alloc
-    allocation
+    allocate
+    attrib
+    attribute
     /alloc
-    /allocation     分配属性点      /allocation <TAG> <[+/-]value>
+    /allocate
+    /attrib
+    /attribute      分配或查看属性点 /allocate <TAG> <[+/-]value>
 
     n
     next
@@ -344,7 +363,7 @@ class App {
             if(!s) return warn(`${number} 为未知天赋`);
             if(this.#talentSelected.has(s)) continue;
             if(this.#talentSelected.size == 3)
-                return warn('⚠只能选3个天赋');
+                return warn('你只能选3个天赋。请使用 \x1B[4m/unselect\x1B[24m 取消选择你不想要的天赋');
 
             const exclusive = this.#life.exclusive(
                 Array.from(this.#talentSelected).map(({id})=>id),
@@ -389,12 +408,12 @@ class App {
         let description, list, check;
         switch(this.#step) {
             case this.Steps.TALENT:
-                description = '🎉 请选择3个天赋';
+                description = '🎉 请选择（\x1B[4m/select\x1B[24m）3 个天赋';
                 list = this.#randomTalents;
                 check = talent=>this.#talentSelected.has(talent);
                 break;
             case this.Steps.SUMMARY:
-                description = '🎉 你可以选一个天赋继承';
+                description = '🎉 你可以选（\x1B[4m/select\x1B[24m）一个天赋继承';
                 list = Array.from(this.#talentSelected);
                 check = ({id})=>this.#talentExtend == id;
                 break;
@@ -416,7 +435,7 @@ class App {
         const warn = (a, b) => `${a}\n${this.style('warn', this.style('warn', b))}`;
         switch(this.#step) {
             case this.Steps.TALENT:
-                if(this.#talentSelected.size != 3) return warn(this.list(), `⚠请选择3个天赋`);
+                if(this.#talentSelected.size != 3) return warn(this.list(), `请选择 3 个天赋`);
                 this.#step = this.Steps.PROPERTY;
                 this.#propertyAllocation.total = 20 + this.#life.getTalentAllocationAddition(
                     Array.from(this.#talentSelected).map(({id})=>id)
@@ -425,7 +444,7 @@ class App {
                 return this.prop();
             case this.Steps.PROPERTY:
                 const less = this.less();
-                if(less > 0) return warn(this.prop(), `你还有${less}属性点没有分配完`);
+                if(less > 0) return warn(this.prop(), `你还有 ${less} 属性点没有分配完`);
                 this.#step = this.Steps.TRAJECTORY;
                 delete this.#propertyAllocation.total;
                 this.#life.restart(this.#propertyAllocation);
@@ -484,7 +503,8 @@ class App {
 
     prop() {
         const { CHR, INT, STR, MNY } = this.#propertyAllocation;
-        return `🎉属性分配
+        return `🎉 属性分配
+请使用 \x1B[4m/alloc\x1B[24m <TAG> <value> 分配属性
 剩余点数 ${this.less()}
 
 属性(TAG)       当前值
@@ -498,6 +518,31 @@ class App {
     less() {
         const { total, CHR, INT, STR, MNY } = this.#propertyAllocation;
         return total - CHR - INT - STR - MNY;
+    }
+
+    attrib(tag, value) {
+        switch (this.#step) {
+            case this.Steps.PROPERTY:
+                return this.alloc(tag, value);
+
+            case this.Steps.TRAJECTORY:
+                return this.showProperty();
+        
+            default:
+                return undefined;
+        }
+    }
+
+    showProperty() {
+        let property = this.#life.getLastRecord();
+        return `当前属性
+
+属性(TAG)       当前值
+颜值(CHR)         ${property.CHR}
+智力(INT)         ${property.INT}
+体质(STR)         ${property.STR}
+家境(MNY)         ${property.MNY}
+快乐(SPR)         ${property.SPR}`
     }
 
     alloc(tag, value) {
