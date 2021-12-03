@@ -68,4 +68,4 @@ node repl
 
 </details>
 
-> More instructions at [documentation](https://liferestart.syaro.io/).
+> More instructions at [documentation](https://liferestart.syaro.io/)..
