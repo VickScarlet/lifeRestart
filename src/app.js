@@ -200,7 +200,7 @@ class App{
         const talentPage = $(`
         <div id="main">
             <div class="head" style="font-size: 1.6rem">天赋抽卡</div>
-            <button id="random" class="mainbtn" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);"">10连抽！</button>
+            <button id="random" class="mainbtn" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">10连抽！</button>
             <ul id="talents" class="selectlist"></ul>
             <button id="next" class="mainbtn">请选择3个</button>
         </div>
