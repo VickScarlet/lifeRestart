@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "source": [
+                "../../data/specialthanks-afd.xlsx",
+                "../../data/specialthanks-dun.xlsx"
+            ],
+            "target": "../../public/data"
+        },
+        {
+            "source": "../../data/zh-cn",
+            "target": "../../public/data/zh-cn"
+        },
+        {
+            "source": "../../data/en-us",
+            "target": "../../public/data/en-us"
+        }
+    ]
+}

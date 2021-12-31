@@ -121,7 +121,7 @@ function extractMaxTriggers(condition) {
         // Not age related, single trigger.
         return 1;
     }
-    
+
     const age_list = match_object[1].split(",");
     return age_list.length;
 }

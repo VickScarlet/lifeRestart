@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch Chrome",
+            "request": "launch",
+            "type": "pwa-chrome",
+            "url": "http://127.0.0.1:8000/public/index.html",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "test",
@@ -16,9 +23,9 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "xlsxTransform",
-            "program": "${workspaceFolder}/utils/xlsxTransform.js",
-            "args": ["data"],
+            "name": "xlsx2json",
+            "program": "${workspaceFolder}/node_modules/v-transform/src/index.js",
+            "args": ["transform", "jobs/xlsx2json/config.json"],
             "skipFiles": [
                 "<node_internals>/**"
             ]

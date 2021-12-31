@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -6,10 +7,6 @@ module.exports = {
   devtool: 'eval-cheap-module-source-map',
   devServer: {
     static: [
-      {
-        directory: path.join(__dirname, 'data'),
-        publicPath: '/data',
-      },
       {
         directory: path.join(__dirname, 'public'),
         publicPath: '/public',
@@ -22,20 +19,19 @@ module.exports = {
         directory: path.join(__dirname, 'src'),
         publicPath: '/src',
       },
-      {
-        directory: path.join(__dirname, 'lib'),
-        publicPath: '/lib',
-      }
     ],
   },
   output: {
-    path: path.resolve(__dirname, 'public'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'public/chunk'),
+    filename: '[name].[chunkhash:5].js',
     clean: true,
   },
-  // resolve: {
-  //   extensions: ['.js'],
-  // },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'template/index.html',
+      filename: '../index.html',
+    }),
+  ],
   module: {
     rules: [{
       test: /\.js$/,
