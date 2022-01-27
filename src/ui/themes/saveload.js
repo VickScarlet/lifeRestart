@@ -7,22 +7,22 @@ export default class SaveLoad extends ui.view.SaveLoadUI {
         });
         this.btnRead.on(Laya.Event.CLICK, this, async ()=>{
             const result = await $$copy(this.input.text = this.data);
-            $$event('message', [result? 'UI_CopySuccess': 'UI_CopyFaild']);
+            $$event('message', [result? 'UI_CopySuccess': 'UI_CopyFailed']);
         });
         this.btnWrite.on(Laya.Event.CLICK, this, async ()=>{
             const text = await $$read();
             if(text == false) {
                 this.data = [
                     this.input.text,
-                    'UI_PasteFaildDecodeSuccess',
-                    'UI_PasteFaildDecodeFaild'
+                    'UI_PasteFailedDecodeSuccess',
+                    'UI_PasteFailedDecodeFailed'
                 ];
             } else {
                 this.input.text = text;
                 this.data = [
                     text,
                     'UI_PasteSuccessDecodeSuccess',
-                    'UI_PasteSuccessDecodeFaild'
+                    'UI_PasteSuccessDecodeFailed'
                 ];
             }
         });
@@ -60,6 +60,71 @@ export default class SaveLoad extends ui.view.SaveLoadUI {
         this.input.on(Laya.Event.MOUSE_DOWN, this, ()=>{
             this.input.setSelection(0, this.input.text.length);
         })
+
+        this.btnBackup.on(Laya.Event.CLICK, this, ()=>{
+            const board = document.createElement("div");
+            document.body.appendChild(board);
+            board.style = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0.95`;
+
+            const bg = document.createElement("div");
+            bg.style = `
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: #fff;
+                opacity: 0.95`;
+            document.body.appendChild(board);
+            board.appendChild(bg);
+            const textarea = document.createElement("textarea");
+            textarea.style = `position: absolute; width: ${window.innerWidth}px; height: ${window.innerHeight}px;`
+            textarea.value = JSON.stringify(
+                JSON.parse(this.data),
+                null,
+                4
+            );
+            board.appendChild(textarea);
+            const close = document.createElement("div");
+            close.style = `
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100px;
+                height: 100px;
+                background: red;
+                font-size:100px;
+                padding: 0;
+                line-height: 100px;
+                color: white;
+                opacity: 0.7`;
+            close.innerHTML = '×';
+            board.appendChild(close);
+            close.onclick = ()=>board.remove();
+
+            const load = document.createElement("div");
+            load.style = `
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 100px;
+                height: 100px;
+                background: limegreen;
+                font-size: 35px;
+                padding: 0;
+                line-height: 50px;
+                color: white;
+                opacity: 0.7`;
+            load.innerHTML = 'LOAD<br>读取';
+            board.appendChild(load);
+            load.onclick = ()=>this.data = [textarea.value, '成功/success', '失败/failed', true];
+        });
     }
 
     static load() {
@@ -79,17 +144,19 @@ export default class SaveLoad extends ui.view.SaveLoadUI {
         return JSON.stringify(data);
     }
 
-    set data([v, success = 'UI_LoadSuccess', faild = 'UI_LoadFaild']) {
+    set data([v, success = 'UI_LoadSuccess', failed = 'UI_LoadFailed', altMsg]) {
         try {
             const data = JSON.parse(v);
             for(const key in data)
                 localStorage.setItem(key, data[key]);
-            $$event('message', [success]);
+            if(altMsg) alert(success);
+            else $$event('message', [success]);
             $ui.theme = $ui.theme;
             this.btnClose.event(Laya.Event.CLICK);
         } catch (e) {
             console.error(e);
-            $$event('message', [faild]);
+            if(altMsg) alert(`${failed}\n${e}`);
+            else $$event('message', [failed]);
         }
     }
 }

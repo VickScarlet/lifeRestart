@@ -2,9 +2,33 @@ var CLASS$=Laya.class;
 var STATICATTR$=Laya.static;
 var View=laya.ui.View;
 var Dialog=laya.ui.Dialog;
+var CelebrityUI=(function(_super){
+		function CelebrityUI(){
+
+		    this.panelCharacter=null;
+		    this.vboxCharacter=null;
+		    this.btnRetry=null;
+		    this.btnNext=null;
+
+			CelebrityUI.__super.call(this);
+		}
+
+		CLASS$(CelebrityUI,'ui.view.CyberTheme.CelebrityUI',_super);
+		var __proto__=CelebrityUI.prototype;
+		__proto__.createChildren=function(){
+		    			View.regComponent("Laya.runtime.ScaleButton",Laya.runtime.ScaleButton);
+
+			laya.ui.Component.prototype.createChildren.call(this);
+			this.createView(CelebrityUI.uiView);
+
+		}
+
+		CelebrityUI.uiView={"type":"View","props":{"width":1125,"height":2436},"child":[{"type":"Box","props":{"top":40,"right":0,"name":"title","left":0},"child":[{"type":"Image","props":{"skin":"images/accessories/titlebar@3x.png","right":0,"left":0,"sizeGrid":"0,348,116,348"}},{"type":"HBox","props":{"y":160,"x":563,"space":30,"height":70,"centerX":0,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Image","props":{"y":10,"x":1,"skin":"images/accessories/title_left@3x.png","name":"left"}},{"type":"Label","props":{"y":0,"x":2,"text":"UI_Title_Celebrity","fontSize":60,"font":"方正像素12","color":"#ffffff"}},{"type":"Image","props":{"y":10,"x":3,"skin":"images/accessories/title_right@3x.png","name":"right"}}]}]},{"type":"Panel","props":{"var":"panelCharacter","vScrollBarSkin":" ","top":300,"right":0,"name":"panelCharacter","left":0,"bottom":700},"child":[{"type":"VBox","props":{"y":10,"width":1000,"var":"vboxCharacter","space":20,"name":"vboxCharacter","centerX":0},"child":[{"type":"Box","props":{"right":0,"name":"boxCharacter","left":0},"child":[{"type":"Box","props":{"y":0,"right":0,"name":"boxName","left":0,"height":100},"child":[{"type":"Image","props":{"top":0,"skin":"images/border/border_1@3x.png","sizeGrid":"15,130,15,130","right":0,"left":0,"bottom":0}},{"type":"Label","props":{"valign":"middle","text":"颜值10 智力10 体质10 家境Π","name":"label","fontSize":55,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":0,"align":"center"}}]},{"type":"VBox","props":{"top":100,"space":20,"right":25,"name":"vboxStates","left":25},"child":[{"type":"Label","props":{"valign":"middle","text":"颜值10 智力10 体质10 家境Π","name":"label","height":100,"fontSize":55,"font":"方正像素12","color":"#ffffff","centerX":0,"align":"center"}}]}]},{"type":"Box","props":{"right":25,"name":"boxTalent","left":25,"height":100},"child":[{"type":"Image","props":{"y":-220,"x":-25,"top":0,"skin":"images/border/up@3x.png","right":0,"left":0,"bottom":0,"sizeGrid":"4,4,4,4"}},{"type":"Label","props":{"valign":"middle","text":"颜值10 智力10 体质10 家境Π","name":"label","fontSize":50,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":0,"align":"center"}},{"type":"Box","props":{"y":0,"x":0,"width":15,"visible":false,"name":"grade1","height":100},"child":[{"type":"Rect","props":{"width":15,"lineWidth":1,"height":100,"fillColor":"#55fffe"}}]},{"type":"Box","props":{"y":0,"x":0,"width":15,"visible":false,"name":"grade2","height":100},"child":[{"type":"Rect","props":{"width":15,"lineWidth":1,"height":100,"fillColor":"#b17cff"}}]},{"type":"Box","props":{"y":0,"x":0,"width":15,"visible":false,"name":"grade3","height":100},"child":[{"type":"Rect","props":{"width":15,"lineWidth":1,"height":100,"fillColor":"#ffce45"}}]}]},{"type":"Box","props":{"y":10,"x":10,"right":0,"name":"boxUniqueUnGenerate","left":0},"child":[{"type":"Box","props":{"y":0,"right":0,"name":"boxName","left":0,"height":100},"child":[{"type":"Image","props":{"top":0,"skin":"images/border/border_1@3x.png","sizeGrid":"15,130,15,130","right":0,"left":0,"bottom":0}},{"type":"Label","props":{"valign":"middle","text":"UI_UniqueWaTaShi","name":"label","fontSize":55,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":0,"align":"center"}}]},{"type":"VBox","props":{"top":100,"space":20,"right":25,"name":"vboxStates","left":25},"child":[{"type":"Label","props":{"valign":"middle","text":"UI_UniqueWaTaShiContent","right":0,"name":"label","left":0,"leading":30,"fontSize":55,"font":"方正像素12","color":"#ffffff","align":"center"}},{"type":"Box","props":{"y":12,"x":10,"right":0,"name":"boxBtn","left":0,"height":200},"child":[{"type":"Button","props":{"width":500,"skin":"images/button/button_main@3x.png","name":"btn","label":"UI_GenerateNow","centerY":0,"centerX":0,"stateNum":1,"anchorX":0.5,"anchorY":0.5,"sizeGrid":"45,200,45,200","labelFont":"方正像素12","labelColors":"#00fffc,#00fffc,#00fffc","labelSize":50,"runtime":"Laya.runtime.ScaleButton"},"child":[{"type":"Box","props":{},"child":[{"type":"Animation","props":{"y":96,"x":250,"width":0,"source":"view/CyberTheme/animation/circleFlash.ani","scaleX":4,"height":0,"blendMode":"lighter","autoPlay":true}},{"type":"Box","props":{"renderType":"mask"},"child":[{"type":"Rect","props":{"y":37,"x":25,"width":7,"lineWidth":1,"height":116,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":37,"x":470,"width":7,"lineWidth":1,"height":116,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":21,"x":44,"width":414,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":150,"x":171,"width":160,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":163,"x":44,"width":121,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":163,"x":337,"width":121,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":148,"x":29,"width":25,"rotation":40,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":150,"x":331,"width":19,"rotation":55,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":166,"x":160,"width":19,"rotation":-55,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":21,"x":458,"width":25,"rotation":40,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":26,"x":48,"width":25,"rotation":140,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":153,"x":477,"width":25,"rotation":140,"lineWidth":1,"height":6,"fillColor":"#ff0000"}}]}]},{"type":"Box","props":{},"child":[{"type":"Box","props":{"renderType":"mask"},"child":[{"type":"Poly","props":{"y":41,"x":35,"points":"0,0,8,-6,8,113,0,107","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"}},{"type":"Poly","props":{"y":41,"x":464,"points":"0,0,-8,-6,-8,113,0,107","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"}},{"type":"Poly","props":{"y":160,"x":177,"points":"0,0,147,0,153,10,-6,10","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"}}]},{"type":"Animation","props":{"y":172,"x":520,"source":"view/CyberTheme/animation/bottomBreath.ani","scaleX":6,"blendMode":"lighter","autoPlay":true}}]}]}]}]}]}]}]},{"type":"Box","props":{"right":0,"left":0,"height":0,"bottom":0},"child":[{"type":"Button","props":{"y":-450,"width":500,"var":"btnRetry","skin":"images/button/button_main@3x.png","name":"btnRetry","label":"UI_AllNot","centerX":0,"stateNum":1,"anchorX":0.5,"anchorY":0.5,"sizeGrid":"45,200,45,200","labelFont":"方正像素12","labelColors":"#00fffc,#00fffc,#00fffc","labelSize":50,"runtime":"Laya.runtime.ScaleButton"},"child":[{"type":"Box","props":{},"child":[{"type":"Animation","props":{"y":96,"x":250,"width":0,"source":"view/CyberTheme/animation/circleFlash.ani","scaleX":4,"height":0,"blendMode":"lighter","autoPlay":true}},{"type":"Box","props":{"renderType":"mask"},"child":[{"type":"Rect","props":{"y":37,"x":25,"width":7,"lineWidth":1,"height":116,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":37,"x":470,"width":7,"lineWidth":1,"height":116,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":21,"x":44,"width":414,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":150,"x":171,"width":160,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":163,"x":44,"width":121,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":163,"x":337,"width":121,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":148,"x":29,"width":25,"rotation":40,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":150,"x":331,"width":19,"rotation":55,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":166,"x":160,"width":19,"rotation":-55,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":21,"x":458,"width":25,"rotation":40,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":26,"x":48,"width":25,"rotation":140,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":153,"x":477,"width":25,"rotation":140,"lineWidth":1,"height":6,"fillColor":"#ff0000"}}]}]},{"type":"Box","props":{},"child":[{"type":"Box","props":{"renderType":"mask"},"child":[{"type":"Poly","props":{"y":41,"x":35,"points":"0,0,8,-6,8,113,0,107","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"}},{"type":"Poly","props":{"y":41,"x":464,"points":"0,0,-8,-6,-8,113,0,107","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"}},{"type":"Poly","props":{"y":160,"x":177,"points":"0,0,147,0,153,10,-6,10","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"}}]},{"type":"Animation","props":{"y":172,"x":520,"source":"view/CyberTheme/animation/bottomBreath.ani","scaleX":6,"blendMode":"lighter","autoPlay":true}}]}]},{"type":"Button","props":{"y":-200,"width":500,"var":"btnNext","skin":"images/button/button_main@3x.png","name":"btnNext","label":"UI_Make_New_Life","centerX":0,"stateNum":1,"anchorX":0.5,"anchorY":0.5,"sizeGrid":"45,200,45,200","labelFont":"方正像素12","labelColors":"#00fffc,#00fffc,#00fffc","labelSize":50,"runtime":"Laya.runtime.ScaleButton"},"child":[{"type":"Box","props":{},"child":[{"type":"Animation","props":{"y":96,"x":250,"width":0,"source":"view/CyberTheme/animation/circleFlash.ani","scaleX":4,"height":0,"blendMode":"lighter","autoPlay":true}},{"type":"Box","props":{"renderType":"mask"},"child":[{"type":"Rect","props":{"y":37,"x":25,"width":7,"lineWidth":1,"height":116,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":37,"x":470,"width":7,"lineWidth":1,"height":116,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":21,"x":44,"width":414,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":150,"x":171,"width":160,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":163,"x":44,"width":121,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":163,"x":337,"width":121,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":148,"x":29,"width":25,"rotation":40,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":150,"x":331,"width":19,"rotation":55,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":166,"x":160,"width":19,"rotation":-55,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":21,"x":458,"width":25,"rotation":40,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":26,"x":48,"width":25,"rotation":140,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":153,"x":477,"width":25,"rotation":140,"lineWidth":1,"height":6,"fillColor":"#ff0000"}}]}]},{"type":"Box","props":{},"child":[{"type":"Box","props":{"renderType":"mask"},"child":[{"type":"Poly","props":{"y":41,"x":35,"points":"0,0,8,-6,8,113,0,107","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"}},{"type":"Poly","props":{"y":41,"x":464,"points":"0,0,-8,-6,-8,113,0,107","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"}},{"type":"Poly","props":{"y":160,"x":177,"points":"0,0,147,0,153,10,-6,10","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"}}]},{"type":"Animation","props":{"y":172,"x":520,"source":"view/CyberTheme/animation/bottomBreath.ani","scaleX":6,"blendMode":"lighter","autoPlay":true}}]}]}]}]};
+		return CelebrityUI;
+	})(View);
 var CyberAchievementUI=(function(_super){
 		function CyberAchievementUI(){
-			
+
 		    this.btnBack=null;
 		    this.btnRank=null;
 		    this.btnStatistics=null;
@@ -42,7 +66,7 @@ var CyberAchievementUI=(function(_super){
 	})(View);
 var CyberAchievementPopupUI=(function(_super){
 		function CyberAchievementPopupUI(){
-			
+
 		    this.boxBg=null;
 		    this.labName=null;
 
@@ -52,7 +76,7 @@ var CyberAchievementPopupUI=(function(_super){
 		CLASS$(CyberAchievementPopupUI,'ui.view.CyberTheme.CyberAchievementPopupUI',_super);
 		var __proto__=CyberAchievementPopupUI.prototype;
 		__proto__.createChildren=function(){
-		    
+
 			laya.ui.Component.prototype.createChildren.call(this);
 			this.createView(CyberAchievementPopupUI.uiView);
 
@@ -63,7 +87,7 @@ var CyberAchievementPopupUI=(function(_super){
 	})(View);
 var CyberMainUI=(function(_super){
 		function CyberMainUI(){
-			
+
 		    this.imgBg=null;
 		    this.imgTitle=null;
 		    this.btnRemake=null;
@@ -95,7 +119,7 @@ var CyberMainUI=(function(_super){
 	})(View);
 var CyberPropertyUI=(function(_super){
 		function CyberPropertyUI(){
-			
+
 		    this.labLeftPropertyPoint=null;
 		    this.boxCharm=null;
 		    this.boxCharmAllocate=null;
@@ -141,7 +165,7 @@ var CyberPropertyUI=(function(_super){
 	})(View);
 var CyberSummaryUI=(function(_super){
 		function CyberSummaryUI(){
-			
+
 		    this.labAge=null;
 		    this.labAgeJudge=null;
 		    this.labTotal=null;
@@ -189,7 +213,7 @@ var CyberSummaryUI=(function(_super){
 	})(View);
 var CyberTalentUI=(function(_super){
 		function CyberTalentUI(){
-			
+
 		    this.pageDrawCard=null;
 		    this.btnDrawCard=null;
 		    this.pageResult=null;
@@ -215,7 +239,7 @@ var CyberTalentUI=(function(_super){
 	})(View);
 var CyberTrajectoryUI=(function(_super){
 		function CyberTrajectoryUI(){
-			
+
 		    this.labCharm=null;
 		    this.labMoney=null;
 		    this.labIntelligence=null;
@@ -250,9 +274,31 @@ var CyberTrajectoryUI=(function(_super){
 		CyberTrajectoryUI.uiView={"type":"View","props":{"width":1125,"runtime":"Laya.runtime.ViewBase","height":2436},"child":[{"type":"Sprite","props":{"y":0,"x":0},"child":[{"type":"Rect","props":{"width":1125,"lineWidth":1,"height":2436,"fillColor":"#04131f"}}]},{"type":"Box","props":{"top":126,"right":20,"left":20,"height":275},"child":[{"type":"Image","props":{"top":-13,"skin":"images/border/border_2@3x.png","right":-13,"left":-13,"bottom":-13,"sizeGrid":"75,155,75,155"}},{"type":"Box","props":{"width":192,"left":36,"height":192,"centerY":0}},{"type":"VBox","props":{"space":13,"right":45,"left":242,"centerY":0,"align":"left"},"child":[{"type":"HBox","props":{"y":1,"space":13,"align":"middle"},"child":[{"type":"Box","props":{"x":1,"width":260,"name":"boxCharm","height":82},"child":[{"type":"Image","props":{"y":-10,"x":-5,"top":0,"skin":"images/border/property@3x.png","right":0,"left":0,"bottom":0,"sizeGrid":"15,15,15,15"}},{"type":"Box","props":{"width":82,"left":5,"height":82},"child":[{"type":"Image","props":{"skin":"images/icons/icon_chr@3x.png","centerY":0,"centerX":0}}]},{"type":"Label","props":{"text":"UI_Property_Charm","fontSize":40,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":0,"anchorY":5,"anchorX":0.5}},{"type":"Box","props":{"y":0,"width":82,"right":5,"height":82},"child":[{"type":"Label","props":{"var":"labCharm","text":"10","name":"labCharm","fontSize":55,"font":"方正像素12","color":"#55fffe","centerY":0,"centerX":0,"anchorY":5,"anchorX":0.5}}]}]},{"type":"Box","props":{"y":0,"x":2,"width":260,"name":"boxMoney","height":82},"child":[{"type":"Image","props":{"y":-10,"x":-5,"top":0,"skin":"images/border/property@3x.png","right":0,"left":0,"bottom":0,"sizeGrid":"15,15,15,15"}},{"type":"Box","props":{"width":82,"left":5,"height":82},"child":[{"type":"Image","props":{"skin":"images/icons/icon_mny@3x.png","centerY":0,"centerX":0}}]},{"type":"Label","props":{"text":"UI_Property_Money","fontSize":40,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":0,"anchorY":5,"anchorX":0.5}},{"type":"Box","props":{"y":0,"width":82,"right":5,"height":82},"child":[{"type":"Label","props":{"var":"labMoney","text":"10","name":"labMoney","fontSize":55,"font":"方正像素12","color":"#55fffe","centerY":0,"centerX":0,"anchorY":5,"anchorX":0.5}}]}]},{"type":"Box","props":{"x":3,"width":260,"name":"boxIntelligence","height":82},"child":[{"type":"Image","props":{"y":-10,"x":-5,"top":0,"skin":"images/border/property@3x.png","right":0,"left":0,"bottom":0,"sizeGrid":"15,15,15,15"}},{"type":"Box","props":{"width":82,"left":5,"height":82},"child":[{"type":"Image","props":{"skin":"images/icons/icon_int@3x.png","centerY":0,"centerX":0}}]},{"type":"Label","props":{"text":"UI_Property_Intelligence","fontSize":40,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":0,"anchorY":5,"anchorX":0.5}},{"type":"Box","props":{"y":0,"width":82,"right":5,"height":82},"child":[{"type":"Label","props":{"var":"labIntelligence","text":"10","name":"labIntelligence","fontSize":55,"font":"方正像素12","color":"#55fffe","centerY":0,"centerX":0,"anchorY":5,"anchorX":0.5}}]}]}]},{"type":"HBox","props":{"y":2,"space":13,"align":"middle"},"child":[{"type":"Box","props":{"y":0,"x":0,"width":260,"name":"boxStrength","height":82},"child":[{"type":"Image","props":{"y":-10,"x":-5,"top":0,"skin":"images/border/property@3x.png","right":0,"left":0,"bottom":0,"sizeGrid":"15,15,15,15"}},{"type":"Box","props":{"width":82,"left":5,"height":82},"child":[{"type":"Image","props":{"skin":"images/icons/icon_str@3x.png","centerY":0,"centerX":0}}]},{"type":"Label","props":{"text":"UI_Property_Strength","fontSize":40,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":0,"anchorY":5,"anchorX":0.5}},{"type":"Box","props":{"y":0,"width":82,"right":5,"height":82},"child":[{"type":"Label","props":{"var":"labStrength","text":"10","name":"labStrength","fontSize":55,"font":"方正像素12","color":"#55fffe","centerY":0,"centerX":0,"anchorY":5,"anchorX":0.5}}]}]},{"type":"Box","props":{"width":260,"name":"boxSpirit","height":82},"child":[{"type":"Image","props":{"y":-10,"x":-5,"top":0,"skin":"images/border/property@3x.png","right":0,"left":0,"bottom":0,"sizeGrid":"15,15,15,15"}},{"type":"Box","props":{"width":82,"left":5,"height":82},"child":[{"type":"Image","props":{"skin":"images/icons/icon_spr@3x.png","centerY":0,"centerX":0}}]},{"type":"Label","props":{"text":"UI_Property_Spirit","fontSize":40,"font":"方正像素12","color":"#ffffff","centerY":0,"centerX":0,"anchorY":5,"anchorX":0.5}},{"type":"Box","props":{"y":0,"width":82,"right":5,"height":82},"child":[{"type":"Label","props":{"var":"labSpirit","text":"10","name":"labSpirit","fontSize":55,"font":"方正像素12","color":"#55fffe","centerY":0,"centerX":0,"anchorY":5,"anchorX":0.5}}]}]}]}]}]},{"type":"Box","props":{"right":0,"left":0,"height":1,"bottom":-1},"child":[{"type":"Button","props":{"y":-155,"width":500,"var":"btnSummary","skin":"images/button/button_main@3x.png","name":"btnSummary","label":"UI_Goto_Summary","centerX":0,"stateNum":1,"anchorX":0.5,"anchorY":0.5,"sizeGrid":"45,200,45,200","labelFont":"方正像素12","labelColors":"#00fffc,#00fffc,#00fffc","labelSize":50,"runtime":"Laya.runtime.ScaleButton"},"child":[{"type":"Box","props":{},"child":[{"type":"Animation","props":{"y":96,"x":250,"width":0,"source":"view/CyberTheme/animation/circleFlash.ani","scaleX":4,"height":0,"blendMode":"lighter","autoPlay":true}},{"type":"Box","props":{"renderType":"mask"},"child":[{"type":"Rect","props":{"y":37,"x":25,"width":7,"lineWidth":1,"height":116,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":37,"x":470,"width":7,"lineWidth":1,"height":116,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":21,"x":44,"width":414,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":150,"x":171,"width":160,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":163,"x":44,"width":121,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":163,"x":337,"width":121,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":148,"x":29,"width":25,"rotation":40,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":150,"x":331,"width":19,"rotation":55,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":166,"x":160,"width":19,"rotation":-55,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":21,"x":458,"width":25,"rotation":40,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":26,"x":48,"width":25,"rotation":140,"lineWidth":1,"height":6,"fillColor":"#ff0000"}},{"type":"Rect","props":{"y":153,"x":477,"width":25,"rotation":140,"lineWidth":1,"height":6,"fillColor":"#ff0000"}}]}]},{"type":"Box","props":{},"child":[{"type":"Box","props":{"renderType":"mask"},"child":[{"type":"Poly","props":{"y":41,"x":35,"points":"0,0,8,-6,8,113,0,107","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"}},{"type":"Poly","props":{"y":41,"x":464,"points":"0,0,-8,-6,-8,113,0,107","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"}},{"type":"Poly","props":{"y":160,"x":177,"points":"0,0,147,0,153,10,-6,10","lineWidth":1,"lineColor":"#ff0000","fillColor":"#00ffff"}}]},{"type":"Animation","props":{"y":172,"x":520,"source":"view/CyberTheme/animation/bottomBreath.ani","scaleX":6,"blendMode":"lighter","autoPlay":true}}]}]},{"type":"Box","props":{"y":-155,"var":"boxSpeed","right":100,"name":"boxSpeed","left":100,"height":150,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"ProgressBar","props":{"var":"prgSpeed","skin":"images/progress/progress_s.png","right":0,"name":"prgSpeed","left":0,"bottom":0}},{"type":"HScrollBar","props":{"var":"scbSpeed","skin":"images/slider/hslider_s.png","right":0,"name":"scbSpeed","min":0,"max":1000,"left":0,"height":60,"bottom":0}},{"type":"Label","props":{"text":"UI_Manual","fontSize":50,"font":"方正像素12","color":"#55fffe","bottom":70}},{"type":"Label","props":{"text":"UI_Auto","right":0,"fontSize":50,"font":"方正像素12","color":"#55fffe","bottom":70}}]}]},{"type":"Box","props":{"top":440,"right":20,"left":20,"bottom":250},"child":[{"type":"Image","props":{"top":0,"skin":"images/border/border_1@3x.png","right":0,"left":0,"bottom":0,"sizeGrid":"130,130,130,130"}},{"type":"Panel","props":{"var":"panelTrajectory","vScrollBarSkin":"images/slider/vslider_1@3x.png","top":80,"right":20,"name":"panelTrajectory","left":0,"bottom":80},"child":[{"type":"VBox","props":{"var":"vboxTrajectory","top":0,"right":40,"name":"vboxTrajectory","left":20},"child":[{"type":"Box","props":{"right":0,"name":"boxTrajectoryItem","left":0},"child":[{"type":"Box","props":{"y":0,"width":10,"top":0,"runtime":"Laya.runtime.ColorfulBox","name":"boxGrade","left":0,"height":50}},{"type":"HBox","props":{"y":0,"x":220,"name":"hboxAge","anchorX":1,"align":"middle"},"child":[{"type":"Label","props":{"x":0,"text":"3000","name":"labAge","fontSize":50,"font":"方正像素12","color":"#cfea5c","anchorX":0}},{"type":"Label","props":{"x":1,"text":"岁","fontSize":50,"font":"方正像素12","color":"#cfea5c","anchorX":0}},{"type":"Label","props":{"x":2,"text":"：","fontSize":50,"font":"方正像素12","color":"#cfea5c","anchorX":0}}]},{"type":"Label","props":{"wordWrap":true,"text":"你的父母开始辅导你数学和英语，智力+1","right":0,"name":"labContent","left":240,"leading":44,"fontSize":50,"font":"方正像素12","color":"#ffffff"}}]}]}]},{"type":"Box","props":{"y":20,"x":20,"var":"btnUp","top":20,"right":20,"name":"btnUp","left":20,"height":50},"child":[{"type":"Image","props":{"top":0,"skin":"images/border/up@3x.png","right":0,"left":0,"bottom":0,"sizeGrid":"4,4,4,4"}},{"type":"Box","props":{"width":60,"height":60,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Image","props":{"skin":"images/icons/icon_up@3x.png","centerY":0,"centerX":0}}]}]},{"type":"Box","props":{"y":1676,"x":20,"var":"btnDown","right":20,"name":"btnDown","left":20,"height":50,"bottom":20},"child":[{"type":"Image","props":{"top":0,"skin":"images/border/up@3x.png","right":0,"left":0,"bottom":0,"sizeGrid":"4,4,4,4"}},{"type":"Box","props":{"width":60,"rotation":180,"height":60,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Image","props":{"skin":"images/icons/icon_up@3x.png","centerY":0,"centerX":0}}]}]}]},{"type":"Box","props":{"width":10,"var":"boxParticle","name":"boxParticle","height":10,"centerY":0,"centerX":0},"child":[{"type":"Particle2D","props":{"y":5,"x":5,"url":"particle/fly.part","autoPlay":true}}]}]};
 		return CyberTrajectoryUI;
 	})(View);
+var ModeUI=(function(_super){
+		function ModeUI(){
+
+		    this.btnCustom=null;
+		    this.btnCelebrity=null;
+
+			ModeUI.__super.call(this);
+		}
+
+		CLASS$(ModeUI,'ui.view.CyberTheme.ModeUI',_super);
+		var __proto__=ModeUI.prototype;
+		__proto__.createChildren=function(){
+		    			View.regComponent("Laya.runtime.ScaleButton",Laya.runtime.ScaleButton);
+
+			laya.ui.Component.prototype.createChildren.call(this);
+			this.createView(ModeUI.uiView);
+
+		}
+
+		ModeUI.uiView={"type":"View","props":{"width":1125,"height":2436},"child":[{"type":"Box","props":{"y":10,"x":10,"width":600,"var":"btnCustom","runtime":"Laya.runtime.ScaleButton","name":"btn","height":400,"centerY":-400,"centerX":0},"child":[{"type":"Image","props":{"top":-15,"skin":"images/border/achievement_complete@3x.png","right":-15,"left":-15,"bottom":-15,"sizeGrid":"74,80,74,80"}},{"type":"Label","props":{"top":50,"text":"UI_CustomMode","fontSize":80,"font":"方正像素12","color":"#ffffff","centerX":0,"bold":true}},{"type":"Label","props":{"top":200,"text":"UI_CustomModeDescription","right":0,"left":0,"leading":20,"fontSize":40,"font":"方正像素12","color":"#bcbcbc","bottom":0,"align":"center"}}]},{"type":"Box","props":{"y":10,"x":20,"width":600,"var":"btnCelebrity","runtime":"Laya.runtime.ScaleButton","name":"btn","height":400,"centerY":400,"centerX":0},"child":[{"type":"Image","props":{"y":-15,"x":-15,"top":-15,"skin":"images/border/achievement_complete@3x.png","right":-15,"left":-15,"bottom":-15,"sizeGrid":"74,80,74,80"}},{"type":"Label","props":{"top":50,"text":"UI_CelebrityMode","fontSize":80,"font":"方正像素12","color":"#ffffff","centerX":0,"bold":true}},{"type":"Label","props":{"top":200,"text":"UI_CelebrityModeDescription","right":0,"left":0,"leading":20,"fontSize":40,"font":"方正像素12","color":"#bcbcbc","bottom":0,"align":"center"}}]}]};
+		return ModeUI;
+	})(View);
 var AchievementUI=(function(_super){
 		function AchievementUI(){
-			
+
 		    this.btnBack=null;
 		    this.boxRemakeTimes=null;
 		    this.labRemakeTimes=null;
@@ -288,7 +334,7 @@ var AchievementUI=(function(_super){
 	})(View);
 var AchievementPopupUI=(function(_super){
 		function AchievementPopupUI(){
-			
+
 		    this.boxBg=null;
 		    this.bg1=null;
 		    this.labName=null;
@@ -309,9 +355,33 @@ var AchievementPopupUI=(function(_super){
 		AchievementPopupUI.uiView={"type":"View","props":{"y":50,"width":570,"mouseThrough":true,"mouseEnabled":false,"height":150,"alpha":0.75},"child":[{"type":"Box","props":{"var":"boxBg","top":0,"right":0,"name":"boxBg","left":0,"bottom":0},"child":[{"type":"Rect","props":{"y":0,"x":560,"width":10,"lineWidth":1,"height":150,"fillColor":"#84ff55"}},{"type":"Box","props":{"var":"bg1","top":0,"runtime":"Laya.runtime.ColorfulBox","right":10,"left":0,"bottom":0}}]},{"type":"Label","props":{"y":10,"text":"UI_Achievement_Achieve","left":40,"fontSize":40,"font":"SimHei","color":"#84ff55","bold":true}},{"type":"Label","props":{"var":"labName","text":"Achievement","name":"labName","left":40,"fontSize":60,"font":"SimHei","color":"#cccccc","centerY":30}}]};
 		return AchievementPopupUI;
 	})(View);
+var CelebrityUI=(function(_super){
+		function CelebrityUI(){
+
+		    this.panelCharacter=null;
+		    this.vboxCharacter=null;
+		    this.btnRetry=null;
+		    this.btnNext=null;
+
+			CelebrityUI.__super.call(this);
+		}
+
+		CLASS$(CelebrityUI,'ui.view.DefaultTheme.CelebrityUI',_super);
+		var __proto__=CelebrityUI.prototype;
+		__proto__.createChildren=function(){
+		    			View.regComponent("Laya.runtime.ColorfulBox",Laya.runtime.ColorfulBox);
+
+			laya.ui.Component.prototype.createChildren.call(this);
+			this.createView(CelebrityUI.uiView);
+
+		}
+
+		CelebrityUI.uiView={"type":"View","props":{"width":1125,"height":2436},"child":[{"type":"Label","props":{"y":80,"text":"UI_Title_Celebrity","name":"title","fontSize":80,"font":"SimHei","color":"#ffffff","centerX":0}},{"type":"Panel","props":{"var":"panelCharacter","vScrollBarSkin":" ","top":200,"right":0,"name":"panelCharacter","left":0,"bottom":700},"child":[{"type":"VBox","props":{"y":10,"width":1000,"var":"vboxCharacter","space":20,"name":"vboxCharacter","centerX":0},"child":[{"type":"Box","props":{"right":0,"name":"boxCharacter","left":0},"child":[{"type":"Box","props":{"y":0,"runtime":"Laya.runtime.ColorfulBox","right":0,"name":"boxName","left":0,"height":100},"child":[{"type":"Label","props":{"valign":"middle","text":"颜值10 智力10 体质10 家境Π","name":"label","fontSize":55,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"align":"center"}}]},{"type":"VBox","props":{"top":100,"space":20,"runtime":"Laya.runtime.ColorfulBox","right":25,"name":"vboxStates","left":25},"child":[{"type":"Label","props":{"valign":"middle","text":"颜值10 智力10 体质10 家境Π","name":"label","height":100,"fontSize":55,"font":"SimHei","color":"#ffffff","centerX":0,"align":"center"}}]}]},{"type":"Box","props":{"runtime":"Laya.runtime.ColorfulBox","right":25,"name":"boxTalent","left":25,"height":100},"child":[{"type":"Label","props":{"valign":"middle","text":"颜值10 智力10 体质10 家境Π","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"align":"center"}}]},{"type":"Box","props":{"y":10,"x":10,"right":0,"name":"boxUniqueUnGenerate","left":0},"child":[{"type":"Box","props":{"y":0,"runtime":"Laya.runtime.ColorfulBox","right":0,"name":"boxName","left":0,"height":100},"child":[{"type":"Label","props":{"valign":"middle","text":"UI_UniqueWaTaShi","name":"label","fontSize":55,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"align":"center"}}]},{"type":"VBox","props":{"top":100,"space":20,"runtime":"Laya.runtime.ColorfulBox","right":25,"name":"vboxStates","left":25},"child":[{"type":"Label","props":{"y":1,"valign":"middle","text":"UI_UniqueWaTaShiContent","right":0,"name":"label","left":0,"leading":30,"fontSize":55,"font":"SimHei","color":"#ffffff","align":"center"}},{"type":"Box","props":{"y":2,"right":0,"name":"boxBtn","left":0,"height":150},"child":[{"type":"Box","props":{"runtime":"Laya.runtime.ColorfulBox","right":50,"name":"btn","left":50,"height":120,"centerY":0},"child":[{"type":"Label","props":{"y":30,"x":290,"text":"UI_GenerateNow","name":"label","fontSize":60,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0}}]}]}]}]}]}]},{"type":"Box","props":{"width":480,"var":"btnRetry","runtime":"Laya.runtime.ColorfulBox","name":"btnRetry","height":150,"centerX":0,"bottom":400},"child":[{"type":"Label","props":{"text":"UI_AllNot","name":"label","fontSize":60,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0}}]},{"type":"Box","props":{"width":480,"var":"btnNext","runtime":"Laya.runtime.ColorfulBox","name":"btnNext","height":150,"centerX":0,"bottom":150},"child":[{"type":"Label","props":{"text":"UI_Make_New_Life","name":"label","fontSize":60,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0}}]}]};
+		return CelebrityUI;
+	})(View);
 var MainUI=(function(_super){
 		function MainUI(){
-			
+
 		    this.labSubTitle=null;
 		    this.btnRemake=null;
 		    this.btnThanks=null;
@@ -339,9 +409,32 @@ var MainUI=(function(_super){
 		MainUI.uiView={"type":"View","props":{"y":1218,"x":562,"width":1125,"runtime":"Laya.runtime.ViewBase","height":2436,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Label","props":{"text":"UI_Title_Remake","name":"title","fontSize":130,"font":"SimHei","color":"#ffffff","centerY":-260,"centerX":0,"bold":true,"anchorY":0.5,"anchorX":0.5}},{"type":"Label","props":{"wordWrap":true,"var":"labSubTitle","text":"UI_Title_Subsequent","right":0,"name":"title","left":0,"fontSize":70,"font":"SimHei","color":"#999999","centerY":-120,"anchorY":0.5,"anchorX":0.5,"align":"center"}},{"type":"Box","props":{"width":600,"var":"btnRemake","runtime":"Laya.runtime.ColorfulBox","name":"btnRemake","height":150,"centerY":600,"centerX":0},"child":[{"type":"Label","props":{"text":"UI_Remake","name":"label","fontSize":70,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0}}]},{"type":"Box","props":{"width":260,"var":"btnThanks","top":50,"runtime":"Laya.runtime.ColorfulBox","right":50,"name":"btnSmall","height":90,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Label","props":{"text":"UI_Thanks","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5}}]},{"type":"Box","props":{"width":260,"var":"btnAchievement","top":180,"runtime":"Laya.runtime.ColorfulBox","right":50,"name":"btnSmall","height":90,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Label","props":{"text":"UI_Achievement","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5}}]},{"type":"Box","props":{"y":0,"x":0,"width":160,"var":"btnGithub","runtime":"Laya.runtime.ScaleButton","rotation":-45,"name":"btnGithub","height":160,"anchorY":0,"anchorX":0.5},"child":[{"type":"Rect","props":{"y":0,"x":-70,"width":300,"lineWidth":1,"height":140,"fillColor":"#000000"}},{"type":"Image","props":{"top":0,"skin":"images/icons/icon_github.png","rotation":0,"right":0,"left":0,"bottom":0,"anchorY":0.5,"anchorX":0.5}},{"type":"Rect","props":{"y":0,"x":-70,"width":300,"renderType":"hit","lineWidth":1,"height":140,"fillColor":"#000000"}},{"type":"Box","props":{"y":0,"x":-70,"renderType":"mask"},"child":[{"type":"Rect","props":{"width":300,"lineWidth":1,"height":140,"fillColor":"#000000"}}]}]},{"type":"Box","props":{"width":160,"left":50,"height":160,"bottom":50},"child":[{"type":"Box","props":{"width":160,"var":"btnDiscord","runtime":"Laya.runtime.ScaleButton","name":"btnDiscord","height":160,"centerY":0,"centerX":0,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Image","props":{"top":0,"skin":"images/icons/icon_discord.png","right":0,"left":0,"bottom":0,"anchorY":0.5,"anchorX":0.5}}]}]},{"type":"Box","props":{"y":2201,"x":1020,"width":110,"var":"btnSaveLoad","runtime":"Laya.runtime.ColorfulBox","right":50,"name":"btnSmall","height":110,"bottom":180,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Image","props":{"width":80,"skin":"images/icons/icon_save.png","height":80,"centerY":0,"centerX":0}}]},{"type":"Box","props":{"width":110,"var":"btnThemes","runtime":"Laya.runtime.ColorfulBox","right":50,"name":"btnThemes","height":110,"bottom":50,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Image","props":{"width":90,"skin":"images/icons/icon_themes.png","height":90,"centerY":0,"centerX":0}}]}]};
 		return MainUI;
 	})(View);
+var ModeUI=(function(_super){
+		function ModeUI(){
+
+		    this.btnCustom=null;
+		    this.btnCelebrity=null;
+
+			ModeUI.__super.call(this);
+		}
+
+		CLASS$(ModeUI,'ui.view.DefaultTheme.ModeUI',_super);
+		var __proto__=ModeUI.prototype;
+		__proto__.createChildren=function(){
+		    			View.regComponent("Laya.runtime.ColorfulBox",Laya.runtime.ColorfulBox);
+			View.regComponent("Laya.runtime.ColorAgentLabel",Laya.runtime.ColorAgentLabel);
+
+			laya.ui.Component.prototype.createChildren.call(this);
+			this.createView(ModeUI.uiView);
+
+		}
+
+		ModeUI.uiView={"type":"View","props":{"width":1125,"height":2436},"child":[{"type":"Box","props":{"width":600,"var":"btnCustom","runtime":"Laya.runtime.ColorfulBox","name":"btn","height":400,"centerY":-400,"centerX":0},"child":[{"type":"Label","props":{"top":50,"text":"UI_CustomMode","name":"font_default","fontSize":80,"font":"SimHei","color":"#ffffff","centerX":0,"bold":true}},{"type":"Label","props":{"top":200,"text":"UI_CustomModeDescription","right":0,"name":"font_default","left":0,"leading":20,"fontSize":40,"font":"SimHei","color":"#ffffff","bottom":0,"align":"center"}},{"type":"Label","props":{"runtime":"Laya.runtime.ColorAgentLabel","name":"label"}}]},{"type":"Box","props":{"x":10,"width":600,"var":"btnCelebrity","runtime":"Laya.runtime.ColorfulBox","name":"btn","height":400,"centerY":400,"centerX":0},"child":[{"type":"Label","props":{"top":50,"text":"UI_CelebrityMode","name":"font_default","fontSize":80,"font":"SimHei","color":"#ffffff","centerX":0,"bold":true}},{"type":"Label","props":{"top":200,"text":"UI_CelebrityModeDescription","right":0,"name":"font_default","left":0,"leading":20,"fontSize":40,"font":"SimHei","color":"#ffffff","bottom":0,"align":"center"}},{"type":"Label","props":{"y":10,"x":10,"runtime":"Laya.runtime.ColorAgentLabel","name":"label"}}]}]};
+		return ModeUI;
+	})(View);
 var PropertyUI=(function(_super){
 		function PropertyUI(){
-			
+
 		    this.title=null;
 		    this.labLeftPropertyPoint=null;
 		    this.boxCharm=null;
@@ -389,7 +482,7 @@ var PropertyUI=(function(_super){
 	})(View);
 var SummaryUI=(function(_super){
 		function SummaryUI(){
-			
+
 		    this.title=null;
 		    this.listSummary=null;
 		    this.listSelectedTalents=null;
@@ -415,7 +508,7 @@ var SummaryUI=(function(_super){
 	})(View);
 var TalentUI=(function(_super){
 		function TalentUI(){
-			
+
 		    this.title=null;
 		    this.pageDrawCard=null;
 		    this.btnDrawCard=null;
@@ -443,7 +536,7 @@ var TalentUI=(function(_super){
 	})(View);
 var ThanksUI=(function(_super){
 		function ThanksUI(){
-			
+
 		    this.btnBack=null;
 		    this.panelTopSupports=null;
 		    this.vboxTopSupports=null;
@@ -470,7 +563,7 @@ var ThanksUI=(function(_super){
 	})(View);
 var TrajectoryUI=(function(_super){
 		function TrajectoryUI(){
-			
+
 		    this.labCharm=null;
 		    this.labIntelligence=null;
 		    this.labStrength=null;
@@ -506,7 +599,7 @@ var TrajectoryUI=(function(_super){
 	})(View);
 var LoadingUI=(function(_super){
 		function LoadingUI(){
-			
+
 
 			LoadingUI.__super.call(this);
 		}
@@ -526,7 +619,7 @@ var LoadingUI=(function(_super){
 	})(View);
 var MessagePopupUI=(function(_super){
 		function MessagePopupUI(){
-			
+
 		    this.boxBg=null;
 		    this.message=null;
 
@@ -548,13 +641,14 @@ var MessagePopupUI=(function(_super){
 	})(View);
 var SaveLoadUI=(function(_super){
 		function SaveLoadUI(){
-			
+
 		    this.input=null;
 		    this.btnSave=null;
 		    this.btnLoad=null;
 		    this.btnRead=null;
 		    this.btnWrite=null;
 		    this.btnClose=null;
+		    this.btnBackup=null;
 
 			SaveLoadUI.__super.call(this);
 		}
@@ -569,12 +663,12 @@ var SaveLoadUI=(function(_super){
 
 		}
 
-		SaveLoadUI.uiView={"type":"Dialog","props":{"width":645,"height":250},"child":[{"type":"Box","props":{"top":0,"right":0,"left":0,"bottom":150},"child":[{"type":"Box","props":{"y":0,"x":0,"width":645,"height":2},"child":[{"type":"Rect","props":{"width":645,"lineWidth":1,"height":2,"fillColor":"#97ffe6"}}]},{"type":"Box","props":{"width":645,"height":2,"centerX":0,"bottom":0},"child":[{"type":"Rect","props":{"width":645,"lineWidth":1,"height":2,"fillColor":"#97ffe6"}}]},{"type":"Box","props":{"width":645,"height":100,"centerY":0,"centerX":0,"alpha":0.2},"child":[{"type":"Rect","props":{"width":645,"lineWidth":1,"height":100,"fillColor":"#000000"}}]}]},{"type":"TextInput","props":{"wordWrap":false,"var":"input","valign":"middle","top":0,"text":"content","right":0,"overflow":"scroll","left":0,"fontSize":35,"font":"SimHei","color":"#ffffff","bottom":150}},{"type":"Box","props":{"width":120,"var":"btnSave","runtime":"Laya.runtime.ColorfulBox","name":"btnSmall","left":5,"height":120,"bottom":5,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Label","props":{"text":"UI_Save","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"bold":true,"anchorY":0.5,"anchorX":0.5}}]},{"type":"Box","props":{"width":120,"var":"btnLoad","runtime":"Laya.runtime.ColorfulBox","name":"btnSmall","left":130,"height":120,"bottom":5,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Label","props":{"text":"UI_Load","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"bold":true,"anchorY":0.5,"anchorX":0.5}}]},{"type":"Box","props":{"y":335,"width":120,"var":"btnRead","runtime":"Laya.runtime.ColorfulBox","name":"btnSmall","left":260,"height":120,"bottom":5,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Label","props":{"text":"UI_Read","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"bold":true,"anchorY":0.5,"anchorX":0.5}}]},{"type":"Box","props":{"y":335,"width":120,"var":"btnWrite","runtime":"Laya.runtime.ColorfulBox","name":"btnSmall","left":390,"height":120,"bottom":5,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Label","props":{"text":"UI_Write","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"bold":true,"anchorY":0.5,"anchorX":0.5}}]},{"type":"Box","props":{"y":10,"x":10,"width":120,"var":"btnClose","runtime":"Laya.runtime.ColorfulBox","right":5,"name":"btnSmall","height":120,"bottom":5,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Label","props":{"text":"×","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"bold":true,"anchorY":0.5,"anchorX":0.5}}]}]};
+		SaveLoadUI.uiView={"type":"Dialog","props":{"width":645,"height":400},"child":[{"type":"Box","props":{"top":0,"right":0,"left":0,"bottom":300},"child":[{"type":"Box","props":{"y":0,"x":0,"width":645,"height":2},"child":[{"type":"Rect","props":{"width":645,"lineWidth":1,"height":2,"fillColor":"#97ffe6"}}]},{"type":"Box","props":{"width":645,"height":2,"centerX":0,"bottom":0},"child":[{"type":"Rect","props":{"width":645,"lineWidth":1,"height":2,"fillColor":"#97ffe6"}}]},{"type":"Box","props":{"width":645,"height":100,"centerY":0,"centerX":0,"alpha":0.2},"child":[{"type":"Rect","props":{"width":645,"lineWidth":1,"height":100,"fillColor":"#000000"}}]}]},{"type":"TextInput","props":{"wordWrap":false,"var":"input","valign":"middle","top":0,"text":"content","right":0,"overflow":"scroll","left":0,"fontSize":35,"font":"SimHei","color":"#ffffff","bottom":300}},{"type":"Box","props":{"width":120,"var":"btnSave","runtime":"Laya.runtime.ColorfulBox","name":"btnSmall","left":5,"height":120,"bottom":155,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Label","props":{"text":"UI_Save","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"bold":true,"anchorY":0.5,"anchorX":0.5}}]},{"type":"Box","props":{"width":120,"var":"btnLoad","runtime":"Laya.runtime.ColorfulBox","name":"btnSmall","left":130,"height":120,"bottom":155,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Label","props":{"text":"UI_Load","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"bold":true,"anchorY":0.5,"anchorX":0.5}}]},{"type":"Box","props":{"width":120,"var":"btnRead","runtime":"Laya.runtime.ColorfulBox","name":"btnSmall","left":260,"height":120,"bottom":155,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Label","props":{"text":"UI_Read","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"bold":true,"anchorY":0.5,"anchorX":0.5}}]},{"type":"Box","props":{"width":120,"var":"btnWrite","runtime":"Laya.runtime.ColorfulBox","name":"btnSmall","left":390,"height":120,"bottom":155,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Label","props":{"text":"UI_Write","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"bold":true,"anchorY":0.5,"anchorX":0.5}}]},{"type":"Box","props":{"x":10,"width":120,"var":"btnClose","runtime":"Laya.runtime.ColorfulBox","right":5,"name":"btnSmall","height":120,"bottom":155,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Label","props":{"text":"×","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"bold":true,"anchorY":0.5,"anchorX":0.5}}]},{"type":"Box","props":{"y":20,"var":"btnBackup","runtime":"Laya.runtime.ColorfulBox","right":5,"name":"btnBackup","left":5,"height":120,"bottom":5,"anchorY":0.5,"anchorX":0.5},"child":[{"type":"Label","props":{"text":"UI_BackupBtn","name":"label","fontSize":50,"font":"SimHei","color":"#ffffff","centerY":0,"centerX":0,"bold":true,"anchorY":0.5,"anchorX":0.5}}]}]};
 		return SaveLoadUI;
 	})(Dialog);
 var ThemesUI=(function(_super){
 		function ThemesUI(){
-			
+
 		    this.radioTheme=null;
 		    this.btnOK=null;
 		    this.btnClose=null;

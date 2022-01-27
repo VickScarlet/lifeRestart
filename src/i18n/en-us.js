@@ -27,7 +27,7 @@ export default ({
 
     UI_Title_Remake: 'Remake Simulate',
     UI_Title_Subsequent: 'The rubbish life doesn\'t want to stay for a second',
-    UI_Remake: 'Remake Now',
+    UI_Remake: '↻Remake Now',
     UI_Thanks: 'Thx',
     UI_Achievement: 'Achv',
     UI_Cyber_Theme_Art_Design: 'UI Design by 晰晰',
@@ -125,17 +125,31 @@ export default ({
     UI_Write: 'Paste',
 
     UI_CopySuccess: 'Copy to clipboard success',
-    UI_CopyFaild: 'Copy to clipboard faild',
+    UI_CopyFailed: 'Copy to clipboard Failed',
 
     UI_PasteSuccessDecodeSuccess: 'Load Success!',
-    UI_PasteSuccessDecodeFaild: 'Paste success, but load faild!',
-    UI_PasteFaildDecodeSuccess: 'Paste faild, use input load success!',
-    UI_PasteFaildDecodeFaild: 'Paste faild, use input load faild!',
+    UI_PasteSuccessDecodeFailed: 'Paste success, but load Failed!',
+    UI_PasteFailedDecodeSuccess: 'Paste Failed, use input load success!',
+    UI_PasteFailedDecodeFailed: 'Paste Failed, use input load Failed!',
 
     UI_LoadSuccess: 'Load Success!',
-    UI_LoadFaild: 'Load Faild!',
+    UI_LoadFailed: 'Load Failed!',
+
+    UI_Title_Celebrity: 'Past life was...',
+    UI_CustomMode: 'Custom',
+    UI_CustomModeDescription: '10 Talent\nCustom property',
+    UI_CelebrityMode: 'Celebrity',
+    UI_CelebrityModeDescription: 'Past life is celebrity\nRebirth to modern',
+    UI_AllNot: '↻All Not',
+    UI_UniqueWaTaShi: 'Unique of mine',
+    UI_UniqueWaTaShiContent: '\nUnique character card different from other 60 million player\nAll property, All talent, All random\nAll has only one chance',
+    UI_GenerateNow: 'Generate Now',
+
 
     M_NoRank: 'There is no rank',
+    M_PleaseSelectOne: 'Please Select One',
+    M_UnGenerate: 'Unique Character no generate',
+    M_DisableExtendTalent: 'Celebrity mode can\'t extends talent',
 
     F_RemakeTimes: 'Remake {0} Times',
     F_AchievementCount: 'Achievement {0}',
@@ -145,4 +159,5 @@ export default ({
     F_TalentSelectNotComplect: 'Please select {0} talent',
     F_PropertyPointLeft: 'You have left {0} property point',
     F_TalentReplace: 'Talent replace [{source.name}] -> [{target.name}]',
+    F_PropertyStr: 'CHR{CHR} INT{INT} STR{STR} MNY{MNY}'
 });

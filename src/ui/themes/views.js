@@ -9,6 +9,8 @@ const pages = {
     THANKS: 'THANKS',
     THEMES: 'THEMES',
     SAVELOAD: 'SAVELOAD',
+    MODE: 'MODE',
+    CELEBRITY: 'CELEBRITY'
 };
 
 const popups = {
@@ -28,6 +30,8 @@ const cyber = {
         [pages.THANKS]: "default/thanks",
         [pages.THEMES]: 'themes',
         [pages.SAVELOAD]: 'saveload',
+        [pages.MODE]: 'cyber/mode',
+        [pages.CELEBRITY]: 'cyber/celebrity',
     },
     popups: {
         [popups.ACHIEVEMENT]: "cyber/popup/achievementPopup",
@@ -57,20 +61,22 @@ const cyber = {
             ],
             gradeBlk: [
                 {
-                    defaultColor: '#cccccc',
-                    hoverColor: '#cccccc',
+                    visible: false,
                 },
                 {
                     defaultColor: '#55fffe',
                     hoverColor: '#55fffe',
+                    visible: true,
                 },
                 {
                     defaultColor: '#b17cff',
                     hoverColor: '#b17cff',
+                    visible: true,
                 },
                 {
                     defaultColor: '#ffce45',
                     hoverColor: '#ffce45',
+                    visible: true,
                 },
             ]
         },
@@ -165,6 +171,13 @@ const cyber = {
                         defaultColor: '#fc5531',
                         hoverColor: '#f28b54',
                     },
+                    btnBackup: {
+                        defaultColor: '#9c30cd',
+                        hoverColor: '#bf50fd',
+                        radius: 8,
+                        defaultLabel: '#ffffff',
+                        hoverLabel: '#ffffff',
+                    },
                 },
                 names: {
                     btnSmall: {
@@ -190,6 +203,8 @@ const dark = {
         [pages.THANKS]: "default/thanks",
         [pages.THEMES]: 'themes',
         [pages.SAVELOAD]: 'saveload',
+        [pages.MODE]: 'default/mode',
+        [pages.CELEBRITY]: 'default/celebrity',
     },
     popups: {
         [popups.ACHIEVEMENT]: "default/popup/achievementPopup",
@@ -201,24 +216,27 @@ const dark = {
             defaultFontColor: '#eeeeee',
             trajectoryItem: {
                 box: {
-                    filters: ()=>[new Laya.GlowFilter("#eeeeee", 8, 0, 0)],
+                    // filters: ()=>[new Laya.GlowFilter("#eeeeee", 8, 0, 0)],
+                    defaultStroke: '#eeeeee',
+                    hoverStroke: '#eeeeee',
+                    lineWidth: 2,
                 },
                 grade: [
                     {
-                        defaultColor: '#4a5361',
+                        defaultColor: '#464646',
                         hoverColor: '#4a5361',
                     },
                     {
-                        defaultColor: '#1160b0',
-                        hoverColor: '#1160b0',
+                        defaultColor: '#6495ed',
+                        hoverColor: '#87cefa',
                     },
                     {
-                        defaultColor: '#9379ca',
-                        hoverColor: '#9379ca',
+                        defaultColor: '#e2a7ff',
+                        hoverColor: '#e7beff',
                     },
                     {
-                        defaultColor: '#ab6157',
-                        hoverColor: '#ab6157',
+                        defaultColor: '#ffa07a',
+                        hoverColor: '#f7a989',
                     },
                 ],
                 ageColor: '#ffffee',
@@ -411,7 +429,28 @@ const dark = {
                     lineWidth: 4,
                     radius: 0,
                 }
-            ]
+            ],
+            characterItem: {
+                name: {
+                    defaultColor: '#393e46',
+                    defaultStroke: '#eeeeee',
+                    defaultLabel: '#eeeeee',
+                    hoverColor: '#ff7878',
+                    hoverStroke: '#eeeeee',
+                    hoverLabel: '#eeeeee',
+                    lineWidth: 2,
+                },
+                state: {
+                    defaultColor: '#393e46',
+                    defaultStroke: '#eeeeee',
+                    defaultLabel: '#eeeeee',
+                    hoverColor: '#393e46',
+                    hoverStroke: '#eeeeee',
+                    hoverLabel: '#eeeeee',
+                    lineWidth: 2,
+                },
+                propertyColor: '#000000',
+            },
         },
         class: {
             btn_main: {
@@ -420,6 +459,16 @@ const dark = {
                 defaultLabel: '#eeeeee',
                 hoverColor: '#ff7878',
                 hoverStroke: '#eeeeee',
+                hoverLabel: '#eeeeee',
+                lineWidth: 2,
+                radius: 4,
+            },
+            btn_main2: {
+                defaultColor: '#ffa07a',
+                defaultStroke: '#f8f8f8',
+                defaultLabel: '#3b3b3b',
+                hoverColor: '#ff7878',
+                hoverStroke: '#f8f8f8',
                 hoverLabel: '#eeeeee',
                 lineWidth: 2,
                 radius: 4,
@@ -475,7 +524,7 @@ const dark = {
             [pages.PROPERTY]: {
                 vars: {
                     btnRandomAllocate: 'btn_main',
-                    btnNext: 'btn_main',
+                    btnNext: 'btn_main2',
                     title: 'title',
                 },
                 names: {
@@ -607,6 +656,13 @@ const dark = {
                         defaultColor: '#fc5531',
                         hoverColor: '#f28b54',
                     },
+                    btnBackup: {
+                        defaultColor: '#9c30cd',
+                        hoverColor: '#bf50fd',
+                        radius: 8,
+                        defaultLabel: '#ffffff',
+                        hoverLabel: '#ffffff',
+                    },
                 },
                 names: {
                     btnSmall: {
@@ -614,6 +670,18 @@ const dark = {
                         defaultLabel: '#ffffff',
                         hoverLabel: '#ffffff',
                     }
+                }
+            },
+            [pages.MODE]: {
+                names: {
+                    font_default: 'font_default',
+                    btn: 'btn_main',
+                }
+            },
+            [pages.CELEBRITY]: {
+                vars: {
+                    btnRetry: 'btn_main',
+                    btnNext: 'btn_main2',
                 }
             },
         },
@@ -644,6 +712,8 @@ const light = {
         [pages.THANKS]: "default/thanks",
         [pages.THEMES]: 'themes',
         [pages.SAVELOAD]: 'saveload',
+        [pages.MODE]: 'default/mode',
+        [pages.CELEBRITY]: 'default/celebrity',
     },
     popups: {
         [popups.ACHIEVEMENT]: "default/popup/achievementPopup",
@@ -655,21 +725,27 @@ const light = {
             defaultFontColor: '#000000',
             trajectoryItem: {
                 box: {
-                    filters: ()=>[new Laya.GlowFilter("#b1b1b1", 8, 0, 0)],
+                    // filters: ()=>[new Laya.GlowFilter("#b1b1b1", 8, 0, 0)],
+                    defaultStroke: '#b1b1b1',
+                    hoverStroke: '#b1b1b1',
+                    lineWidth: 2,
                 },
                 grade: [
-                    {},
                     {
-                        defaultColor: '#55fffe',
-                        hoverColor: '#55fffe',
+                        defaultColor: '#ffffff',
+                        hoverColor: '#ededed',
                     },
                     {
-                        defaultColor: '#b17cff',
-                        hoverColor: '#b17cff',
+                        defaultColor: '#87cefa',
+                        hoverColor: '#6495ed',
                     },
                     {
-                        defaultColor: '#ffce45',
-                        hoverColor: '#ffce45',
+                        defaultColor: '#e7beff',
+                        hoverColor: '#e2a7ff',
+                    },
+                    {
+                        defaultColor: '#f7a989',
+                        hoverColor: '#ffa07a',
                     },
                 ],
                 ageColor: '#000000',
@@ -860,7 +936,28 @@ const light = {
                     lineWidth: 4,
                     radius: 0,
                 }
-            ]
+            ],
+            characterItem: {
+                name: {
+                    defaultColor: '#ffffff',
+                    defaultStroke: '#cccccc',
+                    defaultLabel: '#000000',
+                    hoverColor: '#ff7878',
+                    hoverStroke: '#cccccc',
+                    hoverLabel: '#ffffff',
+                    lineWidth: 2,
+                },
+                state: {
+                    defaultColor: '#ffffff',
+                    defaultStroke: '#cccccc',
+                    defaultLabel: '#000000',
+                    hoverColor: '#ffffff',
+                    hoverStroke: '#cccccc',
+                    hoverLabel: '#000000',
+                    lineWidth: 2,
+                },
+                propertyColor: '#000000',
+            },
         },
         class: {
             btn_main: {
@@ -869,6 +966,16 @@ const light = {
                 defaultLabel: '#000000',
                 hoverColor: '#ff7878',
                 hoverStroke: '#cccccc',
+                hoverLabel: '#ffffff',
+                lineWidth: 2,
+                radius: 4,
+            },
+            btn_main2: {
+                defaultColor: '#f7a989',
+                defaultStroke: '#f8f8f8',
+                defaultLabel: '#ffffff',
+                hoverColor: '#ff7878',
+                hoverStroke: '#f8f8f8',
                 hoverLabel: '#ffffff',
                 lineWidth: 2,
                 radius: 4,
@@ -924,7 +1031,7 @@ const light = {
             [pages.PROPERTY]: {
                 vars: {
                     btnRandomAllocate: 'btn_main',
-                    btnNext: 'btn_main',
+                    btnNext: 'btn_main2',
                     title: 'title',
                 },
                 names: {
@@ -1056,6 +1163,13 @@ const light = {
                         defaultColor: '#fc5531',
                         hoverColor: '#f28b54',
                     },
+                    btnBackup: {
+                        defaultColor: '#9c30cd',
+                        hoverColor: '#bf50fd',
+                        radius: 8,
+                        defaultLabel: '#ffffff',
+                        hoverLabel: '#ffffff',
+                    },
                 },
                 names: {
                     btnSmall: {
@@ -1063,6 +1177,18 @@ const light = {
                         defaultLabel: '#ffffff',
                         hoverLabel: '#ffffff',
                     }
+                }
+            },
+            [pages.MODE]: {
+                names: {
+                    font_default: 'font_default',
+                    btn: 'btn_main',
+                }
+            },
+            [pages.CELEBRITY]: {
+                vars: {
+                    btnRetry: 'btn_main',
+                    btnNext: 'btn_main2',
                 }
             },
         },

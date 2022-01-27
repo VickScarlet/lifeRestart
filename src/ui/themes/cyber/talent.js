@@ -40,7 +40,7 @@ export default class CyberTalent extends ui.view.CyberTheme.CyberTalentUI {
         }
 
         const talents = [...this.#selected].map(index => this.listTalents.array[index]);
-        $ui.switchView(UI.pages.PROPERTY, { talents });
+        $ui.switchView(UI.pages.PROPERTY, { talents, enableExtend: true});
     }
 
     renderTalent(box, index) {
@@ -99,7 +99,7 @@ export default class CyberTalent extends ui.view.CyberTheme.CyberTalentUI {
                 if(this.#selected.size >= core.talentSelectLimit) {
                     return $$event('message', ['F_TalentSelectLimit', core.talentSelectLimit]);
                 }
-                const exclusive = core.exclusive(
+                const exclusive = core.exclude(
                     [...this.#selected].map(index => this.listTalents.array[index].id),
                     this.listTalents.array[index].id
                 );

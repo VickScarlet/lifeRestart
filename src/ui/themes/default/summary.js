@@ -7,6 +7,7 @@ export default class Summary extends ui.view.DefaultTheme.SummaryUI {
     }
 
     #selectedTalent;
+    #enableExtend;
 
     onAgain() {
         core.talentExtend(this.#selectedTalent);
@@ -14,8 +15,9 @@ export default class Summary extends ui.view.DefaultTheme.SummaryUI {
         $ui.switchView(UI.pages.MAIN);
     }
 
-    init({talents}) {
+    init({talents, enableExtend}) {
         const {summary, lastExtendTalent} = core;
+        this.#enableExtend = enableExtend;
 
         this.listSummary.array = [
             [core.PropertyTypes.HCHR, $lang.UI_Property_Charm],
@@ -38,7 +40,11 @@ export default class Summary extends ui.view.DefaultTheme.SummaryUI {
             if(b == lastExtendTalent) return 1;
             return bg - ag;
         });
-        this.#selectedTalent = talents[0].id;
+        if(this.#enableExtend) {
+            this.#selectedTalent = talents[0].id;
+        } else {
+            this.#selectedTalent = lastExtendTalent;
+        }
         this.listSelectedTalents.array = talents;
     }
     renderSummary(box) {
@@ -57,6 +63,9 @@ export default class Summary extends ui.view.DefaultTheme.SummaryUI {
     }
 
     onSelectTalent(talentId) {
+        if(!this.#enableExtend) {
+            return $$event('message', ['M_DisableExtendTalent']);
+        }
         if(talentId == this.#selectedTalent) {
             this.#selectedTalent = null;
         } else {

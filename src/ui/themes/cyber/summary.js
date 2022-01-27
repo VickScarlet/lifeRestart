@@ -6,6 +6,7 @@ export default class CyberSummary extends ui.view.CyberTheme.CyberSummaryUI {
     }
 
     #selectedTalent;
+    #enableExtend;
 
     onAgain() {
         core.talentExtend(this.#selectedTalent);
@@ -13,8 +14,10 @@ export default class CyberSummary extends ui.view.CyberTheme.CyberSummaryUI {
         $ui.switchView(UI.pages.MAIN);
     }
 
-    init({talents}) {
+    init({talents, enableExtend}) {
         const {summary, lastExtendTalent} = core;
+        this.#enableExtend = enableExtend;
+
         const gradeFilters = $ui.common.filter;
         const gradeColors = $ui.common.grade;
 
@@ -68,7 +71,11 @@ export default class CyberSummary extends ui.view.CyberTheme.CyberSummaryUI {
             if(b == lastExtendTalent) return 1;
             return bg - ag;
         });
-        this.#selectedTalent = talents[0].id;
+        if(this.#enableExtend) {
+            this.#selectedTalent = talents[0].id;
+        } else {
+            this.#selectedTalent = lastExtendTalent;
+        }
         this.listSelectedTalents.array = talents;
     }
 
@@ -115,6 +122,9 @@ export default class CyberSummary extends ui.view.CyberTheme.CyberSummaryUI {
     }
 
     onSelectTalent(talentId) {
+        if(!this.#enableExtend) {
+            return $$event('message', ['M_DisableExtendTalent']);
+        }
         if(talentId == this.#selectedTalent) {
             this.#selectedTalent = null;
         } else {

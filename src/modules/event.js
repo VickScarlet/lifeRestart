@@ -1,9 +1,9 @@
-import { clone } from '../functions/util.js';
-import { checkCondition } from '../functions/condition.js';
-
 class Event {
-    constructor() {}
+    constructor(system) {
+        this.#system = system;
+    }
 
+    #system;
     #events;
 
     initial({events}) {
@@ -24,18 +24,18 @@ class Event {
         return Object.keys(this.#events).length;
     }
 
-    check(eventId, property) {
+    check(eventId) {
         const { include, exclude, NoRandom } = this.get(eventId);
         if(NoRandom) return false;
-        if(exclude && checkCondition(property, exclude)) return false;
-        if(include) return checkCondition(property, include);
+        if(exclude && this.#system.check(exclude)) return false;
+        if(include) return this.#system.check(include);
         return true;
     }
 
     get(eventId) {
         const event = this.#events[eventId];
         if(!event) throw new Error(`[ERROR] No Event[${eventId}]`);
-        return clone(event);
+        return this.#system.clone(event);
     }
 
     information(eventId) {
@@ -43,11 +43,11 @@ class Event {
         return { description };
     }
 
-    do(eventId, property) {
+    do(eventId) {
         const { effect, branch, event: description, postEvent, grade } = this.get(eventId);
         if(branch)
             for(const [cond, next] of branch)
-                if(checkCondition(property, cond))
+                if(this.#system.check(cond))
                     return { effect, next, description, grade };
         return { effect, postEvent, description, grade };
     }

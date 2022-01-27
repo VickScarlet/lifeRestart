@@ -365,7 +365,7 @@ class App {
             if(this.#talentSelected.size == 3)
                 return warn('你只能选3个天赋。请使用 \x1B[4m/unselect\x1B[24m 取消选择你不想要的天赋');
 
-            const exclusive = this.#life.exclusive(
+            const exclusive = this.#life.exclude(
                 Array.from(this.#talentSelected).map(({id})=>id),
                 s.id
             );

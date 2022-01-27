@@ -5,7 +5,12 @@
         "effect": {
             "LIF": -1
         },
-        "NoRandom": 1
+        "NoRandom": 1,
+        "branch": [
+            "(TLT?[1148])&(EVT![20001]):20001",
+            "(TLT?[1147])&(EVT![20000]):20000",
+            "(TLT?[2024])&(EVT?[10679,10680,10681])&(EVT![11504]):11504"
+        ]
     },
     "10001": {
         "id": 10001,
@@ -3215,13 +3220,15 @@
     },
     "10366": {
         "id": 10366,
-        "event": "你斩杀了大量筑基修士，获得不少资源。",
+        "event": "你参加了一场拍卖会。",
         "grade": 1,
-        "effect": {
-            "INT": 10,
-            "STR": 100
-        },
-        "include": "(EVT?[10345,10361])&(STR>450)&(INT>10)&(TLT?[1048])"
+        "include": "(STR>100)&(TLT?[1048])",
+        "exclude": "EVT?[10366]",
+        "branch": [
+            "INT>50:20366",
+            "MNY>4:20365",
+            "TLT?[1048]:20364"
+        ]
     },
     "10367": {
         "id": 10367,
@@ -3716,7 +3723,7 @@
     },
     "10414": {
         "id": 10414,
-        "event": "附近开始流行肺炎，你在家中不敢出门。",
+        "event": "你连刷了20条短视频，发现所有人用的都是同款音乐。",
         "include": "EVT?[10009]",
         "exclude": "EVT?[10414]"
     },
@@ -3724,14 +3731,11 @@
         "id": 10415,
         "event": "高考改革，英语被取消了。",
         "include": "EVT?[10009]",
-        "exclude": "EVT?[10415]",
-        "branch": [
-            "(EVT?[10237,10238,10239])&(INT<8):20415"
-        ]
+        "exclude": "EVT?[10415]"
     },
     "10416": {
         "id": 10416,
-        "event": "高考改革，新增了中特社作为必考科目。",
+        "event": "政治成为幼儿园必修课。",
         "include": "EVT?[10009,10010]",
         "exclude": "EVT?[10416]"
     },
@@ -3746,25 +3750,19 @@
     },
     "10418": {
         "id": 10418,
-        "event": "塔利班组织占领华盛顿。",
+        "event": "地狱笑话吧被百度官方永久关闭。",
         "include": "EVT?[10009]",
-        "exclude": "EVT?[10418]",
-        "branch": [
-            "INT<2:20418"
-        ]
+        "exclude": "EVT?[10418]"
     },
     "10419": {
         "id": 10419,
-        "event": "本·拉登复出，发视频称当年是假死。",
+        "event": "我国人口增长从高速发展转变为高质量发展，稳中有进。",
         "include": "EVT?[10009]",
-        "exclude": "EVT?[10419]",
-        "branch": [
-            "INT<2:20419"
-        ]
+        "exclude": "EVT?[10419]"
     },
     "10420": {
         "id": 10420,
-        "event": "希特勒的遗骨被发现。",
+        "event": "国家出台相关规定，电子游戏的打斗场景不能出现任何颜色的液体。",
         "include": "EVT?[10009]",
         "exclude": "EVT?[10420]"
     },
@@ -3808,20 +3806,14 @@
         "id": 10425,
         "event": "日本发生9.0级地震。",
         "include": "EVT?[10009,11470]",
-        "exclude": "EVT?[10425,11476,10424]",
-        "branch": [
-            "SPR>7:20425"
-        ]
+        "exclude": "EVT?[10425,11476,10424]"
     },
     "10426": {
         "id": 10426,
         "event": "中国大陆收复台湾。",
         "grade": 1,
         "include": "EVT?[10009]",
-        "exclude": "EVT?[10426]",
-        "branch": [
-            "(CHR>8)&(MNY>8):20426"
-        ]
+        "exclude": "EVT?[10426]"
     },
     "10427": {
         "id": 10427,
@@ -3852,21 +3844,15 @@
     },
     "10431": {
         "id": 10431,
-        "event": "游哈米发布次时代手游大作《神原》。",
+        "event": "有史以来最大股灾出现。",
         "include": "EVT?[10009]",
-        "exclude": "EVT?[10431]",
-        "branch": [
-            "MNY>6:20432"
-        ]
+        "exclude": "EVT?[10431]"
     },
     "10432": {
         "id": 10432,
-        "event": "腾讯收购网易。",
+        "event": "元宇宙时代来临，网易CEO自称元始天尊，哔哩哔哩CEO自称元帝，米哈游CEO自称元批。",
         "include": "EVT?[10009]",
-        "exclude": "EVT?[10432]",
-        "branch": [
-            "SPR>7:20433"
-        ]
+        "exclude": "EVT?[10432]"
     },
     "10433": {
         "id": 10433,
@@ -3906,7 +3892,7 @@
     },
     "10438": {
         "id": 10438,
-        "event": "曹县成功申办2066年奥运会。",
+        "event": "某市假意设立黄赌毒场所，警方守在现场将违法人员全部抓获，市民纷纷翘起了大拇指。",
         "include": "EVT?[10009]",
         "exclude": "EVT?[10438]"
     },
@@ -3914,7 +3900,7 @@
         "id": 10439,
         "event": "日本武力攻占珍珠港。",
         "include": "EVT?[10009]",
-        "exclude": "EVT?[10439,11476]"
+        "exclude": "EVT?[10439]"
     },
     "10440": {
         "id": 10440,
@@ -3925,7 +3911,7 @@
     },
     "10441": {
         "id": 10441,
-        "event": "芜湖机场世界排名升至第一。",
+        "event": "大量网红在自己的网民前加上了当地地名。同年多名网红被招安成为当地干部。",
         "include": "EVT?[10009]",
         "exclude": "EVT?[10441]"
     },
@@ -3975,10 +3961,7 @@
         "id": 10448,
         "event": "国家公布中产阶级标准：家庭年收入100万。",
         "include": "EVT?[10009,10010]",
-        "exclude": "EVT?[10448,11297]",
-        "branch": [
-            "MNY<4:20448"
-        ]
+        "exclude": "EVT?[10448,11297]"
     },
     "10449": {
         "id": 10449,
@@ -3996,10 +3979,7 @@
         "id": 10451,
         "event": "北京一本录取率首次超过99%。",
         "include": "EVT?[10009,10010]",
-        "exclude": "EVT?[10451]",
-        "branch": [
-            "(MNY<4)&(TLT![1010]):20452"
-        ]
+        "exclude": "EVT?[10451]"
     },
     "10452": {
         "id": 10452,
@@ -5825,7 +5805,7 @@
     },
     "10706": {
         "id": 10706,
-        "event": "金正恩在朝鲜称帝，改为帝制。",
+        "event": "为减少招聘时的性别歧视，某地出台新规定：员工休产假时的工资将延迟到产假结束后的相同长度时间内随工资发放。",
         "include": "EVT?[10011]",
         "exclude": "EVT?[10706]"
     },
@@ -6275,7 +6255,7 @@
     },
     "10770": {
         "id": 10770,
-        "event": "【绝密消息】你捡到一张纸条，上面写着“快20个群都加满了，不加了不加了，关注策划的贴吧号神户小德，或者B站神户艾兰德吧，不要私信了求求了“",
+        "event": "【绝密消息】快20个群都加满了，不加了不加了，关注策划的贴吧号神户小德，或者B站账号神户艾兰德吧",
         "grade": 2,
         "include": "TLT?[1112]",
         "exclude": "EVT?[10770]"
@@ -6289,14 +6269,14 @@
     },
     "10772": {
         "id": 10772,
-        "event": "【绝密消息】据说按下特别感谢按钮，再按下打赏按钮，可以在让自己的名字出现在感谢名单上（雾",
+        "event": "【绝密消息】现在BUG很多，希望大家遇到了BUG可以通知我们。BUG及意见收集Q群：750452276",
         "grade": 2,
         "include": "TLT?[1112]",
         "exclude": "EVT?[10772,10771]"
     },
     "10773": {
         "id": 10773,
-        "event": "【绝密消息】据说，修仙者是真实存在的……",
+        "event": "【绝密消息】新年快乐~",
         "grade": 2,
         "include": "TLT?[1112]",
         "exclude": "EVT?[10773,10774]"
@@ -6310,7 +6290,7 @@
     },
     "10775": {
         "id": 10775,
-        "event": "【绝密消息】考古学家发现一粒古代的药丸，看上去金灿灿的，不像凡物。",
+        "event": "【绝密消息】后续我们想制作可以让玩家自己上传事件、自己设计天赋的编辑器，不过还处于新建文件夹状态（",
         "grade": 2,
         "include": "TLT?[1112]",
         "exclude": "EVT?[10775]"
@@ -6331,14 +6311,14 @@
     },
     "10778": {
         "id": 10778,
-        "event": "【绝绝子消息】今日份甜甜碎片已加载完毕  ，不是8⃣️，宝！我今天重开人生了  ，我真的哭死，呢呢呢，这家的人生好重开到跺jiojio～～～这杯小布丁也有被惊艳到⁉️⁉️⁉️无语子，路上还看见一个Java男，大无语事件，哒哒哒，岁月漫长 那就一起拯救地球与乐趣吧  ",
+        "event": "【绝密消息】现在已经没多少活跃玩家了，过阵子人更少的话，文案是不是可以更加放飞自我了（误",
         "grade": 2,
         "include": "EVT?[10770,10771,10772,10773,10774,10775,10776,10777,10779,10780]",
         "exclude": "EVT?[10778]"
     },
     "10779": {
         "id": 10779,
-        "event": "【绝密消息】遗传学家说，最好的天赋只有0.1%的几率出现，其次的天赋是1%，比较好的天赋是10%。",
+        "event": "【绝密消息】不会吧不会吧，2022年了居然还有人在人生重开？",
         "grade": 2,
         "include": "TLT?[1112]",
         "exclude": "EVT?[10779]"
@@ -9904,7 +9884,7 @@
         "id": 11296,
         "event": "高超的洞察力使你发现：现实世界是虚拟的。",
         "grade": 3,
-        "include": "(INT>10)&(EVT?[11288])",
+        "include": "((INT>10)&(EVT?[11288]))|(TLT?[2022])",
         "exclude": "EVT?[11296]",
         "branch": [
             "INT>10:21296"
@@ -10825,22 +10805,21 @@
     },
     "11424": {
         "id": 11424,
-        "event": "调查显示，84%的人认为自己的颜值是“中上”。",
+        "event": "最争议网络话题排行榜出炉，高校排名话题位列第85名，大量学生认为排低了。",
         "include": "EVT?[10010]",
-        "exclude": "EVT?[11424,11425,11426,11263,11288]"
+        "exclude": "EVT?[11424]"
     },
     "11425": {
         "id": 11425,
-        "event": "调查显示，50%的人认为自己比大多数人多点儿小聪明，另外30%的人认为自己的智商显著优于身边的人。",
+        "event": "研究发现，网络视频平均时长在过去10年间降低了50%。",
         "include": "EVT?[10010]",
-        "exclude": "EVT?[11424,11425,11426,11263,11288]"
+        "exclude": "EVT?[11425]"
     },
     "11426": {
         "id": 11426,
-        "event": "调查显示，75%的人认为自己的人品好过绝大多数人。",
-        "postEvent": "专家表示可能与报道犯罪的新闻过多有关。",
+        "event": "中国亿万富豪人数达到美国的两倍。",
         "include": "EVT?[10010]",
-        "exclude": "EVT?[11424,11425,11426,11263,11288]"
+        "exclude": "EVT?[11426]"
     },
     "11427": {
         "id": 11427,
@@ -10864,13 +10843,13 @@
     },
     "11430": {
         "id": 11430,
-        "event": "诺贝尔奖暂停举办。",
+        "event": "调查显示，84%的人认为自己的颜值是“中上”。",
         "include": "EVT?[10010]",
         "exclude": "EVT?[11430]"
     },
     "11431": {
         "id": 11431,
-        "event": "欧盟合并成了一个国家。",
+        "event": "调查显示，50%的人认为自己比大多数人多点儿小聪明，另外30%的人认为自己的智商显著优于身边的人。",
         "include": "EVT?[10010]",
         "exclude": "EVT?[11431]"
     },
@@ -10878,11 +10857,11 @@
         "id": 11432,
         "event": "印度成为了联合国第六常。",
         "include": "EVT?[10010]",
-        "exclude": "EVT?[11432,11433]"
+        "exclude": "EVT?[11432]"
     },
     "11433": {
         "id": 11433,
-        "event": "联合国解散了。",
+        "event": "调查显示，75%的人认为自己的人品好过绝大多数人。",
         "include": "EVT?[10010]",
         "exclude": "EVT?[11433]"
     },
@@ -10894,7 +10873,7 @@
     },
     "11435": {
         "id": 11435,
-        "event": "教师行业越来越受到重视，教师工资显著提高。",
+        "event": "某地政府推出市民成就系统，结婚被设为传说级成就，引发大批年轻人前去领证。",
         "include": "EVT?[10010]",
         "exclude": "EVT?[11435]"
     },
@@ -11161,56 +11140,53 @@
     },
     "11471": {
         "id": 11471,
-        "event": "超级管理员（Admin）已被击败。",
+        "event": "苹果收购任天堂。",
         "include": "EVT?[10010]",
         "exclude": "EVT?[11471]"
     },
     "11472": {
         "id": 11472,
-        "event": "4月10号，一些兄弟们失去了家园，只留下了那段话，暗号不变，江湖再见，滴，滴滴。天王盖地虎……",
+        "event": "某互联网大厂开发的自动编程AI，在上线三天后过劳猝死。",
         "include": "EVT?[10010]",
         "exclude": "EVT?[11472]"
     },
     "11473": {
         "id": 11473,
-        "event": "据一位资深游戏制作者透露：某游戏的第六代作品正在紧密制作当中，他们已经建好了文件夹，确定消息可靠。",
+        "event": "秦始皇陵被打开，墓穴里面是空的。",
         "include": "EVT?[10010]",
         "exclude": "EVT?[11473]"
     },
     "11474": {
         "id": 11474,
-        "event": "湾区程序员建国，禁止变更需求被列入宪法。",
+        "event": "政府将游戏中的抽卡认定为赌博行为。",
         "exclude": "EVT?[11474]"
     },
     "11475": {
         "id": 11475,
-        "event": "你去听了一场电子管风琴音乐会，感觉自己的洪荒之力正在觉醒",
-        "effect": {
-            "STR": 1
-        },
+        "event": "一图书馆发生火灾，除博人传之外的其他书籍全部焚毁。",
         "include": "(MNY>7)&(EVT?[10010])",
         "exclude": "EVT?[11475]"
     },
     "11476": {
         "id": 11476,
-        "event": "小日子过得不错的国家认祖归宗，归化为恒桑省。",
+        "event": "微信正式停止运营。",
         "exclude": "EVT?[11476,11497,11498]"
     },
     "11477": {
         "id": 11477,
-        "event": "某孙姓漫画家沉迷摸鱼，最终放弃漫画。意外中奖一亿后，醒来发现是做梦。",
-        "include": "EVT?[10009]",
+        "event": "一名元宇宙主播逃税138亿，打破历史记录。",
+        "include": "EVT?[10432]",
         "exclude": "EVT?[11477]"
     },
     "11478": {
         "id": 11478,
-        "event": "某网红天天忙于相亲，导致粉丝不满，最终不得不公开宣布自己转投独身主义。",
+        "event": "有学者声称，在走向共产主义的道路上应该逐步废除婚姻制度。",
         "include": "EVT?[10009]",
         "exclude": "EVT?[11478]"
     },
     "11479": {
         "id": 11479,
-        "event": "可以自主发明的发明机被发明，奇怪的发明充斥世界，引发了灾难。",
+        "event": "印度人口超越中国。",
         "include": "EVT?[10010]",
         "exclude": "EVT?[11479]"
     },
@@ -11221,25 +11197,25 @@
     },
     "11481": {
         "id": 11481,
-        "event": "虚拟偶像王加然在一次直播中宣布与同事杜向碗成为恋人。",
+        "event": "人工智能偶像正在逐步取代真人虚拟偶像。",
         "include": "EVT?[10010]",
         "exclude": "EVT?[11481]"
     },
     "11482": {
         "id": 11482,
-        "event": "民间一款名为“人生重开模拟器”的游戏正在兴起，引起热议。",
-        "include": "EVT?[10009]",
+        "event": "两位著名人工智能偶像的不正当男女关系被曝光，其中一位删库自杀了。",
+        "include": "EVT?[11481]",
         "exclude": "EVT?[11482]"
     },
     "11483": {
         "id": 11483,
-        "event": "一位打气球摊老板被发现竟是地下军火大亨。",
+        "event": "外星人在地球公开现身，宣称某电脑品牌违反宇宙命名公约，且logo涉嫌歧视，责令立即修改。",
         "include": "EVT?[10011]",
         "exclude": "EVT?[11483]"
     },
     "11484": {
         "id": 11484,
-        "event": "人类发现宜居类地行星，被命名为不吃香菜星27号。",
+        "event": "人类发现宜居类地行星。",
         "exclude": "EVT?[11484]"
     },
     "11485": {
@@ -11249,81 +11225,82 @@
     },
     "11486": {
         "id": 11486,
-        "event": "股市大涨，P股直冲一万点。",
+        "event": "年度十大流行歌公布，你发现一首也没听过。",
         "include": "EVT?[10010]",
         "exclude": "EVT?[11486]"
     },
     "11487": {
         "id": 11487,
-        "event": "人类首次3D打印月球。从此天上有了两个月亮。",
+        "event": "人类首次3D打印月球。",
         "exclude": "EVT?[11487]"
     },
     "11488": {
         "id": 11488,
-        "event": "受气候影响，一只野猪撞死了一只帝王蟹。",
+        "event": "美国黄石公园火山爆发。全球平均气温下降1摄氏度。",
         "include": "EVT?[10009]",
         "exclude": "EVT?[11488]"
     },
     "11489": {
         "id": 11489,
-        "event": "世界上首个没有婚姻的国家出现了。",
+        "event": "本市有人计划在公交车上引爆炸弹，所幸被你提前阻止。",
+        "include": "(TLT?[1133,1132])&(EVT?[10010])",
         "exclude": "EVT?[11489]"
     },
     "11490": {
         "id": 11490,
-        "event": "国内独立游戏工作室联盟制作的3A游戏大作斩获TAG年度游戏。",
-        "include": "EVT?[10010]",
+        "event": "你喜欢读道德经和庄子。",
+        "effect": {
+            "INT": 1
+        },
+        "include": "TLT?[1048]",
         "exclude": "EVT?[11490]"
     },
     "11491": {
         "id": 11491,
-        "event": "国乒在对外星人的比赛中完胜对手，为星系外交做出巨大贡献。",
-        "include": "EVT?[10090,10700]",
+        "event": "日本公布年度汉字：寄。",
+        "include": "EVT?[10010]",
         "exclude": "EVT?[11491]"
     },
     "11492": {
         "id": 11492,
-        "event": "你被无人驾驶车撞伤了，获得大量赔偿。",
-        "effect": {
-            "MNY": 2
-        },
+        "event": "西安或将改名为西京，日本政府立即向中方抗议。",
         "include": "EVT?[10010]",
         "exclude": "EVT?[11492]"
     },
     "11493": {
         "id": 11493,
-        "event": "马斯克宣布特斯拉进军颜色领域，用户授权后可以直接通过车内摄像头进行录制和发布。",
-        "include": "EVT?[10009]",
+        "event": "美国某州立法，要求所有心理测试在开始前都需要标注巴纳姆效应警告。",
+        "include": "EVT?[10011]",
         "exclude": "EVT?[11493]"
     },
     "11494": {
         "id": 11494,
-        "event": "火星宣称即将登陆朝鲜。",
+        "event": "韩国人口直线下滑，韩国政府宣布即将启动“火种”计划。",
         "include": "EVT?[10009]",
         "exclude": "EVT?[11494]"
     },
     "11495": {
         "id": 11495,
-        "event": "首个禁止迫害程序员法案生效。",
-        "include": "EVT?[10010]",
+        "event": "为培养阳刚之气，有关专家建议禁止男性坐着小便。",
+        "include": "EVT?[10009]",
         "exclude": "EVT?[11495]"
     },
     "11496": {
         "id": 11496,
-        "event": "越南宣布毒品合法化，因为可以给国家创造大量税收，提供大量工作岗位。",
-        "include": "EVT?[10009]",
+        "event": "全年所有影视作品的主角均是少数人群。",
+        "include": "EVT?[10011]",
         "exclude": "EVT?[11496]"
     },
     "11497": {
         "id": 11497,
-        "event": "外星舰队造访，观看东京奥运会开幕式后连夜逃离地球。",
-        "exclude": "EVT?[11497,11476,11491]"
+        "event": "电商平台设立2.29购物节。至此终于全年366天全部都是购物节。",
+        "exclude": "EVT?[11497]"
     },
     "11498": {
         "id": 11498,
-        "event": "日本大量居民因核废水变异，为防止病毒传播美国向日本抛下两颗原子弹。",
+        "event": "英国将汉语设为必修课程。",
         "include": "EVT?[10009]",
-        "exclude": "EVT?[11476,11498]"
+        "exclude": "EVT?[11498]"
     },
     "11499": {
         "id": 11499,
@@ -11333,24 +11310,70 @@
     },
     "11500": {
         "id": 11500,
-        "event": "路过空地，被打羽毛球的大妈一记旋风扣杀打晕了过去。",
+        "event": "你感觉世界日新月异，各种大事不断发生，但好像又都与你的生活无关。",
         "effect": {
-            "STR": -1
+            "SPR": -1
         },
-        "include": "(EVT?[10010])&(STR<4)",
-        "exclude": "EVT?[11500]"
+        "include": "MNY<4",
+        "exclude": "EVT?[11500,11501]"
     },
     "11501": {
         "id": 11501,
-        "event": "国家降低游戏版号限制，太爷爷生前在等的游戏终于发售了。",
-        "include": "(EVT?[10010])&(MNY>4)",
-        "exclude": "EVT?[11501]"
+        "event": "你感觉世界日新月异，对未来无限可能的那份好奇支持着你继续活下去。",
+        "effect": {
+            "SPR": 1
+        },
+        "include": "SPR<4",
+        "exclude": "EVT?[11500,11501]"
     },
     "11502": {
         "id": 11502,
-        "event": "为防范星际入侵和核事故带来的变异生物，几大国牵头成立地球和平联合组织。",
+        "event": "山东省宣布本省男性平均身高达到1米8。\r\n各大社交平台上所在地标注为山东省的男性账户数量激增。",
         "include": "EVT?[10010]",
         "exclude": "EVT?[11502]"
+    },
+    "11503": {
+        "id": 11503,
+        "event": "We were no strangers to love\r\nYou know the rules and so do I\r\nA full commitments what I'm thinking of\r\nYou wouldn't get this from any other guy\r\nI just wanna tell you how I'm feeling\r\nGotta make you understand\r\nNever gonna give you up\r\nNever gonna let you down\r\nNever gonna run around and desert you\r\nNever gonna make you cry\r\nNever gonna say goodbye\r\nNever gonna tell a lie and hurt you\r\nWe've know each other for so long\r\nYour hearts been aching\r\nBut you're too shy to say it\r\nInside we both know what's been going on\r\nWe know the game and were gonna play it\r\nAnd if you ask me how I'm feeling\r\nDon't tell me youre too blind to see\r\nNever gonna give you up\r\nNever gonna let you down\r\nNever gonna run around and desert you\r\nNever gonna make you cry\r\nNever gonna say goodbye\r\nNever gonna tell a lie and hurt you\r\nNever gonna give you up\r\nNever gonna let you down\r\nNever gonna run around and desert you\r\nNever gonna make you cry\r\nNever gonna say goodbye\r\nNever gonna tell a lie and hurt you\r\n（Give you up. give you up）\r\n（Give you up, give you up）\r\nNever gonna give\r\nNever gonna give （give you up）\r\nNever gonna give\r\nNever gonna give （give you up）\r\nWe've know each other for so long\r\nYour hearts been aching\r\nBut you're too shy to say it\r\nInside we both know what's been going on\r\nWe know the game and were gonna play it\r\nI just wanna tell you how I'm feeling\r\nGotta make you understand\r\nNever gonna give you up\r\nNever gonna let you down\r\nNever gonna run around and desert you\r\nNever gonna make you cry\r\nNever gonna say goodbye\r\nNever gonna tell a lie and hurt you\r\nNever gonna give you up\r\nNever gonna let you down\r\nNever gonna run around and desert you\r\nNever gonna make you cry\r\nNever gonna say goodbye\r\nNever gonna tell a lie and hurt you\r\nNever gonna give you up\r\nNever gonna let you down\r\nNever gonna run around and desert you\r\nNever gonna make you cry\r\nNever gonna say goodbye\r\nNever gonna tell a lie and hurt you",
+        "effect": {
+            "LIF": -1
+        },
+        "include": "TLT?[2036]"
+    },
+    "11504": {
+        "id": 11504,
+        "event": "因为得过诺贝尔奖，你被复活了。",
+        "grade": 3,
+        "effect": {
+            "LIF": 1
+        },
+        "NoRandom": 1
+    },
+    "20000": {
+        "id": 20000,
+        "event": "天赋卡【死者苏生】发动，你被复活了。",
+        "grade": 3,
+        "effect": {
+            "LIF": 1
+        },
+        "NoRandom": 1
+    },
+    "20001": {
+        "id": 20001,
+        "event": "因为和恶魔进行过交易，你复活了。",
+        "grade": 3,
+        "effect": {
+            "LIF": 1
+        },
+        "NoRandom": 1
+    },
+    "20002": {
+        "id": 20002,
+        "event": "你在睡梦中安然离世。",
+        "include": "EVT?[10000]",
+        "branch": [
+            "EVT?[10000]:10000"
+        ]
     },
     "20007": {
         "id": 20007,
@@ -11702,6 +11725,69 @@
         },
         "NoRandom": 1
     },
+    "20361": {
+        "id": 20361,
+        "event": "截杀者发现你比他还穷，直呼晦气，放了你一马。",
+        "NoRandom": 1
+    },
+    "20362": {
+        "id": 20362,
+        "event": "截杀者被你反杀。得到大量宝物，体质提升。",
+        "grade": 1,
+        "effect": {
+            "STR": 50
+        },
+        "NoRandom": 1
+    },
+    "20363": {
+        "id": 20363,
+        "event": "你在拍卖行外遭到了截杀。",
+        "NoRandom": 1,
+        "branch": [
+            "STR>500:20362",
+            "EVT?[20364]:20361",
+            "TLT?[1048]:10000"
+        ]
+    },
+    "20364": {
+        "id": 20364,
+        "event": "你太穷了，什么也没拍到。",
+        "effect": {
+            "SPR": -1
+        },
+        "NoRandom": 1,
+        "branch": [
+            "CHR<3:20363"
+        ]
+    },
+    "20365": {
+        "id": 20365,
+        "event": "你拍到了一篇功法。体质和智力提升。",
+        "grade": 1,
+        "effect": {
+            "INT": 10,
+            "STR": 10,
+            "MNY": -5
+        },
+        "NoRandom": 1,
+        "branch": [
+            "CHR<3:20363"
+        ]
+    },
+    "20366": {
+        "id": 20366,
+        "event": "其他人不认识上古奇物，被你低价拍到。\r\n体质和快乐大幅提升。",
+        "grade": 2,
+        "effect": {
+            "STR": 100,
+            "MNY": -1,
+            "SPR": 5
+        },
+        "NoRandom": 1,
+        "branch": [
+            "CHR<3:20363"
+        ]
+    },
     "20367": {
         "id": 20367,
         "event": "你悟出了一条天道！",
@@ -11840,24 +11926,9 @@
         },
         "NoRandom": 1
     },
-    "20415": {
-        "id": 20415,
-        "event": "你无语，你当年怎么没这么好的事儿。",
-        "NoRandom": 1
-    },
     "20417": {
         "id": 20417,
         "event": "你寻思这也不是很难啊。",
-        "NoRandom": 1
-    },
-    "20418": {
-        "id": 20418,
-        "event": "你压根儿不知道塔利班和华盛顿是啥东西。",
-        "NoRandom": 1
-    },
-    "20419": {
-        "id": 20419,
-        "event": "你压根儿不知道本·拉登是啥东西。",
         "NoRandom": 1
     },
     "20421": {
@@ -11875,32 +11946,12 @@
     },
     "20423": {
         "id": 20423,
-        "event": "有知情人告诉你不是交通事故，好像是一个在天上飞的人……",
-        "NoRandom": 1
-    },
-    "20425": {
-        "id": 20425,
-        "event": "你意识到这场地震并不寻常……",
-        "NoRandom": 1
-    },
-    "20426": {
-        "id": 20426,
-        "event": "但据你所知，并没有出动军队和武器，好像只派了少量的“人”？",
+        "event": "有知情人告诉你不是交通事故，好像是一个在天上飞的人造成的……",
         "NoRandom": 1
     },
     "20431": {
         "id": 20431,
         "event": "你认为这是虚假消息。",
-        "NoRandom": 1
-    },
-    "20432": {
-        "id": 20432,
-        "event": "你试着玩了玩并且充了点钱，啥好角色都抽不到。",
-        "NoRandom": 1
-    },
-    "20433": {
-        "id": 20433,
-        "event": "还好你不玩网易游戏。",
         "NoRandom": 1
     },
     "20436": {
@@ -11913,14 +11964,6 @@
         "event": "你终于可以呼吸到新鲜空气了。",
         "NoRandom": 1
     },
-    "20439": {
-        "id": 20439,
-        "event": "据说他们没有使用飞机、舰船和炮弹。",
-        "NoRandom": 1,
-        "branch": [
-            "(CHR>8)&(STR>8):20439"
-        ]
-    },
     "20443": {
         "id": 20443,
         "event": "但你家还是很穷，而且也不算幸福。",
@@ -11929,16 +11972,6 @@
     "20444": {
         "id": 20444,
         "event": "但你家还是很穷。",
-        "NoRandom": 1
-    },
-    "20448": {
-        "id": 20448,
-        "event": "你感觉太离谱了。",
-        "NoRandom": 1
-    },
-    "20452": {
-        "id": 20452,
-        "event": "可恶的天龙人。",
         "NoRandom": 1
     },
     "20453": {
@@ -12118,7 +12151,7 @@
     },
     "20770": {
         "id": 20770,
-        "event": "【绝密消息】更新皮肤后，很卡，尤其是ios，我自己都经常打不开这网页……",
+        "event": "【绝密消息】更新后第一次可能加载会比较慢。",
         "grade": 2,
         "include": "TLT?[1112]",
         "exclude": "EVT?[20770]"

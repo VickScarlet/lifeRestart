@@ -1,7 +1,7 @@
 export default class Main extends ui.view.DefaultTheme.MainUI {
     constructor() {
         super();
-        this.btnRemake.on(Laya.Event.CLICK, this, ()=>$ui.switchView(UI.pages.TALENT));
+        this.btnRemake.on(Laya.Event.CLICK, this, ()=>$ui.switchView(UI.pages.MODE));
         this.btnAchievement.on(Laya.Event.CLICK, this, ()=>$ui.switchView(UI.pages.ACHIEVEMENT));
         this.btnThanks.on(Laya.Event.CLICK, this, ()=>$ui.switchView(UI.pages.THANKS));
         this.btnGithub.on(Laya.Event.CLICK, this, goto, ['github']);

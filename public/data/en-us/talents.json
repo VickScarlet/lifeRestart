@@ -16,7 +16,7 @@
         "name": "生而为男",
         "description": "性别一定为男",
         "grade": 1,
-        "exclusive": [
+        "exclude": [
             "1004",
             "1025",
             "1024"
@@ -27,7 +27,7 @@
         "name": "生而为女",
         "description": "性别一定为女",
         "grade": 1,
-        "exclusive": [
+        "exclude": [
             "1003",
             "1024",
             "1025"
@@ -81,7 +81,7 @@
         "effect": {
             "MNY": 1
         },
-        "exclusive": [
+        "exclude": [
             "1012",
             "1013",
             "1014"
@@ -98,7 +98,7 @@
         "name": "乡间微风",
         "description": "你出生在农村",
         "grade": 0,
-        "exclusive": [
+        "exclude": [
             "1010",
             "1013",
             "1014"
@@ -109,7 +109,7 @@
         "name": "城中高楼",
         "description": "你出生在城市",
         "grade": 0,
-        "exclusive": [
+        "exclude": [
             "1010",
             "1012",
             "1014"
@@ -123,7 +123,7 @@
         "effect": {
             "MNY": 1
         },
-        "exclusive": [
+        "exclude": [
             "1010",
             "1012",
             "1013"
@@ -210,7 +210,7 @@
         "name": "人中龙凤",
         "description": "天生双重性别",
         "grade": 2,
-        "exclusive": [
+        "exclude": [
             "1003",
             "1004",
             "1025"
@@ -221,7 +221,7 @@
         "name": "阴阳之外",
         "description": "天生无性别",
         "grade": 2,
-        "exclusive": [
+        "exclude": [
             "1003",
             "1024",
             "1004",
@@ -233,7 +233,7 @@
         "name": "彩虹之下",
         "description": "可能和同性交往",
         "grade": 0,
-        "exclusive": [
+        "exclude": [
             "1113"
         ]
     },
@@ -242,7 +242,7 @@
         "name": "斩情证道",
         "description": "终生不恋爱结婚",
         "grade": 1,
-        "exclusive": [
+        "exclude": [
             "1113"
         ]
     },
@@ -351,7 +351,7 @@
         "name": "丁克",
         "description": "不生孩子",
         "grade": 1,
-        "exclusive": [
+        "exclude": [
             "1113"
         ]
     },
@@ -384,7 +384,7 @@
         "name": "不孕不育",
         "description": "你生不出孩子",
         "grade": 1,
-        "exclusive": [
+        "exclude": [
             "1113"
         ]
     },
@@ -747,7 +747,7 @@
         "effect": {
             "SPR": 2
         },
-        "exclusive": [
+        "exclude": [
             "1122"
         ]
     },
@@ -760,7 +760,7 @@
         "effect": {
             "SPR": 5
         },
-        "exclusive": [
+        "exclude": [
             "1122"
         ]
     },
@@ -770,7 +770,7 @@
         "description": "初始可用点-10",
         "grade": 0,
         "status": -10,
-        "exclusive": [
+        "exclude": [
             "1122"
         ]
     },
@@ -979,7 +979,7 @@
     "1105": {
         "id": "1105",
         "name": "蓝色胶囊",
-        "description": "你20、30岁时无事发生",
+        "description": "你20岁或30岁时无事发生",
         "condition": "AGE?[20]",
         "grade": 1
     },
@@ -1030,7 +1030,7 @@
         "name": "三胎人生",
         "description": "你尽可能生三胎",
         "grade": 1,
-        "exclusive": [
+        "exclude": [
             "1003",
             "1025",
             "1026",
@@ -1094,7 +1094,7 @@
         "description": "赶着投胎，不要初始属性了",
         "grade": 1,
         "status": -20,
-        "exclusive": [
+        "exclude": [
             "1084",
             "1085",
             "1086"
@@ -1120,7 +1120,7 @@
     },
     "1126": {
         "id": "1126",
-        "name": "黄帝",
+        "name": "偏见",
         "description": "种族主义者",
         "grade": 0
     },
@@ -1247,7 +1247,7 @@
                 1
             ]
         },
-        "exclusive": [
+        "exclude": [
             "1012",
             "1013",
             "1014",
@@ -1268,7 +1268,7 @@
                 2
             ]
         },
-        "exclusive": [
+        "exclude": [
             "1012",
             "1013",
             "1014",
@@ -1328,8 +1328,490 @@
                 "1114*0.2",
                 "1023*0.2",
                 "1048*0.2",
-                "1033*5"
+                "1033*5",
+                "1147*0.2"
             ]
         }
+    },
+    "1147": {
+        "id": 1147,
+        "name": "死者苏生",
+        "description": "加一条命",
+        "grade": 3
+    },
+    "1148": {
+        "id": 1148,
+        "name": "恶魔的交易",
+        "description": "所有属性-2，加一条命",
+        "grade": 2,
+        "effect": {
+            "SPR": -2,
+            "MNY": -2,
+            "CHR": -2,
+            "STR": -2,
+            "INT": -2
+        }
+    },
+    "2001": {
+        "id": 2001,
+        "name": "霸王",
+        "description": "体质+4",
+        "grade": 2,
+        "exclusive": 1,
+        "effect": {
+            "STR": 4
+        }
+    },
+    "2002": {
+        "id": 2002,
+        "name": "国色",
+        "description": "颜值+4",
+        "grade": 2,
+        "exclusive": 1,
+        "effect": {
+            "CHR": 4
+        }
+    },
+    "2003": {
+        "id": 2003,
+        "name": "兼爱",
+        "description": "你很受",
+        "grade": 0,
+        "exclusive": 1
+    },
+    "2004": {
+        "id": 2004,
+        "name": "树人",
+        "description": "你还有别的名字",
+        "grade": 0,
+        "exclusive": 1
+    },
+    "2005": {
+        "id": 2005,
+        "name": "圆周率",
+        "description": 3.1415926,
+        "grade": 0,
+        "exclusive": 1
+    },
+    "2006": {
+        "id": 2006,
+        "name": "？",
+        "description": "？？？",
+        "grade": 1,
+        "exclusive": 1,
+        "replacement": {
+            "grade": [
+                2
+            ]
+        },
+        "exclude": [
+            "1012",
+            "1013",
+            "1014",
+            1110,
+            1003,
+            1004,
+            1124,
+            1125
+        ]
+    },
+    "2007": {
+        "id": 2007,
+        "name": "？",
+        "description": "？？？",
+        "condition": "STR<0",
+        "grade": 0,
+        "exclusive": 1,
+        "effect": {
+            "SPR": 1,
+            "MNY": 1,
+            "CHR": 1,
+            "INT": 1
+        }
+    },
+    "2008": {
+        "id": 2008,
+        "name": "？",
+        "description": "？？？",
+        "condition": "(SPR>5)&(MNY>5)&(CHR>5)&(STR>5)&(INT>5)",
+        "grade": 0,
+        "exclusive": 1,
+        "effect": {
+            "SPR": 1,
+            "MNY": 1,
+            "CHR": 1,
+            "STR": 1,
+            "INT": 1
+        }
+    },
+    "2009": {
+        "id": 2009,
+        "name": "白色转盘",
+        "description": "变成随机白色天赋",
+        "grade": 0,
+        "exclusive": 1,
+        "replacement": {
+            "grade": [
+                0
+            ]
+        },
+        "exclude": [
+            "1012",
+            "1013",
+            "1014",
+            1110,
+            1003,
+            1004,
+            1124,
+            1125
+        ]
+    },
+    "2010": {
+        "id": 2010,
+        "name": "白色转盘",
+        "description": "变成随机白色天赋",
+        "grade": 0,
+        "exclusive": 1,
+        "replacement": {
+            "grade": [
+                0
+            ]
+        },
+        "exclude": [
+            "1012",
+            "1013",
+            "1014",
+            1110,
+            1003,
+            1004,
+            1124,
+            1125
+        ]
+    },
+    "2011": {
+        "id": 2011,
+        "name": "白色转盘",
+        "description": "变成随机白色天赋",
+        "grade": 0,
+        "exclusive": 1,
+        "replacement": {
+            "grade": [
+                0
+            ]
+        },
+        "exclude": [
+            "1012",
+            "1013",
+            "1014",
+            1110,
+            1003,
+            1004,
+            1124,
+            1125
+        ]
+    },
+    "2012": {
+        "id": 2012,
+        "name": "白色转盘",
+        "description": "变成随机白色天赋",
+        "grade": 0,
+        "exclusive": 1,
+        "replacement": {
+            "grade": [
+                0
+            ]
+        },
+        "exclude": [
+            "1012",
+            "1013",
+            "1014",
+            1110,
+            1003,
+            1004,
+            1124,
+            1125
+        ]
+    },
+    "2013": {
+        "id": 2013,
+        "name": "白色转盘",
+        "description": "变成随机白色天赋",
+        "grade": 0,
+        "exclusive": 1,
+        "replacement": {
+            "grade": [
+                0
+            ]
+        },
+        "exclude": [
+            "1012",
+            "1013",
+            "1014",
+            1110,
+            1003,
+            1004,
+            1124,
+            1125
+        ]
+    },
+    "2014": {
+        "id": 2014,
+        "name": "连续可导",
+        "description": "你没有其他人格",
+        "grade": 0,
+        "exclusive": 1
+    },
+    "2015": {
+        "id": 2015,
+        "name": "绝妙的天赋",
+        "description": "可惜这里写不下",
+        "grade": 3,
+        "exclusive": 1,
+        "status": 1,
+        "effect": {
+            "SPR": 5,
+            "MNY": 1,
+            "CHR": 1,
+            "STR": 2,
+            "INT": 1,
+            "RDM": 1
+        }
+    },
+    "2016": {
+        "id": 2016,
+        "name": "叠加态",
+        "description": "变成橙色天赋或死",
+        "grade": 2,
+        "exclusive": 1,
+        "replacement": {
+            "talent": [
+                1141,
+                1135,
+                1114,
+                1023,
+                1048,
+                "1033*6",
+                1147
+            ]
+        }
+    },
+    "2017": {
+        "id": 2017,
+        "name": "木大",
+        "description": "遗言很有名",
+        "grade": 0,
+        "exclusive": 1
+    },
+    "2018": {
+        "id": 2018,
+        "name": "高产",
+        "description": "60岁时体质-2",
+        "condition": "AGE?[10]",
+        "grade": 0,
+        "exclusive": 1,
+        "effect": {
+            "STR": -2
+        }
+    },
+    "2019": {
+        "id": 2019,
+        "name": "杠杆",
+        "description": "理财天赋较高",
+        "condition": "AGE?[20]",
+        "grade": 1,
+        "exclusive": 1,
+        "effect": {
+            "MNY": 3
+        }
+    },
+    "2020": {
+        "id": 2020,
+        "name": "物理",
+        "description": "30岁时颜值-2",
+        "condition": "AGE?[30]",
+        "grade": 0,
+        "exclusive": 1,
+        "effect": {
+            "CHR": -2
+        }
+    },
+    "2021": {
+        "id": 2021,
+        "name": "阳间福袋",
+        "description": "更可能开出好天赋",
+        "grade": 2,
+        "exclusive": 1,
+        "replacement": {
+            "talent": [
+                "1142",
+                "1139",
+                "1140",
+                "1141",
+                "1128",
+                "1131",
+                "1104",
+                "1048",
+                "1134",
+                "1135",
+                "1107",
+                "1080",
+                "1065",
+                "1148"
+            ]
+        }
+    },
+    "2022": {
+        "id": 2022,
+        "name": "洞穴寓言",
+        "description": "可能发现世界的真相",
+        "grade": 1,
+        "exclusive": 1
+    },
+    "2023": {
+        "id": 2023,
+        "name": "天赋综合判断",
+        "description": "天赋不能多于5个",
+        "grade": 0,
+        "exclusive": 1
+    },
+    "2024": {
+        "id": 2024,
+        "name": "诺贝尔奖",
+        "description": "得过诺贝尔奖可复活一次",
+        "grade": 2,
+        "exclusive": 1
+    },
+    "2025": {
+        "id": 2025,
+        "name": "二号橙色转盘",
+        "description": "变成随机橙色天赋",
+        "grade": 2,
+        "exclusive": 1,
+        "replacement": {
+            "grade": [
+                3
+            ]
+        }
+    },
+    "2026": {
+        "id": 2026,
+        "name": "流芳",
+        "description": "有悲剧时，所有属性+1",
+        "condition": "TLT?[2028,2029,2030,2031]",
+        "grade": 1,
+        "exclusive": 1,
+        "effect": {
+            "SPR": 1,
+            "MNY": 1,
+            "CHR": 1,
+            "STR": 1,
+            "INT": 1
+        }
+    },
+    "2027": {
+        "id": 2027,
+        "name": "百世",
+        "description": "随机抽一部剧",
+        "grade": 1,
+        "exclusive": 1,
+        "replacement": {
+            "talent": [
+                2028,
+                2029,
+                2030,
+                2031,
+                2032,
+                2033,
+                2034,
+                2035
+            ]
+        }
+    },
+    "2028": {
+        "id": 2028,
+        "name": "哈姆雷特",
+        "description": "快乐-2",
+        "grade": 1,
+        "exclusive": 1,
+        "effect": {
+            "SPR": -2
+        }
+    },
+    "2029": {
+        "id": 2029,
+        "name": "李尔王",
+        "description": "快乐-2",
+        "grade": 1,
+        "exclusive": 1,
+        "effect": {
+            "SPR": -2
+        }
+    },
+    "2030": {
+        "id": 2030,
+        "name": "麦克白",
+        "description": "快乐-2",
+        "grade": 1,
+        "exclusive": 1,
+        "effect": {
+            "SPR": -2
+        }
+    },
+    "2031": {
+        "id": 2031,
+        "name": "奥赛罗",
+        "description": "快乐-2",
+        "grade": 1,
+        "exclusive": 1,
+        "effect": {
+            "SPR": -2
+        }
+    },
+    "2032": {
+        "id": 2032,
+        "name": "仲夏夜之梦",
+        "description": "快乐+114509",
+        "grade": 1,
+        "exclusive": 1,
+        "effect": {
+            "SPR": 114509
+        }
+    },
+    "2033": {
+        "id": 2033,
+        "name": "威尼斯商人",
+        "description": "快乐+2",
+        "grade": 1,
+        "exclusive": 1,
+        "effect": {
+            "SPR": 2
+        }
+    },
+    "2034": {
+        "id": 2034,
+        "name": "第十二夜",
+        "description": "快乐+2",
+        "grade": 1,
+        "exclusive": 1,
+        "effect": {
+            "SPR": 2
+        }
+    },
+    "2035": {
+        "id": 2035,
+        "name": "皆大欢喜",
+        "description": "快乐+2",
+        "grade": 1,
+        "exclusive": 1,
+        "effect": {
+            "SPR": 2
+        }
+    },
+    "2036": {
+        "id": 2036,
+        "name": "永不言弃",
+        "description": "你永远不会放弃",
+        "grade": 2,
+        "exclusive": 1
     }
 }

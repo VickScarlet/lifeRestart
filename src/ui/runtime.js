@@ -475,6 +475,12 @@ class ColorfulBox extends Laya.Box {
         label.text = value;
     }
 
+    get cacheAs() {return super.cacheAs;}
+    set cacheAs(value) {
+        if(value=='bitmap') debugger;
+        super.cacheAs = value;
+    }
+
 }
 
 runtime.BlankBox =
@@ -533,5 +539,33 @@ class BlankBox extends Laya.Box {
     set height(value) {
         super.height = value;
         this.#draw();
+    }
+}
+
+runtime.ColorAgentLabel =
+class ColorAgentLabel extends Laya.Label {
+    constructor(...args) {
+        super(...args);
+    }
+
+    get #brothers() {
+        const brothers = [];
+        if(!this.parent) return brothers;
+        const deepFind = p => {
+            if(!p._childs) return;
+            for(const c of p._childs) {
+                if(c == this) continue;
+                if(c instanceof Laya.Label) brothers.push(c);
+                deepFind(c);
+            }
+        }
+        deepFind(this.parent);
+        return brothers;
+    }
+
+    get color() {return this.super.color;}
+    set color(c) {
+        super.color = c;
+        this.#brothers.forEach(b=>b.color=c);
     }
 }

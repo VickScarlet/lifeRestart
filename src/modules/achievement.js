@@ -1,8 +1,7 @@
-import { clone } from '../functions/util.js';
-import { checkCondition } from '../functions/condition.js';
-
 class Achievement {
-    constructor() {}
+    constructor(system) {
+        this.#system = system;
+    }
 
     // 时机
     Opportunity = {
@@ -12,6 +11,7 @@ class Achievement {
         END: "END",                 // 游戏完成，点击重开 重开次数在这之后才会+1
     };
 
+    #system;
     #achievements;
 
     initial({achievements}) {
@@ -23,7 +23,11 @@ class Achievement {
         return Object.keys(this.#achievements).length;
     }
 
-    list(property) {
+    get #prop() {
+        return this.#system.request(this.#system.Module.PROPERTY);
+    }
+
+    list() {
         return Object
             .values(this.#achievements)
             .map(({
@@ -32,34 +36,34 @@ class Achievement {
             })=>({
                 id, name, opportunity,
                 description, hide, grade,
-                isAchieved: this.isAchieved(id, property),
+                isAchieved: this.isAchieved(id, this.#prop),
             }));
     }
 
     get(achievementId) {
         const achievement = this.#achievements[achievementId];
         if(!achievement) throw new Error(`[ERROR] No Achievement[${achievementId}]`);
-        return clone(achievement);
+        return this.#system.clone(achievement);
     }
 
-    check(achievementId, property) {
+    check(achievementId) {
         const { condition } = this.get(achievementId);
-        return checkCondition(property, condition);
+        return this.#system.check(condition);
     }
 
-    isAchieved(achievementId, property) {
-        for(const [achieved] of (property.get(property.TYPES.ACHV)||[]))
+    isAchieved(achievementId) {
+        for(const [achieved] of (this.#prop.get(this.#prop.TYPES.ACHV)||[]))
             if(achieved == achievementId) return true;
         return false;
     }
 
-    achieve(opportunity, property) {
-        this.list(property)
+    achieve(opportunity) {
+        this.list()
             .filter(({isAchieved})=>!isAchieved)
             .filter(({opportunity: o})=>o==opportunity)
-            .filter(({id})=>this.check(id, property))
+            .filter(({id})=>this.check(id, this.#prop))
             .forEach(({id})=>{
-                property.achieve(property.TYPES.ACHV, id)
+                this.#prop.achieve(this.#prop.TYPES.ACHV, id)
                 $$event('achievement', this.get(id))
             });
     }

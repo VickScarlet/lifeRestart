@@ -1066,7 +1066,7 @@
         "name": "刷刷刷",
         "description": "集齐橙色天赋",
         "grade": 3,
-        "condition": "(ATLT?[1023])&(ATLT?[1048])&(ATLT?[1064])&(ATLT?[1114])&(ATLT?[1135])&(ATLT?[1141])",
+        "condition": "(ATLT?[1023])&(ATLT?[1048])&(ATLT?[1064])&(ATLT?[1114])&(ATLT?[1135])&(ATLT?[1141])&(ATLT?[1147])",
         "hide": 0,
         "opportunity": "START"
     },
@@ -1456,5 +1456,32 @@
         "condition": "TLT?[1136]",
         "hide": 1,
         "opportunity": "START"
+    },
+    "263": {
+        "id": 263,
+        "name": "经 典 老 歌",
+        "description": "自 投 罗 网",
+        "grade": 2,
+        "condition": "TLT?[2036]",
+        "hide": 1,
+        "opportunity": "START"
+    },
+    "264": {
+        "id": 264,
+        "name": "莎比",
+        "description": "集齐四大悲剧",
+        "grade": 2,
+        "condition": "(ATLT?[2028])&(ATLT?[2029])&(ATLT?[2030])&(ATLT?[2031])",
+        "hide": 0,
+        "opportunity": "START"
+    },
+    "265": {
+        "id": 265,
+        "name": "死了但没完全死",
+        "description": "死而复生",
+        "grade": 2,
+        "condition": "EVT?[20000,20001,11504]",
+        "hide": 0,
+        "opportunity": "TRAJECTORY"
     }
 }

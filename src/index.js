@@ -196,5 +196,29 @@ core.config({
             ],
         },
     },
+    characterConfig: { // config for character
+        characterPullCount: 3,
+        rateableKnife: 10,
+        propertyWeight: [
+            [ 0, 1],
+            [ 1, 2],
+            [ 2, 3],
+            [ 3, 4],
+            [ 4, 5],
+            [ 5, 6],
+            [ 6, 5],
+            [ 7, 4],
+            [ 8, 3],
+            [ 9, 2],
+            [10, 1],
+        ],
+        talentWeight: [
+            [ 1, 1],
+            [ 2, 2],
+            [ 3, 3],
+            [ 4, 2],
+            [ 5, 1],
+        ],
+    },
 });
 game.start(query);

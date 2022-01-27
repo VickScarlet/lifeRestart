@@ -15,6 +15,8 @@ export default ({
     UI_Loading: '加载中...',
     UI_Error: '错误',
 
+    UI_BackupBtn: '上面没有效果就试试这个吧',
+
     UI_Colon: '：',
     UI_Times: '次',
     UI_Count: '个',
@@ -27,7 +29,7 @@ export default ({
 
     UI_Title_Remake: '人生重开模拟器',
     UI_Title_Subsequent: '这垃圾人生一秒也不想待了',
-    UI_Remake: '立即重开',
+    UI_Remake: '↻立即重开',
     UI_Thanks: '感谢',
     UI_Achievement: '成就',
     UI_Cyber_Theme_Art_Design: 'UI 设计 by 晰晰',
@@ -125,17 +127,30 @@ export default ({
     UI_Write: '粘贴',
 
     UI_LoadSuccess: '读档成功！',
-    UI_LoadFaild: '读档失败！',
+    UI_LoadFailed: '读档失败！',
 
     UI_CopySuccess: '成功复制存档到剪贴板',
-    UI_CopyFaild: '复制存档到剪贴板失败，请手动复制存档内容',
+    UI_CopyFailed: '复制存档到剪贴板失败，请手动复制存档内容',
 
     UI_PasteSuccessDecodeSuccess: '读档成功！',
-    UI_PasteSuccessDecodeFaild: '粘贴剪贴板存档内容成功，但剪贴板内容读档失败',
-    UI_PasteFaildDecodeSuccess: '粘贴剪贴板存档内容失败，使用输入的内容读档成功',
-    UI_PasteFaildDecodeFaild: '粘贴剪贴板存档内容失败，使用输入的内容读档失败',
+    UI_PasteSuccessDecodeFailed: '粘贴剪贴板存档内容成功，但剪贴板内容读档失败',
+    UI_PasteFailedDecodeSuccess: '粘贴剪贴板存档内容失败，使用输入的内容读档成功',
+    UI_PasteFailedDecodeFailed: '粘贴剪贴板存档内容失败，使用输入的内容读档失败',
+
+    UI_Title_Celebrity: '你的前世是...',
+    UI_CustomMode: '经典模式',
+    UI_CustomModeDescription: '10连抽天赋\n自由分配属性',
+    UI_CelebrityMode: '名人模式',
+    UI_CelebrityModeDescription: '前世是古代名人\n重开到了现代',
+    UI_AllNot: '↻都不是',
+    UI_UniqueWaTaShi: '独一无二的我',
+    UI_UniqueWaTaShiContent: '\n6000万玩家中独一无二的角色卡\n所有属性 所有天赋 随机生成\n 每人只能生成一次',
+    UI_GenerateNow: '立即生成',
 
     M_NoRank: '别卷了，没有排行榜',
+    M_PleaseSelectOne: '请选择一个名人',
+    M_UnGenerate: '独一无二的我还没有生成',
+    M_DisableExtendTalent: '名人模式不能继承天赋',
 
     F_RemakeTimes: '已重开{0}次',
     F_AchievementCount: '成就达成{0}个',
@@ -145,4 +160,5 @@ export default ({
     F_TalentSelectNotComplect: '要选满{0}个天赋',
     F_PropertyPointLeft: '你还有 {0} 属性点没有分配完',
     F_TalentReplace: '天赋替换【{source.name}】->【{target.name}】',
+    F_PropertyStr: '颜值{CHR} 智力{INT} 体质{STR} 家境{MNY}'
 });

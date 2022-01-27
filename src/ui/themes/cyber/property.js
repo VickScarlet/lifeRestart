@@ -67,6 +67,7 @@ export default class CyberProperty extends ui.view.CyberTheme.CyberPropertyUI {
             {
                 propertyAllocate: this.#propertyAllocate,
                 talents: this.listSelectedTalents.array,
+                enableExtend: true,
             }
         );
     }

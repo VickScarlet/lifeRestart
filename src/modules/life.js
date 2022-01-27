@@ -1,21 +1,39 @@
-import { clone, weightRandom, getListValuesMap, getConvertedMap } from '../functions/util.js'
+import * as util from '../functions/util.js';
+import * as fCondition from '../functions/condition.js';
+
 import Property from './property.js';
 import Event from './event.js';
 import Talent from './talent.js';
 import Achievement from './achievement.js';
+import Character from './character.js';
 
 class Life {
     constructor() {
-        this.#property = new Property();
-        this.#event = new Event();
-        this.#talent = new Talent();
-        this.#achievement = new Achievement();
+        this.#property = new Property(this);
+        this.#event = new Event(this);
+        this.#talent = new Talent(this);
+        this.#achievement = new Achievement(this);
+        this.#character = new Character(this);
+    }
+
+    Module = {
+        PROPERTY: 'PROPERTY',
+        TALENT: 'TALENT',
+        EVENT: 'EVENT',
+        ACHIEVEMENT: 'ACHIEVEMENT',
+        CHARACTER: 'CHARACTER',
+    }
+
+    Function = {
+        CONDITION: 'CONDITION',
+        UTIL: 'UTIL',
     }
 
     #property;
     #event;
     #talent;
     #achievement;
+    #character;
     #triggerTalents;
     #defaultPropertyPoints;
     #talentSelectLimit;
@@ -25,11 +43,12 @@ class Life {
     #initialData;
 
     async initial(i18nLoad, commonLoad) {
-        const [age, talents, events, achievements, specialThanks] = await Promise.all([
+        const [age, talents, events, achievements, characters, specialThanks] = await Promise.all([
             i18nLoad('age'),
             i18nLoad('talents'),
             i18nLoad('events'),
             i18nLoad('achievement'),
+            i18nLoad('character'),
             commonLoad('specialthanks'),
         ]);
         this.#specialThanks = specialThanks;
@@ -39,8 +58,8 @@ class Life {
             [this.PropertyTypes.TEVT]: this.#event.initial({events}),
             [this.PropertyTypes.TTLT]: this.#talent.initial({talents}),
         };
-
         this.#property.initial({age, total});
+        this.#character.initial({characters});
     }
 
     config({
@@ -50,6 +69,7 @@ class Life {
         defaultPropertys = {}, // default propertys
         talentConfig, // config for talent
         propertyConfig, // config for property
+        characterConfig, // config for character
     } = {}) {
         this.#defaultPropertyPoints = defaultPropertyPoints;
         this.#talentSelectLimit = talentSelectLimit;
@@ -57,26 +77,50 @@ class Life {
         this.#defaultPropertys = defaultPropertys;
         this.#talent.config(talentConfig);
         this.#property.config(propertyConfig);
+        this.#character.config(characterConfig);
+    }
+
+    request(module) {
+        switch (module) {
+            case this.Module.ACHIEVEMENT: return this.#achievement;
+            case this.Module.CHARACTER: return this.#character;
+            case this.Module.EVENT: return this.#event;
+            case this.Module.PROPERTY: return this.#property;
+            case this.Module.TALENT: return this.#talent;
+            default: return null;
+        }
+    }
+
+    function(type) {
+        switch (type) {
+            case this.Function.CONDITION: return fCondition;
+            case this.Function.UTIL: return util;
+        }
+    }
+
+    check(condition) {
+        return fCondition.checkCondition(this.#property,condition);
+    }
+
+    clone(...args) {
+        return util.clone(...args);
     }
 
     remake(talents) {
-        this.#initialData = clone(this.#defaultPropertys);
-        this.#initialData.TLT = clone(talents);
+        this.#initialData = util.clone(this.#defaultPropertys);
+        this.#initialData.TLT = util.clone(talents);
         this.#triggerTalents = {};
         return this.talentReplace(this.#initialData.TLT);
     }
 
     start(allocation) {
         for(const key in allocation) {
-            this.#initialData[key] = clone(allocation[key]);
+            this.#initialData[key] = util.clone(allocation[key]);
         }
         this.#property.restart(this.#initialData);
         this.doTalent()
         this.#property.restartLastStep();
-        this.#achievement.achieve(
-            this.AchievementOpportunity.START,
-            this.#property
-        );
+        this.#achievement.achieve(this.AchievementOpportunity.START);
     }
 
     getPropertyPoints() {
@@ -96,10 +140,7 @@ class Life {
         const isEnd = this.#property.isEnd();
 
         const content = [talentContent, eventContent].flat();
-        this.#achievement.achieve(
-            this.AchievementOpportunity.TRAJECTORY,
-            this.#property
-        )
+        this.#achievement.achieve(this.AchievementOpportunity.TRAJECTORY);
         return { age, content, isEnd };
     }
 
@@ -125,7 +166,7 @@ class Life {
 
         const contents = [];
         for(const talentId of talents) {
-            const result = this.#talent.do(talentId, this.#property);
+            const result = this.#talent.do(talentId);
             if(!result) continue;
             this.#triggerTalents[talentId] = this.getTalentCurrentTriggerCount(talentId) + 1;
             const { effect, name, description, grade } = result;
@@ -142,7 +183,7 @@ class Life {
     }
 
     doEvent(eventId) {
-        const { effect, next, description, postEvent, grade } = this.#event.do(eventId, this.#property);
+        const { effect, next, description, postEvent, grade } = this.#event.do(eventId);
         this.#property.change(this.PropertyTypes.EVT, eventId);
         this.#property.effect(effect);
         const content = {
@@ -156,7 +197,7 @@ class Life {
     }
 
     random(events) {
-        return weightRandom(
+        return util.weightRandom(
             events.filter(
                 ([eventId])=>this.#event.check(eventId, this.#property)
             )
@@ -173,20 +214,35 @@ class Life {
         );
     }
 
+    characterRandom() {
+        const characters = this.#character.random();
+        const replaceTalent = v=>v.talent=v.talent.map(
+            id=>this.#talent.get(id)
+        );
+        characters.normal.forEach(replaceTalent);
+        if(characters.unique && characters.unique.talent)
+            replaceTalent(characters.unique);
+        return characters;
+    }
+
     talentExtend(talentId) {
         this.#property.set(this.PropertyTypes.EXT, talentId);
     }
 
-    exclusive(talents, exclusive) {
-        return this.#talent.exclusive(talents, exclusive);
+    exclude(talents, exclusive) {
+        return this.#talent.exclude(talents, exclusive);
+    }
+
+    generateUnique() {
+        this.#character.generateUnique();
     }
 
     #getJudges(...types) {
-        return getListValuesMap(types.flat(), key => this.#property.judge(key));
+        return util.getListValuesMap(types.flat(), key => this.#property.judge(key));
     }
 
     #getPropertys(...types) {
-        return getListValuesMap(types.flat(), key => this.#property.get(key));
+        return util.getListValuesMap(types.flat(), key => this.#property.get(key));
     }
 
     get lastExtendTalent() {
@@ -194,10 +250,7 @@ class Life {
     }
 
     get summary() {
-        this.#achievement.achieve(
-            this.AchievementOpportunity.SUMMARY,
-            this.#property
-        )
+        this.#achievement.achieve(this.AchievementOpportunity.SUMMARY);
 
         const pt = this.PropertyTypes;
 
@@ -243,16 +296,13 @@ class Life {
     get PropertyTypes() { return this.#property.TYPES; }
     get AchievementOpportunity() { return this.#achievement.Opportunity; }
     get talentSelectLimit() { return this.#talentSelectLimit; }
-    get propertyAllocateLimit() { return clone(this.#propertyAllocateLimit); }
+    get propertyAllocateLimit() { return util.clone(this.#propertyAllocateLimit); }
 
     get propertys() { return this.#property.getPropertys(); }
     get times() { return this.#property.get(this.PropertyTypes.TMS) || 0; }
     set times(v) {
         this.#property.set(this.PropertyTypes.TMS, v);
-        this.#achievement.achieve(
-            this.AchievementOpportunity.END,
-            this.#property
-        )
+        this.#achievement.achieve(this.AchievementOpportunity.END);
     }
     get specialThanks() { return this.#specialThanks; }
 }

@@ -1,7 +1,7 @@
-import { max, min, sum, clone, listRandom } from '../functions/util.js';
-
 class Property {
-    constructor() {}
+    constructor(system) {
+        this.#system = system;
+    }
 
     TYPES = {
         // 本局
@@ -70,10 +70,15 @@ class Property {
         ]
     }
 
+    #system;
     #ageData;
     #data = {};
     #total;
     #judge;
+
+    get #util() {
+        return this.#system.function(this.#system.Function.UTIL);
+    }
 
     initial({age, total}) {
         this.#ageData = age;
@@ -151,6 +156,7 @@ class Property {
     }
 
     get(prop) {
+        const util = this.#util;
         switch(prop) {
             case this.TYPES.AGE:
             case this.TYPES.CHR:
@@ -161,14 +167,14 @@ class Property {
             case this.TYPES.LIF:
             case this.TYPES.TLT:
             case this.TYPES.EVT:
-                return clone(this.#data[prop]);
+                return util.clone(this.#data[prop]);
             case this.TYPES.LAGE:
             case this.TYPES.LCHR:
             case this.TYPES.LINT:
             case this.TYPES.LSTR:
             case this.TYPES.LMNY:
             case this.TYPES.LSPR:
-                return min(
+                return util.min(
                     this.#data[prop],
                     this.get(this.fallback(prop))
                 );
@@ -178,7 +184,7 @@ class Property {
             case this.TYPES.HSTR:
             case this.TYPES.HMNY:
             case this.TYPES.HSPR:
-                return max(
+                return util.max(
                     this.#data[prop],
                     this.get(this.fallback(prop))
                 );
@@ -189,7 +195,7 @@ class Property {
                 const HSTR = this.get(this.TYPES.HSTR);
                 const HMNY = this.get(this.TYPES.HMNY);
                 const HSPR = this.get(this.TYPES.HSPR);
-                return Math.floor(sum(HCHR, HINT, HSTR, HMNY, HSPR)*2 + HAGE/2);
+                return Math.floor(util.sum(HCHR, HINT, HSTR, HMNY, HSPR)*2 + HAGE/2);
             case this.TYPES.TMS:
                 return this.lsget('times') || 0;
             case this.TYPES.EXT:
@@ -253,7 +259,7 @@ class Property {
             case this.TYPES.LIF:
             case this.TYPES.TLT:
             case this.TYPES.EVT:
-                this.hl(prop, this.#data[prop] = clone(value));
+                this.hl(prop, this.#data[prop] = this.#system.clone(value));
                 this.achieve(prop, value);
                 return;
             case this.TYPES.TMS:
@@ -267,7 +273,7 @@ class Property {
     }
 
     getPropertys() {
-        return clone({
+        return this.#system.clone({
             [this.TYPES.AGE]: this.get(this.TYPES.AGE),
             [this.TYPES.CHR]: this.get(this.TYPES.CHR),
             [this.TYPES.INT]: this.get(this.TYPES.INT),
@@ -315,7 +321,8 @@ class Property {
 
     hookSpecial(prop) {
         switch(prop) {
-            case this.TYPES.RDM: return listRandom(this.SPECIAL.RDM);
+            case this.TYPES.RDM:
+                return this.#util.listRandom(this.SPECIAL.RDM);
             default: return prop;
         }
     }
@@ -333,15 +340,6 @@ class Property {
 
         const d = this.#judge[prop];
         let length = d.length;
-
-        // progress judge
-        // const p = 1/length;
-        // const progress = () => {
-        //     const min = d[length][0] || 0;
-        //     const max = d[length+1]?.[0] || value;
-        //     if(max == min) return 1;
-        //     return p * (length + (value - min) / (max - min));
-        // }
 
         const progress = () => Math.max(Math.min(value, 10), 0) / 10;
 
@@ -363,7 +361,7 @@ class Property {
     }
 
     getAgeData(age) {
-        return clone(this.#ageData[age]);
+        return this.#system.clone(this.#ageData[age]);
     }
 
     hl(prop, value) {
@@ -378,8 +376,8 @@ class Property {
             default: return;
         }
         const [l, h] = keys;
-        this.#data[l] = min(this.#data[l], value);
-        this.#data[h] = max(this.#data[h], value);
+        this.#data[l] = this.#util.min(this.#data[l], value);
+        this.#data[h] = this.#util.max(this.#data[h], value);
     }
 
     achieve(prop, newData) {
@@ -411,7 +409,7 @@ class Property {
 
     lsget(key) {
         const data = localStorage.getItem(key);
-        if(data === null) return;
+        if(data === null || data === 'undefined') return;
         return JSON.parse(data);
     }
 

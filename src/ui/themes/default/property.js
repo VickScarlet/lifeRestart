@@ -67,6 +67,7 @@ export default class Property extends ui.view.DefaultTheme.PropertyUI {
             {
                 propertyAllocate: this.#propertyAllocate,
                 talents: this.listSelectedTalents.array,
+                enableExtend: true,
             }
         );
     }
