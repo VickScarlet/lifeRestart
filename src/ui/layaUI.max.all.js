@@ -4,7 +4,7 @@ var View=laya.ui.View;
 var Dialog=laya.ui.Dialog;
 var CelebrityUI=(function(_super){
 		function CelebrityUI(){
-
+			
 		    this.panelCharacter=null;
 		    this.vboxCharacter=null;
 		    this.btnRetry=null;
@@ -28,7 +28,7 @@ var CelebrityUI=(function(_super){
 	})(View);
 var CyberAchievementUI=(function(_super){
 		function CyberAchievementUI(){
-
+			
 		    this.btnBack=null;
 		    this.btnRank=null;
 		    this.btnStatistics=null;
@@ -66,7 +66,7 @@ var CyberAchievementUI=(function(_super){
 	})(View);
 var CyberAchievementPopupUI=(function(_super){
 		function CyberAchievementPopupUI(){
-
+			
 		    this.boxBg=null;
 		    this.labName=null;
 
@@ -76,7 +76,7 @@ var CyberAchievementPopupUI=(function(_super){
 		CLASS$(CyberAchievementPopupUI,'ui.view.CyberTheme.CyberAchievementPopupUI',_super);
 		var __proto__=CyberAchievementPopupUI.prototype;
 		__proto__.createChildren=function(){
-
+		    
 			laya.ui.Component.prototype.createChildren.call(this);
 			this.createView(CyberAchievementPopupUI.uiView);
 
@@ -87,7 +87,7 @@ var CyberAchievementPopupUI=(function(_super){
 	})(View);
 var CyberMainUI=(function(_super){
 		function CyberMainUI(){
-
+			
 		    this.imgBg=null;
 		    this.imgTitle=null;
 		    this.btnRemake=null;
@@ -119,7 +119,7 @@ var CyberMainUI=(function(_super){
 	})(View);
 var CyberPropertyUI=(function(_super){
 		function CyberPropertyUI(){
-
+			
 		    this.labLeftPropertyPoint=null;
 		    this.boxCharm=null;
 		    this.boxCharmAllocate=null;
@@ -165,7 +165,7 @@ var CyberPropertyUI=(function(_super){
 	})(View);
 var CyberSummaryUI=(function(_super){
 		function CyberSummaryUI(){
-
+			
 		    this.labAge=null;
 		    this.labAgeJudge=null;
 		    this.labTotal=null;
@@ -213,7 +213,7 @@ var CyberSummaryUI=(function(_super){
 	})(View);
 var CyberTalentUI=(function(_super){
 		function CyberTalentUI(){
-
+			
 		    this.pageDrawCard=null;
 		    this.btnDrawCard=null;
 		    this.pageResult=null;
@@ -239,7 +239,7 @@ var CyberTalentUI=(function(_super){
 	})(View);
 var CyberTrajectoryUI=(function(_super){
 		function CyberTrajectoryUI(){
-
+			
 		    this.labCharm=null;
 		    this.labMoney=null;
 		    this.labIntelligence=null;
@@ -276,7 +276,7 @@ var CyberTrajectoryUI=(function(_super){
 	})(View);
 var ModeUI=(function(_super){
 		function ModeUI(){
-
+			
 		    this.btnCustom=null;
 		    this.btnCelebrity=null;
 
@@ -298,7 +298,7 @@ var ModeUI=(function(_super){
 	})(View);
 var AchievementUI=(function(_super){
 		function AchievementUI(){
-
+			
 		    this.btnBack=null;
 		    this.boxRemakeTimes=null;
 		    this.labRemakeTimes=null;
@@ -334,7 +334,7 @@ var AchievementUI=(function(_super){
 	})(View);
 var AchievementPopupUI=(function(_super){
 		function AchievementPopupUI(){
-
+			
 		    this.boxBg=null;
 		    this.bg1=null;
 		    this.labName=null;
@@ -357,7 +357,7 @@ var AchievementPopupUI=(function(_super){
 	})(View);
 var CelebrityUI=(function(_super){
 		function CelebrityUI(){
-
+			
 		    this.panelCharacter=null;
 		    this.vboxCharacter=null;
 		    this.btnRetry=null;
@@ -381,7 +381,7 @@ var CelebrityUI=(function(_super){
 	})(View);
 var MainUI=(function(_super){
 		function MainUI(){
-
+			
 		    this.labSubTitle=null;
 		    this.btnRemake=null;
 		    this.btnThanks=null;
@@ -411,7 +411,7 @@ var MainUI=(function(_super){
 	})(View);
 var ModeUI=(function(_super){
 		function ModeUI(){
-
+			
 		    this.btnCustom=null;
 		    this.btnCelebrity=null;
 
@@ -434,7 +434,7 @@ var ModeUI=(function(_super){
 	})(View);
 var PropertyUI=(function(_super){
 		function PropertyUI(){
-
+			
 		    this.title=null;
 		    this.labLeftPropertyPoint=null;
 		    this.boxCharm=null;
@@ -482,7 +482,7 @@ var PropertyUI=(function(_super){
 	})(View);
 var SummaryUI=(function(_super){
 		function SummaryUI(){
-
+			
 		    this.title=null;
 		    this.listSummary=null;
 		    this.listSelectedTalents=null;
@@ -508,7 +508,7 @@ var SummaryUI=(function(_super){
 	})(View);
 var TalentUI=(function(_super){
 		function TalentUI(){
-
+			
 		    this.title=null;
 		    this.pageDrawCard=null;
 		    this.btnDrawCard=null;
@@ -536,7 +536,7 @@ var TalentUI=(function(_super){
 	})(View);
 var ThanksUI=(function(_super){
 		function ThanksUI(){
-
+			
 		    this.btnBack=null;
 		    this.panelTopSupports=null;
 		    this.vboxTopSupports=null;
@@ -563,7 +563,7 @@ var ThanksUI=(function(_super){
 	})(View);
 var TrajectoryUI=(function(_super){
 		function TrajectoryUI(){
-
+			
 		    this.labCharm=null;
 		    this.labIntelligence=null;
 		    this.labStrength=null;
@@ -599,7 +599,7 @@ var TrajectoryUI=(function(_super){
 	})(View);
 var LoadingUI=(function(_super){
 		function LoadingUI(){
-
+			
 
 			LoadingUI.__super.call(this);
 		}
@@ -619,7 +619,7 @@ var LoadingUI=(function(_super){
 	})(View);
 var MessagePopupUI=(function(_super){
 		function MessagePopupUI(){
-
+			
 		    this.boxBg=null;
 		    this.message=null;
 
@@ -641,7 +641,7 @@ var MessagePopupUI=(function(_super){
 	})(View);
 var SaveLoadUI=(function(_super){
 		function SaveLoadUI(){
-
+			
 		    this.input=null;
 		    this.btnSave=null;
 		    this.btnLoad=null;
@@ -668,7 +668,7 @@ var SaveLoadUI=(function(_super){
 	})(Dialog);
 var ThemesUI=(function(_super){
 		function ThemesUI(){
-
+			
 		    this.radioTheme=null;
 		    this.btnOK=null;
 		    this.btnClose=null;
