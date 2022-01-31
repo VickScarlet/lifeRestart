@@ -979,8 +979,8 @@
     "1105": {
         "id": "1105",
         "name": "蓝色胶囊",
-        "description": "你20岁或30岁时无事发生",
-        "condition": "AGE?[20]",
+        "description": "你20岁和30岁时无事发生",
+        "condition": "AGE?[20,30]",
         "grade": 1
     },
     "1106": {
@@ -1606,7 +1606,7 @@
         "id": 2018,
         "name": "高产",
         "description": "60岁时体质-2",
-        "condition": "AGE?[10]",
+        "condition": "AGE?[60]",
         "grade": 0,
         "exclusive": 1,
         "effect": {
