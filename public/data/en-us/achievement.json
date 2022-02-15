@@ -802,8 +802,8 @@
     },
     "190": {
         "id": 190,
-        "name": "绝绝子",
-        "description": "看到绝绝子消息",
+        "name": "摆烂",
+        "description": "看到某条摆烂消息",
         "grade": 1,
         "condition": "EVT?[10778]",
         "hide": 1,
