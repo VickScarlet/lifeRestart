@@ -1,6 +1,7 @@
 function clone(value) {
     switch(typeof value) {
         case 'object':
+            if(value === null) return null;
             if(Array.isArray(value)) return value.map(v=>clone(v));
             const newObj = {};
             for(const key in value) newObj[key] = clone(value[key]);
