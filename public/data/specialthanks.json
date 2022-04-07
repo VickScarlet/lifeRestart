@@ -4482,5 +4482,14 @@
         "group": 1,
         "name": "ethan.lang@wisdomhashrate.com",
         "comment": "北京团队诚聘java、区块链相关工程师，加入我们吧！你的人生何须重开？"
+    },
+    {
+        "group": 2,
+        "name": "艳阳兄",
+        "color": "#ffff00"
+    },
+    {
+        "group": 2,
+        "name": "七茗"
     }
 ]
