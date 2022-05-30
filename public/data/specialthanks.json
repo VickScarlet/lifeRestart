@@ -2556,6 +2556,43 @@
     },
     {
         "group": 2,
+        "name": "七茗"
+    },
+    {
+        "group": 2,
+        "name": "Harmony_Matrix."
+    },
+    {
+        "group": 2,
+        "name": "两仪喵喵喵"
+    },
+    {
+        "group": 1,
+        "name": "其途",
+        "comment": "加油呀小德，期待你的游戏大放异彩的那一天"
+    },
+    {
+        "group": 2,
+        "name": "改改"
+    },
+    {
+        "group": 2,
+        "name": "i∈△"
+    },
+    {
+        "group": 2,
+        "name": "可乐味的鸽子"
+    },
+    {
+        "group": 2,
+        "name": "子夜微雪"
+    },
+    {
+        "group": 2,
+        "name": "The_WhiteDragon"
+    },
+    {
+        "group": 2,
         "name": "超级无敌暴龙战士"
     },
     {
@@ -4496,5 +4533,9 @@
         "group": 2,
         "name": "元者",
         "color": "#FFB6C1"
+    },
+    {
+        "group": 2,
+        "name": "磕学家"
     }
 ]
