@@ -20,6 +20,7 @@ module.exports = {
         publicPath: '/src',
       },
     ],
+    allowedHosts: "all",
   },
   output: {
     path: path.resolve(__dirname, 'public/chunk'),
