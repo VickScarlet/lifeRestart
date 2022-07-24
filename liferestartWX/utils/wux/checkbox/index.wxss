@@ -1,0 +1,3 @@
+.wux-checkbox__selectable {
+  position: static!important
+}

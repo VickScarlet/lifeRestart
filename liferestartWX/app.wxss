@@ -1,0 +1,14 @@
+/**
+ * 全局样式表
+ * 使用@import语句可以导入外联样式表，@import后跟需要导入的外联样式表的相对路径，用;表示语句结束
+ * 如果需要增加额外的WXSS样式表, 直接import即可, 但需注意引用顺序
+ */
+
+
+
+ @import 'assets/styles/weui.wxss';
+ @import 'assets/styles/example.wxss';
+ page {
+  height: 100%;
+   background-color: #222831;
+ }

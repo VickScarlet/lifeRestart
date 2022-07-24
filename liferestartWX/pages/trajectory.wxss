@@ -1,0 +1,71 @@
+/* miniprogram/pages/liferestart/index.wxss */
+@import '../utils/wux/styles/index.wxss';
+.container {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 50rpx 100rpx; */
+  box-sizing: border-box;
+  background-color: #222831;
+  /* color: #fff; */
+}
+
+.checkbox {
+  position: static !important;
+}
+
+.title1 {
+  font-size: 82rpx;
+  color: white;
+  background-size: cover;
+}
+
+.title2 {
+  font-size: 42rpx;
+  color: white;
+  background-size: cover;
+}
+
+.lifeProperty{
+
+  width: 100%;
+  position: relative;
+  border: 1px #ccc solid;
+  display: inline-block;
+  margin: 0.1rem 2px;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 0.2rem;
+  color: white;
+}
+
+
+.main {
+  border-style: solid;
+  border: 1px #ccc solid;
+  border-width: 2px 2px;
+  border-radius: 0.2rem;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.item {
+  margin-top: 10px;
+  font-size: 42rpx;
+  box-sizing: border-box;
+  display: flex;
+
+  padding: 0 10px;
+  border-bottom: 1px dashed #cecece;
+  color: white;
+}
+
+.index {
+  flex: 1;
+  color: #fff;
+}
+
+.desc {
+  flex: 4;
+  color: #fff;
+}

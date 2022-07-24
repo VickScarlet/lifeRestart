@@ -1,0 +1,118 @@
+.wux-input-number {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex
+}
+.wux-input-number__input {
+  width: 96rpx;
+  height: 52rpx;
+  font-size: 32rpx;
+  line-height: 52rpx;
+  color: rgba(0,0,0,.65);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2rpx solid #e8e8e8;
+  padding: 6rpx 0;
+  text-align: center;
+  min-height: inherit;
+  box-sizing: border-box
+}
+.wux-input-number__selector {
+  width: 68rpx;
+  height: 52rpx;
+  font-size: 48rpx;
+  line-height: 52rpx;
+  color: #33cd5f;
+  border: 2rpx solid #e8e8e8;
+  box-sizing: border-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center
+}
+.wux-input-number__selector--disabled {
+  color: #ccc!important
+}
+.wux-input-number__selector--sub {
+  border-right: none;
+  padding: 6rpx 20rpx;
+  border-radius: 4rpx 0 0 4rpx
+}
+.wux-input-number__selector--add {
+  border-left: none;
+  padding: 6rpx 16rpx;
+  border-radius: 0 4rpx 4rpx 0
+}
+.wux-input-number__icon {
+  font-size: inherit!important;
+  vertical-align: middle;
+  line-height: inherit
+}
+.wux-input-number--circle .wux-input-number__input {
+  border-color: transparent
+}
+.wux-input-number--circle .wux-input-number__selector {
+  width: 52rpx;
+  border-radius: 50%;
+  border: 2rpx solid #33cd5f
+}
+.wux-input-number--circle .wux-input-number__selector--disabled {
+  border-color: #ccc!important
+}
+.wux-input-number .wux-input-number__selector--light {
+  color: #ddd
+}
+.wux-input-number--circle .wux-input-number__selector--light {
+  border-color: #ddd
+}
+.wux-input-number .wux-input-number__selector--stable {
+  color: #b2b2b2
+}
+.wux-input-number--circle .wux-input-number__selector--stable {
+  border-color: #b2b2b2
+}
+.wux-input-number .wux-input-number__selector--positive {
+  color: #387ef5
+}
+.wux-input-number--circle .wux-input-number__selector--positive {
+  border-color: #387ef5
+}
+.wux-input-number .wux-input-number__selector--calm {
+  color: #11c1f3
+}
+.wux-input-number--circle .wux-input-number__selector--calm {
+  border-color: #11c1f3
+}
+.wux-input-number .wux-input-number__selector--assertive {
+  color: #ef473a
+}
+.wux-input-number--circle .wux-input-number__selector--assertive {
+  border-color: #ef473a
+}
+.wux-input-number .wux-input-number__selector--balanced {
+  color: #33cd5f
+}
+.wux-input-number--circle .wux-input-number__selector--balanced {
+  border-color: #33cd5f
+}
+.wux-input-number .wux-input-number__selector--energized {
+  color: #ffc900
+}
+.wux-input-number--circle .wux-input-number__selector--energized {
+  border-color: #ffc900
+}
+.wux-input-number .wux-input-number__selector--royal {
+  color: #886aea
+}
+.wux-input-number--circle .wux-input-number__selector--royal {
+  border-color: #886aea
+}
+.wux-input-number .wux-input-number__selector--dark {
+  color: #444
+}
+.wux-input-number--circle .wux-input-number__selector--dark {
+  border-color: #444
+}

@@ -1,0 +1,94 @@
+/* miniprogram/pages/liferestart/index.wxss */
+@import '../utils/wux/styles/index.wxss';
+
+.container {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 50rpx 100rpx; */
+  box-sizing: border-box;
+  background-color: #222831;
+  /* color: #fff; */
+}
+
+
+.checkbox {
+  position: static !important;
+}
+
+.title1 {
+  font-size: 82rpx;
+  color: white;
+  background-size: cover;
+}
+
+.title2 {
+  font-size: 42rpx;
+  color: white;
+  background-size: cover;
+}
+
+.main {
+  border-style: solid;
+  border: 1px #ccc solid;
+  border-width: 2px 2px;
+  border-radius: 0.2rem;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.lifeProperty{
+
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  margin: 0.1rem 2px;
+  font-size: 38rpx;
+  text-align: center;
+  border-radius: 0.2rem;
+  color: white;
+  border-bottom: 1px dashed #cecece;
+}
+
+.grade0b {
+	background-color: #464646;
+	border: #f8f8f8 2px solid !important;
+}
+.grade1b {
+	background-color: #6495ed;
+	border: #f8f8f8 2px solid !important;
+}
+.grade2b {
+	background-color: #e2a7ff;
+	border: #f8f8f8 2px solid !important;
+}
+.grade3b {
+	background-color: #ffa07a;
+	border: #f8f8f8 2px solid !important;
+}
+.qcode-view {
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qcode {
+  width: 300rpx;
+  height: 300rpx;
+
+  border-radius: 50%;
+}
+.userinfo-avatar {
+  width: 160rpx;
+  height: 150rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  font-size: 42rpx;
+  color: white;
+  text-align: center;
+  background-size: cover;
+}

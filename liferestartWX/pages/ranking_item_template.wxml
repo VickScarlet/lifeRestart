@@ -1,0 +1,27 @@
+<template name="ranking_item">
+  <wux-white-space size="large" />
+  <view class="title2 wux-text--center">{{title_name}}</view>
+  <view  class="rankingTable">
+  <block wx:for="{{rankingData}}" wx:key="*this">
+    <wux-row>
+      <wux-col span="2">
+        <view>
+          <image class="userinfo-avatar" src="{{item.avatar_url.length>0?item.avatar_url:j%2?'https://mmbiz.qpic.cn/mmbiz_png/G4dLFC4lBdRbLc31wbuQNFicqASrMdIK6zSRHzz0Q79EPfa5mDn2d8Jfu6lRI2kXe4o2y2UibR5P6ic97sNFeUAEQ/0?wx_fmt=png':'https://mmbiz.qpic.cn/mmbiz_png/G4dLFC4lBdRbLc31wbuQNFicqASrMdIK6aGmbKnmjDIxrROurLe5gop744hE2NUzR929XN3grVtl0ia0k2ISV1vg/0?wx_fmt=png'}}" />
+        </view>
+      </wux-col>
+      <wux-col span="7">
+        <view>{{item.nick_name}}</view>
+      </wux-col>
+      <wux-col span="3">
+        <view wx:if="{{type == 'rankingSPR'}}">{{item.recordSPR.value}} {{item.recordSPR.judge}}</view>
+        <view wx:if="{{type == 'rankingSTR'}}">{{item.recordSTR.value}} {{item.recordSTR.judge}}</view>
+        <view wx:if="{{type == 'rankingAGE'}}">{{item.recordAGE.value}} {{item.recordAGE.judge}}</view>
+        <view wx:if="{{type == 'rankingMNY'}}">{{item.recordMNY.value}} {{item.recordMNY.judge}}</view>
+        <view wx:if="{{type == 'rankingINT'}}">{{item.recordINT.value}} {{item.recordINT.judge}}</view>
+        <view wx:if="{{type == 'rankingCHR'}}">{{item.recordCHR.value}} {{item.recordCHR.judge}}</view>
+        <view wx:if="{{type == 'rankingSCO'}}">{{item.recordFinal.value}} {{item.recordFinal.judge}}</view>
+      </wux-col>
+    </wux-row>
+  </block>
+  </view>
+</template>

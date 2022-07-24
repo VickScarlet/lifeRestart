@@ -1,0 +1,19 @@
+{
+  "pages":[
+    "pages/index",
+    "pages/talents",
+    "pages/summary",
+    "pages/trajectory",
+    "pages/property",
+    "pages/ranking"
+  ],
+  "window":{
+    "backgroundColor": "#000",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "人生重开模拟器",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

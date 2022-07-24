@@ -1,0 +1,19 @@
+<!--miniprogram/pages/liferestart/index.wxml-->
+<view class="container">
+  <view class="title1">人生重开模拟器</view>
+  <view class="title2">这垃圾人生一秒也不想呆了</view>
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <view class="btn-view">
+    <view bindtap="toTalents" class="btn">
+      <view class="btn-text">立即重开</view>
+    </view>
+  </view>
+  <!-- <view class="btn2-view">
+    <view bindtap="toRanking" class="btn2">
+      <view class="btn2-text">卷起来</view>
+    </view>
+  </view> -->
+</view>

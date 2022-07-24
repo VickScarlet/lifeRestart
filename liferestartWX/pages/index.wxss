@@ -1,0 +1,80 @@
+/* miniprogram/pages/liferestart/index.wxss */
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 100rpx 50rpx;
+  box-sizing: border-box;
+  background-color: #222831;
+  color: #fff;
+}
+
+.title1 {
+  font-size: 82rpx;
+  color: white;
+  background-size: cover;
+}
+
+.title2 {
+  font-size: 42rpx;
+  color: white;
+  background-size: cover;
+}
+.btn-view {
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.btn {
+  width: 400rpx;
+  height: 400rpx;
+
+	background-image: -webkit-radial-gradient(45px 45px, circle cover, #99CC33, #003366);
+
+	animation-name: spin; 
+	animation-duration: 3s; /* 3 seconds */
+	animation-iteration-count: infinite; 
+	animation-timing-function: linear;
+  border-radius: 50%;
+}
+.btn-text {
+  width: 400rpx;
+  height: 400rpx;
+  text-align: center;
+  font-size: 82rpx;
+  line-height: 400rpx;
+  color: white;
+}
+
+
+.btn2-view {
+  position:fixed; 
+  bottom:0; 
+  left:0;
+  padding-left: 50px;
+  padding-bottom: 50px;
+}
+.btn2 {
+  width: 200rpx;
+  height: 200rpx;
+
+	background-image: -webkit-radial-gradient(45px 45px, circle cover, #99CC33, #003366);
+
+	animation-name: spin; 
+	animation-duration: 3s; /* 3 seconds */
+	animation-iteration-count: infinite; 
+	animation-timing-function: linear;
+  border-radius: 50%;
+}
+.btn2-text {
+  width: 200rpx;
+  height: 200rpx;
+  text-align: center;
+  font-size: 42rpx;
+  line-height: 200rpx;
+  color: white;
+}
