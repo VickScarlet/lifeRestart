@@ -1,0 +1,42 @@
+<button
+    class="wux-class {{ classes.wrap }}"
+    disabled="{{ disabled }}"
+    open-type="{{ openType }}"
+    hover-class="{{ !disabled ? classes.hover : 'none' }}"
+    hover-stop-propagation="{{ hoverStopPropagation }}"
+    hover-start-time="{{ hoverStartTime }}"
+    hover-stay-time="{{ hoverStayTime }}"
+    lang="{{ lang }}"
+    bindgetuserinfo="bindgetuserinfo"
+    session-from="{{ sessionFrom }}"
+    send-message-title="{{ sendMessageTitle }}"
+    send-message-path="{{ sendMessagePath }}"
+    send-message-img="{{ sendMessageImg }}"
+    show-message-card="{{ showMessageCard }}"
+    bindcontact="bindcontact"
+    bindgetphonenumber="bindgetphonenumber"
+    app-parameter="{{ appParameter }}"
+    binderror="onError"
+    bindopensetting="bindopensetting"
+    bindtap="onTap"
+>
+    <view class="{{ classes.hd }}">
+        <block wx:if="{{ thumb }}">
+            <image class="{{ classes.thumb }}" src="{{ thumb }}" />
+        </block>
+        <block wx:else>
+            <slot name="header"></slot>
+        </block>
+    </view>
+    <view class="{{ classes.bd }}">
+        <view wx:if="{{ title }}" class="{{ classes.text }}">{{ title }}</view>
+        <view wx:if="{{ label }}" class="{{ classes.desc }}">{{ label }}</view>
+        <slot></slot>
+    </view>
+    <view class="{{ classes.ft }}">
+        <block wx:if="{{ extra }}">{{ extra }}</block>
+        <block wx:else>
+            <slot name="footer"></slot>
+        </block>
+    </view>
+</button>

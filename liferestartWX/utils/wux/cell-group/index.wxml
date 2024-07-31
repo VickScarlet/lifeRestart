@@ -1,0 +1,7 @@
+<view class="wux-class {{ classes.wrap }}">
+    <view class="{{ classes.hd }}" wx:if="{{ title }}">{{ title }}</view>
+    <view class="{{ classes.bd }}">
+        <slot></slot>
+    </view>
+    <view class="{{ classes.ft }}" wx:if="{{ label }}">{{ label }}</view>
+</view>

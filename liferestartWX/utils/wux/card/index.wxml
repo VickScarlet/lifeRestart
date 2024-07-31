@@ -1,0 +1,28 @@
+<view class="wux-class {{ classes.wrap }}">
+    <view class="{{ classes.hd }}" wx:if="{{ thumb || title || extra }}">
+        <view class="{{ classes.content }}" wx:if="{{ thumb || title }}">
+            <image class="{{ classes.thumb }}" src="{{ thumb }}" mode="aspectFit" style="{{ extStyle }}" wx:if="{{ thumb }}" />
+            <text>{{ title }}</text>
+        </view>
+        <view class="{{ classes.extra }}" wx:if="{{ extra }}">{{ extra }}</view>
+        <slot name="extra" wx:else></slot>
+    </view>
+    <view class="{{ classes.bd }}">
+        <slot name="body"></slot>
+    </view>
+    <view class="{{ classes.ft }}">
+        <slot name="footer"></slot>
+    </view>
+    <view class="{{ classes.actions }}" wx:if="{{ actions.length > 0 }}">
+        <block wx:for="{{ actions }}" wx:for-item="action" wx:key="">
+            <view
+                class="{{ classes.action[index].wrap }}"
+                hover-class="{{ !action.disabled ? classes.action[index].hover : 'none' }}"
+                data-index="{{ index }}"
+                bindtap="onAction"
+            >
+                {{ action.text }}
+            </view>
+        </block>
+    </view>
+</view>
