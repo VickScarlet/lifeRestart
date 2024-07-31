@@ -1,0 +1,74 @@
+name: FE Project CI
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'version'
+        required: false
+        default: '1.0.0'
+      oss_region:
+        description: 'oss region'
+        required: true
+        default: 'oss-cn-shanghai'
+      oss_bucket:
+        description: 'oss bucket'
+        required: true
+        default: ''
+      oss_path:
+        description: 'oss path'
+        required: false
+        default: ''
+      upload_path:
+        description: 'upload path'
+        required: true
+        default: './build'
+      pure_static_project:
+        description: 'project is a static project'
+        required: true
+        default: 'false'
+      compile_command:
+        description: 'code compile command'
+        required: true
+        default: 'true'
+
+jobs:
+  pre-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: check package.json
+        run: ${{github.event.inputs.pure_static_project}} || ( test -f ./package.json && exit 0 || (echo 'package.json is not exist!' && exit 1))
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: install deps and build
+        run: ${{github.event.inputs.pure_static_project}} || ${{github.event.inputs.compile_command}}
+
+      - name: deploy to oss
+        id: upload_to_oss
+        uses: AliyunWorkbench/workbench-oss@1.0.0
+        with:
+          ACCESS_KEY: ${{ secrets.AK }}
+          ACCESS_SECRET: ${{ secrets.SK }}
+          OSS_REGION: ${{github.event.inputs.oss_region}}
+          OSS_BUCKET: ${{github.event.inputs.oss_bucket}}
+          OSS_PATH: ${{github.event.inputs.oss_path}}
+          UPLOAD_PATH: ${{github.event.inputs.upload_path}}
+
+
