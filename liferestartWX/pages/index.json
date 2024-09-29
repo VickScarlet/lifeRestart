@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "wux-icon": "/utils/wux/icon/index",
+    "wux-button": "/utils/wux/button/index",
+    "wux-wing-blank": "/utils/wux/wing-blank/index",
+    "wux-white-space": "/utils/wux/white-space/index"
+  }
+}

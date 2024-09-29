@@ -1,0 +1,1 @@
+<view class="wux-class {{ classes.wrap }}" style="{{ extStyle }}" onTap="onTap"></view>

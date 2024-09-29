@@ -1,0 +1,70 @@
+<view class="container">
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <view class="title1 wux-text--center">人生总结</view>
+  <wux-white-space size="large" />
+  <wux-wing-blank size="large">
+    <wux-row>
+      <wux-col span="3">
+        <view class="userinfo-avatar">
+          <open-data type="userAvatarUrl"></open-data>
+        </view>
+      </wux-col>
+      <wux-col span="9">
+        <view class="userinfo-nickname">
+        <open-data type="userNickName"></open-data> 的来生
+        </view>
+      </wux-col>
+    </wux-row>
+    
+   
+  <view>
+    <wux-row>
+      <wux-col span="12">
+        <view class="lifeProperty grade{{summaryCHR.grade}}b">颜值：{{summaryCHR.value}} {{summaryCHR.judge}}</view>
+      </wux-col>
+    </wux-row>
+    <wux-row>
+      <wux-col span="12">
+        <view class="lifeProperty grade{{summaryINT.grade}}b">智力：{{summaryINT.value}} {{summaryINT.judge}}</view>
+      </wux-col>
+    </wux-row>
+    <wux-row>
+      <wux-col span="12">
+        <view class="lifeProperty grade{{summarySTR.grade}}b">体质：{{summarySTR.value}} {{summarySTR.judge}}</view>
+      </wux-col>
+    </wux-row>
+    <wux-row>
+      <wux-col span="12">
+        <view class="lifeProperty grade{{summaryMNY.grade}}b">家境：{{summaryMNY.value}} {{summaryMNY.judge}}</view>
+      </wux-col>
+    </wux-row>
+    <wux-row>
+      <wux-col span="12">
+        <view class="lifeProperty grade{{summarySPR.grade}}b">快乐：{{summarySPR.value}} {{summarySPR.judge}}</view>
+      </wux-col>
+    </wux-row>
+    <wux-row class="">
+      <wux-col span="12">
+        <view class="lifeProperty grade{{summaryAGE.grade}}b">享年：{{summaryAGE.value}} {{summaryAGE.judge}}</view>
+      </wux-col>
+    </wux-row>
+    <wux-row class="">
+      <wux-col span="12">
+        <view class="lifeProperty grade{{summaryFinal.grade}}b">总评：{{summaryFinal.value}} {{summaryFinal.judge}}</view>
+      </wux-col>
+    </wux-row>
+  </view>
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <view class="qcode-view">
+    <image class="qcode" src="../assets/images/app_qcode.jpg" />
+  </view>
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <wux-button block 
+    type="light" class="title2" bindtap="again">
+      再来一次
+  </wux-button>
+  </wux-wing-blank>
+</view>

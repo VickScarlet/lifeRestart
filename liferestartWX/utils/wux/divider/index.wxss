@@ -1,0 +1,53 @@
+.wux-divider {
+  display: block;
+  height: 2rpx;
+  width: 100%;
+  margin: 30rpx 0;
+  clear: both;
+  border-top: 2rpx solid #e8e8e8
+}
+.wux-divider--text {
+  display: table;
+  white-space: nowrap;
+  text-align: center;
+  background: 0 0;
+  font-weight: 500;
+  color: rgba(0,0,0,.85);
+  font-size: 32rpx;
+  border-top: none!important
+}
+.wux-divider--text::after,
+.wux-divider--text::before {
+  content: '';
+  display: table-cell;
+  position: relative;
+  top: 50%;
+  width: 50%;
+  border-top-width: 2rpx;
+  border-top-style: solid;
+  border-top-color: #e8e8e8;
+  transform: translateY(50%)
+}
+.wux-divider--dashed {
+  border-top: 2rpx dashed #e8e8e8
+}
+.wux-divider--dashed.wux-divider--text::after,
+.wux-divider--dashed.wux-divider--text::before {
+  border-top-style: dashed
+}
+.wux-divider--text-left::before {
+  width: 5%
+}
+.wux-divider--text-left::after {
+  width: 95%
+}
+.wux-divider--text-right::before {
+  width: 95%
+}
+.wux-divider--text-right::after {
+  width: 5%
+}
+.wux-divider__text {
+  display: inline-block;
+  padding: 0 30rpx
+}

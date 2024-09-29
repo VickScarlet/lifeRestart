@@ -1,0 +1,3 @@
+<view class="wux-class {{ classes.wrap }}" style="{{ extStyle }}">
+    <slot></slot>
+</view>

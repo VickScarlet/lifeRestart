@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "wux-toptips": "/utils/wux/toptips/index",
+    "wux-button": "/utils/wux/button/index",
+    "wux-cell-group": "/utils/wux/cell-group/index",
+    "wux-cell": "/utils/wux/cell/index",
+    "wux-input-number": "/utils/wux/input-number/index",
+    "wux-wing-blank": "/utils/wux/wing-blank/index",
+    "wux-white-space": "/utils/wux/white-space/index"
+  }
+}

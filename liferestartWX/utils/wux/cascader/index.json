@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wux-popup": "../popup/index",
+        "wux-icon": "../icon/index",
+        "wux-button": "../button/index"
+    }
+}

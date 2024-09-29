@@ -1,0 +1,29 @@
+<import src="./ranking_item_template.wxml" />
+<view class="container">
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <view class="title1 wux-text--center">内卷世界</view>
+  <wux-white-space size="large" />
+  <wux-wing-blank size="large">
+
+<template is="ranking_item" data="{{title_name:'最快乐',rankingData:rankingSPR,type:'rankingSPR'}}"/>
+
+<template is="ranking_item" data="{{title_name:'最健康',rankingData:rankingSTR,type:'rankingSTR'}}"/>
+
+<template is="ranking_item" data="{{title_name:'最长寿',rankingData:rankingAGE,type:'rankingAGE'}}"/>
+
+<template is="ranking_item" data="{{title_name:'最有钱',rankingData:rankingMNY,type:'rankingMNY'}}"/>
+
+<template is="ranking_item" data="{{title_name:'最聪明',rankingData:rankingINT,type:'rankingINT'}}"/>
+
+<template is="ranking_item" data="{{title_name:'最漂亮',rankingData:rankingCHR,type:'rankingCHR'}}"/>
+
+<template is="ranking_item" data="{{title_name:'最NB',rankingData:rankingSCO,type:'rankingSCO'}}"/>
+  <wux-white-space size="large" />
+  <wux-white-space size="large" />
+  <wux-button block 
+    type="light" class="title2" bindtap="again">
+      再来一次
+  </wux-button>
+  </wux-wing-blank>
+</view>

@@ -1,0 +1,72 @@
+/* miniprogram/pages/liferestart/property.wxss */
+/* miniprogram/pages/liferestart/index.wxss */
+@import '../utils/wux/styles/index.wxss';
+.container {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 50rpx 100rpx; */
+  box-sizing: border-box;
+  background-color: #222831;
+  /* color: #fff; */
+}
+
+.checkbox {
+  position: static !important;
+}
+
+.title1 {
+  font-size: 82rpx;
+  color: white;
+  background-size: cover;
+}
+
+.title2 {
+  font-size: 42rpx;
+  color: white;
+  background-size: cover;
+}
+
+.input {
+  width: 120rpx !important;
+  border-color: transparent !important;
+}
+
+.sub,
+.add {
+  width: 52rpx !important;
+  border: 2rpx solid #ececec !important;
+  border-radius: 10rpx !important;
+}
+
+.talentsTable{
+  width: 100%;
+  position: relative;
+  border: 1px #ccc solid;
+  display: inline-block;
+  margin: 0.1rem 2px;
+  font-size: 42rpx;
+  text-align: center;
+  border-radius: 0.2rem;
+  color: white;
+}
+
+
+
+
+.grade0b {
+	background-color: #464646;
+	border: #f8f8f8 2px solid !important;
+}
+.grade1b {
+	background-color: #6495ed;
+	border: #f8f8f8 2px solid !important;
+}
+.grade2b {
+	background-color: #e2a7ff;
+	border: #f8f8f8 2px solid !important;
+}
+.grade3b {
+	background-color: #ffa07a;
+	border: #f8f8f8 2px solid !important;
+}
