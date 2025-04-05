@@ -12,7 +12,7 @@
         "test": "vitest"
     },
     "devDependencies": {
-        "v-transform": "^2.0.1",
+        "v-transform": "^2.1.1",
         "vite": "^6.2.5",
         "vitest": "^3.1.1"
     }

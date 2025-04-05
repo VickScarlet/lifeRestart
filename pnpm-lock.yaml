@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       v-transform:
-        specifier: ^2.0.1
-        version: 2.1.0
+        specifier: ^2.1.1
+        version: 2.1.1
       vite:
         specifier: ^6.2.5
         version: 6.2.5
@@ -496,8 +496,8 @@ packages:
     resolution: {integrity: sha512-n1cw8k1k0x4pgA2+9XrOkFydTerNcJ1zWCO5Nn9scWHTD+5tp8dghT2x1uduQePZTZgd3Tupf+x9BxJjeJi77Q==}
     engines: {node: '>=14.0.0'}
 
-  v-transform@2.1.0:
-    resolution: {integrity: sha512-oxbzI3ApYk2XxI4uP1jk9pZNodL1I+Br/etc6BJjRRzaz1LWOLYlN+leJhUkth5dV5GMpYrqtnBksAQzhi0Ayw==}
+  v-transform@2.1.1:
+    resolution: {integrity: sha512-mLiOl4wcBO9BQW+/x7YMJEGaLWnbraNLM6dGJGwbP4THD1mo9fEW0A6mz3JNihY5A735vjflDCWwuGqbn3NqNA==}
     hasBin: true
 
   vite-node@3.1.1:
@@ -965,7 +965,7 @@ snapshots:
 
   tinyspy@3.0.2: {}
 
-  v-transform@2.1.0:
+  v-transform@2.1.1:
     dependencies:
       commander: 8.3.0
       glob: 8.1.0
