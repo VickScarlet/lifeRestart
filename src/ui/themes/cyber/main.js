@@ -30,6 +30,7 @@ export default class CyberMain extends ui.view.CyberTheme.CyberMainUI {
     }
 
     init() {
+        this.banner.visible =
         this.btnDiscord.visible =
         this.btnAchievement.visible =
         this.btnThanks.visible = !!core.times;
