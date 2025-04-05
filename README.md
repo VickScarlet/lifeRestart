@@ -14,38 +14,23 @@ English | [简体中文](./README-zh_CN.md)
 <summary><strong>Web Version</strong></summary>
 <br />
 
-1. Clone project code.
 
 ```bash
+# 1. Clone project code.
 git clone git@github.com:VickScarlet/lifeRestart.git my-project
 cd my-project
-```
 
-2. Installation dependence.
-
-```bash
+# 2. Installation dependence.
 pnpm install
-```
 
-Or
+# 3. Transform XLSX
+pnpm xlsx2json
 
-```bash
-npm install
-```
-
-3. Start local server.
-
-```bash
+# 4. Start local dev server.
 pnpm dev
 ```
 
-Or
-
-```bash
-npm run dev
-```
-
-4. After the startup is complete, open a browser and visit [http://localhost:5173](http://localhost:5173).
+After the startup is complete, open a browser and visit [http://localhost:5173](http://localhost:5173).
 </details>
 
 <details>
