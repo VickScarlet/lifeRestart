@@ -24,7 +24,7 @@ cd my-project
 2. 进入目录安装依赖。
 
 ```bash
-yarn install
+pnpm install
 ```
 
 或者
@@ -36,7 +36,7 @@ npm install
 3. 启动本地服务器。
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 或者
@@ -45,7 +45,7 @@ yarn dev
 npm run dev
 ```
 
-4. 启动完成后会自动打开浏览器访问 [http://localhost:8081/view/index.html](http://localhost:8081/view/index.html)。
+4. 启动完成后会自动打开浏览器访问 [http://localhost:5173](http://localhost:5173)。
 
 </details>
 

@@ -24,7 +24,7 @@ cd my-project
 2. Installation dependence.
 
 ```bash
-yarn install
+pnpm install
 ```
 
 Or
@@ -36,7 +36,7 @@ npm install
 3. Start local server.
 
 ```bash
-yarn dev
+pnpm dev
 ```
 
 Or
@@ -45,7 +45,7 @@ Or
 npm run dev
 ```
 
-4. After the startup is complete, will automatically open a browser and visit [http://localhost:8081/view/index.html](http://localhost:8081/view/index.html).
+4. After the startup is complete, open a browser and visit [http://localhost:5173](http://localhost:5173).
 </details>
 
 <details>
