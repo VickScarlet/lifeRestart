@@ -703,7 +703,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"text":"UI_Banner","fontSize":48,"font":"方正像素12","color":"#00fffd"},
+                    "props":{"text":"UI_Banner","fontSize":40,"font":"方正像素12","color":"#00fffd"},
                     "nodeParent":93,
                     "label":"Label",
                     "isDirectory":false,
