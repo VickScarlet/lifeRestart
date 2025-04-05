@@ -10,32 +10,32 @@ const pages = {
     THEMES: 'THEMES',
     SAVELOAD: 'SAVELOAD',
     MODE: 'MODE',
-    CELEBRITY: 'CELEBRITY'
-};
+    CELEBRITY: 'CELEBRITY',
+}
 
 const popups = {
     ACHIEVEMENT: 'POPUP_ACHIEVEMENT',
     MESSAGE: 'POPUP_MESSAGE',
-};
+}
 
 const cyber = {
     pages: {
-        [pages.LOADING]: "loading",
-        [pages.MAIN]: "cyber/main",
-        [pages.TALENT]: "cyber/talent",
-        [pages.PROPERTY]: "cyber/property",
-        [pages.TRAJECTORY]: "cyber/trajectory",
-        [pages.SUMMARY]: "cyber/summary",
-        [pages.ACHIEVEMENT]: "cyber/achievement",
-        [pages.THANKS]: "default/thanks",
+        [pages.LOADING]: 'loading',
+        [pages.MAIN]: 'cyber/main',
+        [pages.TALENT]: 'cyber/talent',
+        [pages.PROPERTY]: 'cyber/property',
+        [pages.TRAJECTORY]: 'cyber/trajectory',
+        [pages.SUMMARY]: 'cyber/summary',
+        [pages.ACHIEVEMENT]: 'cyber/achievement',
+        [pages.THANKS]: 'default/thanks',
         [pages.THEMES]: 'themes',
         [pages.SAVELOAD]: 'saveload',
         [pages.MODE]: 'cyber/mode',
         [pages.CELEBRITY]: 'cyber/celebrity',
     },
     popups: {
-        [popups.ACHIEVEMENT]: "cyber/popup/achievementPopup",
-        [popups.MESSAGE]: "message",
+        [popups.ACHIEVEMENT]: 'cyber/popup/achievementPopup',
+        [popups.MESSAGE]: 'message',
     },
     configs: {
         bgColor: '#04131f',
@@ -47,18 +47,8 @@ const cyber = {
                 hoverStroke: '#ffa500',
             },
             defaultFontColor: '#cccccc',
-            grade: [
-                '#cccccc',
-                '#55fffe',
-                '#b17cff',
-                '#ffce45',
-            ],
-            filter: [
-                '#ccccccff',
-                '#55fffeff',
-                '#b17cffff',
-                '#ffce45ff',
-            ],
+            grade: ['#cccccc', '#55fffe', '#b17cff', '#ffce45'],
+            filter: ['#ccccccff', '#55fffeff', '#b17cffff', '#ffce45ff'],
             gradeBlk: [
                 {
                     visible: false,
@@ -78,7 +68,7 @@ const cyber = {
                     hoverColor: '#ffce45',
                     visible: true,
                 },
-            ]
+            ],
         },
         pages: {
             [pages.MAIN]: {
@@ -97,7 +87,7 @@ const cyber = {
                         lineWidth: 0,
                         radius: 100,
                     },
-                }
+                },
             },
             [pages.THANKS]: {
                 vars: {
@@ -147,7 +137,7 @@ const cyber = {
                         hoverLabel: '#ffffff',
                         radius: 80,
                     },
-                }
+                },
             },
             [pages.SAVELOAD]: {
                 vars: {
@@ -184,31 +174,31 @@ const cyber = {
                         radius: 80,
                         defaultLabel: '#ffffff',
                         hoverLabel: '#ffffff',
-                    }
-                }
+                    },
+                },
             },
-        }
-    }
+        },
+    },
 }
 
 const dark = {
     pages: {
-        [pages.LOADING]: "loading",
-        [pages.MAIN]: "default/main",
-        [pages.TALENT]: "default/talent",
-        [pages.PROPERTY]: "default/property",
-        [pages.TRAJECTORY]: "default/trajectory",
-        [pages.SUMMARY]: "default/summary",
-        [pages.ACHIEVEMENT]: "default/achievement",
-        [pages.THANKS]: "default/thanks",
+        [pages.LOADING]: 'loading',
+        [pages.MAIN]: 'default/main',
+        [pages.TALENT]: 'default/talent',
+        [pages.PROPERTY]: 'default/property',
+        [pages.TRAJECTORY]: 'default/trajectory',
+        [pages.SUMMARY]: 'default/summary',
+        [pages.ACHIEVEMENT]: 'default/achievement',
+        [pages.THANKS]: 'default/thanks',
         [pages.THEMES]: 'themes',
         [pages.SAVELOAD]: 'saveload',
         [pages.MODE]: 'default/mode',
         [pages.CELEBRITY]: 'default/celebrity',
     },
     popups: {
-        [popups.ACHIEVEMENT]: "default/popup/achievementPopup",
-        [popups.MESSAGE]: "message",
+        [popups.ACHIEVEMENT]: 'default/popup/achievementPopup',
+        [popups.MESSAGE]: 'message',
     },
     configs: {
         bgColor: '#222831',
@@ -248,18 +238,8 @@ const dark = {
                 hoverColor: '#ffc500',
                 hoverStroke: '#ffa500',
             },
-            grade: [
-                '#cccccc',
-                '#55fffe',
-                '#b17cff',
-                '#ffce45',
-            ],
-            filter: [
-                '#ccccccff',
-                '#55fffeff',
-                '#b17cffff',
-                '#ffce45ff',
-            ],
+            grade: ['#cccccc', '#55fffe', '#b17cff', '#ffce45'],
+            filter: ['#ccccccff', '#55fffeff', '#b17cffff', '#ffce45ff'],
             card: [
                 {
                     normal: {
@@ -281,7 +261,7 @@ const dark = {
                         hoverLabel: '#3b3b3b',
                         lineWidth: 4,
                         radius: 4,
-                    }
+                    },
                 },
                 {
                     normal: {
@@ -303,7 +283,7 @@ const dark = {
                         hoverLabel: '#3b3b3b',
                         lineWidth: 4,
                         radius: 4,
-                    }
+                    },
                 },
                 {
                     normal: {
@@ -325,7 +305,7 @@ const dark = {
                         hoverLabel: '#3b3b3b',
                         lineWidth: 4,
                         radius: 4,
-                    }
+                    },
                 },
                 {
                     normal: {
@@ -347,8 +327,8 @@ const dark = {
                         hoverLabel: '#3b3b3b',
                         lineWidth: 4,
                         radius: 4,
-                    }
-                }
+                    },
+                },
             ],
             summary: [
                 {
@@ -360,7 +340,8 @@ const dark = {
                     hoverLabel: '#3b3b3b',
                     lineWidth: 2,
                     radius: 0,
-                },{
+                },
+                {
                     defaultColor: '#6495ed',
                     defaultStroke: '#f8f8f8',
                     defaultLabel: '#eeeeee',
@@ -369,7 +350,8 @@ const dark = {
                     hoverLabel: '#3b3b3b',
                     lineWidth: 2,
                     radius: 0,
-                },{
+                },
+                {
                     defaultColor: '#e2a7ff',
                     defaultStroke: '#f8f8f8',
                     defaultLabel: '#eeeeee',
@@ -388,7 +370,7 @@ const dark = {
                     hoverLabel: '#3b3b3b',
                     lineWidth: 2,
                     radius: 0,
-                }
+                },
             ],
             achievement: [
                 {
@@ -400,7 +382,8 @@ const dark = {
                     hoverLabel: '#3b3b3b',
                     lineWidth: 4,
                     radius: 0,
-                },{
+                },
+                {
                     defaultColor: '#6495ed',
                     defaultStroke: '#f8f8f8',
                     defaultLabel: '#eeeeee',
@@ -409,7 +392,8 @@ const dark = {
                     hoverLabel: '#3b3b3b',
                     lineWidth: 4,
                     radius: 0,
-                },{
+                },
+                {
                     defaultColor: '#e2a7ff',
                     defaultStroke: '#f8f8f8',
                     defaultLabel: '#eeeeee',
@@ -428,7 +412,7 @@ const dark = {
                     hoverLabel: '#3b3b3b',
                     lineWidth: 4,
                     radius: 0,
-                }
+                },
             ],
             characterItem: {
                 name: {
@@ -488,7 +472,7 @@ const dark = {
             },
             font_default: {
                 color: '#eeeeee',
-            }
+            },
         },
         pages: {
             [pages.MAIN]: {
@@ -512,14 +496,14 @@ const dark = {
                 names: {
                     title: 'title',
                     btnSmall: 'btn_small',
-                }
+                },
             },
             [pages.TALENT]: {
                 vars: {
                     btnDrawCard: 'btn_main',
                     btnNext: 'btn_main',
                     title: 'title',
-                }
+                },
             },
             [pages.PROPERTY]: {
                 vars: {
@@ -530,9 +514,9 @@ const dark = {
                 names: {
                     font_default: 'font_default',
                     property: {
-                        colorFilter: '#eeeeeeff'
-                    }
-                }
+                        colorFilter: '#eeeeeeff',
+                    },
+                },
             },
             [pages.TRAJECTORY]: {
                 vars: {
@@ -548,8 +532,8 @@ const dark = {
                         radius: 4,
                     },
                     boxSpeed: {
-                        colorFilter: '#ffffffff'
-                    }
+                        colorFilter: '#ffffffff',
+                    },
                 },
                 names: {
                     propertyBox: {
@@ -571,8 +555,8 @@ const dark = {
                         hoverLabel: '#222831',
                         lineWidth: 0,
                         radius: 4,
-                    }
-                }
+                    },
+                },
             },
             [pages.SUMMARY]: {
                 vars: {
@@ -581,7 +565,7 @@ const dark = {
                 },
                 names: {
                     font_default: 'font_default',
-                }
+                },
             },
             [pages.ACHIEVEMENT]: {
                 vars: {
@@ -591,7 +575,7 @@ const dark = {
                 names: {
                     font_default: 'font_default',
                     title: 'title',
-                }
+                },
             },
             [pages.THANKS]: {
                 vars: {
@@ -632,7 +616,7 @@ const dark = {
                         hoverLabel: '#ffffff',
                         radius: 80,
                     },
-                }
+                },
             },
             [pages.SAVELOAD]: {
                 vars: {
@@ -669,20 +653,20 @@ const dark = {
                         radius: 80,
                         defaultLabel: '#ffffff',
                         hoverLabel: '#ffffff',
-                    }
-                }
+                    },
+                },
             },
             [pages.MODE]: {
                 names: {
                     font_default: 'font_default',
                     btn: 'btn_main',
-                }
+                },
             },
             [pages.CELEBRITY]: {
                 vars: {
                     btnRetry: 'btn_main',
                     btnNext: 'btn_main2',
-                }
+                },
             },
         },
         popups: {
@@ -693,31 +677,31 @@ const dark = {
                         defaultStroke: '#84ff55',
                         hoverColor: '#292a28',
                         hoverStroke: '#84ff55',
-                    }
-                }
-            }
-        }
-    }
+                    },
+                },
+            },
+        },
+    },
 }
 
 const light = {
     pages: {
-        [pages.LOADING]: "loading",
-        [pages.MAIN]: "default/main",
-        [pages.TALENT]: "default/talent",
-        [pages.PROPERTY]: "default/property",
-        [pages.TRAJECTORY]: "default/trajectory",
-        [pages.SUMMARY]: "default/summary",
-        [pages.ACHIEVEMENT]: "default/achievement",
-        [pages.THANKS]: "default/thanks",
+        [pages.LOADING]: 'loading',
+        [pages.MAIN]: 'default/main',
+        [pages.TALENT]: 'default/talent',
+        [pages.PROPERTY]: 'default/property',
+        [pages.TRAJECTORY]: 'default/trajectory',
+        [pages.SUMMARY]: 'default/summary',
+        [pages.ACHIEVEMENT]: 'default/achievement',
+        [pages.THANKS]: 'default/thanks',
         [pages.THEMES]: 'themes',
         [pages.SAVELOAD]: 'saveload',
         [pages.MODE]: 'default/mode',
         [pages.CELEBRITY]: 'default/celebrity',
     },
     popups: {
-        [popups.ACHIEVEMENT]: "default/popup/achievementPopup",
-        [popups.MESSAGE]: "message",
+        [popups.ACHIEVEMENT]: 'default/popup/achievementPopup',
+        [popups.MESSAGE]: 'message',
     },
     configs: {
         bgColor: '#ffffff',
@@ -757,18 +741,8 @@ const light = {
                 hoverColor: '#ffc500',
                 hoverStroke: '#ffa500',
             },
-            grade: [
-                '#000000',
-                '#55fffe',
-                '#b17cff',
-                '#ffce45',
-            ],
-            filter: [
-                '#000000ff',
-                '#55fffeff',
-                '#b17cffff',
-                '#ffce45ff',
-            ],
+            grade: ['#000000', '#55fffe', '#b17cff', '#ffce45'],
+            filter: ['#000000ff', '#55fffeff', '#b17cffff', '#ffce45ff'],
             card: [
                 {
                     normal: {
@@ -790,7 +764,7 @@ const light = {
                         hoverLabel: '#ffffff',
                         lineWidth: 4,
                         radius: 4,
-                    }
+                    },
                 },
                 {
                     normal: {
@@ -812,7 +786,7 @@ const light = {
                         hoverLabel: '#ffffff',
                         lineWidth: 4,
                         radius: 4,
-                    }
+                    },
                 },
                 {
                     normal: {
@@ -834,7 +808,7 @@ const light = {
                         hoverLabel: '#ffffff',
                         lineWidth: 4,
                         radius: 4,
-                    }
+                    },
                 },
                 {
                     normal: {
@@ -856,8 +830,8 @@ const light = {
                         hoverLabel: '#ffffff',
                         lineWidth: 4,
                         radius: 4,
-                    }
-                }
+                    },
+                },
             ],
             summary: [
                 {
@@ -869,7 +843,8 @@ const light = {
                     hoverLabel: '#ffffff',
                     lineWidth: 4,
                     radius: 4,
-                },{
+                },
+                {
                     defaultColor: '#6495ed',
                     defaultStroke: '#f8f8f8',
                     defaultLabel: '#ffffff',
@@ -878,7 +853,8 @@ const light = {
                     hoverLabel: '#666666',
                     lineWidth: 4,
                     radius: 4,
-                },{
+                },
+                {
                     defaultColor: '#e2a7ff',
                     defaultStroke: '#f8f8f8',
                     defaultLabel: '#ffffff',
@@ -887,7 +863,8 @@ const light = {
                     hoverLabel: '#666666',
                     lineWidth: 4,
                     radius: 4,
-                },{
+                },
+                {
                     defaultColor: '#ffa07a',
                     defaultStroke: '#f8f8f8',
                     defaultLabel: '#ffffff',
@@ -908,7 +885,8 @@ const light = {
                     hoverLabel: '#efefef',
                     lineWidth: 4,
                     radius: 0,
-                },{
+                },
+                {
                     defaultColor: '#6495ed',
                     defaultStroke: '#cccccc',
                     defaultLabel: '#eeeeee',
@@ -917,7 +895,8 @@ const light = {
                     hoverLabel: '#3b3b3b',
                     lineWidth: 4,
                     radius: 0,
-                },{
+                },
+                {
                     defaultColor: '#e2a7ff',
                     defaultStroke: '#cccccc',
                     defaultLabel: '#eeeeee',
@@ -926,7 +905,8 @@ const light = {
                     hoverLabel: '#3b3b3b',
                     lineWidth: 4,
                     radius: 0,
-                },{
+                },
+                {
                     defaultColor: '#ffa07a',
                     defaultStroke: '#cccccc',
                     defaultLabel: '#eeeeee',
@@ -935,7 +915,7 @@ const light = {
                     hoverLabel: '#3b3b3b',
                     lineWidth: 4,
                     radius: 0,
-                }
+                },
             ],
             characterItem: {
                 name: {
@@ -995,7 +975,7 @@ const light = {
             },
             font_default: {
                 color: '#000000',
-            }
+            },
         },
         pages: {
             [pages.MAIN]: {
@@ -1019,14 +999,14 @@ const light = {
                 names: {
                     title: 'title',
                     btnSmall: 'btn_small',
-                }
+                },
             },
             [pages.TALENT]: {
                 vars: {
                     btnDrawCard: 'btn_main',
                     btnNext: 'btn_main',
                     title: 'title',
-                }
+                },
             },
             [pages.PROPERTY]: {
                 vars: {
@@ -1037,9 +1017,9 @@ const light = {
                 names: {
                     font_default: 'font_default',
                     property: {
-                        colorFilter: '#000000ff'
-                    }
-                }
+                        colorFilter: '#000000ff',
+                    },
+                },
             },
             [pages.TRAJECTORY]: {
                 vars: {
@@ -1055,8 +1035,8 @@ const light = {
                         radius: 4,
                     },
                     boxSpeed: {
-                        colorFilter: '#666666ff'
-                    }
+                        colorFilter: '#666666ff',
+                    },
                 },
                 names: {
                     propertyBox: {
@@ -1078,8 +1058,8 @@ const light = {
                         hoverLabel: '#222831',
                         lineWidth: 0,
                         radius: 4,
-                    }
-                }
+                    },
+                },
             },
             [pages.SUMMARY]: {
                 vars: {
@@ -1088,7 +1068,7 @@ const light = {
                 },
                 names: {
                     font_default: 'font_default',
-                }
+                },
             },
             [pages.ACHIEVEMENT]: {
                 vars: {
@@ -1098,7 +1078,7 @@ const light = {
                 names: {
                     font_default: 'font_default',
                     title: 'title',
-                }
+                },
             },
             [pages.THANKS]: {
                 vars: {
@@ -1120,7 +1100,7 @@ const light = {
                         hoverStroke: '#dc76a9',
                         hoverLabel: '#ffffff',
                         radius: 4,
-                    }
+                    },
                 },
             },
             [pages.THEMES]: {
@@ -1139,7 +1119,7 @@ const light = {
                         hoverLabel: '#ffffff',
                         radius: 80,
                     },
-                }
+                },
             },
             [pages.SAVELOAD]: {
                 vars: {
@@ -1176,20 +1156,20 @@ const light = {
                         radius: 80,
                         defaultLabel: '#ffffff',
                         hoverLabel: '#ffffff',
-                    }
-                }
+                    },
+                },
             },
             [pages.MODE]: {
                 names: {
                     font_default: 'font_default',
                     btn: 'btn_main',
-                }
+                },
             },
             [pages.CELEBRITY]: {
                 vars: {
                     btnRetry: 'btn_main',
                     btnNext: 'btn_main2',
-                }
+                },
             },
         },
         popups: {
@@ -1201,14 +1181,13 @@ const light = {
                         hoverColor: '#ffffff',
                         hoverStroke: '#84ff55',
                         lineWidth: 1,
-                    }
-                }
-            }
-
-        }
-    }
+                    },
+                },
+            },
+        },
+    },
 }
 
-const themes = { default: dark, cyber, dark, light };
+const themes = { default: dark, cyber, dark, light }
 
-export default { themes, pages, popups };
+export default { themes, pages, popups }

@@ -43,7 +43,7 @@ function parseCondition(condition) {
     return conditions;
 }
 
-function checkCondition(property, condition) {
+export function checkCondition(property, condition) {
     const conditions = parseCondition(condition);
     return checkParsedConditions(property, conditions);
 }
@@ -113,7 +113,7 @@ function checkProp(property, condition) {
     }
 }
 
-function extractMaxTriggers(condition) {
+export function extractMaxTriggers(condition) {
     // Assuming only age related talents can be triggered multiple times.
     const RE_AGE_CONDITION = /AGE\?\[([0-9\,]+)\]/;
     const match_object = RE_AGE_CONDITION.exec(condition);
@@ -125,5 +125,3 @@ function extractMaxTriggers(condition) {
     const age_list = match_object[1].split(",");
     return age_list.length;
 }
-
-export { checkCondition, extractMaxTriggers };

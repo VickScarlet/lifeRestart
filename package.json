@@ -1,24 +1,19 @@
 {
     "name": "life_restart",
     "type": "module",
-    "bin": "repl/index.js",
-    "version": "2.0.0",
+    "main": "repl/index.js",
+    "version": "2.1.0",
+    "author": "Vick Scarlet <vick@syaro.io>",
     "scripts": {
-        "test": "node test",
-        "xlsxTransform": "vt transform data",
-        "xlsx2json": "vt transform -s 4 -d public data/**/*.xlsx",
-        "dev": "webpack serve --open /public/dev.html",
-        "build": "webpack --mode production"
+        "xlsx2json": "vt transform -d public data/**/*.xlsx",
+        "dev": "vite",
+        "build": "vite build",
+        "start": "vite preview",
+        "test": "vitest"
     },
     "devDependencies": {
-        "@babel/core": "^7.15.4",
-        "@babel/preset-env": "^7.15.4",
-        "babel-loader": "^8.2.2",
-        "core-js": "^3.17.2",
-        "html-webpack-plugin": "^5.5.0",
         "v-transform": "^2.0.1",
-        "webpack": "^5.64.4",
-        "webpack-cli": "^4.8.0",
-        "webpack-dev-server": "^4.1.0"
+        "vite": "^6.2.5",
+        "vitest": "^3.1.1"
     }
 }

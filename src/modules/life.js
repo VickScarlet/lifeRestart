@@ -54,7 +54,7 @@ class Life {
         this.#specialThanks = specialThanks;
 
         const total = {
-            [this.PropertyTypes.TACEV]: this.#achievement.initial({achievements}),
+            [this.PropertyTypes.TACHV]: this.#achievement.initial({achievements}),
             [this.PropertyTypes.TEVT]: this.#event.initial({events}),
             [this.PropertyTypes.TTLT]: this.#talent.initial({talents}),
         };
