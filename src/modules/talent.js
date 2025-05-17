@@ -68,13 +68,17 @@ class Talent {
 
     exclude(talents, excludeId) {
         const { exclude } = this.get(excludeId);
-        if(!exclude) return null;
         for(const talent of talents) {
-            for(const e of exclude) {
-                if(talent == e) return talent;
+            if(exclude) {
+                for(const e of exclude) {
+                    if(talent == e) return talent;
+                }
             }
-            for (const e of this.get(talent).exclude) {
-                if (excludeId == e) return talent
+            const excludeReverse = this.get(talent).exclude;
+            if(excludeReverse) {
+                for (const e of excludeReverse) {
+                    if (excludeId == e) return talent
+                }
             }
         }
         return null;
