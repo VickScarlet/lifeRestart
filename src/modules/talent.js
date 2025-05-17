@@ -73,6 +73,9 @@ class Talent {
             for(const e of exclude) {
                 if(talent == e) return talent;
             }
+            for (const e of this.get(talent).exclude) {
+                if (excludeId == e) return talent
+            }
         }
         return null;
     }
