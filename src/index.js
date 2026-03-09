@@ -1,5 +1,11 @@
 import App from './app.js';
 import Life from './modules/life.js';
+import { uiManager } from './ui/uiManager.enhanced.js';
+import { animator } from './ui/animations.js';
+
+// 初始化增强 UI 系统
+globalThis.$$uiManager = uiManager;
+globalThis.$$animator = animator;
 
 globalThis.$$eventMap = new Map();
 globalThis.$$event = (tag, data) => {
