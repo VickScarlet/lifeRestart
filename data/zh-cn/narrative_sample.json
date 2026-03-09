@@ -1,0 +1,360 @@
+{
+  "nodes": [
+    {
+      "id": "start",
+      "type": "normal",
+      "name": "新生",
+      "content": "你来到了这个世界，伴随着响亮的啼哭声，一个新生命开始了。",
+      "tags": ["childhood", "start"],
+      "priority": 10,
+      "onceOnly": true,
+      "prerequisites": {
+        "minAge": 0,
+        "maxAge": 0
+      },
+      "effects": {
+        "flagSet": { "born": true }
+      }
+    },
+    {
+      "id": "childhood_normal_001",
+      "type": "normal",
+      "name": "快乐的童年",
+      "content": "你的童年过得很快乐，父母给了你足够的关爱和支持。",
+      "tags": ["childhood", "happy"],
+      "priority": 5,
+      "prerequisites": {
+        "minAge": 3,
+        "maxAge": 6,
+        "required": ["start"]
+      },
+      "effects": {
+        "propertyChanges": { "SPR": 3, "CHR": 2 },
+        "geneAdd": ["happy_childhood"]
+      }
+    },
+    {
+      "id": "childhood_hard_001",
+      "type": "normal",
+      "name": "艰难的童年",
+      "content": "你的童年并不轻松，家庭条件困难让你早早懂得了生活的艰辛。",
+      "tags": ["childhood", "hard"],
+      "priority": 5,
+      "prerequisites": {
+        "minAge": 3,
+        "maxAge": 6,
+        "required": ["start"]
+      },
+      "effects": {
+        "propertyChanges": { "INT": 2, "SPR": -2, "MNY": -3 },
+        "geneAdd": ["hard_childhood"]
+      }
+    },
+    {
+      "id": "school_primary_001",
+      "type": "normal",
+      "name": "小学生活",
+      "content": "你开始了小学生活，认识了新朋友，学习新知识。",
+      "tags": ["school", "primary"],
+      "priority": 6,
+      "prerequisites": {
+        "minAge": 7,
+        "maxAge": 12,
+        "required": ["start"]
+      },
+      "effects": {
+        "propertyChanges": { "INT": 3 }
+      }
+    },
+    {
+      "id": "school_middle_001",
+      "type": "normal",
+      "name": "中学时代",
+      "content": "进入中学，学业压力增大，但你也在不断成长。",
+      "tags": ["school", "middle"],
+      "priority": 6,
+      "prerequisites": {
+        "minAge": 13,
+        "maxAge": 15,
+        "required": ["school_primary_001"]
+      },
+      "effects": {
+        "propertyChanges": { "INT": 3, "STR": 1 }
+      }
+    },
+    {
+      "id": "exam_gaokao_001",
+      "type": "branch",
+      "name": "高考",
+      "content": "人生最重要的考试之一，高考即将来临。你的选择将影响未来。",
+      "tags": ["education", "decision"],
+      "priority": 9,
+      "onceOnly": true,
+      "prerequisites": {
+        "minAge": 17,
+        "maxAge": 19,
+        "required": ["school_middle_001"]
+      },
+      "effects": {
+        "flagSet": { "gaokao_taken": true }
+      }
+    },
+    {
+      "id": "career_first_job_001",
+      "type": "normal",
+      "name": "第一份工作",
+      "content": "你找到了人生中的第一份工作，开始了职业生涯。",
+      "tags": ["career", "work"],
+      "priority": 7,
+      "prerequisites": {
+        "minAge": 22,
+        "maxAge": 30,
+        "requiredFlags": { "gaokao_taken": true }
+      },
+      "effects": {
+        "propertyChanges": { "MNY": 5, "SPR": -2 },
+        "flagSet": { "employed": true }
+      }
+    },
+    {
+      "id": "career_startup_001",
+      "type": "branch",
+      "name": "创业机会",
+      "content": "你积累了一些经验和人脉，现在有机会创办自己的公司。但是创业风险巨大，你需要慎重考虑。",
+      "tags": ["career", "decision", "high_risk"],
+      "priority": 8,
+      "prerequisites": {
+        "minAge": 25,
+        "maxAge": 40,
+        "requiredFlags": { "employed": true },
+        "conditions": [
+          "(state) => state.getGlobalFlag('MNY', 0) >= 50"
+        ]
+      },
+      "effects": {
+        "flagSet": { "startup_opportunity": true },
+        "pathUnlocks": ["startup_path"]
+      }
+    },
+    {
+      "id": "marriage_001",
+      "type": "branch",
+      "name": "婚姻抉择",
+      "content": "你遇到了一个想要共度一生的人，是否要步入婚姻的殿堂？",
+      "tags": ["relationship", "decision"],
+      "priority": 8,
+      "prerequisites": {
+        "minAge": 22,
+        "maxAge": 45,
+        "requiredFlags": { "in_relationship": true }
+      },
+      "effects": {}
+    },
+    {
+      "id": "midlife_crisis_001",
+      "type": "normal",
+      "name": "中年危机",
+      "content": "人到中年，你开始思考人生的意义和未来方向。",
+      "tags": ["midlife", "crisis"],
+      "priority": 7,
+      "prerequisites": {
+        "minAge": 40,
+        "maxAge": 55
+      },
+      "effects": {
+        "propertyChanges": { "SPR": -3 },
+        "geneAdd": ["midlife_crisis"]
+      }
+    },
+    {
+      "id": "retirement_001",
+      "type": "normal",
+      "name": "退休",
+      "content": "你到了退休年龄，可以放下工作，享受晚年生活了。",
+      "tags": ["retirement", "elderly"],
+      "priority": 6,
+      "prerequisites": {
+        "minAge": 60,
+        "maxAge": 65
+      },
+      "effects": {
+        "propertyChanges": { "SPR": 3, "MNY": -2 },
+        "flagSet": { "retired": true }
+      }
+    },
+    {
+      "id": "ending_normal_001",
+      "type": "ending",
+      "name": "平凡一生",
+      "content": "你度过了平凡但充实的一生，没有惊天动地的成就，但也有属于自己的小幸福。",
+      "tags": ["ending", "normal"],
+      "priority": 5,
+      "onceOnly": false,
+      "prerequisites": {
+        "minAge": 70,
+        "requiredFlags": { "retired": true }
+      },
+      "effects": {}
+    },
+    {
+      "id": "ending_successful_001",
+      "type": "ending",
+      "name": "成功人士",
+      "content": "你取得了事业上的巨大成功，成为众人敬仰的对象。你的一生充满传奇色彩。",
+      "tags": ["ending", "successful"],
+      "priority": 10,
+      "onceOnly": false,
+      "prerequisites": {
+        "minAge": 60,
+        "conditions": [
+          "(state) => state.getGlobalFlag('MNY', 0) >= 100",
+          "(state) => state.getGlobalFlag('INT', 0) >= 15"
+        ]
+      },
+      "effects": {}
+    },
+    {
+      "id": "ending_heroic_001",
+      "type": "ending",
+      "name": "英雄",
+      "content": "你用自己的行动改变了世界，成为人们心中的英雄。你的名字将被后人铭记。",
+      "tags": ["ending", "heroic", "rare"],
+      "priority": 10,
+      "onceOnly": false,
+      "prerequisites": {
+        "minAge": 50,
+        "conditions": [
+          "(state) => state.getGlobalFlag('morality', 0) >= 80",
+          "(state) => state.getGlobalFlag('empathy', 0) >= 70"
+        ]
+      },
+      "effects": {}
+    },
+    {
+      "id": "default_placeholder",
+      "type": "default_placeholder",
+      "name": "日常",
+      "content": "日子一天天过去，生活平淡而真实。",
+      "tags": ["daily"],
+      "priority": 1,
+      "prerequisites": {}
+    }
+  ],
+  "branches": [
+    {
+      "id": "gaokao_study_hard",
+      "sourceNode": "exam_gaokao_001",
+      "targetNode": "career_first_job_001",
+      "name": "努力学习，考上好大学",
+      "description": "全力以赴准备高考，争取考上理想的大学",
+      "minProperties": { "INT": 8 },
+      "baseProbability": 0.6,
+      "impact": {
+        "morality": 0,
+        "chaos": -5,
+        "progress": 10,
+        "empathy": 0
+      },
+      "feedback": {
+        "immediateEffect": { "INT": 2, "SPR": -3 },
+        "narrativeConsequence": "你通过努力考上了理想的大学，为未来打下了良好基础。"
+      }
+    },
+    {
+      "id": "gaokao_give_up",
+      "sourceNode": "exam_gaokao_001",
+      "targetNode": "career_first_job_001",
+      "name": "放弃高考，直接工作",
+      "description": "觉得读书不适合自己，决定提前进入社会",
+      "minProperties": { "STR": 6 },
+      "baseProbability": 0.3,
+      "impact": {
+        "morality": 0,
+        "chaos": 15,
+        "progress": -5,
+        "empathy": 0
+      },
+      "feedback": {
+        "immediateEffect": { "MNY": 3, "INT": -2 },
+        "narrativeConsequence": "你放弃了高考，选择提前进入社会打拼。"
+      }
+    },
+    {
+      "id": "startup_accept",
+      "sourceNode": "career_startup_001",
+      "targetNode": "career_first_job_001",
+      "name": "接受挑战，开始创业",
+      "description": "辞去工作，全身心投入创业",
+      "minProperties": { "MNY": 50, "INT": 10, "SPR": 8 },
+      "requiredGenes": ["ambitious"],
+      "baseProbability": 0.4,
+      "impact": {
+        "morality": -5,
+        "chaos": 20,
+        "progress": 15,
+        "empathy": 0
+      },
+      "feedback": {
+        "immediateEffect": { "MNY": -30, "SPR": -5 },
+        "narrativeConsequence": "你踏上了充满不确定性的创业之路"
+      },
+      "exclusiveBranches": ["startup_decline"]
+    },
+    {
+      "id": "startup_decline",
+      "sourceNode": "career_startup_001",
+      "targetNode": "career_first_job_001",
+      "name": "拒绝诱惑，继续工作",
+      "description": "觉得创业风险太大，决定继续稳定的工作",
+      "baseProbability": 0.6,
+      "impact": {
+        "morality": 0,
+        "chaos": -10,
+        "progress": -5,
+        "empathy": 0
+      },
+      "feedback": {
+        "immediateEffect": { "MNY": 2, "SPR": 2 },
+        "narrativeConsequence": "你选择了稳定的道路，继续在公司工作。"
+      },
+      "exclusiveBranches": ["startup_accept"]
+    },
+    {
+      "id": "marriage_accept",
+      "sourceNode": "marriage_001",
+      "targetNode": "midlife_crisis_001",
+      "name": "步入婚姻殿堂",
+      "description": "与爱人携手走进婚姻的殿堂",
+      "minProperties": { "CHR": 6, "MNY": 20 },
+      "baseProbability": 0.7,
+      "impact": {
+        "morality": 5,
+        "chaos": -5,
+        "progress": 5,
+        "empathy": 10
+      },
+      "feedback": {
+        "immediateEffect": { "SPR": 5, "MNY": -10 },
+        "narrativeConsequence": "你结婚了，开始了人生的新篇章。"
+      }
+    },
+    {
+      "id": "marriage_decline",
+      "sourceNode": "marriage_001",
+      "targetNode": "midlife_crisis_001",
+      "name": "选择单身",
+      "description": "决定保持单身，享受自由生活",
+      "baseProbability": 0.3,
+      "impact": {
+        "morality": 0,
+        "chaos": 10,
+        "progress": 0,
+        "empathy": -5
+      },
+      "feedback": {
+        "immediateEffect": { "SPR": 3, "CHR": 2 },
+        "narrativeConsequence": "你选择了单身生活，享受自由自在的日子。"
+      }
+    }
+  ]
+}
