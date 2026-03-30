@@ -1,0 +1,1 @@
+var e=class extends ui.view.LoadingUI{constructor(){super()}static load(){return[`images/atlas/images/resource.atlas`]}show(){}onProgress(e){}};export{e as default};
