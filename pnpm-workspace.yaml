@@ -3,7 +3,7 @@ packages:
   - '**'
 
 minimumReleaseAgeExclude:
-  - v-transform@2.2.2
+  - v-transform@2.2.2 || 2.2.3
 
 overrides:
   "v-transform>xlsx": "^0.18.5"

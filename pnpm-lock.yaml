@@ -12,8 +12,8 @@ importers:
   .:
     devDependencies:
       v-transform:
-        specifier: ^2.2.2
-        version: 2.2.2
+        specifier: ^2.2.3
+        version: 2.2.3
       vite:
         specifier: ^8.1.0
         version: 8.1.0
@@ -425,8 +425,8 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
-  v-transform@2.2.2:
-    resolution: {integrity: sha512-oRwWoXPqTpU/SXlmY/eKxV1fcmtOD5xCwvzMzncrkRoTxQyv4Mc8jMxK00Mn1MeR7n8SZvdKDkzaops/Yw7T3Q==}
+  v-transform@2.2.3:
+    resolution: {integrity: sha512-4hdEAxaUYibSjMwsG0EgOQGn5duvuUHPxhg54AzGi5tYhbTAEpKJk1SlF82XKCxU4N06yjcfEMV5ZRNjxZ7Q3w==}
     hasBin: true
 
   vite@8.1.0:
@@ -853,7 +853,7 @@ snapshots:
   tslib@2.8.1:
     optional: true
 
-  v-transform@2.2.2:
+  v-transform@2.2.3:
     dependencies:
       commander: 15.0.0
       glob: 13.0.6
