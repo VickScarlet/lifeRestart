@@ -1,0 +1,9 @@
+# pnpm-workspace.yaml
+packages:
+  - '**'
+
+minimumReleaseAgeExclude:
+  - v-transform@2.2.2
+
+overrides:
+  "v-transform>xlsx": "^0.18.5"
